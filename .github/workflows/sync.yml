@@ -14,7 +14,7 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    concurrency: sync
+    concurrency: overcast
 
     steps:
       - name: Checkout main branch
