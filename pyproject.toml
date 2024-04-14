@@ -1,0 +1,10 @@
+[project]
+name = "overcast-data"
+
+[tool.pyright]
+
+[tool.vulture]
+exclude = ["*test_*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I", "UP"]
