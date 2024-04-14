@@ -334,7 +334,9 @@ def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:
     return episodes
 
 
-def _request(cache_dir: Path, cookie: str, url: str) -> requests_cache.CachedResponse:
+def _request(
+    cache_dir: Path, cookie: str, url: str
+) -> requests_cache.CachedResponse | requests_cache.OriginalResponse:
     cache_name = cache_dir / "overcast_cache"
     session = requests_cache.CachedSession(cache_name=cache_name, backend="filesystem")
 
