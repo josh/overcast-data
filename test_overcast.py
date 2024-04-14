@@ -3,7 +3,12 @@ from datetime import date, timedelta
 
 import pytest
 
-from overcast import LoggedOutError, fetch_podcasts, parse_episode_caption_text
+from overcast import (
+    LoggedOutError,
+    export_account_data,
+    fetch_podcasts,
+    parse_episode_caption_text,
+)
 
 
 @pytest.fixture
@@ -21,6 +26,12 @@ def test_fetch_podcasts(tmp_path, overcast_cookie):
 def test_fetch_podcasts_bad_cookie(tmp_path):
     with pytest.raises(LoggedOutError):
         fetch_podcasts(cache_dir=tmp_path, cookie="XXX")
+
+
+def test_export_account_data(tmp_path, overcast_cookie):
+    export_data = export_account_data(cache_dir=tmp_path, cookie=overcast_cookie)
+    assert len(export_data.playlists) > 0
+    assert len(export_data.feeds) > 0
 
 
 def test_parse_episode_caption_text():
