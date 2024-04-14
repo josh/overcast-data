@@ -24,3 +24,5 @@ jobs:
       - name: Test with pytest
         run: |
           pytest --verbose
+        env:
+          OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}
