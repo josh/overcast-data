@@ -1,4 +1,5 @@
 import os
+import tempfile
 from datetime import timedelta
 from pathlib import Path
 
@@ -7,11 +8,11 @@ import pytest
 from requests_cache import Session
 
 
-@pytest.fixture
-def cache_dir(tmpdir: Path) -> Path:
+@pytest.fixture(scope="module")
+def cache_dir() -> Path:
     if "XDG_CACHE_HOME" in os.environ:
         return Path(os.environ["XDG_CACHE_HOME"]) / "test_requests_cache"
-    return tmpdir
+    return Path(tempfile.mkdtemp())
 
 
 def test_get_httpbin_delay(cache_dir: Path) -> None:

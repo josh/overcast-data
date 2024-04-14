@@ -1,46 +1,57 @@
 import os
+import tempfile
 from datetime import date, timedelta
 from pathlib import Path
+from random import choice
 
 import pytest
 
 import overcast
 from overcast import (
     Session,
-    export_account_data,
+    fetch_podcast,
     fetch_podcasts,
     parse_episode_caption_text,
 )
 
 
-@pytest.fixture
-def cache_dir(tmpdir: Path) -> Path:
+@pytest.fixture(scope="module")
+def cache_dir() -> Path:
     if "XDG_CACHE_HOME" in os.environ:
         return Path(os.environ["XDG_CACHE_HOME"]) / "test_overcast"
-    return tmpdir
+    return Path(tempfile.mkdtemp())
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def overcast_cookie() -> str:
     if "OVERCAST_COOKIE" not in os.environ:
         pytest.skip("OVERCAST_COOKIE not set")
     return os.environ["OVERCAST_COOKIE"]
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def overcast_session(cache_dir: Path, overcast_cookie: str) -> Session:
     return overcast.session(cache_dir=cache_dir, cookie=overcast_cookie)
 
 
 def test_fetch_podcasts(overcast_session: Session) -> None:
-    podcasts = fetch_podcasts(session=overcast_session)
-    assert len(podcasts) > 0
+    feeds = fetch_podcasts(session=overcast_session)
+    assert len(feeds) > 0
 
 
 def test_fetch_podcasts_bad_cookie(tmpdir: Path) -> None:
     session = overcast.session(cache_dir=tmpdir, cookie="XXX")
     with pytest.raises(overcast.LoggedOutError):
         fetch_podcasts(session=session)
+
+
+def test_fetch_podcast(overcast_session: Session) -> None:
+    feeds = fetch_podcasts(session=overcast_session)
+    assert len(feeds) > 0
+    feed_id = choice(feeds).id
+
+    episodes = fetch_podcast(session=overcast_session, feed_id=feed_id)
+    assert len(episodes) > 0
 
 
 # TODO: Re-enable after rate limit expires
