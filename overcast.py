@@ -3,7 +3,7 @@ import time
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Iterator
+from typing import Iterator, TypeVar
 
 import dateutil.parser
 import requests_cache
@@ -385,7 +385,10 @@ def _parse_duration(text: str) -> timedelta:
     return timedelta(minutes=minutes)
 
 
-def _as_list(x):
+T = TypeVar("T")
+
+
+def _as_list(x: T | list[T]) -> list[T]:
     if isinstance(x, list):
         return x
     return [x]
