@@ -1,5 +1,6 @@
 import os
 from datetime import date, timedelta
+from pathlib import Path
 
 import pytest
 
@@ -18,23 +19,23 @@ def overcast_cookie() -> str:
     return os.environ["OVERCAST_COOKIE"]
 
 
-def test_fetch_podcasts(tmp_path, overcast_cookie):
+def test_fetch_podcasts(tmp_path: Path, overcast_cookie: str) -> None:
     podcasts = fetch_podcasts(cache_dir=tmp_path, cookie=overcast_cookie)
     assert len(podcasts) > 0
 
 
-def test_fetch_podcasts_bad_cookie(tmp_path):
+def test_fetch_podcasts_bad_cookie(tmp_path: Path) -> None:
     with pytest.raises(LoggedOutError):
         fetch_podcasts(cache_dir=tmp_path, cookie="XXX")
 
 
-def test_export_account_data(tmp_path, overcast_cookie):
+def test_export_account_data(tmp_path: Path, overcast_cookie: str) -> None:
     export_data = export_account_data(cache_dir=tmp_path, cookie=overcast_cookie)
     assert len(export_data.playlists) > 0
     assert len(export_data.feeds) > 0
 
 
-def test_parse_episode_caption_text():
+def test_parse_episode_caption_text() -> None:
     now = date.today()
 
     result = parse_episode_caption_text("Apr 1 • played")
