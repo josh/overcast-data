@@ -362,7 +362,7 @@ def _request(
     return r
 
 
-_MIN_TIME_BETWEEN_REQUESTS = timedelta(seconds=5)
+_MIN_TIME_BETWEEN_REQUESTS = timedelta(minutes=1)
 _last_request_at: datetime = datetime.min
 
 
