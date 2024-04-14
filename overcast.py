@@ -1,4 +1,5 @@
 import logging
+import time
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -7,9 +8,10 @@ from typing import Iterator
 import dateutil.parser
 import requests_cache
 import xmltodict
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 
 logger = logging.getLogger("overcast")
+
 
 _SAFARI_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -97,9 +99,9 @@ class HTMLEpisode:
     id: str
     title: str
     description: str
-    played_date: date | None = None
-    pub_date: date | None = None
+    pub_date: date
     duration: timedelta | None = None
+    is_played: bool = False
     in_progress: bool = False
 
 
@@ -128,14 +130,11 @@ def fetch_podcast(feed_id: str, cache_dir: Path, cookie: str) -> list[HTMLEpisod
         else:
             logger.error("No title element found: %s", episodecell_el)
 
-        pub_date, played_date, duration, in_progress = None, None, None, False
         caption2_el = episodecell_el.select_one(".caption2")
-        if caption2_el:
-            pub_date, played_date, duration, in_progress = _parse_episode_caption2(
-                caption2_el
-            )
-        else:
+        if not caption2_el:
             logger.error("No caption2 element found: %s", episodecell_el)
+            continue
+        caption_result = parse_episode_caption_text(caption2_el.text)
 
         description: str = ""
         description_el = episodecell_el.select_one(".lighttext")
@@ -148,10 +147,10 @@ def fetch_podcast(feed_id: str, cache_dir: Path, cookie: str) -> list[HTMLEpisod
             id=href,
             title=title,
             description=description,
-            played_date=played_date,
-            pub_date=pub_date,
-            duration=duration,
-            in_progress=in_progress,
+            pub_date=caption_result.pub_date,
+            duration=caption_result.duration,
+            is_played=caption_result.is_played,
+            in_progress=caption_result.in_progress,
         )
         episodes.append(episode)
 
@@ -161,33 +160,35 @@ def fetch_podcast(feed_id: str, cache_dir: Path, cookie: str) -> list[HTMLEpisod
     return episodes
 
 
-def _parse_episode_caption2(
-    caption2_el: Tag,
-) -> tuple[date | None, date | None, timedelta | None, bool]:
-    text = caption2_el.text.strip()
+@dataclass
+class CaptionResult:
+    pub_date: date
+    duration: timedelta | None = None
+    is_played: bool = False
+    in_progress: bool = False
+
+
+def parse_episode_caption_text(text: str) -> CaptionResult:
+    text = text.strip()
     parts = text.split(" • ", 2)
     assert len(parts) >= 1, text
 
-    pub_date: date | None = None
-    played_date: date | None = None
     duration: timedelta | None = None
     in_progress: bool = False
+    is_played: bool = False
 
     pub_date = dateutil.parser.parse(parts[0]).date()
 
     if len(parts) == 2 and parts[1] == "played":
-        played_date = pub_date
-        pub_date = None
+        is_played = True
 
     elif len(parts) == 2 and parts[1].endswith("left"):
-        duration_text = parts[1][:-5]
-        _left = _parse_duration(duration_text)
-        in_progress = True
+        in_progress = False
+        is_played = True
 
     elif len(parts) == 2 and parts[1].startswith("at "):
-        duration_text = parts[1][3:]
-        _at = _parse_duration(duration_text)
         in_progress = True
+        is_played = True
 
     elif len(parts) == 2:
         duration = _parse_duration(parts[1])
@@ -198,7 +199,12 @@ def _parse_episode_caption2(
     else:
         logger.warning("Unknown caption2 format: %s", text)
 
-    return pub_date, played_date, duration, in_progress
+    return CaptionResult(
+        pub_date=pub_date,
+        duration=duration,
+        is_played=is_played,
+        in_progress=in_progress,
+    )
 
 
 @dataclass
@@ -345,6 +351,7 @@ def _request(
 
     assert url.startswith("https://overcast.fm/")
 
+    _ratelimit()
     r = session.get(url, headers=headers)
     r.raise_for_status()
 
@@ -353,6 +360,21 @@ def _request(
         raise LoggedOutError("Bad auth cookie")
 
     return r
+
+
+_MIN_TIME_BETWEEN_REQUESTS = timedelta(seconds=5)
+_last_request_at: datetime = datetime.min
+
+
+def _ratelimit():
+    global _last_request_at
+    seconds_to_wait = (
+        _last_request_at + _MIN_TIME_BETWEEN_REQUESTS - datetime.now()
+    ).total_seconds()
+    if seconds_to_wait > 0:
+        logger.info("Waiting %s seconds...", seconds_to_wait)
+        time.sleep(seconds_to_wait)
+    _last_request_at = datetime.now()
 
 
 def _parse_duration(text: str) -> timedelta:
