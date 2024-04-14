@@ -366,7 +366,7 @@ _MIN_TIME_BETWEEN_REQUESTS = timedelta(seconds=5)
 _last_request_at: datetime = datetime.min
 
 
-def _ratelimit():
+def _ratelimit() -> None:
     global _last_request_at
     seconds_to_wait = (
         _last_request_at + _MIN_TIME_BETWEEN_REQUESTS - datetime.now()
