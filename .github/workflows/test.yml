@@ -21,8 +21,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Load cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/
+          key: cache-${{ github.run_id }}
+          restore-keys: |
+            cache-
+
       - name: Test with pytest
         run: |
           pytest --verbose
         env:
+          XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}

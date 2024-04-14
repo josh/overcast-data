@@ -5,6 +5,7 @@ from pathlib import Path
 import click
 
 import database
+import overcast
 from database import save_feeds
 from overcast import (
     export_account_data,
@@ -38,8 +39,10 @@ def main(overcast_cookie: str, db_file: Path, cache_dir: Path, verbose: bool) ->
     log_level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(level=log_level)
 
-    export_data = export_account_data(cache_dir=cache_dir, cookie=overcast_cookie)
-    html_feeds = fetch_podcasts(cache_dir=cache_dir, cookie=overcast_cookie)
+    session = overcast.session(cache_dir=cache_dir, cookie=overcast_cookie)
+
+    export_data = export_account_data(session=session)
+    html_feeds = fetch_podcasts(session=session)
 
     db_feeds: list[database.Feed] = []
 

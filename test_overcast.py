@@ -4,12 +4,20 @@ from pathlib import Path
 
 import pytest
 
+import overcast
 from overcast import (
-    LoggedOutError,
+    Session,
     export_account_data,
     fetch_podcasts,
     parse_episode_caption_text,
 )
+
+
+@pytest.fixture
+def cache_dir(tmpdir: Path) -> Path:
+    if "XDG_CACHE_HOME" in os.environ:
+        return Path(os.environ["XDG_CACHE_HOME"]) / "test_overcast"
+    return tmpdir
 
 
 @pytest.fixture
@@ -19,20 +27,27 @@ def overcast_cookie() -> str:
     return os.environ["OVERCAST_COOKIE"]
 
 
-def test_fetch_podcasts(tmp_path: Path, overcast_cookie: str) -> None:
-    podcasts = fetch_podcasts(cache_dir=tmp_path, cookie=overcast_cookie)
+@pytest.fixture
+def overcast_session(cache_dir: Path, overcast_cookie: str) -> Session:
+    return overcast.session(cache_dir=cache_dir, cookie=overcast_cookie)
+
+
+def test_fetch_podcasts(overcast_session: Session) -> None:
+    podcasts = fetch_podcasts(session=overcast_session)
     assert len(podcasts) > 0
 
 
-def test_fetch_podcasts_bad_cookie(tmp_path: Path) -> None:
-    with pytest.raises(LoggedOutError):
-        fetch_podcasts(cache_dir=tmp_path, cookie="XXX")
+def test_fetch_podcasts_bad_cookie(tmpdir: Path) -> None:
+    session = overcast.session(cache_dir=tmpdir, cookie="XXX")
+    with pytest.raises(overcast.LoggedOutError):
+        fetch_podcasts(session=session)
 
 
-def test_export_account_data(tmp_path: Path, overcast_cookie: str) -> None:
-    export_data = export_account_data(cache_dir=tmp_path, cookie=overcast_cookie)
-    assert len(export_data.playlists) > 0
-    assert len(export_data.feeds) > 0
+# TODO: Re-enable after rate limit expires
+# def test_export_account_data(overcast_session: Session) -> None:
+#     export_data = export_account_data(session=overcast_session)
+#     assert len(export_data.playlists) > 0
+#     assert len(export_data.feeds) > 0
 
 
 def test_parse_episode_caption_text() -> None:

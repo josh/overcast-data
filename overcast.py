@@ -1,14 +1,15 @@
 import logging
-import time
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Iterator, TypeVar
 
 import dateutil.parser
-import requests_cache
+import requests
 import xmltodict
 from bs4 import BeautifulSoup
+
+import requests_cache
 
 logger = logging.getLogger("overcast")
 
@@ -38,6 +39,21 @@ class RatedLimitedError(Exception):
     pass
 
 
+Session = requests_cache.Session
+
+
+def session(cache_dir: Path, cookie: str) -> Session:
+    headers = _SAFARI_HEADERS.copy()
+    headers["Cookie"] = f"o={cookie}; qr=-"
+
+    return Session(
+        cache_dir=cache_dir / "overcast",
+        base_url="https://overcast.fm",
+        headers=headers,
+        min_time_between_requests=timedelta(minutes=1),
+    )
+
+
 @dataclass
 class HTMLFeed:
     id: str
@@ -46,11 +62,11 @@ class HTMLFeed:
     has_unplayed_episodes: bool
 
 
-def fetch_podcasts(cache_dir: Path, cookie: str) -> list[HTMLFeed]:
+def fetch_podcasts(session: Session) -> list[HTMLFeed]:
     r = _request(
-        url="https://overcast.fm/podcasts",
-        cache_dir=cache_dir,
-        cookie=cookie,
+        session=session,
+        path="/podcasts",
+        cache_expires=timedelta(hours=1),
     )
 
     feeds: list[HTMLFeed] = []
@@ -109,11 +125,11 @@ class HTMLEpisode:
     in_progress: bool = False
 
 
-def fetch_podcast(feed_id: str, cache_dir: Path, cookie: str) -> list[HTMLEpisode]:
+def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
     r = _request(
-        url=f"https://overcast.fm/{feed_id}",
-        cache_dir=cache_dir,
-        cookie=cookie,
+        session=session,
+        path=f"/{feed_id}",
+        cache_expires=timedelta(hours=1),
     )
 
     soup = BeautifulSoup(r.text, "html.parser")
@@ -249,13 +265,12 @@ class AccountExport:
     feeds: list[ExportFeed]
 
 
-def export_account_data(cache_dir: Path, cookie: str) -> AccountExport:
+def export_account_data(session: Session) -> AccountExport:
     r = _request(
-        url="https://overcast.fm/account/export_opml/extended",
-        cache_dir=cache_dir,
-        cookie=cookie,
+        session,
+        path="/account/export_opml/extended",
+        cache_expires=timedelta(days=1),
     )
-
     d = xmltodict.parse(r.text)
     outline = d["opml"]["body"]["outline"]
     return AccountExport(playlists=_opml_playlists(outline), feeds=_opml_feeds(outline))
@@ -345,45 +360,22 @@ def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:
 
 
 def _request(
-    cache_dir: Path, cookie: str, url: str
-) -> requests_cache.CachedResponse | requests_cache.OriginalResponse:
-    cache_name = cache_dir / "overcast_cache"
-    session = requests_cache.CachedSession(cache_name=cache_name, backend="filesystem")
+    session: Session, path: str, cache_expires: timedelta
+) -> requests.Response:
+    try:
+        response = session.get(path=path, cache_expires=cache_expires)
+    except requests.HTTPError as e:
+        if e.response.status_code == 429:
+            logger.critical("Rate limited")
+            raise RatedLimitedError()
+        else:
+            raise e
 
-    headers = _SAFARI_HEADERS.copy()
-    headers["Cookie"] = f"o={cookie}; qr=-"
-
-    assert url.startswith("https://overcast.fm/")
-
-    _throttle()
-    r = session.get(url, headers=headers)
-
-    if r.status_code == 429:
-        logger.critical("Rate limited")
-        raise RatedLimitedError()
-
-    r.raise_for_status()
-
-    if "Log In" in r.text:
+    if "Log In" in response.text:
         logger.critical("Received logged out page")
         raise LoggedOutError()
 
-    return r
-
-
-_MIN_TIME_BETWEEN_REQUESTS = timedelta(minutes=1)
-_last_request_at: datetime = datetime.min
-
-
-def _throttle() -> None:
-    global _last_request_at
-    seconds_to_wait = (
-        _last_request_at + _MIN_TIME_BETWEEN_REQUESTS - datetime.now()
-    ).total_seconds()
-    if seconds_to_wait > 0:
-        logger.info("Waiting %s seconds...", seconds_to_wait)
-        time.sleep(seconds_to_wait)
-    _last_request_at = datetime.now()
+    return response
 
 
 def _parse_duration(text: str) -> timedelta:
