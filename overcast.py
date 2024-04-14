@@ -107,7 +107,7 @@ class HTMLEpisode:
 
 def fetch_podcast(feed_id: str, cache_dir: Path, cookie: str) -> list[HTMLEpisode]:
     r = _request(
-        url=f"https://overcast.fm{feed_id}",
+        url=f"https://overcast.fm/{feed_id}",
         cache_dir=cache_dir,
         cookie=cookie,
     )
