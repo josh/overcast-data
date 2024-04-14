@@ -3,9 +3,6 @@ name: Sync
 on:
   schedule:
     - cron: "0 13 * * *" # Daily (5am PST)
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
