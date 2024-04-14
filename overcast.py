@@ -34,6 +34,10 @@ class LoggedOutError(Exception):
     pass
 
 
+class RatedLimitedError(Exception):
+    pass
+
+
 @dataclass
 class HTMLFeed:
     id: str
@@ -351,13 +355,18 @@ def _request(
 
     assert url.startswith("https://overcast.fm/")
 
-    _ratelimit()
+    _throttle()
     r = session.get(url, headers=headers)
+
+    if r.status_code == 429:
+        logger.critical("Rate limited")
+        raise RatedLimitedError()
+
     r.raise_for_status()
 
     if "Log In" in r.text:
-        logger.error("Bad auth cookie")
-        raise LoggedOutError("Bad auth cookie")
+        logger.critical("Received logged out page")
+        raise LoggedOutError()
 
     return r
 
@@ -366,7 +375,7 @@ _MIN_TIME_BETWEEN_REQUESTS = timedelta(minutes=1)
 _last_request_at: datetime = datetime.min
 
 
-def _ratelimit() -> None:
+def _throttle() -> None:
     global _last_request_at
     seconds_to_wait = (
         _last_request_at + _MIN_TIME_BETWEEN_REQUESTS - datetime.now()
