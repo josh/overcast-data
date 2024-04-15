@@ -44,7 +44,7 @@ class Session:
 
         cached_response: requests.Response | None = None
         if filepath.exists():
-            cached_response = str_to_response(filepath.read_text())
+            cached_response = bytes_to_response(filepath.read_bytes())
             cache_response_date = _response_date(cached_response)
             logger.debug("Found cache response date: %s", cache_response_date)
 
@@ -70,8 +70,8 @@ class Session:
         assert "Date" in r.headers, "Response must have a Date header"
 
         filepath.parent.mkdir(parents=True, exist_ok=True)
-        with filepath.open("w") as f:
-            f.write(response_to_str(r))
+        with filepath.open("wb") as f:
+            f.write(response_to_bytes(r))
 
         return r
 
@@ -85,37 +85,36 @@ class Session:
         self._last_request_at = datetime.now()
 
 
-def response_to_str(response: requests.Response) -> str:
+def response_to_bytes(response: requests.Response) -> bytes:
     """
-    Serialize a requests.Response back to plain HTTP/1.1 over the wire text.
+    Serialize a requests.Response back to plain HTTP/1.1 over the wire data.
     $ curl -i http://example.com
     """
-    text = f"HTTP/1.1 {response.status_code} {response.reason}\n"
+    headers = f"HTTP/1.1 {response.status_code} {response.reason}\n"
     for k, v in response.headers.items():
-        text += f"{k}: {v}\n"
-    text += "\n"
-    text += response.text
-    return text
+        headers += f"{k}: {v}\n"
+    headers += "\n"
+    return headers.encode("ascii") + response.content
 
 
-def str_to_response(text: str) -> requests.Response:
+def bytes_to_response(data: bytes) -> requests.Response:
     """
-    Parse a plain text HTTP/1.1 response into a requests.Response object.
+    Parse raw HTTP/1.1 response into a requests.Response object.
     """
-    lines = text.splitlines()
-    _, status_code, reason = lines[0].split(" ", 2)
+    lines = data.splitlines()
+    _, status_code, reason = lines[0].decode("ascii").split(" ", 2)
     headers: CaseInsensitiveDict[str] = CaseInsensitiveDict()
-    body_index = lines.index("")
+    body_index = lines.index(b"")
     for line in lines[1:body_index]:
-        k, v = line.split(": ", 1)
+        k, v = line.decode("ascii").split(": ", 1)
         headers[k] = v
-    body = "\n".join(lines[body_index + 1 :])
+    body = b"\n".join(lines[body_index + 1 :])
 
     response = requests.Response()
     response.status_code = int(status_code)
     response.reason = reason
     response.headers = headers
-    response._content = body.encode()
+    response._content = body
 
     return response
 

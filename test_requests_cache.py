@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from requests_cache import Session, response_to_str, str_to_response
+from requests_cache import Session, bytes_to_response, response_to_bytes
 
 
 @pytest.fixture(scope="module")
@@ -24,12 +24,12 @@ def test_get_httpbin_delay(cache_dir: Path) -> None:
         assert r.json()["url"] == "https://httpbin.org/delay/1"
 
 
-def test_response_str_roundtrip() -> None:
-    response_str = "HTTP/1.1 200 OK\nContent-Type: text/plain\n\nHello, World!"
+def test_response_bytes_roundtrip() -> None:
+    response_bytes = b"HTTP/1.1 200 OK\nContent-Type: text/plain\n\nHello, World!"
 
-    response = str_to_response(response_str)
+    response = bytes_to_response(response_bytes)
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "text/plain"
     assert response.text == "Hello, World!"
 
-    assert response_to_str(response) == response_str
+    assert response_to_bytes(response) == response_bytes
