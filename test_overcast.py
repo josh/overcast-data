@@ -18,7 +18,7 @@ from overcast import (
 @pytest.fixture(scope="module")
 def cache_dir() -> Path:
     if "XDG_CACHE_HOME" in os.environ:
-        return Path(os.environ["XDG_CACHE_HOME"]) / "test_overcast"
+        return Path(os.environ["XDG_CACHE_HOME"]) / "overcast"
     return Path(tempfile.mkdtemp())
 
 

@@ -47,7 +47,7 @@ def session(cache_dir: Path, cookie: str) -> Session:
     headers["Cookie"] = f"o={cookie}; qr=-"
 
     return Session(
-        cache_dir=cache_dir / "overcast",
+        cache_dir=cache_dir,
         base_url="https://overcast.fm",
         headers=headers,
         min_time_between_requests=timedelta(minutes=1),

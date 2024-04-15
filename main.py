@@ -30,7 +30,7 @@ def _xdg_cache_home() -> Path:
 )
 @click.option(
     "--cache-dir",
-    default=_xdg_cache_home() / "overcast-data",
+    default=_xdg_cache_home() / "overcast",
     show_default=True,
     type=Path,
 )
