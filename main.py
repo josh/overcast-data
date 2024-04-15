@@ -1,6 +1,7 @@
 import logging
 import os
 import random
+from datetime import timedelta
 from pathlib import Path
 
 import click
@@ -79,6 +80,8 @@ def main(
 
     db_feeds.save(feeds_path)
     db_episodes.save(episodes_path)
+
+    session.purge_cache(older_than=timedelta(days=90))
 
 
 if __name__ == "__main__":

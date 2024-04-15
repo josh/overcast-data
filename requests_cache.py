@@ -2,6 +2,7 @@ import logging
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Iterator
 
 import requests
 from requests.structures import CaseInsensitiveDict
@@ -83,6 +84,30 @@ class Session:
             logger.info("Waiting %s seconds...", seconds_to_wait)
             time.sleep(seconds_to_wait)
         self._last_request_at = datetime.now()
+
+    def cache_entries(self) -> Iterator[tuple[Path, requests.Response]]:
+        for path in self._cache_dir.rglob("*"):
+            if not path.is_file():
+                continue
+            try:
+                response = bytes_to_response(path.read_bytes())
+            except Exception as e:
+                logger.error("Failed to read cache entry %s: %s", path, e)
+                continue
+            yield path, response
+
+    def purge_cache(self, older_than: timedelta) -> None:
+        now = datetime.now()
+        for path, response in self.cache_entries():
+            response_date = _response_date(response)
+            if now - response_date > older_than:
+                logger.info("Purging cache entry %s", path)
+                path.unlink()
+
+        for path in self._cache_dir.rglob("*"):
+            if path.is_dir() and not any(path.iterdir()):
+                logger.info("Removing empty cache directory %s", path)
+                path.rmdir()
 
 
 def response_to_bytes(response: requests.Response) -> bytes:

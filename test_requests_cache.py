@@ -18,7 +18,7 @@ def cache_dir() -> Path:
 def test_get_httpbin_delay(cache_dir: Path) -> None:
     session = Session(cache_dir=cache_dir, base_url="https://httpbin.org")
     for _i in range(60):
-        r = session.get("/delay/1", cache_expires=timedelta(hours=1))
+        r = session.get("/delay/1", cache_expires=timedelta(days=360))
         assert r.status_code == 200
         assert r.headers["Content-Type"] == "application/json"
         assert r.json()["url"] == "https://httpbin.org/delay/1"
@@ -33,3 +33,14 @@ def test_response_bytes_roundtrip() -> None:
     assert response.text == "Hello, World!"
 
     assert response_to_bytes(response) == response_bytes
+
+
+def test_cache_entries(cache_dir: Path) -> None:
+    session = Session(cache_dir=cache_dir, base_url="https://httpbin.org")
+    session.get("/get", cache_expires=timedelta(days=360))
+    assert len(list(session.cache_entries())) >= 1
+
+
+def test_purge_cache(cache_dir: Path) -> None:
+    session = Session(cache_dir=cache_dir, base_url="https://httpbin.org")
+    session.purge_cache(older_than=timedelta(days=90))

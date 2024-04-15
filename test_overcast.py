@@ -110,3 +110,7 @@ def test_parse_episode_caption_text() -> None:
     assert result.duration is None
     assert result.is_played is False
     assert result.in_progress is False
+
+
+def test_session_purge_cache(overcast_session: Session) -> None:
+    overcast_session.purge_cache(older_than=timedelta(days=90))
