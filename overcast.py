@@ -125,6 +125,16 @@ def fetch_podcasts(session: Session) -> list[HTMLFeed]:
 
 
 @dataclass
+class HTMLEpisodeFeed:
+    overcast_uri: str
+    episodes: list["HTMLEpisode"]
+
+    def _validate(self) -> None:
+        assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
+        assert len(self.episodes) > 0
+
+
+@dataclass
 class HTMLEpisode:
     id: str
     title: str
@@ -143,12 +153,11 @@ class HTMLEpisode:
             assert "-" in self.id, self.id
 
         assert len(self.title) > 3, self.title
-        assert self.pub_date < datetime.now().date(), self.pub_date
-
+        assert self.pub_date <= datetime.now().date(), self.pub_date
         assert self.is_deleted != self.is_new, "is_deleted and is_new can't be the same"
 
 
-def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
+def fetch_podcast(session: Session, feed_id: str) -> HTMLEpisodeFeed:
     r = _request(
         session=session,
         path=f"/{feed_id}",
@@ -156,6 +165,12 @@ def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
     )
 
     soup = BeautifulSoup(r.text, "html.parser")
+
+    overcast_uri: str = ""
+    for meta_el in soup.select("meta[name=apple-itunes-app]"):
+        content = meta_el["content"]
+        if content.startswith("app-id=888422857"):
+            overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
 
     episodes: list[HTMLEpisode] = []
 
@@ -209,10 +224,9 @@ def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
         episode._validate()
         episodes.append(episode)
 
-    if len(episodes) == 0:
-        logger.error("No episodes found")
-
-    return episodes
+    feed = HTMLEpisodeFeed(overcast_uri=overcast_uri, episodes=episodes)
+    feed._validate()
+    return feed
 
 
 @dataclass
@@ -292,7 +306,7 @@ class ExportEpisode:
             assert "-" in self.id, self.id
 
         assert len(self.title) > 3, self.title
-        assert self.pub_date < datetime.now().date(), self.pub_date
+        assert self.pub_date <= datetime.now().date(), self.pub_date
         assert self.user_updated_at < datetime.now(), self.user_updated_at
         assert self.enclosure_url.startswith("https://"), self.enclosure_url
 

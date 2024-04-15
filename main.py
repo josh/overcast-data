@@ -60,7 +60,9 @@ def main(
 
     db_feed = random.choice(list(db_feeds))
 
-    for html_episode in overcast.fetch_podcast(session=session, feed_id=db_feed.id):
+    for html_episode in overcast.fetch_podcast(
+        session=session, feed_id=db_feed.id
+    ).episodes:
         db_episode = db.Episode(
             id=html_episode.id,
             feed_id=db_feed.id,

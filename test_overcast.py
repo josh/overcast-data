@@ -57,8 +57,8 @@ def test_fetch_podcast(overcast_session: Session) -> None:
     assert len(feeds) > 0
     feed_id = choice(feeds).id
 
-    episodes = fetch_podcast(session=overcast_session, feed_id=feed_id)
-    assert len(episodes) > 0
+    episodes_feed = fetch_podcast(session=overcast_session, feed_id=feed_id)
+    assert len(episodes_feed.episodes) > 0
 
 
 # def test_export_account_data(overcast_session: Session) -> None:
