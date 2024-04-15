@@ -169,7 +169,7 @@ def fetch_podcast(session: Session, feed_id: str) -> HTMLEpisodeFeed:
     overcast_uri: str = ""
     for meta_el in soup.select("meta[name=apple-itunes-app]"):
         content = meta_el["content"]
-        if content.startswith("app-id=888422857"):
+        if isinstance(content, str) and content.startswith("app-id=888422857"):
             overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
 
     episodes: list[HTMLEpisode] = []
