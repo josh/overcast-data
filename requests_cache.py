@@ -44,7 +44,7 @@ class Session:
 
         cached_response: requests.Response | None = None
         if filepath.exists():
-            cached_response = _str_to_response(filepath.read_text())
+            cached_response = str_to_response(filepath.read_text())
             cache_response_date = _response_date(cached_response)
             logger.debug("Found cache response date: %s", cache_response_date)
 
@@ -71,7 +71,7 @@ class Session:
 
         filepath.parent.mkdir(parents=True, exist_ok=True)
         with filepath.open("w") as f:
-            f.write(_response_to_str(r))
+            f.write(response_to_str(r))
 
         return r
 
@@ -85,7 +85,7 @@ class Session:
         self._last_request_at = datetime.now()
 
 
-def _response_to_str(response: requests.Response) -> str:
+def response_to_str(response: requests.Response) -> str:
     text = f"HTTP/1.1 {response.status_code} {response.reason}\n"
     for k, v in response.headers.items():
         text += f"{k}: {v}\n"
@@ -94,9 +94,9 @@ def _response_to_str(response: requests.Response) -> str:
     return text
 
 
-def _str_to_response(text: str) -> requests.Response:
+def str_to_response(text: str) -> requests.Response:
     lines = text.splitlines()
-    status_code = int(lines[0].split(" ")[1])
+    _, status_code, reason = lines[0].split(" ", 2)
     headers: CaseInsensitiveDict[str] = CaseInsensitiveDict()
     body_index = lines.index("")
     for line in lines[1:body_index]:
@@ -105,7 +105,8 @@ def _str_to_response(text: str) -> requests.Response:
     body = "\n".join(lines[body_index + 1 :])
 
     response = requests.Response()
-    response.status_code = status_code
+    response.status_code = int(status_code)
+    response.reason = reason
     response.headers = headers
     response._content = body.encode()
 
