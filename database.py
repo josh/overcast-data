@@ -53,13 +53,54 @@ class Feed:
         }
 
 
+@dataclass
+class Episode:
+    id: str
+    feed_id: str
+    title: str
+
+    @staticmethod
+    def fieldnames() -> list[str]:
+        return ["id", "feed_id", "title"]
+
+    @staticmethod
+    def from_dict(data: dict[str, str]) -> "Episode":
+        return Episode(
+            id=data["id"],
+            feed_id=data["feed_id"],
+            title=data["title"],
+        )
+
+    def to_dict(self) -> dict[str, str]:
+        return {
+            "id": self.id,
+            "feed_id": self.feed_id,
+            "title": self.title,
+        }
+
+
 def load_feeds(filename: Path) -> list[Feed]:
     with filename.open("r") as csvfile:
         rows = csv.DictReader(csvfile)
         return [Feed.from_dict(row) for row in rows]
 
 
+def load_episodes(filename: Path) -> list[Episode]:
+    with filename.open("r") as csvfile:
+        rows = csv.DictReader(csvfile)
+        return [Episode.from_dict(row) for row in rows]
+
+
 def save_feeds(filename: Path, feeds: Iterable[Feed]) -> None:
+    feeds_lst = list(feeds)
+
+    assert len(set(f.id for f in feeds_lst)) == len(feeds_lst), "Duplicate IDs"
+    assert len(set(f.numeric_id for f in feeds_lst)) == len(
+        feeds_lst
+    ), "Duplicate numeric IDs"
+
+    feeds_lst.sort(key=lambda e: e.numeric_id)
+
     with filename.open("w") as csvfile:
         writer = csv.DictWriter(
             csvfile,
@@ -67,5 +108,33 @@ def save_feeds(filename: Path, feeds: Iterable[Feed]) -> None:
             quoting=csv.QUOTE_MINIMAL,
         )
         writer.writeheader()
-        for feed in feeds:
+        for feed in feeds_lst:
             writer.writerow(feed.to_dict())
+
+
+def save_episodes(filename: Path, episodes: Iterable[Episode]) -> None:
+    episodes_lst = list(episodes)
+
+    assert len(set(e.id for e in episodes_lst)) == len(episodes_lst), "Duplicate IDs"
+
+    # TODO: Sort by pubdate
+    episodes_lst.sort(key=lambda e: e.id)
+
+    with filename.open("w") as csvfile:
+        writer = csv.DictWriter(
+            csvfile,
+            fieldnames=Episode.fieldnames(),
+            quoting=csv.QUOTE_MINIMAL,
+        )
+        writer.writeheader()
+        for episode in episodes_lst:
+            writer.writerow(episode.to_dict())
+
+
+def insert_or_update_episode(episodes: list[Episode], episode: Episode) -> None:
+    for i, e in enumerate(episodes):
+        if e.id == episode.id:
+            episodes[i] = episode
+            return
+
+    episodes.append(episode)

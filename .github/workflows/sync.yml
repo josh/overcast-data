@@ -44,7 +44,7 @@ jobs:
 
       - name: Sync
         run: |
-          python main.py --db-file data/feeds.csv
+          python main.py --feeds-path data/feeds.csv --episodes-path data/episodes.csv
         env:
           XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}

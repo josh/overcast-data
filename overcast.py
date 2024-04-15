@@ -140,6 +140,11 @@ def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
 
     for episodecell_el in soup.select("a.extendedepisodecell"):
         href = episodecell_el["href"]
+        if not isinstance(href, str):
+            logger.error("episodecell missing href: %s", episodecell_el)
+            continue
+
+        id = href.removeprefix("/")
 
         if not isinstance(href, str):
             logger.error("episodecell missing href: %s", episodecell_el)
@@ -171,7 +176,7 @@ def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
             logger.error("No description element found: %s", episodecell_el)
 
         episode = HTMLEpisode(
-            id=href,
+            id=id,
             title=title,
             description=description,
             pub_date=caption_result.pub_date,

@@ -1,17 +1,12 @@
 import logging
 import os
+import random
 from pathlib import Path
 
 import click
 
 import database
 import overcast
-from database import save_feeds
-from overcast import (
-    export_account_data,
-    fetch_podcasts,
-    zip_html_and_export_feeds,
-)
 
 
 def _xdg_cache_home() -> Path:
@@ -24,7 +19,12 @@ def _xdg_cache_home() -> Path:
 @click.command()
 @click.option("--overcast-cookie", envvar="OVERCAST_COOKIE", required=True)
 @click.option(
-    "--db-file",
+    "--feeds-path",
+    type=click.Path(path_type=Path, dir_okay=False, writable=True),
+    required=True,
+)
+@click.option(
+    "--episodes-path",
     type=click.Path(path_type=Path, dir_okay=False, writable=True),
     required=True,
 )
@@ -35,29 +35,49 @@ def _xdg_cache_home() -> Path:
     type=Path,
 )
 @click.option("--verbose", "-v", is_flag=True)
-def main(overcast_cookie: str, db_file: Path, cache_dir: Path, verbose: bool) -> None:
+def main(
+    overcast_cookie: str,
+    feeds_path: Path,
+    episodes_path: Path,
+    cache_dir: Path,
+    verbose: bool,
+) -> None:
     log_level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(level=log_level)
 
     session = overcast.session(cache_dir=cache_dir, cookie=overcast_cookie)
 
-    export_data = export_account_data(session=session, extended=True)
-    html_feeds = fetch_podcasts(session=session)
+    db_feeds = database.load_feeds(feeds_path)
+    db_episodes = database.load_episodes(episodes_path)
 
-    db_feeds: list[database.Feed] = []
+    db_feed = random.choice(db_feeds)
 
-    for html_feed, export_feed in zip_html_and_export_feeds(
-        html_feeds=html_feeds, export_feeds=export_data.feeds
-    ):
-        db_feed = database.Feed(
-            numeric_id=export_feed.numeric_id,
-            id=html_feed.id,
-            title=database.Feed.clean_title(export_feed.title),
-            added_at=export_feed.added_at,
+    for html_episode in overcast.fetch_podcast(session=session, feed_id=db_feed.id):
+        db_episode = database.Episode(
+            id=html_episode.id,
+            feed_id=db_feed.id,
+            title=html_episode.title,
         )
-        db_feeds.append(db_feed)
+        database.insert_or_update_episode(episodes=db_episodes, episode=db_episode)
 
-    save_feeds(filename=db_file, feeds=db_feeds)
+    # export_data = export_account_data(session=session, extended=True)
+    # html_feeds = fetch_podcasts(session=session)
+
+    # db_feeds: list[database.Feed] = []
+
+    # for html_feed, export_feed in zip_html_and_export_feeds(
+    #     html_feeds=html_feeds, export_feeds=export_data.feeds
+    # ):
+    #     db_feed = database.Feed(
+    #         numeric_id=export_feed.numeric_id,
+    #         id=html_feed.id,
+    #         title=database.Feed.clean_title(export_feed.title),
+    #         added_at=export_feed.added_at,
+    #     )
+    #     db_feeds.append(db_feed)
+
+    database.save_feeds(filename=feeds_path, feeds=db_feeds)
+    database.save_episodes(filename=episodes_path, episodes=db_episodes)
 
 
 if __name__ == "__main__":
