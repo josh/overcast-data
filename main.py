@@ -36,18 +36,24 @@ def _xdg_cache_home() -> Path:
     show_default=True,
     type=Path,
 )
+@click.option("--offline", is_flag=True)
 @click.option("--verbose", "-v", is_flag=True)
 def main(
     overcast_cookie: str,
     feeds_path: Path,
     episodes_path: Path,
     cache_dir: Path,
+    offline: bool,
     verbose: bool,
 ) -> None:
     log_level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(level=log_level)
 
-    session = overcast.session(cache_dir=cache_dir, cookie=overcast_cookie)
+    session = overcast.session(
+        cache_dir=cache_dir,
+        cookie=overcast_cookie,
+        offline=offline,
+    )
 
     db_feeds = FeedCollection.load(feeds_path)
     db_episodes = EpisodeCollection.load(episodes_path)

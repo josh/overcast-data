@@ -42,7 +42,7 @@ class RatedLimitedError(Exception):
 Session = requests_cache.Session
 
 
-def session(cache_dir: Path, cookie: str) -> Session:
+def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
     headers = _SAFARI_HEADERS.copy()
     headers["Cookie"] = f"o={cookie}; qr=-"
 
@@ -51,6 +51,7 @@ def session(cache_dir: Path, cookie: str) -> Session:
         base_url="https://overcast.fm",
         headers=headers,
         min_time_between_requests=timedelta(minutes=1),
+        offline=offline,
     )
 
 

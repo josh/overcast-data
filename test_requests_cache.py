@@ -7,6 +7,8 @@ import pytest
 
 from requests_cache import Session, bytes_to_response, response_to_bytes
 
+_OFFLINE = "PYTEST_OFFLINE" in os.environ
+
 
 @pytest.fixture(scope="module")
 def cache_dir() -> Path:
@@ -16,7 +18,11 @@ def cache_dir() -> Path:
 
 
 def test_get_httpbin_delay(cache_dir: Path) -> None:
-    session = Session(cache_dir=cache_dir, base_url="https://httpbin.org")
+    session = Session(
+        cache_dir=cache_dir,
+        base_url="https://httpbin.org",
+        offline=_OFFLINE,
+    )
     for _i in range(60):
         r = session.get("/delay/1", cache_expires=timedelta(days=360))
         assert r.status_code == 200
@@ -36,11 +42,19 @@ def test_response_bytes_roundtrip() -> None:
 
 
 def test_cache_entries(cache_dir: Path) -> None:
-    session = Session(cache_dir=cache_dir, base_url="https://httpbin.org")
+    session = Session(
+        cache_dir=cache_dir,
+        base_url="https://httpbin.org",
+        offline=_OFFLINE,
+    )
     session.get("/get", cache_expires=timedelta(days=360))
     assert len(list(session.cache_entries())) >= 1
 
 
 def test_purge_cache(cache_dir: Path) -> None:
-    session = Session(cache_dir=cache_dir, base_url="https://httpbin.org")
+    session = Session(
+        cache_dir=cache_dir,
+        base_url="https://httpbin.org",
+        offline=_OFFLINE,
+    )
     session.purge_cache(older_than=timedelta(days=90))

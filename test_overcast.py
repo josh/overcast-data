@@ -14,6 +14,8 @@ from overcast import (
     parse_episode_caption_text,
 )
 
+_OFFLINE = "PYTEST_OFFLINE" in os.environ
+
 
 @pytest.fixture(scope="module")
 def cache_dir() -> Path:
@@ -31,7 +33,11 @@ def overcast_cookie() -> str:
 
 @pytest.fixture(scope="module")
 def overcast_session(cache_dir: Path, overcast_cookie: str) -> Session:
-    return overcast.session(cache_dir=cache_dir, cookie=overcast_cookie)
+    return overcast.session(
+        cache_dir=cache_dir,
+        cookie=overcast_cookie,
+        offline=_OFFLINE,
+    )
 
 
 def test_fetch_podcasts(overcast_session: Session) -> None:
@@ -39,8 +45,9 @@ def test_fetch_podcasts(overcast_session: Session) -> None:
     assert len(feeds) > 0
 
 
+@pytest.mark.skipif(_OFFLINE, reason="requires network")
 def test_fetch_podcasts_bad_cookie(tmpdir: Path) -> None:
-    session = overcast.session(cache_dir=tmpdir, cookie="XXX")
+    session = overcast.session(cache_dir=tmpdir, cookie="XXX", offline=False)
     with pytest.raises(overcast.LoggedOutError):
         fetch_podcasts(session=session)
 

@@ -10,12 +10,17 @@ from requests.structures import CaseInsensitiveDict
 logger = logging.getLogger("requests_cache")
 
 
+class OfflineError(Exception):
+    pass
+
+
 class Session:
     _cache_dir: Path
     _base_url: str
     _session: requests.Session
     _min_time_between_requests: timedelta
     _last_request_at: datetime = datetime.min
+    _offline: bool
 
     def __init__(
         self,
@@ -23,6 +28,7 @@ class Session:
         base_url: str,
         headers: dict[str, str] = {},
         min_time_between_requests: timedelta = timedelta(seconds=0),
+        offline: bool = False,
     ):
         assert not base_url.endswith("/")
         self._cache_dir = cache_dir
@@ -30,6 +36,7 @@ class Session:
         self._session = requests.Session()
         self._session.headers.update(headers)
         self._min_time_between_requests = min_time_between_requests
+        self._offline = offline
 
     def get(
         self,
@@ -54,6 +61,13 @@ class Session:
                 return cached_response
             else:
                 logger.debug("Cache expired, ignoring")
+
+        if self._offline is True:
+            if cached_response:
+                logger.warning("Offline mode, returning stale cache")
+                return cached_response
+            logger.error("Offline mode, no cache available")
+            raise OfflineError()
 
         url = self._base_url + path
         self._throttle()
