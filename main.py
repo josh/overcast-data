@@ -5,8 +5,9 @@ from pathlib import Path
 
 import click
 
-import database
+import db
 import overcast
+from db import EpisodeCollection, FeedCollection
 
 
 def _xdg_cache_home() -> Path:
@@ -47,37 +48,37 @@ def main(
 
     session = overcast.session(cache_dir=cache_dir, cookie=overcast_cookie)
 
-    db_feeds = database.load_feeds(feeds_path)
-    db_episodes = database.load_episodes(episodes_path)
+    db_feeds = FeedCollection.load(feeds_path)
+    db_episodes = EpisodeCollection.load(episodes_path)
 
-    db_feed = random.choice(db_feeds)
+    db_feed = random.choice(list(db_feeds))
 
     for html_episode in overcast.fetch_podcast(session=session, feed_id=db_feed.id):
-        db_episode = database.Episode(
+        db_episode = db.Episode(
             id=html_episode.id,
             feed_id=db_feed.id,
             title=html_episode.title,
         )
-        database.insert_or_update_episode(episodes=db_episodes, episode=db_episode)
+        db_episodes.insert(db_episode)
 
     # export_data = export_account_data(session=session, extended=True)
     # html_feeds = fetch_podcasts(session=session)
 
-    # db_feeds: list[database.Feed] = []
+    # db_feeds: list[db.Feed] = []
 
     # for html_feed, export_feed in zip_html_and_export_feeds(
     #     html_feeds=html_feeds, export_feeds=export_data.feeds
     # ):
-    #     db_feed = database.Feed(
+    #     db_feed = db.Feed(
     #         numeric_id=export_feed.numeric_id,
     #         id=html_feed.id,
-    #         title=database.Feed.clean_title(export_feed.title),
+    #         title=db.Feed.clean_title(export_feed.title),
     #         added_at=export_feed.added_at,
     #     )
     #     db_feeds.append(db_feed)
 
-    database.save_feeds(filename=feeds_path, feeds=db_feeds)
-    database.save_episodes(filename=episodes_path, episodes=db_episodes)
+    db_feeds.save(feeds_path)
+    db_episodes.save(episodes_path)
 
 
 if __name__ == "__main__":
