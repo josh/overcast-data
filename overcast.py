@@ -62,6 +62,14 @@ class HTMLFeed:
     title: str
     has_unplayed_episodes: bool
 
+    def _validate(self) -> None:
+        assert not self.id.startswith("/"), self.id
+        if self.id.startswith("p"):
+            assert len(self.id) == 15, self.id
+            assert "-" in self.id, self.id
+
+        assert len(self.title) > 3
+
 
 def fetch_podcasts(session: Session) -> list[HTMLFeed]:
     r = _request(
@@ -106,6 +114,7 @@ def fetch_podcasts(session: Session) -> list[HTMLFeed]:
             title=title_el.text.strip(),
             has_unplayed_episodes=has_unplayed_episodes,
         )
+        feed._validate()
         logger.debug("%s", feed)
         feeds.append(feed)
 
@@ -126,6 +135,17 @@ class HTMLEpisode:
     in_progress: bool = False
     is_new: bool = False
     is_deleted: bool = False
+
+    def _validate(self) -> None:
+        assert not self.id.startswith("/"), self.id
+        if self.id.startswith("p"):
+            assert len(self.id) == 15, self.id
+            assert "-" in self.id, self.id
+
+        assert len(self.title) > 3, self.title
+        assert self.pub_date < datetime.now().date(), self.pub_date
+
+        assert self.is_deleted != self.is_new, "is_deleted and is_new can't be the same"
 
 
 def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
@@ -161,7 +181,6 @@ def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
         class_name = episodecell_el.attrs["class"]
         is_deleted = "userdeletedepisode" in class_name
         is_new = "usernewepisode" in class_name
-        assert is_deleted != is_new, "is_deleted and is_new can't be the same"
 
         caption2_el = episodecell_el.select_one(".caption2")
         if not caption2_el:
@@ -187,6 +206,7 @@ def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
             is_deleted=is_deleted,
             is_new=is_new,
         )
+        episode._validate()
         episodes.append(episode)
 
     if len(episodes) == 0:
@@ -248,6 +268,9 @@ class ExportPlaylist:
     smart: bool
     sorting: str
 
+    def _validate(self) -> None:
+        assert len(self.title) > 3, self.title
+
 
 @dataclass
 class ExportEpisode:
@@ -262,6 +285,17 @@ class ExportEpisode:
     user_deleted: bool
     played: bool
 
+    def _validate(self) -> None:
+        assert not self.id.startswith("/"), self.id
+        if self.id.startswith("p"):
+            assert len(self.id) == 15, self.id
+            assert "-" in self.id, self.id
+
+        assert len(self.title) > 3, self.title
+        assert self.pub_date < datetime.now().date(), self.pub_date
+        assert self.user_updated_at < datetime.now(), self.user_updated_at
+        assert self.enclosure_url.startswith("https://"), self.enclosure_url
+
 
 @dataclass
 class ExportFeed:
@@ -272,6 +306,13 @@ class ExportFeed:
     added_at: datetime
     is_subscribed: bool
     episodes: list[ExportEpisode]
+
+    def _validate(self) -> None:
+        assert len(self.title) > 3, self.title
+        assert self.added_at < datetime.now(), self.added_at
+        assert self.xml_url.startswith("https://"), self.xml_url
+        assert self.html_url.startswith("https://"), self.html_url
+        assert len(self.episodes) > 0
 
 
 @dataclass
@@ -300,9 +341,9 @@ def _opml_playlists(node: dict) -> list[ExportPlaylist]:
                 title = playlist_outline["@title"]
                 smart = playlist_outline.get("@smart", "0") == "1"
                 sorting = playlist_outline.get("@sorting", "manual")
-                playlists.append(
-                    ExportPlaylist(title=title, smart=smart, sorting=sorting)
-                )
+                playlist = ExportPlaylist(title=title, smart=smart, sorting=sorting)
+                playlist._validate()
+                playlists.append(playlist)
 
     logger.info("Found %d playlists in export", len(playlists))
     return playlists
@@ -331,6 +372,7 @@ def _opml_feeds(node: dict) -> list[ExportFeed]:
                     is_subscribed=is_subscribed,
                     episodes=_opml_episode(_as_list(feed_outline["outline"])),
                 )
+                feed._validate()
                 # logger.debug("%s", feed)
                 feeds.append(feed)
 
@@ -355,20 +397,20 @@ def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:
         user_deleted = node.get("@userDeleted", "0") == "1"
         played = node.get("@played", "0") == "1"
 
-        episodes.append(
-            ExportEpisode(
-                id=id,
-                numeric_id=numeric_id,
-                pub_date=pub_date,
-                title=title,
-                url=url,
-                overcast_url=overcast_url,
-                enclosure_url=enclosure_url,
-                user_updated_at=user_updated_at,
-                user_deleted=user_deleted,
-                played=played,
-            )
+        episode = ExportEpisode(
+            id=id,
+            numeric_id=numeric_id,
+            pub_date=pub_date,
+            title=title,
+            url=url,
+            overcast_url=overcast_url,
+            enclosure_url=enclosure_url,
+            user_updated_at=user_updated_at,
+            user_deleted=user_deleted,
+            played=played,
         )
+        episode._validate()
+        episodes.append(episode)
 
     logger.info("Found %d episodes in export", len(episodes))
     return episodes
