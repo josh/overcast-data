@@ -123,6 +123,8 @@ class HTMLEpisode:
     duration: timedelta | None = None
     is_played: bool = False
     in_progress: bool = False
+    is_new: bool = False
+    is_deleted: bool = False
 
 
 def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
@@ -150,6 +152,11 @@ def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
         else:
             logger.error("No title element found: %s", episodecell_el)
 
+        class_name = episodecell_el.attrs["class"]
+        is_deleted = "userdeletedepisode" in class_name
+        is_new = "usernewepisode" in class_name
+        assert is_deleted != is_new, "is_deleted and is_new can't be the same"
+
         caption2_el = episodecell_el.select_one(".caption2")
         if not caption2_el:
             logger.error("No caption2 element found: %s", episodecell_el)
@@ -171,6 +178,8 @@ def fetch_podcast(session: Session, feed_id: str) -> list[HTMLEpisode]:
             duration=caption_result.duration,
             is_played=caption_result.is_played,
             in_progress=caption_result.in_progress,
+            is_deleted=is_deleted,
+            is_new=is_new,
         )
         episodes.append(episode)
 
