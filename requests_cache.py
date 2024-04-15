@@ -86,6 +86,10 @@ class Session:
 
 
 def response_to_str(response: requests.Response) -> str:
+    """
+    Serialize a requests.Response back to plain HTTP/1.1 over the wire text.
+    $ curl -i http://example.com
+    """
     text = f"HTTP/1.1 {response.status_code} {response.reason}\n"
     for k, v in response.headers.items():
         text += f"{k}: {v}\n"
@@ -95,6 +99,9 @@ def response_to_str(response: requests.Response) -> str:
 
 
 def str_to_response(text: str) -> requests.Response:
+    """
+    Parse a plain text HTTP/1.1 response into a requests.Response object.
+    """
     lines = text.splitlines()
     _, status_code, reason = lines[0].split(" ", 2)
     headers: CaseInsensitiveDict[str] = CaseInsensitiveDict()
