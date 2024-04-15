@@ -265,12 +265,12 @@ class AccountExport:
     feeds: list[ExportFeed]
 
 
-def export_account_data(session: Session) -> AccountExport:
-    r = _request(
-        session,
-        path="/account/export_opml/extended",
-        cache_expires=timedelta(days=1),
-    )
+def export_account_data(session: Session, extended: bool = False) -> AccountExport:
+    path = "/account/export_opml"
+    if extended:
+        path += "/extended"
+
+    r = _request(session, path=path, cache_expires=timedelta(days=1))
     d = xmltodict.parse(r.text)
     outline = d["opml"]["body"]["outline"]
     return AccountExport(playlists=_opml_playlists(outline), feeds=_opml_feeds(outline))

@@ -54,9 +54,8 @@ def test_fetch_podcast(overcast_session: Session) -> None:
     assert len(episodes) > 0
 
 
-# TODO: Re-enable after rate limit expires
 # def test_export_account_data(overcast_session: Session) -> None:
-#     export_data = export_account_data(session=overcast_session)
+#     export_data = export_account_data(session=overcast_session, extended=False)
 #     assert len(export_data.playlists) > 0
 #     assert len(export_data.feeds) > 0
 

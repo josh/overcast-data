@@ -41,7 +41,7 @@ def main(overcast_cookie: str, db_file: Path, cache_dir: Path, verbose: bool) ->
 
     session = overcast.session(cache_dir=cache_dir, cookie=overcast_cookie)
 
-    export_data = export_account_data(session=session)
+    export_data = export_account_data(session=session, extended=True)
     html_feeds = fetch_podcasts(session=session)
 
     db_feeds: list[database.Feed] = []
