@@ -1,5 +1,6 @@
 beautifulsoup4==4.12.3
 click==8.1.7
+mutagen==1.47.0
 mypy==1.9.0
 prometheus-client==0.20.0
 pytest==8.1.1

@@ -1,10 +1,12 @@
 import logging
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
+from io import BytesIO
 from pathlib import Path
 from typing import Iterator, TypeVar
 
 import dateutil.parser
+import mutagen
 import requests
 import xmltodict
 from bs4 import BeautifulSoup
@@ -56,7 +58,7 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
 
 
 @dataclass
-class HTMLFeed:
+class HTMLPodcastsFeed:
     id: str
     numeric_id: int | None
     title: str
@@ -71,14 +73,14 @@ class HTMLFeed:
         assert len(self.title) > 3
 
 
-def fetch_podcasts(session: Session) -> list[HTMLFeed]:
+def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
     r = _request(
         session=session,
         path="/podcasts",
         cache_expires=timedelta(hours=1),
     )
 
-    feeds: list[HTMLFeed] = []
+    feeds: list[HTMLPodcastsFeed] = []
 
     soup = BeautifulSoup(r.text, "html.parser")
 
@@ -108,7 +110,7 @@ def fetch_podcasts(session: Session) -> list[HTMLFeed]:
             True if feedcell_el.select_one(".unplayed_indicator") else False
         )
 
-        feed = HTMLFeed(
+        feed = HTMLPodcastsFeed(
             id=id,
             numeric_id=numeric_id,
             title=title_el.text.strip(),
@@ -125,9 +127,9 @@ def fetch_podcasts(session: Session) -> list[HTMLFeed]:
 
 
 @dataclass
-class HTMLEpisodeFeed:
+class HTMLPodcastFeed:
     overcast_uri: str
-    episodes: list["HTMLEpisode"]
+    episodes: list["HTMLPodcastEpisode"]
 
     def _validate(self) -> None:
         assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
@@ -135,7 +137,7 @@ class HTMLEpisodeFeed:
 
 
 @dataclass
-class HTMLEpisode:
+class HTMLPodcastEpisode:
     id: str
     title: str
     description: str
@@ -157,7 +159,7 @@ class HTMLEpisode:
         assert self.is_deleted != self.is_new, "is_deleted and is_new can't be the same"
 
 
-def fetch_podcast(session: Session, feed_id: str) -> HTMLEpisodeFeed:
+def fetch_podcast(session: Session, feed_id: str) -> HTMLPodcastFeed:
     r = _request(
         session=session,
         path=f"/{feed_id}",
@@ -172,7 +174,7 @@ def fetch_podcast(session: Session, feed_id: str) -> HTMLEpisodeFeed:
         if isinstance(content, str) and content.startswith("app-id=888422857"):
             overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
 
-    episodes: list[HTMLEpisode] = []
+    episodes: list[HTMLPodcastEpisode] = []
 
     for episodecell_el in soup.select("a.extendedepisodecell"):
         href = episodecell_el["href"]
@@ -210,7 +212,7 @@ def fetch_podcast(session: Session, feed_id: str) -> HTMLEpisodeFeed:
         else:
             logger.error("No description element found: %s", episodecell_el)
 
-        episode = HTMLEpisode(
+        episode = HTMLPodcastEpisode(
             id=id,
             title=title,
             description=description,
@@ -224,7 +226,7 @@ def fetch_podcast(session: Session, feed_id: str) -> HTMLEpisodeFeed:
         episode._validate()
         episodes.append(episode)
 
-    feed = HTMLEpisodeFeed(overcast_uri=overcast_uri, episodes=episodes)
+    feed = HTMLPodcastFeed(overcast_uri=overcast_uri, episodes=episodes)
     feed._validate()
     return feed
 
@@ -274,6 +276,96 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
         is_played=is_played,
         in_progress=in_progress,
     )
+
+
+@dataclass
+class HTMLEpisode:
+    id: str
+    numeric_id: int
+    overcast_uri: str
+    podcast_id: str
+    title: str
+    description: str
+    date_published: date
+    audio_url: str
+
+    def _validate(self) -> None:
+        assert self.id.startswith("+"), self.id
+        assert self.numeric_id > 0, self.numeric_id
+        assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
+        assert len(self.title) > 3, self.title
+        assert self.date_published <= datetime.now().date(), self.date_published
+        assert self.audio_url.startswith("http"), self.audio_url
+        assert "#" not in self.audio_url, self.audio_url
+
+
+def fetch_episode(session: Session, episode_id: str) -> HTMLEpisode:
+    assert episode_id.startswith("+"), episode_id
+
+    r = _request(
+        session=session,
+        path=f"/{episode_id}",
+        cache_expires=timedelta(days=30),
+    )
+
+    soup = BeautifulSoup(r.text, "html.parser")
+
+    overcast_uri: str = ""
+    numeric_id: int = 0
+    for meta_el in soup.select("meta[name=apple-itunes-app]"):
+        content = meta_el["content"]
+        if isinstance(content, str) and content.startswith("app-id=888422857"):
+            overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
+            numeric_id = int(overcast_uri.removeprefix("overcast:///"))
+
+    audio_url: str = ""
+    for meta_el in soup.select("meta[name='twitter:player:stream']"):
+        audio_url = meta_el.attrs["content"]
+        audio_url = audio_url.split("#", 1)[0]
+
+    podcast_id: str = ""
+    for a_el in soup.select(".centertext > h3 > a[href]"):
+        href: str = a_el.attrs["href"]
+        assert href.startswith("/"), href
+        podcast_id = href.removeprefix("/")
+
+    title: str = ""
+    for title_el in soup.select("meta[name='og:title']"):
+        title = title_el.attrs["content"]
+
+    description: str = ""
+    for description_el in soup.select("meta[name='og:description']"):
+        description = description_el.attrs["content"]
+
+    date_published: date | None = None
+    for div_el in soup.select(".centertext > div"):
+        date_published = dateutil.parser.parse(div_el.text).date()
+    assert date_published
+
+    episode = HTMLEpisode(
+        id=episode_id,
+        numeric_id=numeric_id,
+        overcast_uri=overcast_uri,
+        podcast_id=podcast_id,
+        title=title,
+        description=description,
+        date_published=date_published,
+        audio_url=audio_url,
+    )
+    episode._validate()
+    return episode
+
+
+def fetch_audio_duration(session: Session, url: str) -> timedelta | None:
+    if session._offline:
+        raise requests_cache.OfflineError()
+    response = requests.get(url, headers={"Range": "bytes=0-100000"})
+    response.raise_for_status()
+    io = BytesIO(response.content)
+    f = mutagen.File(io)  # type: ignore
+    if not f:
+        return None
+    return timedelta(seconds=f.info.length)
 
 
 @dataclass
@@ -467,8 +559,8 @@ def _as_list(x: T | list[T]) -> list[T]:
 
 
 def zip_html_and_export_feeds(
-    html_feeds: list[HTMLFeed], export_feeds: list[ExportFeed]
-) -> Iterator[tuple[HTMLFeed, ExportFeed]]:
+    html_feeds: list[HTMLPodcastsFeed], export_feeds: list[ExportFeed]
+) -> Iterator[tuple[HTMLPodcastsFeed, ExportFeed]]:
     assert len(html_feeds) == len(export_feeds)
 
     html_feeds_by_title = {feed.title: feed for feed in html_feeds}

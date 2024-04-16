@@ -9,6 +9,8 @@ import pytest
 import overcast
 from overcast import (
     Session,
+    fetch_audio_duration,
+    fetch_episode,
     fetch_podcast,
     fetch_podcasts,
     parse_episode_caption_text,
@@ -59,6 +61,31 @@ def test_fetch_podcast(overcast_session: Session) -> None:
 
     episodes_feed = fetch_podcast(session=overcast_session, feed_id=feed_id)
     assert len(episodes_feed.episodes) > 0
+
+
+def test_fetch_episode(overcast_session: Session) -> None:
+    episode = fetch_episode(session=overcast_session, episode_id="+B7NAFKiP8")
+    assert episode.id == "+B7NAFKiP8"
+    assert episode.numeric_id == 135463290177791
+    assert episode.overcast_uri == "overcast:///135463290177791"
+    assert episode.podcast_id == "itunes528458508/the-talk-show-with-john-gruber"
+    assert episode.title.startswith("83: Live From WWDC 2014")
+    assert episode.date_published == date(2014, 6, 6)
+    assert (
+        episode.audio_url
+        == "http://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
+    )
+
+
+@pytest.mark.skipif(_OFFLINE, reason="requires network")
+def test_fetch_audio_duration(overcast_session: Session) -> None:
+    url = "http://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
+    duration = fetch_audio_duration(session=overcast_session, url=url)
+    assert duration == timedelta(seconds=6538)
+
+    url = "http://example.com/"
+    duration = fetch_audio_duration(session=overcast_session, url=url)
+    assert duration is None
 
 
 # def test_export_account_data(overcast_session: Session) -> None:
