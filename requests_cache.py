@@ -71,6 +71,7 @@ class Session:
 
         url = self._base_url + path
         self._throttle()
+        logger.info("GET %s", self._base_url)
         r = self._session.get(url)
 
         try:

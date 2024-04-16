@@ -31,7 +31,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          pytest --verbose
+          pytest --log-cli-level info --verbose
         env:
           XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}
