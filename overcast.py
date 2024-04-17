@@ -405,7 +405,7 @@ def fetch_episode(session: Session, episode_id: str) -> HTMLEpisode:
     r = _request(
         session=session,
         path=f"/{episode_id}",
-        accept=None,
+        accept="text/html",
         cache_expires=timedelta(days=30),
     )
 
