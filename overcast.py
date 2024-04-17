@@ -52,7 +52,7 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
         cache_dir=cache_dir,
         base_url="https://overcast.fm",
         headers=headers,
-        min_time_between_requests=timedelta(minutes=1),
+        min_time_between_requests=timedelta(seconds=10),
         offline=offline,
     )
 
