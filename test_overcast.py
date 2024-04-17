@@ -1,5 +1,4 @@
 import os
-import tempfile
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -19,10 +18,14 @@ _OFFLINE = "PYTEST_OFFLINE" in os.environ
 
 
 @pytest.fixture(scope="module")
-def cache_dir() -> Path:
-    if "XDG_CACHE_HOME" in os.environ:
-        return Path(os.environ["XDG_CACHE_HOME"]) / "overcast"
-    return Path(tempfile.mkdtemp())
+def module_cache_dir() -> Path:
+    cache_home = os.environ.get("XDG_CACHE_HOME") or "/tmp/pytest"
+    return Path(cache_home) / "overcast"
+
+
+@pytest.fixture(scope="function")
+def function_cache_dir(request: pytest.FixtureRequest, module_cache_dir: Path) -> Path:
+    return module_cache_dir / str(request.node.name)
 
 
 @pytest.fixture(scope="module")
@@ -33,9 +36,9 @@ def overcast_cookie() -> str:
 
 
 @pytest.fixture(scope="module")
-def overcast_session(cache_dir: Path, overcast_cookie: str) -> Session:
+def overcast_session(module_cache_dir: Path, overcast_cookie: str) -> Session:
     return overcast.session(
-        cache_dir=cache_dir,
+        cache_dir=module_cache_dir,
         cookie=overcast_cookie,
         offline=_OFFLINE,
     )
@@ -46,11 +49,17 @@ def test_fetch_podcasts(overcast_session: Session) -> None:
     assert len(feeds) > 0
 
 
-@pytest.mark.skipif(_OFFLINE, reason="requires network")
-def test_fetch_podcasts_bad_cookie(tmpdir: Path) -> None:
-    session = overcast.session(cache_dir=tmpdir, cookie="XXX", offline=False)
+def test_fetch_podcasts_bad_cookie(
+    function_cache_dir: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    session = overcast.session(
+        cache_dir=function_cache_dir,
+        cookie="XXX",
+        offline=_OFFLINE,
+    )
     with pytest.raises(overcast.LoggedOutError):
-        fetch_podcasts(session=session)
+        with caplog.at_level(100):
+            fetch_podcasts(session=session)
 
 
 def test_fetch_podcast(overcast_session: Session) -> None:
@@ -86,7 +95,6 @@ def test_fetch_episode(overcast_session: Session) -> None:
     )
 
 
-@pytest.mark.skipif(_OFFLINE, reason="requires network")
 def test_fetch_audio_duration(overcast_session: Session) -> None:
     url = "http://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
     duration = fetch_audio_duration(session=overcast_session, url=url)

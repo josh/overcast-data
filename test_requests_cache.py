@@ -1,5 +1,4 @@
 import os
-import tempfile
 from datetime import timedelta
 from pathlib import Path
 
@@ -11,15 +10,19 @@ _OFFLINE = "PYTEST_OFFLINE" in os.environ
 
 
 @pytest.fixture(scope="module")
-def cache_dir() -> Path:
-    if "XDG_CACHE_HOME" in os.environ:
-        return Path(os.environ["XDG_CACHE_HOME"]) / "test_requests_cache"
-    return Path(tempfile.mkdtemp())
+def module_cache_dir(request: pytest.FixtureRequest) -> Path:
+    cache_home = os.environ.get("XDG_CACHE_HOME") or "/tmp/pytest"
+    return Path(cache_home) / str(request.module.__name__)
 
 
-def test_get_httpbin_delay(cache_dir: Path) -> None:
+@pytest.fixture(scope="function")
+def function_cache_dir(request: pytest.FixtureRequest, module_cache_dir: Path) -> Path:
+    return module_cache_dir / str(request.node.name)
+
+
+def test_get_httpbin_delay(module_cache_dir: Path) -> None:
     session = Session(
-        cache_dir=cache_dir,
+        cache_dir=module_cache_dir,
         base_url="https://httpbin.org",
         offline=_OFFLINE,
     )
@@ -41,9 +44,9 @@ def test_response_bytes_roundtrip() -> None:
     assert response_to_bytes(response) == response_bytes
 
 
-def test_cache_entries(cache_dir: Path) -> None:
+def test_cache_entries(module_cache_dir: Path) -> None:
     session = Session(
-        cache_dir=cache_dir,
+        cache_dir=module_cache_dir,
         base_url="https://httpbin.org",
         offline=_OFFLINE,
     )
@@ -51,9 +54,9 @@ def test_cache_entries(cache_dir: Path) -> None:
     assert len(list(session.cache_entries())) >= 1
 
 
-def test_purge_cache(cache_dir: Path) -> None:
+def test_purge_cache(module_cache_dir: Path) -> None:
     session = Session(
-        cache_dir=cache_dir,
+        cache_dir=module_cache_dir,
         base_url="https://httpbin.org",
         offline=_OFFLINE,
     )
