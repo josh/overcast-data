@@ -1,9 +1,10 @@
 import logging
+import re
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from io import BytesIO
 from pathlib import Path
-from typing import Iterator, TypeVar
+from typing import Iterator, Literal, TypeVar
 
 import dateutil.parser
 import mutagen
@@ -59,17 +60,44 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
 
 @dataclass
 class HTMLPodcastsFeed:
-    id: str
-    numeric_id: int | None
+    html_url: str
+    art_url: str
     title: str
     has_unplayed_episodes: bool
 
-    def _validate(self) -> None:
-        assert not self.id.startswith("/"), self.id
-        if self.id.startswith("p"):
-            assert len(self.id) == 15, self.id
-            assert "-" in self.id, self.id
+    # TODO: Deprecate this
+    @property
+    def id(self) -> str:
+        return self.html_url.removeprefix("https://overcast.fm/")
 
+    @property
+    def is_private(self) -> bool:
+        return self.id.startswith("p")
+
+    # TODO: Maybe use art_id instead of item_id
+
+    @property
+    def item_id(self) -> int | None:
+        if self.id.startswith("p"):
+            return int(self.id.removeprefix("p").split("-", 1)[0])
+        return None
+
+    @property
+    def art_id(self) -> int:
+        if m := re.search(r"(?<=/art/)\d+", self.art_url):
+            return int(m.group(0))
+        return 0
+
+    def _validate(self) -> None:
+        assert self.html_url.startswith("https://overcast.fm/"), self.html_url
+        assert not self.id.startswith("/"), self.id
+        if self.is_private:
+            assert self.item_id, self.id
+            assert (
+                self.art_id == self.item_id
+            ), f"art_url: {self.art_url}, id: {self.id}"
+        assert self.art_url.startswith("https://public.overcast-cdn.com"), self.art_url
+        assert self.art_id, self.art_url
         assert len(self.title) > 3
 
 
@@ -84,36 +112,29 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 
     soup = BeautifulSoup(r.text, "html.parser")
 
-    for feedcell_el in soup.select("a.feedcell"):
+    for feedcell_el in soup.select("a.feedcell[href]"):
         href = feedcell_el["href"]
-
-        if not isinstance(href, str):
-            logger.error("feedcell missing href: %s", feedcell_el)
-            continue
+        assert isinstance(href, str)
 
         if href == "/uploads":
             continue
 
-        id = href.removeprefix("/")
+        art_url: str = ""
+        if art_el := feedcell_el.select_one("img.art[src]"):
+            art_url = art_el.attrs["src"]
 
-        numeric_id: int | None = None
-        if href.startswith("/p"):
-            numeric_id = int(href.removeprefix("/p").split("-", 1)[0])
-
-        title_el = feedcell_el.select_one(".titlestack > .title")
-
-        if not title_el:
-            logger.error("No title element found: %s", feedcell_el)
-            continue
+        title: str = ""
+        if title_el := feedcell_el.select_one(".titlestack > .title"):
+            title = title_el.text.strip()
 
         has_unplayed_episodes = (
             True if feedcell_el.select_one(".unplayed_indicator") else False
         )
 
         feed = HTMLPodcastsFeed(
-            id=id,
-            numeric_id=numeric_id,
-            title=title_el.text.strip(),
+            html_url=f"https://overcast.fm{href}",
+            art_url=art_url,
+            title=title,
             has_unplayed_episodes=has_unplayed_episodes,
         )
         feed._validate()
@@ -128,35 +149,82 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 
 @dataclass
 class HTMLPodcastFeed:
+    title: str
+    html_url: str
     overcast_uri: str
+    art_url: str
+    delete_url: str
     episodes: list["HTMLPodcastEpisode"]
 
+    # TODO: Which is more reliable, item id, art id or delete id?
+
+    @property
+    def item_id(self) -> int:
+        return int(self.overcast_uri.removeprefix("overcast:///F").split("-", 1)[0])
+
+    @property
+    def art_id(self) -> int:
+        if m := re.search(r"(?<=/art/)\d+", self.art_url):
+            return int(m.group(0))
+        return 0
+
+    @property
+    def delete_action_id(self) -> int:
+        if m := re.search(r"(?<=/delete/)\d+", self.delete_url):
+            return int(m.group(0))
+        return 0
+
+    @property
+    def is_private(self) -> bool:
+        return self.html_url.startswith("https://overcast.fm/p")
+
     def _validate(self) -> None:
+        assert self.html_url.startswith("https://overcast.fm/"), self.html_url
         assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
+        assert self.item_id, self.overcast_uri
+        assert self.art_url.startswith("https://public.overcast-cdn.com/"), self.art_url
+        assert self.art_id, self.art_url
+        assert self.delete_url.startswith("/podcasts/delete/"), self.delete_url
+        assert self.delete_action_id, self.delete_url
+        assert self.item_id == self.art_id
+        assert self.item_id == self.delete_action_id
+        assert len(self.title) > 3, self.title
         assert len(self.episodes) > 0
 
 
 @dataclass
 class HTMLPodcastEpisode:
-    id: str
+    html_url: str
     title: str
     description: str
     pub_date: date
-    duration: timedelta | None = None
-    is_played: bool = False
-    in_progress: bool = False
-    is_new: bool = False
-    is_deleted: bool = False
+    duration: timedelta | None
+    is_played: bool
+    in_progress: bool
+    download_state: Literal["new"] | Literal["deleted"] | None
+
+    @property
+    def id(self) -> str:
+        return self.html_url.removeprefix("https://overcast.fm/")
+
+    @property
+    def is_new(self) -> bool:
+        return self.download_state == "new"
+
+    @property
+    def is_deleted(self) -> bool:
+        return self.download_state == "deleted"
 
     def _validate(self) -> None:
+        assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
         assert not self.id.startswith("/"), self.id
         if self.id.startswith("p"):
             assert len(self.id) == 15, self.id
             assert "-" in self.id, self.id
-
         assert len(self.title) > 3, self.title
         assert self.pub_date <= datetime.now().date(), self.pub_date
         assert self.is_deleted != self.is_new, "is_deleted and is_new can't be the same"
+        assert self.download_state, "unknown download state"
 
 
 def fetch_podcast(session: Session, feed_id: str) -> HTMLPodcastFeed:
@@ -174,59 +242,63 @@ def fetch_podcast(session: Session, feed_id: str) -> HTMLPodcastFeed:
         if isinstance(content, str) and content.startswith("app-id=888422857"):
             overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
 
+    art_url: str = ""
+    if img_el := soup.select_one("img.fullart[src]"):
+        art_url = img_el.attrs["src"]
+
+    delete_url: str = ""
+    if delete_el := soup.select_one("form#deletepodcastform[action]"):
+        delete_url = delete_el.attrs["action"]
+
+    feed_title: str = ""
+    if title_el := soup.select_one("h2.centertext"):
+        feed_title = title_el.text.strip()
+
     episodes: list[HTMLPodcastEpisode] = []
 
-    for episodecell_el in soup.select("a.extendedepisodecell"):
-        href = episodecell_el["href"]
-        if not isinstance(href, str):
-            logger.error("episodecell missing href: %s", episodecell_el)
-            continue
-
-        id = href.removeprefix("/")
-
-        if not isinstance(href, str):
-            logger.error("episodecell missing href: %s", episodecell_el)
-            continue
+    for episodecell_el in soup.select("a.extendedepisodecell[href]"):
+        href: str = episodecell_el.attrs["href"]
 
         title: str = ""
-        title_el = episodecell_el.select_one(".title")
-        if title_el:
+        if title_el := episodecell_el.select_one(".title"):
             title = title_el.text.strip()
-        else:
-            logger.error("No title element found: %s", episodecell_el)
 
+        download_state: Literal["new"] | Literal["deleted"] | None = None
         class_name = episodecell_el.attrs["class"]
-        is_deleted = "userdeletedepisode" in class_name
-        is_new = "usernewepisode" in class_name
+        if "userdeletedepisode" in class_name:
+            download_state = "deleted"
+        elif "usernewepisode" in class_name:
+            download_state = "new"
 
-        caption2_el = episodecell_el.select_one(".caption2")
-        if not caption2_el:
-            logger.error("No caption2 element found: %s", episodecell_el)
-            continue
-        caption_result = parse_episode_caption_text(caption2_el.text)
+        if caption2_el := episodecell_el.select_one(".caption2"):
+            caption_result = parse_episode_caption_text(caption2_el.text)
+        assert caption_result
 
         description: str = ""
-        description_el = episodecell_el.select_one(".lighttext")
-        if description_el:
+        if description_el := episodecell_el.select_one(".lighttext"):
             description = description_el.text.strip()
-        else:
-            logger.error("No description element found: %s", episodecell_el)
 
         episode = HTMLPodcastEpisode(
-            id=id,
+            html_url=f"https://overcast.fm{href}",
             title=title,
             description=description,
             pub_date=caption_result.pub_date,
             duration=caption_result.duration,
             is_played=caption_result.is_played,
             in_progress=caption_result.in_progress,
-            is_deleted=is_deleted,
-            is_new=is_new,
+            download_state=download_state,
         )
         episode._validate()
         episodes.append(episode)
 
-    feed = HTMLPodcastFeed(overcast_uri=overcast_uri, episodes=episodes)
+    feed = HTMLPodcastFeed(
+        html_url=f"https://overcast.fm/{feed_id}",
+        overcast_uri=overcast_uri,
+        art_url=art_url,
+        delete_url=delete_url,
+        title=feed_title,
+        episodes=episodes,
+    )
     feed._validate()
     return feed
 
@@ -234,7 +306,7 @@ def fetch_podcast(session: Session, feed_id: str) -> HTMLPodcastFeed:
 @dataclass
 class CaptionResult:
     pub_date: date
-    duration: timedelta | None = None
+    duration: timedelta | None
     is_played: bool = False
     in_progress: bool = False
 
@@ -280,19 +352,45 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
 
 @dataclass
 class HTMLEpisode:
-    id: str
-    numeric_id: int
+    html_url: str
     overcast_uri: str
-    podcast_id: str
+    feed_art_url: str
+    podcast_html_url: str
     title: str
     description: str
     date_published: date
     audio_url: str
 
+    # TODO: Maybe deprecate this
+    @property
+    def id(self) -> str:
+        return self.html_url.removeprefix("https://overcast.fm/")
+
+    @property
+    def item_id(self) -> int:
+        return int(self.overcast_uri.removeprefix("overcast:///"))
+
+    # TODO: I think this is actually podcast numeric id
+    @property
+    def feed_art_id(self) -> int:
+        if m := re.search(r"(?<=/art/)\d+", self.feed_art_url):
+            return int(m.group(0))
+        return 0
+
+    # TODO: deprecate this
+    @property
+    def podcast_id(self) -> str:
+        return self.podcast_html_url.removeprefix("https://overcast.fm/")
+
     def _validate(self) -> None:
+        assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
         assert self.id.startswith("+"), self.id
-        assert self.numeric_id > 0, self.numeric_id
+        assert self.item_id, self.item_id
         assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
+        assert self.feed_art_url.startswith(
+            "https://public.overcast-cdn.com/"
+        ), self.feed_art_url
+        assert self.feed_art_id, self.feed_art_url
         assert len(self.title) > 3, self.title
         assert self.date_published <= datetime.now().date(), self.date_published
         assert self.audio_url.startswith("http"), self.audio_url
@@ -311,42 +409,43 @@ def fetch_episode(session: Session, episode_id: str) -> HTMLEpisode:
     soup = BeautifulSoup(r.text, "html.parser")
 
     overcast_uri: str = ""
-    numeric_id: int = 0
-    for meta_el in soup.select("meta[name=apple-itunes-app]"):
-        content = meta_el["content"]
-        if isinstance(content, str) and content.startswith("app-id=888422857"):
+    if meta_el := soup.select_one("meta[name=apple-itunes-app]"):
+        content: str = meta_el.attrs["content"]
+        if content.startswith("app-id=888422857"):
             overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
-            numeric_id = int(overcast_uri.removeprefix("overcast:///"))
+
+    art_url: str = ""
+    if img_el := soup.select_one("img.fullart[src]"):
+        art_url = img_el.attrs["src"]
 
     audio_url: str = ""
-    for meta_el in soup.select("meta[name='twitter:player:stream']"):
+    if meta_el := soup.select_one("meta[name='twitter:player:stream']"):
         audio_url = meta_el.attrs["content"]
         audio_url = audio_url.split("#", 1)[0]
 
-    podcast_id: str = ""
-    for a_el in soup.select(".centertext > h3 > a[href]"):
+    podcast_html_url: str = ""
+    if a_el := soup.select_one(".centertext > h3 > a[href]"):
         href: str = a_el.attrs["href"]
-        assert href.startswith("/"), href
-        podcast_id = href.removeprefix("/")
+        podcast_html_url = f"https://overcast.fm{href}"
 
     title: str = ""
-    for title_el in soup.select("meta[name='og:title']"):
+    if title_el := soup.select_one("meta[name='og:title']"):
         title = title_el.attrs["content"]
 
     description: str = ""
-    for description_el in soup.select("meta[name='og:description']"):
+    if description_el := soup.select_one("meta[name='og:description']"):
         description = description_el.attrs["content"]
 
     date_published: date | None = None
-    for div_el in soup.select(".centertext > div"):
+    if div_el := soup.select_one(".centertext > div"):
         date_published = dateutil.parser.parse(div_el.text).date()
     assert date_published
 
     episode = HTMLEpisode(
-        id=episode_id,
-        numeric_id=numeric_id,
+        html_url=f"https://overcast.fm/{episode_id}",
         overcast_uri=overcast_uri,
-        podcast_id=podcast_id,
+        feed_art_url=art_url,
+        podcast_html_url=podcast_html_url,
         title=title,
         description=description,
         date_published=date_published,
@@ -407,7 +506,7 @@ class ExportPlaylist:
 @dataclass
 class ExportEpisode:
     id: str
-    numeric_id: int
+    item_id: int
     pub_date: date
     title: str
     url: str
@@ -431,7 +530,7 @@ class ExportEpisode:
 
 @dataclass
 class ExportFeed:
-    numeric_id: int
+    item_id: int
     title: str
     xml_url: str
     html_url: str
@@ -488,7 +587,7 @@ def _opml_feeds(node: dict) -> list[ExportFeed]:  # type: ignore
         if group["@text"] == "feeds":
             for feed_outline in _as_list(group["outline"]):
                 assert feed_outline["@type"] == "rss"
-                numeric_id = int(feed_outline["@overcastId"])
+                item_id = int(feed_outline["@overcastId"])
                 title = feed_outline["@title"]
                 html_url = feed_outline["@htmlUrl"]
                 xml_url = feed_outline["@xmlUrl"]
@@ -496,7 +595,7 @@ def _opml_feeds(node: dict) -> list[ExportFeed]:  # type: ignore
                 is_subscribed = feed_outline.get("@subscribed", "0") == "1"
 
                 feed = ExportFeed(
-                    numeric_id=numeric_id,
+                    item_id=item_id,
                     title=title,
                     xml_url=xml_url,
                     html_url=html_url,
@@ -520,7 +619,7 @@ def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:  # type: ignore
         overcast_url = node["@overcastUrl"]
         id = node["@overcastUrl"].removeprefix("https://overcast.fm/")
         assert id.startswith("+"), overcast_url
-        numeric_id = int(node["@overcastId"])
+        item_id = int(node["@overcastId"])
         pub_date = dateutil.parser.parse(node["@pubDate"]).date()
         title = node["@title"]
         url = node["@url"]
@@ -531,7 +630,7 @@ def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:  # type: ignore
 
         episode = ExportEpisode(
             id=id,
-            numeric_id=numeric_id,
+            item_id=item_id,
             pub_date=pub_date,
             title=title,
             url=url,
@@ -593,8 +692,4 @@ def zip_html_and_export_feeds(
 
     for export_feed in export_feeds:
         html_feed = html_feeds_by_title[export_feed.title]
-        if html_feed.numeric_id:
-            assert html_feed.numeric_id == export_feed.numeric_id
-        if html_feed.id.startswith("p"):
-            assert html_feed.id.startswith(f"p{export_feed.numeric_id}-")
         yield html_feed, export_feed

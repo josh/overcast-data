@@ -2,7 +2,6 @@ import os
 import tempfile
 from datetime import date, timedelta
 from pathlib import Path
-from random import choice
 
 import pytest
 
@@ -55,20 +54,30 @@ def test_fetch_podcasts_bad_cookie(tmpdir: Path) -> None:
 
 
 def test_fetch_podcast(overcast_session: Session) -> None:
-    feeds = fetch_podcasts(session=overcast_session)
-    assert len(feeds) > 0
-    feed_id = choice(feeds).id
-
-    episodes_feed = fetch_podcast(session=overcast_session, feed_id=feed_id)
+    episodes_feed = fetch_podcast(
+        session=overcast_session,
+        feed_id="itunes528458508/the-talk-show-with-john-gruber",
+    )
+    assert episodes_feed.title == "The Talk Show With John Gruber"
+    assert (
+        episodes_feed.html_url
+        == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
+    )
+    assert episodes_feed.item_id == 126160
+    assert episodes_feed.art_url == "https://public.overcast-cdn.com/art/126160?v198"
     assert len(episodes_feed.episodes) > 0
 
 
 def test_fetch_episode(overcast_session: Session) -> None:
     episode = fetch_episode(session=overcast_session, episode_id="+B7NAFKiP8")
     assert episode.id == "+B7NAFKiP8"
-    assert episode.numeric_id == 135463290177791
+    assert episode.item_id == 135463290177791
     assert episode.overcast_uri == "overcast:///135463290177791"
-    assert episode.podcast_id == "itunes528458508/the-talk-show-with-john-gruber"
+    assert (
+        episode.podcast_html_url
+        == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
+    )
+    assert episode.feed_art_url == "https://public.overcast-cdn.com/art/126160?v198"
     assert episode.title.startswith("83: Live From WWDC 2014")
     assert episode.date_published == date(2014, 6, 6)
     assert (
