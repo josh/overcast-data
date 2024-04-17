@@ -1,7 +1,7 @@
 import csv
 import re
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable, Iterator
 
@@ -98,10 +98,11 @@ class Episode:
     id: str
     feed_id: str
     title: str
+    duration: timedelta | None
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["id", "feed_id", "title"]
+        return ["id", "feed_id", "title", "duration"]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
@@ -109,6 +110,7 @@ class Episode:
             id=data["id"],
             feed_id=data["feed_id"],
             title=data["title"],
+            duration=_seconds_str_to_timedelta(data.get("duration")),
         )
 
     def to_dict(self) -> dict[str, str]:
@@ -116,7 +118,27 @@ class Episode:
             "id": self.id,
             "feed_id": self.feed_id,
             "title": self.title,
+            "duration": _timedelta_to_seconds_str(self.duration),
         }
+
+
+def _timedelta_to_seconds_str(td: timedelta | None) -> str:
+    if not td:
+        return ""
+    return str(int(td.total_seconds()))
+
+
+def _seconds_str_to_timedelta(s: str | None) -> timedelta | None:
+    if not s:
+        return None
+
+    seconds = int(s)
+    minutes = 0
+    if seconds >= 60:
+        minutes = seconds // 60
+        seconds %= 60
+
+    return timedelta(minutes=minutes, seconds=seconds)
 
 
 class EpisodeCollection:
@@ -140,7 +162,10 @@ class EpisodeCollection:
     def insert(self, episode: Episode) -> None:
         for i, e in enumerate(self._episodes):
             if e.id == episode.id:
-                self._episodes[i] = episode
+                self._episodes[i].feed_id = episode.feed_id
+                self._episodes[i].title = episode.title
+                if episode.duration:
+                    self._episodes[i].duration = episode.duration
                 return
 
         self._episodes.append(episode)

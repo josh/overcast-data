@@ -67,6 +67,7 @@ def main(
             id=html_episode.id,
             feed_id=db_feed.id,
             title=html_episode.title,
+            duration=html_episode.duration,
         )
         db_episodes.insert(db_episode)
 
