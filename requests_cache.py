@@ -104,7 +104,8 @@ class Session:
             logger.debug("GET %s", request.url)
         else:
             logger.info("GET %s", self._base_url)
-        r = self._session.send(request.prepare())
+        prepped = self._session.prepare_request(request)
+        r = self._session.send(prepped)
 
         try:
             r.raise_for_status()
