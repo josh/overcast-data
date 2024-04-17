@@ -19,6 +19,7 @@ class OfflineError(Exception):
 
 _DEFAULT_MIME_TYPE_EXTNAMES = {
     "application/json": "json",
+    "application/xml": "xml",
     "text/html": "html",
 }
 
