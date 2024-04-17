@@ -467,7 +467,7 @@ def _fetch_audio_duration(url: str, max_bytes: int | None) -> timedelta | None:
     try:
         f = mutagen.File(io)  # type: ignore
     except Exception:
-        logger.error("Failed to parse audio: %s", url)
+        logger.error("Failed to parse audio: %s, max-bytes: %i", url, max_bytes)
         return None
     if not f:
         return None
@@ -483,6 +483,8 @@ def fetch_audio_duration(session: Session, url: str) -> timedelta | None:
         if session._offline:
             raise requests_cache.OfflineError()
         elif duration := _fetch_audio_duration(url, max_bytes=100_000):
+            return duration
+        elif duration := _fetch_audio_duration(url, max_bytes=1_000_000):
             return duration
         elif duration := _fetch_audio_duration(url, max_bytes=None):
             return duration

@@ -10,6 +10,8 @@ import db
 import overcast
 from db import EpisodeCollection, FeedCollection
 
+logger = logging.getLogger("overcast-data")
+
 
 def _xdg_cache_home() -> Path:
     if "XDG_CACHE_HOME" in os.environ:
@@ -59,7 +61,8 @@ def main(
     db_episodes = EpisodeCollection.load(episodes_path)
 
     _refresh_random_feed(session=session, db_feeds=db_feeds, db_episodes=db_episodes)
-    _refresh_missing_episode_duration(session=session, db_episodes=db_episodes)
+    for i in range(3):
+        _refresh_missing_episode_duration(session=session, db_episodes=db_episodes)
 
     db_feeds.save(feeds_path)
     db_episodes.save(episodes_path)
@@ -91,6 +94,7 @@ def _refresh_missing_episode_duration(
     db_episodes: EpisodeCollection,
 ) -> None:
     db_episodes_missing_duration = [e for e in db_episodes if e.duration is None]
+    logger.info("Episodes missing duration: %d", len(db_episodes_missing_duration))
     if not db_episodes_missing_duration:
         return
     db_episode_missing_duration = random.choice(db_episodes_missing_duration)
