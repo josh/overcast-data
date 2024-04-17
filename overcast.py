@@ -356,20 +356,42 @@ def fetch_episode(session: Session, episode_id: str) -> HTMLEpisode:
     return episode
 
 
+def _fetch_audio_duration(url: str, max_bytes: int | None) -> timedelta | None:
+    headers: dict[str, str] = {}
+    if max_bytes:
+        headers["Range"] = f"bytes=0-{max_bytes}"
+    response = requests.get(url, allow_redirects=True, headers=headers)
+    if not response.ok:
+        logger.warning("Failed to fetch audio: %s", url)
+        return None
+    io = BytesIO(response.content)
+    try:
+        f = mutagen.File(io)  # type: ignore
+    except Exception:
+        logger.error("Failed to parse audio: %s", url)
+        return None
+    if not f:
+        return None
+    seconds = f.info.length
+    if seconds < 60:
+        logger.error("Duration too short: %s", url)
+        return None
+    return timedelta(seconds=seconds)
+
+
 def fetch_audio_duration(session: Session, url: str) -> timedelta | None:
-    def _fetch_audio_duration() -> timedelta | None:
+    def _inner() -> timedelta | None:
         if session._offline:
             raise requests_cache.OfflineError()
-        response = requests.get(url, headers={"Range": "bytes=0-100000"})
-        response.raise_for_status()
-        io = BytesIO(response.content)
-        f = mutagen.File(io)  # type: ignore
-        if not f:
+        elif duration := _fetch_audio_duration(url, max_bytes=100_000):
+            return duration
+        elif duration := _fetch_audio_duration(url, max_bytes=None):
+            return duration
+        else:
             return None
-        return timedelta(seconds=f.info.length)
 
     key = f"fetch_audio_duration:v1:{url}"
-    return session.simple_cache.get(key, _fetch_audio_duration)
+    return session.simple_cache.get(key, _inner)
 
 
 @dataclass
@@ -442,7 +464,7 @@ def export_account_data(session: Session, extended: bool = False) -> AccountExpo
     return AccountExport(playlists=_opml_playlists(outline), feeds=_opml_feeds(outline))
 
 
-def _opml_playlists(node: dict) -> list[ExportPlaylist]:
+def _opml_playlists(node: dict) -> list[ExportPlaylist]:  # type: ignore
     playlists: list[ExportPlaylist] = []
 
     for group in node:
@@ -459,7 +481,7 @@ def _opml_playlists(node: dict) -> list[ExportPlaylist]:
     return playlists
 
 
-def _opml_feeds(node: dict) -> list[ExportFeed]:
+def _opml_feeds(node: dict) -> list[ExportFeed]:  # type: ignore
     feeds: list[ExportFeed] = []
 
     for group in node:
@@ -490,7 +512,7 @@ def _opml_feeds(node: dict) -> list[ExportFeed]:
     return feeds
 
 
-def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:
+def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:  # type: ignore
     episodes: list[ExportEpisode] = []
 
     for node in nodes:

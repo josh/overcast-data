@@ -58,11 +58,25 @@ def main(
     db_feeds = FeedCollection.load(feeds_path)
     db_episodes = EpisodeCollection.load(episodes_path)
 
+    _refresh_random_feed(session=session, db_feeds=db_feeds, db_episodes=db_episodes)
+    _refresh_missing_episode_duration(session=session, db_episodes=db_episodes)
+
+    db_feeds.save(feeds_path)
+    db_episodes.save(episodes_path)
+
+    session.purge_cache(older_than=timedelta(days=90))
+
+
+def _refresh_random_feed(
+    session: overcast.Session,
+    db_feeds: FeedCollection,
+    db_episodes: EpisodeCollection,
+) -> None:
     db_feed = random.choice(list(db_feeds))
 
-    for html_episode in overcast.fetch_podcast(
-        session=session, feed_id=db_feed.id
-    ).episodes:
+    html_podcast = overcast.fetch_podcast(session=session, feed_id=db_feed.id)
+
+    for html_episode in html_podcast.episodes:
         db_episode = db.Episode(
             id=html_episode.id,
             feed_id=db_feed.id,
@@ -71,26 +85,18 @@ def main(
         )
         db_episodes.insert(db_episode)
 
-    # export_data = export_account_data(session=session, extended=True)
-    # html_feeds = fetch_podcasts(session=session)
 
-    # db_feeds: list[db.Feed] = []
-
-    # for html_feed, export_feed in zip_html_and_export_feeds(
-    #     html_feeds=html_feeds, export_feeds=export_data.feeds
-    # ):
-    #     db_feed = db.Feed(
-    #         numeric_id=export_feed.numeric_id,
-    #         id=html_feed.id,
-    #         title=db.Feed.clean_title(export_feed.title),
-    #         added_at=export_feed.added_at,
-    #     )
-    #     db_feeds.append(db_feed)
-
-    db_feeds.save(feeds_path)
-    db_episodes.save(episodes_path)
-
-    session.purge_cache(older_than=timedelta(days=90))
+def _refresh_missing_episode_duration(
+    session: overcast.Session,
+    db_episodes: EpisodeCollection,
+) -> None:
+    db_episodes_missing_duration = [e for e in db_episodes if e.duration is None]
+    if not db_episodes_missing_duration:
+        return
+    db_episode_missing_duration = random.choice(db_episodes_missing_duration)
+    html_episode = overcast.fetch_episode(session, db_episode_missing_duration.id)
+    duration = overcast.fetch_audio_duration(session, html_episode.audio_url)
+    db_episode_missing_duration.duration = duration
 
 
 if __name__ == "__main__":
