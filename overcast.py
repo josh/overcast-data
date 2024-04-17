@@ -485,8 +485,6 @@ def fetch_audio_duration(session: Session, url: str) -> timedelta | None:
     def _inner() -> timedelta | None:
         if session._offline:
             raise requests_cache.OfflineError()
-        elif duration := _fetch_audio_duration(url, max_bytes=100_000):
-            return duration
         elif duration := _fetch_audio_duration(url, max_bytes=1_000_000):
             return duration
         elif duration := _fetch_audio_duration(url, max_bytes=None):
