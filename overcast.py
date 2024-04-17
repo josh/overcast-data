@@ -232,7 +232,7 @@ def fetch_podcast(session: Session, feed_id: str) -> HTMLPodcastFeed:
     r = _request(
         session=session,
         path=f"/{feed_id}",
-        accept=None,
+        accept="text/html",
         cache_expires=timedelta(hours=1),
     )
 
