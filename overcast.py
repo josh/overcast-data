@@ -499,7 +499,7 @@ def fetch_audio_duration(session: Session, url: str) -> timedelta | None:
 
 
 @dataclass
-class ExportPlaylist:
+class ExtendedExportPlaylist:
     title: str
     smart: bool
     sorting: str
@@ -509,7 +509,7 @@ class ExportPlaylist:
 
 
 @dataclass
-class ExportEpisode:
+class ExtendedExportEpisode:
     id: str
     item_id: int
     pub_date: date
@@ -534,14 +534,14 @@ class ExportEpisode:
 
 
 @dataclass
-class ExportFeed:
+class ExtendedExportFeed:
     item_id: int
     title: str
     xml_url: str
     html_url: str
     added_at: datetime
     is_subscribed: bool
-    episodes: list[ExportEpisode]
+    episodes: list[ExtendedExportEpisode]
 
     def _validate(self) -> None:
         assert len(self.title) > 3, self.title
@@ -552,21 +552,29 @@ class ExportFeed:
 
 
 @dataclass
-class AccountExport:
-    playlists: list[ExportPlaylist]
-    feeds: list[ExportFeed]
+class AccountExtendedExport:
+    playlists: list[ExtendedExportPlaylist]
+    feeds: list[ExtendedExportFeed]
 
 
-def export_account_extended_data(session: Session) -> AccountExport:
+def export_account_extended_data(session: Session) -> AccountExtendedExport:
     path = "/account/export_opml/extended"
-    r = _request(session, path=path, accept=None, cache_expires=timedelta(days=7))
+    r = _request(
+        session,
+        path=path,
+        accept="application/xml",
+        cache_expires=timedelta(days=7),
+    )
     d = xmltodict.parse(r.text)
     outline = d["opml"]["body"]["outline"]
-    return AccountExport(playlists=_opml_playlists(outline), feeds=_opml_feeds(outline))
+    return AccountExtendedExport(
+        playlists=_opml_playlists(outline),
+        feeds=_opml_feeds(outline),
+    )
 
 
-def _opml_playlists(node: dict) -> list[ExportPlaylist]:  # type: ignore
-    playlists: list[ExportPlaylist] = []
+def _opml_playlists(node: dict) -> list[ExtendedExportPlaylist]:  # type: ignore
+    playlists: list[ExtendedExportPlaylist] = []
 
     for group in node:
         if group["@text"] == "playlists":
@@ -574,7 +582,9 @@ def _opml_playlists(node: dict) -> list[ExportPlaylist]:  # type: ignore
                 title = playlist_outline["@title"]
                 smart = playlist_outline.get("@smart", "0") == "1"
                 sorting = playlist_outline.get("@sorting", "manual")
-                playlist = ExportPlaylist(title=title, smart=smart, sorting=sorting)
+                playlist = ExtendedExportPlaylist(
+                    title=title, smart=smart, sorting=sorting
+                )
                 playlist._validate()
                 playlists.append(playlist)
 
@@ -582,8 +592,8 @@ def _opml_playlists(node: dict) -> list[ExportPlaylist]:  # type: ignore
     return playlists
 
 
-def _opml_feeds(node: dict) -> list[ExportFeed]:  # type: ignore
-    feeds: list[ExportFeed] = []
+def _opml_feeds(node: dict) -> list[ExtendedExportFeed]:  # type: ignore
+    feeds: list[ExtendedExportFeed] = []
 
     for group in node:
         if group["@text"] == "feeds":
@@ -596,7 +606,7 @@ def _opml_feeds(node: dict) -> list[ExportFeed]:  # type: ignore
                 added_at = dateutil.parser.parse(feed_outline["@overcastAddedDate"])
                 is_subscribed = feed_outline.get("@subscribed", "0") == "1"
 
-                feed = ExportFeed(
+                feed = ExtendedExportFeed(
                     item_id=item_id,
                     title=title,
                     xml_url=xml_url,
@@ -613,8 +623,8 @@ def _opml_feeds(node: dict) -> list[ExportFeed]:  # type: ignore
     return feeds
 
 
-def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:  # type: ignore
-    episodes: list[ExportEpisode] = []
+def _opml_episode(nodes: list[dict]) -> list[ExtendedExportEpisode]:  # type: ignore
+    episodes: list[ExtendedExportEpisode] = []
 
     for node in nodes:
         assert node["@type"] == "podcast-episode"
@@ -630,7 +640,7 @@ def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:  # type: ignore
         user_deleted = node.get("@userDeleted", "0") == "1"
         played = node.get("@played", "0") == "1"
 
-        episode = ExportEpisode(
+        episode = ExtendedExportEpisode(
             id=id,
             item_id=item_id,
             pub_date=pub_date,
@@ -689,8 +699,8 @@ def _as_list(x: T | list[T]) -> list[T]:
 
 
 def zip_html_and_export_feeds(
-    html_feeds: list[HTMLPodcastsFeed], export_feeds: list[ExportFeed]
-) -> Iterator[tuple[HTMLPodcastsFeed, ExportFeed]]:
+    html_feeds: list[HTMLPodcastsFeed], export_feeds: list[ExtendedExportFeed]
+) -> Iterator[tuple[HTMLPodcastsFeed, ExtendedExportFeed]]:
     assert len(html_feeds) == len(export_feeds)
 
     html_feeds_by_title = {feed.title: feed for feed in html_feeds}
