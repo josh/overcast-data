@@ -7,6 +7,8 @@ from typing import Iterator
 import requests
 from requests.structures import CaseInsensitiveDict
 
+from lru_cache import LRUCache
+
 logger = logging.getLogger("requests_cache")
 
 
@@ -21,6 +23,8 @@ class Session:
     _min_time_between_requests: timedelta
     _last_request_at: datetime = datetime.min
     _offline: bool
+
+    simple_cache: LRUCache
 
     def __init__(
         self,
@@ -37,6 +41,11 @@ class Session:
         self._session.headers.update(headers)
         self._min_time_between_requests = min_time_between_requests
         self._offline = offline
+        self.simple_cache = LRUCache(
+            path=cache_dir / "cache.pickle",
+            max_bytesize=1024 * 1024,  # 1 MB
+            save_on_exit=True,
+        )
 
     def get(
         self,
@@ -71,7 +80,10 @@ class Session:
 
         url = self._base_url + path
         self._throttle()
-        logger.info("GET %s", self._base_url)
+        if logger.isEnabledFor(logging.DEBUG):
+            logger.debug("GET %s", url)
+        else:
+            logger.info("GET %s", self._base_url)
         r = self._session.get(url)
 
         try:
@@ -103,6 +115,8 @@ class Session:
     def cache_entries(self) -> Iterator[tuple[Path, requests.Response]]:
         for path in self._cache_dir.rglob("*"):
             if not path.is_file():
+                continue
+            if path.name == "cache.pickle":
                 continue
             try:
                 response = bytes_to_response(path.read_bytes())

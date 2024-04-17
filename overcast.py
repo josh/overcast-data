@@ -357,15 +357,19 @@ def fetch_episode(session: Session, episode_id: str) -> HTMLEpisode:
 
 
 def fetch_audio_duration(session: Session, url: str) -> timedelta | None:
-    if session._offline:
-        raise requests_cache.OfflineError()
-    response = requests.get(url, headers={"Range": "bytes=0-100000"})
-    response.raise_for_status()
-    io = BytesIO(response.content)
-    f = mutagen.File(io)  # type: ignore
-    if not f:
-        return None
-    return timedelta(seconds=f.info.length)
+    def _fetch_audio_duration() -> timedelta | None:
+        if session._offline:
+            raise requests_cache.OfflineError()
+        response = requests.get(url, headers={"Range": "bytes=0-100000"})
+        response.raise_for_status()
+        io = BytesIO(response.content)
+        f = mutagen.File(io)  # type: ignore
+        if not f:
+            return None
+        return timedelta(seconds=f.info.length)
+
+    key = f"fetch_audio_duration:v1:{url}"
+    return session.simple_cache.get(key, _fetch_audio_duration)
 
 
 @dataclass
