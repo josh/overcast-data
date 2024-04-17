@@ -105,8 +105,8 @@ def test_fetch_audio_duration(overcast_session: Session) -> None:
     assert duration is None
 
 
-# def test_export_account_data(overcast_session: Session) -> None:
-#     export_data = export_account_data(session=overcast_session, extended=False)
+# def test_export_account_extended_data(overcast_session: Session) -> None:
+#     export_data = export_account_extended_data(session=overcast_session)
 #     assert len(export_data.playlists) > 0
 #     assert len(export_data.feeds) > 0
 

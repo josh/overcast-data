@@ -1,7 +1,7 @@
 import logging
 import re
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from io import BytesIO
 from pathlib import Path
 from typing import Iterator, Literal, TypeVar
@@ -526,8 +526,8 @@ class ExportEpisode:
 
         assert len(self.title) > 3, self.title
         assert self.pub_date <= datetime.now().date(), self.pub_date
-        assert self.user_updated_at < datetime.now(), self.user_updated_at
-        assert self.enclosure_url.startswith("https://"), self.enclosure_url
+        assert self.user_updated_at < datetime.now(timezone.utc), self.user_updated_at
+        assert self.enclosure_url.startswith("http"), self.enclosure_url
 
 
 @dataclass
@@ -542,7 +542,7 @@ class ExportFeed:
 
     def _validate(self) -> None:
         assert len(self.title) > 3, self.title
-        assert self.added_at < datetime.now(), self.added_at
+        assert self.added_at < datetime.now(timezone.utc), self.added_at
         assert self.xml_url.startswith("https://"), self.xml_url
         assert self.html_url.startswith("https://"), self.html_url
         assert len(self.episodes) > 0
@@ -554,12 +554,9 @@ class AccountExport:
     feeds: list[ExportFeed]
 
 
-def export_account_data(session: Session, extended: bool = False) -> AccountExport:
-    path = "/account/export_opml"
-    if extended:
-        path += "/extended"
-
-    r = _request(session, path=path, cache_expires=timedelta(days=1))
+def export_account_extended_data(session: Session) -> AccountExport:
+    path = "/account/export_opml/extended"
+    r = _request(session, path=path, cache_expires=timedelta(days=7))
     d = xmltodict.parse(r.text)
     outline = d["opml"]["body"]["outline"]
     return AccountExport(playlists=_opml_playlists(outline), feeds=_opml_feeds(outline))
