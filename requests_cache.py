@@ -3,6 +3,7 @@ import time
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterator
+from urllib.parse import urlparse
 
 import requests
 from requests.structures import CaseInsensitiveDict
@@ -16,6 +17,12 @@ class OfflineError(Exception):
     pass
 
 
+_DEFAULT_MIME_TYPE_EXTNAMES = {
+    "application/json": "json",
+    "text/html": "html",
+}
+
+
 class Session:
     _cache_dir: Path
     _base_url: str
@@ -24,6 +31,7 @@ class Session:
     _last_request_at: datetime = datetime.min
     _offline: bool
 
+    mime_type_extnames: dict[str, str]
     simple_cache: LRUCache
 
     def __init__(
@@ -33,6 +41,7 @@ class Session:
         headers: dict[str, str] = {},
         min_time_between_requests: timedelta = timedelta(seconds=0),
         offline: bool = False,
+        mime_type_extnames: dict[str, str] = {},
     ):
         assert not base_url.endswith("/")
         self._cache_dir = cache_dir
@@ -47,16 +56,28 @@ class Session:
             save_on_exit=True,
         )
 
+        self.mime_type_extnames = _DEFAULT_MIME_TYPE_EXTNAMES.copy()
+        self.mime_type_extnames.update(mime_type_extnames)
+
     def get(
         self,
         path: str,
+        accept: str | None = None,
         cache_expires: timedelta = timedelta(seconds=0),
         stale_cache_on_error: bool = True,
     ) -> requests.Response:
         assert path.startswith("/")
 
-        urlsafe_path = path.lstrip("/").replace("?", "?_")
-        filepath = Path(self._cache_dir, urlsafe_path)
+        headers: dict[str, str] = {}
+        if accept:
+            headers["Accept"] = accept
+        request = requests.Request(
+            method="GET",
+            url=self._base_url + path,
+            headers=headers,
+        )
+
+        filepath = self.cache_path(request=request)
         logger.debug(f"Request cache path: {filepath} exists: {filepath.exists()}")
 
         cached_response: requests.Response | None = None
@@ -78,13 +99,12 @@ class Session:
             logger.error("Offline mode, no cache available")
             raise OfflineError()
 
-        url = self._base_url + path
         self._throttle()
         if logger.isEnabledFor(logging.DEBUG):
-            logger.debug("GET %s", url)
+            logger.debug("GET %s", request.url)
         else:
             logger.info("GET %s", self._base_url)
-        r = self._session.get(url)
+        r = self._session.send(request.prepare())
 
         try:
             r.raise_for_status()
@@ -111,6 +131,27 @@ class Session:
             logger.info("Waiting %s seconds...", seconds_to_wait)
             time.sleep(seconds_to_wait)
         self._last_request_at = datetime.now()
+
+    def cache_path(self, request: requests.Request) -> Path:
+        assert request.url.startswith(self._base_url), request.url
+        prepped = self._session.prepare_request(request)
+        url_components = urlparse(prepped.url)
+
+        url_path: str = str(url_components.path).removeprefix("/")
+        file_path = self._cache_dir / url_path
+
+        if url_components.query:
+            file_path = file_path.with_name(
+                f"{file_path.name}?{str(url_components.query)}"
+            )
+
+        if accept := prepped.headers.get("Accept"):
+            if extname := self.mime_type_extnames.get(accept):
+                file_path = file_path.with_suffix(f".{extname}")
+            else:
+                logger.debug("No extname for Accept: %s", accept)
+
+        return file_path
 
     def cache_entries(self) -> Iterator[tuple[Path, requests.Response]]:
         for path in self._cache_dir.rglob("*"):

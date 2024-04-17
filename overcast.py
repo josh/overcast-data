@@ -105,6 +105,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
     r = _request(
         session=session,
         path="/podcasts",
+        accept="text/html",
         cache_expires=timedelta(hours=1),
     )
 
@@ -231,6 +232,7 @@ def fetch_podcast(session: Session, feed_id: str) -> HTMLPodcastFeed:
     r = _request(
         session=session,
         path=f"/{feed_id}",
+        accept=None,
         cache_expires=timedelta(hours=1),
     )
 
@@ -403,6 +405,7 @@ def fetch_episode(session: Session, episode_id: str) -> HTMLEpisode:
     r = _request(
         session=session,
         path=f"/{episode_id}",
+        accept=None,
         cache_expires=timedelta(days=30),
     )
 
@@ -556,7 +559,7 @@ class AccountExport:
 
 def export_account_extended_data(session: Session) -> AccountExport:
     path = "/account/export_opml/extended"
-    r = _request(session, path=path, cache_expires=timedelta(days=7))
+    r = _request(session, path=path, accept=None, cache_expires=timedelta(days=7))
     d = xmltodict.parse(r.text)
     outline = d["opml"]["body"]["outline"]
     return AccountExport(playlists=_opml_playlists(outline), feeds=_opml_feeds(outline))
@@ -647,10 +650,13 @@ def _opml_episode(nodes: list[dict]) -> list[ExportEpisode]:  # type: ignore
 
 
 def _request(
-    session: Session, path: str, cache_expires: timedelta
+    session: Session,
+    path: str,
+    accept: str | None,
+    cache_expires: timedelta,
 ) -> requests.Response:
     try:
-        response = session.get(path=path, cache_expires=cache_expires)
+        response = session.get(path=path, accept=accept, cache_expires=cache_expires)
     except requests.HTTPError as e:
         if e.response.status_code == 429:
             logger.critical("Rate limited")
