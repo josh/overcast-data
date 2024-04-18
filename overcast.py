@@ -9,8 +9,7 @@ from typing import Iterator, Literal, TypeVar
 import dateutil.parser
 import mutagen
 import requests
-import xmltodict
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 import requests_cache
 
@@ -563,80 +562,74 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
         accept="application/xml",
         cache_expires=timedelta(days=7),
     )
-    d = xmltodict.parse(r.text)
-    outline = d["opml"]["body"]["outline"]
+
+    soup = BeautifulSoup(r.content, "xml")
     return AccountExtendedExport(
-        playlists=_opml_playlists(outline),
-        feeds=_opml_feeds(outline),
+        playlists=_opml_playlists(soup),
+        feeds=_opml_feeds(soup),
     )
 
 
-def _opml_playlists(node: dict) -> list[ExtendedExportPlaylist]:  # type: ignore
+def _opml_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist]:
     playlists: list[ExtendedExportPlaylist] = []
 
-    for group in node:
-        if group["@text"] == "playlists":
-            for playlist_outline in _as_list(group["outline"]):
-                title = playlist_outline["@title"]
-                smart = playlist_outline.get("@smart", "0") == "1"
-                sorting = playlist_outline.get("@sorting", "manual")
-                playlist = ExtendedExportPlaylist(
-                    title=title, smart=smart, sorting=sorting
-                )
-                playlist._validate()
-                playlists.append(playlist)
+    for outline in soup.select(
+        "outline[text='playlists'] > outline[type='podcast-playlist']"
+    ):
+        title: str = outline.attrs["title"]
+        smart: bool = outline.attrs["smart"] == "1"
+        sorting: str = outline.attrs["sorting"]
+        playlist = ExtendedExportPlaylist(title=title, smart=smart, sorting=sorting)
+        playlist._validate()
+        playlists.append(playlist)
 
-    logger.info("Found %d playlists in export", len(playlists))
+    logger.debug("Found %d playlists in export", len(playlists))
     return playlists
 
 
-def _opml_feeds(node: dict) -> list[ExtendedExportFeed]:  # type: ignore
+def _opml_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
     feeds: list[ExtendedExportFeed] = []
 
-    for group in node:
-        if group["@text"] == "feeds":
-            for feed_outline in _as_list(group["outline"]):
-                assert feed_outline["@type"] == "rss"
-                item_id = int(feed_outline["@overcastId"])
-                title = feed_outline["@title"]
-                html_url = feed_outline["@htmlUrl"]
-                xml_url = feed_outline["@xmlUrl"]
-                added_at = dateutil.parser.parse(feed_outline["@overcastAddedDate"])
-                is_subscribed = feed_outline.get("@subscribed", "0") == "1"
+    for outline in soup.select("outline[text='feeds'] > outline[type='rss']"):
+        item_id: int = int(outline.attrs["overcastId"])
+        title: str = outline.attrs["title"]
+        html_url: str = outline.attrs["htmlUrl"]
+        xml_url: str = outline.attrs["xmlUrl"]
+        added_at = dateutil.parser.parse(outline.attrs["overcastAddedDate"])
+        is_subscribed: bool = outline.attrs["subscribed"] == "1"
 
-                feed = ExtendedExportFeed(
-                    item_id=item_id,
-                    title=title,
-                    xml_url=xml_url,
-                    html_url=html_url,
-                    added_at=added_at,
-                    is_subscribed=is_subscribed,
-                    episodes=_opml_episode(_as_list(feed_outline["outline"])),
-                )
-                feed._validate()
-                # logger.debug("%s", feed)
-                feeds.append(feed)
+        feed = ExtendedExportFeed(
+            item_id=item_id,
+            title=title,
+            xml_url=xml_url,
+            html_url=html_url,
+            added_at=added_at,
+            is_subscribed=is_subscribed,
+            episodes=_opml_episode(outline),
+        )
+        feed._validate()
+        # logger.debug("%s", feed)
+        feeds.append(feed)
 
-    logger.info("Found %d feeds in export", len(feeds))
+    logger.debug("Found %d feeds in export", len(feeds))
     return feeds
 
 
-def _opml_episode(nodes: list[dict]) -> list[ExtendedExportEpisode]:  # type: ignore
+def _opml_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
     episodes: list[ExtendedExportEpisode] = []
 
-    for node in nodes:
-        assert node["@type"] == "podcast-episode"
-        overcast_url = node["@overcastUrl"]
-        id = node["@overcastUrl"].removeprefix("https://overcast.fm/")
+    for outline in rss_outline.select("outline[type='podcast-episode']"):
+        overcast_url: str = outline.attrs["overcastUrl"]
+        id = outline.attrs["overcastUrl"].removeprefix("https://overcast.fm/")
         assert id.startswith("+"), overcast_url
-        item_id = int(node["@overcastId"])
-        pub_date = dateutil.parser.parse(node["@pubDate"]).date()
-        title = node["@title"]
-        url = node["@url"]
-        enclosure_url = node["@enclosureUrl"]
-        user_updated_at = dateutil.parser.parse(node["@userUpdatedDate"])
-        user_deleted = node.get("@userDeleted", "0") == "1"
-        played = node.get("@played", "0") == "1"
+        item_id = int(outline.attrs["overcastId"])
+        pub_date = dateutil.parser.parse(outline.attrs["pubDate"]).date()
+        title: str = outline.attrs["title"]
+        url: str = outline.attrs["url"]
+        enclosure_url: str = outline.attrs["enclosureUrl"]
+        user_updated_at = dateutil.parser.parse(outline.attrs["userUpdatedDate"])
+        user_deleted: bool = outline.attrs.get("userDeleted", "0") == "1"
+        played: bool = outline.attrs.get("played", "0") == "1"
 
         episode = ExtendedExportEpisode(
             id=id,
@@ -653,7 +646,7 @@ def _opml_episode(nodes: list[dict]) -> list[ExtendedExportEpisode]:  # type: ig
         episode._validate()
         episodes.append(episode)
 
-    logger.info("Found %d episodes in export", len(episodes))
+    logger.debug("Found %d episodes in export", len(episodes))
     return episodes
 
 
