@@ -7,6 +7,7 @@ import pytest
 import overcast
 from overcast import (
     Session,
+    export_account_extended_data,
     fetch_audio_duration,
     fetch_episode,
     fetch_podcast,
@@ -105,10 +106,10 @@ def test_fetch_audio_duration(overcast_session: Session) -> None:
     assert duration is None
 
 
-# def test_export_account_extended_data(overcast_session: Session) -> None:
-#     export_data = export_account_extended_data(session=overcast_session)
-#     assert len(export_data.playlists) > 0
-#     assert len(export_data.feeds) > 0
+def test_export_account_extended_data(overcast_session: Session) -> None:
+    export_data = export_account_extended_data(session=overcast_session)
+    assert len(export_data.playlists) > 0
+    assert len(export_data.feeds) > 0
 
 
 def test_parse_episode_caption_text() -> None:
