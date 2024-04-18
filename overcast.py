@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from io import BytesIO
 from pathlib import Path
-from typing import Iterator, Literal, TypeVar
+from typing import Literal
 
 import dateutil.parser
 import mutagen
@@ -524,76 +524,6 @@ def fetch_audio_duration(session: Session, url: str) -> timedelta | None:
 
 
 @dataclass
-class ExtendedExportPlaylist:
-    title: str
-    smart: bool
-    sorting: str
-
-    def _validate(self) -> None:
-        try:
-            assert len(self.title) > 3, self.title
-        except AssertionError as e:
-            logger.error(e)
-            if _RAISE_VALIDATION_ERRORS:
-                raise e
-
-
-@dataclass
-class ExtendedExportEpisode:
-    id: str
-    item_id: int
-    pub_date: date
-    title: str
-    url: str
-    overcast_url: str
-    enclosure_url: str
-    user_updated_at: datetime
-    user_deleted: bool
-    played: bool
-
-    def _validate(self) -> None:
-        try:
-            assert not self.id.startswith("/"), self.id
-            if self.id.startswith("p"):
-                assert len(self.id) == 15, self.id
-                assert "-" in self.id, self.id
-
-            assert len(self.title) > 3, self.title
-            assert self.pub_date <= datetime.now().date(), self.pub_date
-            assert self.user_updated_at < datetime.now(
-                timezone.utc
-            ), self.user_updated_at
-            assert self.enclosure_url.startswith("http"), self.enclosure_url
-        except AssertionError as e:
-            logger.error(e)
-            if _RAISE_VALIDATION_ERRORS:
-                raise e
-
-
-@dataclass
-class ExtendedExportFeed:
-    item_id: int
-    title: str
-    xml_url: str
-    html_url: str
-    added_at: datetime
-    is_subscribed: bool
-    episodes: list[ExtendedExportEpisode]
-
-    def _validate(self) -> None:
-        try:
-            assert len(self.title) > 3, self.title
-            assert self.added_at < datetime.now(timezone.utc), self.added_at
-            assert self.xml_url.startswith("https://"), self.xml_url
-            assert self.html_url.startswith("https://"), self.html_url
-            assert len(self.episodes) > 0
-        except AssertionError as e:
-            logger.error(e)
-            if _RAISE_VALIDATION_ERRORS:
-                raise e
-
-
-@dataclass
 class AccountExport:
     feeds: list["ExportFeed"]
 
@@ -623,8 +553,9 @@ class ExportFeed:
 
     def _validate(self) -> None:
         try:
-            assert not self.xml_url.startswith("/"), self.xml_url
-            assert not self.html_url.startswith("/"), self.html_url
+            assert self.item_id > 0, self.item_id
+            assert self.xml_url.startswith("http"), self.xml_url
+            assert self.html_url.startswith("http"), self.html_url
             assert len(self.title) > 3, self.title
             assert self.added_at < datetime.now(timezone.utc), self.added_at
         except AssertionError as e:
@@ -679,6 +610,22 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
     )
 
 
+@dataclass
+class ExtendedExportPlaylist:
+    title: str
+    smart: bool
+    sorting: str
+
+    def _validate(self) -> None:
+        try:
+            assert len(self.title) > 3, self.title
+            assert self.sorting in ["chronological", "manual"], self.sorting
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
+
+
 def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist]:
     playlists: list[ExtendedExportPlaylist] = []
 
@@ -694,6 +641,30 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
 
     logger.debug("Found %d playlists in export", len(playlists))
     return playlists
+
+
+@dataclass
+class ExtendedExportFeed:
+    item_id: int
+    title: str
+    xml_url: str
+    html_url: str
+    added_at: datetime
+    is_subscribed: bool
+    episodes: list["ExtendedExportEpisode"]
+
+    def _validate(self) -> None:
+        try:
+            assert self.item_id > 0
+            assert len(self.title) > 3, self.title
+            assert self.added_at < datetime.now(timezone.utc), self.added_at
+            assert self.xml_url.startswith("http"), self.xml_url
+            assert self.html_url.startswith("http"), self.html_url
+            assert len(self.episodes) > 0
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
@@ -724,13 +695,45 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
     return feeds
 
 
+@dataclass
+class ExtendedExportEpisode:
+    pub_date: date
+    title: str
+    item_id: int
+    url: str
+    overcast_url: str
+    enclosure_url: str
+    user_updated_at: datetime
+    user_deleted: bool
+    played: bool
+
+    @property
+    def id(self) -> str:
+        return self.overcast_url.removeprefix("https://overcast.fm/")
+
+    def _validate(self) -> None:
+        try:
+            assert self.id.startswith("+"), self.overcast_url
+            if self.id.startswith("p"):
+                assert len(self.id) == 15, self.overcast_url
+                assert "-" in self.id, self.overcast_url
+            assert len(self.title) > 3, self.title
+            assert self.pub_date <= datetime.now().date(), self.pub_date
+            assert self.user_updated_at < datetime.now(
+                timezone.utc
+            ), self.user_updated_at
+            assert self.enclosure_url.startswith("http"), self.enclosure_url
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
+
+
 def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
     episodes: list[ExtendedExportEpisode] = []
 
     for outline in rss_outline.select("outline[type='podcast-episode']"):
         overcast_url: str = outline.attrs["overcastUrl"]
-        id = outline.attrs["overcastUrl"].removeprefix("https://overcast.fm/")
-        assert id.startswith("+"), overcast_url
         item_id = int(outline.attrs["overcastId"])
         pub_date = dateutil.parser.parse(outline.attrs["pubDate"]).date()
         title: str = outline.attrs["title"]
@@ -741,7 +744,6 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
         played: bool = outline.attrs.get("played", "0") == "1"
 
         episode = ExtendedExportEpisode(
-            id=id,
             item_id=item_id,
             pub_date=pub_date,
             title=title,
@@ -787,24 +789,3 @@ def _parse_duration(text: str) -> timedelta:
     text = text[:-4]
     minutes = int(text)
     return timedelta(minutes=minutes)
-
-
-T = TypeVar("T")
-
-
-def _as_list(x: T | list[T]) -> list[T]:
-    if isinstance(x, list):
-        return x
-    return [x]
-
-
-def zip_html_and_export_feeds(
-    html_feeds: list[HTMLPodcastsFeed], export_feeds: list[ExtendedExportFeed]
-) -> Iterator[tuple[HTMLPodcastsFeed, ExtendedExportFeed]]:
-    assert len(html_feeds) == len(export_feeds)
-
-    html_feeds_by_title = {feed.title: feed for feed in html_feeds}
-
-    for export_feed in export_feeds:
-        html_feed = html_feeds_by_title[export_feed.title]
-        yield html_feed, export_feed
