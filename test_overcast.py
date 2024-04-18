@@ -7,6 +7,7 @@ import pytest
 import overcast
 from overcast import (
     Session,
+    export_account_data,
     export_account_extended_data,
     fetch_audio_duration,
     fetch_episode,
@@ -104,6 +105,11 @@ def test_fetch_audio_duration(overcast_session: Session) -> None:
     url = "http://example.com/"
     duration = fetch_audio_duration(session=overcast_session, url=url)
     assert duration is None
+
+
+def test_export_account_data(overcast_session: Session) -> None:
+    export_data = export_account_data(session=overcast_session)
+    assert len(export_data.feeds) > 0
 
 
 def test_export_account_extended_data(overcast_session: Session) -> None:

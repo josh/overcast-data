@@ -549,9 +549,68 @@ class ExtendedExportFeed:
 
 
 @dataclass
+class AccountExport:
+    feeds: list["ExportFeed"]
+
+
+def export_account_data(session: Session) -> AccountExport:
+    path = "/account/export_opml"
+    r = _request(
+        session,
+        path=path,
+        accept="application/xml",
+        cache_expires=timedelta(days=7),
+    )
+
+    soup = BeautifulSoup(r.content, "xml")
+    return AccountExport(
+        feeds=_opml_feeds(soup),
+    )
+
+
+@dataclass
+class ExportFeed:
+    item_id: int
+    title: str
+    xml_url: str
+    html_url: str
+    added_at: datetime
+
+    def _validate(self) -> None:
+        assert not self.xml_url.startswith("/"), self.xml_url
+        assert not self.html_url.startswith("/"), self.html_url
+        assert len(self.title) > 3, self.title
+        assert self.added_at < datetime.now(timezone.utc), self.added_at
+
+
+def _opml_feeds(soup: BeautifulSoup) -> list[ExportFeed]:
+    feeds: list[ExportFeed] = []
+
+    for outline in soup.select("outline[text='feeds'] > outline[type='rss']"):
+        item_id: int = int(outline.attrs["overcastId"])
+        title: str = outline.attrs["title"]
+        html_url: str = outline.attrs["htmlUrl"]
+        xml_url: str = outline.attrs["xmlUrl"]
+        added_at = dateutil.parser.parse(outline.attrs["overcastAddedDate"])
+
+        feed = ExportFeed(
+            item_id=item_id,
+            title=title,
+            xml_url=xml_url,
+            html_url=html_url,
+            added_at=added_at,
+        )
+        feed._validate()
+        feeds.append(feed)
+
+    logger.debug("Found %d feeds in export", len(feeds))
+    return feeds
+
+
+@dataclass
 class AccountExtendedExport:
-    playlists: list[ExtendedExportPlaylist]
-    feeds: list[ExtendedExportFeed]
+    playlists: list["ExtendedExportPlaylist"]
+    feeds: list["ExtendedExportFeed"]
 
 
 def export_account_extended_data(session: Session) -> AccountExtendedExport:
@@ -565,12 +624,12 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
 
     soup = BeautifulSoup(r.content, "xml")
     return AccountExtendedExport(
-        playlists=_opml_playlists(soup),
-        feeds=_opml_feeds(soup),
+        playlists=_opml_extended_playlists(soup),
+        feeds=_opml_extended_feeds(soup),
     )
 
 
-def _opml_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist]:
+def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist]:
     playlists: list[ExtendedExportPlaylist] = []
 
     for outline in soup.select(
@@ -587,7 +646,7 @@ def _opml_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist]:
     return playlists
 
 
-def _opml_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
+def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
     feeds: list[ExtendedExportFeed] = []
 
     for outline in soup.select("outline[text='feeds'] > outline[type='rss']"):
@@ -605,7 +664,7 @@ def _opml_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
             html_url=html_url,
             added_at=added_at,
             is_subscribed=is_subscribed,
-            episodes=_opml_episode(outline),
+            episodes=_opml_extended_episode(outline),
         )
         feed._validate()
         # logger.debug("%s", feed)
@@ -615,7 +674,7 @@ def _opml_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
     return feeds
 
 
-def _opml_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
+def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
     episodes: list[ExtendedExportEpisode] = []
 
     for outline in rss_outline.select("outline[type='podcast-episode']"):
