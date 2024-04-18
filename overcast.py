@@ -1,5 +1,6 @@
 import logging
 import re
+import sys
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from io import BytesIO
@@ -15,6 +16,7 @@ import requests_cache
 
 logger = logging.getLogger("overcast")
 
+_RAISE_VALIDATION_ERRORS = "pytest" in sys.modules
 
 _SAFARI_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -88,16 +90,23 @@ class HTMLPodcastsFeed:
         return 0
 
     def _validate(self) -> None:
-        assert self.html_url.startswith("https://overcast.fm/"), self.html_url
-        assert not self.id.startswith("/"), self.id
-        if self.is_private:
-            assert self.item_id, self.id
-            assert (
-                self.art_id == self.item_id
-            ), f"art_url: {self.art_url}, id: {self.id}"
-        assert self.art_url.startswith("https://public.overcast-cdn.com"), self.art_url
-        assert self.art_id, self.art_url
-        assert len(self.title) > 3
+        try:
+            assert self.html_url.startswith("https://overcast.fm/"), self.html_url
+            assert not self.id.startswith("/"), self.id
+            if self.is_private:
+                assert self.item_id, self.id
+                assert (
+                    self.art_id == self.item_id
+                ), f"art_url: {self.art_url}, id: {self.id}"
+            assert self.art_url.startswith(
+                "https://public.overcast-cdn.com"
+            ), self.art_url
+            assert self.art_id, self.art_url
+            assert len(self.title) > 3
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
@@ -179,17 +188,24 @@ class HTMLPodcastFeed:
         return self.html_url.startswith("https://overcast.fm/p")
 
     def _validate(self) -> None:
-        assert self.html_url.startswith("https://overcast.fm/"), self.html_url
-        assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
-        assert self.item_id, self.overcast_uri
-        assert self.art_url.startswith("https://public.overcast-cdn.com/"), self.art_url
-        assert self.art_id, self.art_url
-        assert self.delete_url.startswith("/podcasts/delete/"), self.delete_url
-        assert self.delete_action_id, self.delete_url
-        assert self.item_id == self.art_id
-        assert self.item_id == self.delete_action_id
-        assert len(self.title) > 3, self.title
-        assert len(self.episodes) > 0
+        try:
+            assert self.html_url.startswith("https://overcast.fm/"), self.html_url
+            assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
+            assert self.item_id, self.overcast_uri
+            assert self.art_url.startswith(
+                "https://public.overcast-cdn.com/"
+            ), self.art_url
+            assert self.art_id, self.art_url
+            assert self.delete_url.startswith("/podcasts/delete/"), self.delete_url
+            assert self.delete_action_id, self.delete_url
+            assert self.item_id == self.art_id
+            assert self.item_id == self.delete_action_id
+            assert len(self.title) > 3, self.title
+            assert len(self.episodes) > 0
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 @dataclass
@@ -216,15 +232,22 @@ class HTMLPodcastEpisode:
         return self.download_state == "deleted"
 
     def _validate(self) -> None:
-        assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
-        assert not self.id.startswith("/"), self.id
-        if self.id.startswith("p"):
-            assert len(self.id) == 15, self.id
-            assert "-" in self.id, self.id
-        assert len(self.title) > 3, self.title
-        assert self.pub_date <= datetime.now().date(), self.pub_date
-        assert self.is_deleted != self.is_new, "is_deleted and is_new can't be the same"
-        assert self.download_state, "unknown download state"
+        try:
+            assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
+            assert not self.id.startswith("/"), self.id
+            if self.id.startswith("p"):
+                assert len(self.id) == 15, self.id
+                assert "-" in self.id, self.id
+            assert len(self.title) > 3, self.title
+            assert self.pub_date <= datetime.now().date(), self.pub_date
+            assert (
+                self.is_deleted != self.is_new
+            ), "is_deleted and is_new can't be the same"
+            assert self.download_state, "unknown download state"
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 def fetch_podcast(session: Session, feed_id: str) -> HTMLPodcastFeed:
@@ -384,18 +407,23 @@ class HTMLEpisode:
         return self.podcast_html_url.removeprefix("https://overcast.fm/")
 
     def _validate(self) -> None:
-        assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
-        assert self.id.startswith("+"), self.id
-        assert self.item_id, self.item_id
-        assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
-        assert self.feed_art_url.startswith(
-            "https://public.overcast-cdn.com/"
-        ), self.feed_art_url
-        assert self.feed_art_id, self.feed_art_url
-        assert len(self.title) > 3, self.title
-        assert self.date_published <= datetime.now().date(), self.date_published
-        assert self.audio_url.startswith("http"), self.audio_url
-        assert "#" not in self.audio_url, self.audio_url
+        try:
+            assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
+            assert self.id.startswith("+"), self.id
+            assert self.item_id, self.item_id
+            assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
+            assert self.feed_art_url.startswith(
+                "https://public.overcast-cdn.com/"
+            ), self.feed_art_url
+            assert self.feed_art_id, self.feed_art_url
+            assert len(self.title) > 3, self.title
+            assert self.date_published <= datetime.now().date(), self.date_published
+            assert self.audio_url.startswith("http"), self.audio_url
+            assert "#" not in self.audio_url, self.audio_url
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 def fetch_episode(session: Session, episode_id: str) -> HTMLEpisode:
@@ -502,7 +530,12 @@ class ExtendedExportPlaylist:
     sorting: str
 
     def _validate(self) -> None:
-        assert len(self.title) > 3, self.title
+        try:
+            assert len(self.title) > 3, self.title
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 @dataclass
@@ -519,15 +552,22 @@ class ExtendedExportEpisode:
     played: bool
 
     def _validate(self) -> None:
-        assert not self.id.startswith("/"), self.id
-        if self.id.startswith("p"):
-            assert len(self.id) == 15, self.id
-            assert "-" in self.id, self.id
+        try:
+            assert not self.id.startswith("/"), self.id
+            if self.id.startswith("p"):
+                assert len(self.id) == 15, self.id
+                assert "-" in self.id, self.id
 
-        assert len(self.title) > 3, self.title
-        assert self.pub_date <= datetime.now().date(), self.pub_date
-        assert self.user_updated_at < datetime.now(timezone.utc), self.user_updated_at
-        assert self.enclosure_url.startswith("http"), self.enclosure_url
+            assert len(self.title) > 3, self.title
+            assert self.pub_date <= datetime.now().date(), self.pub_date
+            assert self.user_updated_at < datetime.now(
+                timezone.utc
+            ), self.user_updated_at
+            assert self.enclosure_url.startswith("http"), self.enclosure_url
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 @dataclass
@@ -541,11 +581,16 @@ class ExtendedExportFeed:
     episodes: list[ExtendedExportEpisode]
 
     def _validate(self) -> None:
-        assert len(self.title) > 3, self.title
-        assert self.added_at < datetime.now(timezone.utc), self.added_at
-        assert self.xml_url.startswith("https://"), self.xml_url
-        assert self.html_url.startswith("https://"), self.html_url
-        assert len(self.episodes) > 0
+        try:
+            assert len(self.title) > 3, self.title
+            assert self.added_at < datetime.now(timezone.utc), self.added_at
+            assert self.xml_url.startswith("https://"), self.xml_url
+            assert self.html_url.startswith("https://"), self.html_url
+            assert len(self.episodes) > 0
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 @dataclass
@@ -577,10 +622,15 @@ class ExportFeed:
     added_at: datetime
 
     def _validate(self) -> None:
-        assert not self.xml_url.startswith("/"), self.xml_url
-        assert not self.html_url.startswith("/"), self.html_url
-        assert len(self.title) > 3, self.title
-        assert self.added_at < datetime.now(timezone.utc), self.added_at
+        try:
+            assert not self.xml_url.startswith("/"), self.xml_url
+            assert not self.html_url.startswith("/"), self.html_url
+            assert len(self.title) > 3, self.title
+            assert self.added_at < datetime.now(timezone.utc), self.added_at
+        except AssertionError as e:
+            logger.error(e)
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
 
 
 def _opml_feeds(soup: BeautifulSoup) -> list[ExportFeed]:
