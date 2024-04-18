@@ -61,8 +61,14 @@ def main(
     db_episodes = EpisodeCollection.load(episodes_path)
 
     _refresh_random_feed(session=session, db_feeds=db_feeds, db_episodes=db_episodes)
-    for i in range(3):
-        _refresh_missing_episode_duration(session=session, db_episodes=db_episodes)
+
+    export_data = overcast.export_account_extended_data(session=session)
+    for i in range(5):
+        _refresh_missing_episode_duration(
+            session=session,
+            db_episodes=db_episodes,
+            export_feeds=export_data.feeds,
+        )
 
     db_feeds.save(feeds_path)
     db_episodes.save(episodes_path)
@@ -92,15 +98,25 @@ def _refresh_random_feed(
 def _refresh_missing_episode_duration(
     session: overcast.Session,
     db_episodes: EpisodeCollection,
+    export_feeds: list[overcast.ExtendedExportFeed],
 ) -> None:
     db_episodes_missing_duration = [e for e in db_episodes if e.duration is None]
     logger.info("Episodes missing duration: %d", len(db_episodes_missing_duration))
     if not db_episodes_missing_duration:
         return
     db_episode_missing_duration = random.choice(db_episodes_missing_duration)
-    html_episode = overcast.fetch_episode(session, db_episode_missing_duration.id)
-    duration = overcast.fetch_audio_duration(session, html_episode.audio_url)
-    db_episode_missing_duration.duration = duration
+
+    export_episode_missing_duration: overcast.ExtendedExportEpisode | None = None
+    for export_feed in export_feeds:
+        for export_episode in export_feed.episodes:
+            if export_episode.id == db_episode_missing_duration.id:
+                export_episode_missing_duration = export_episode
+                break
+
+    if export_episode_missing_duration:
+        enclosure_url = export_episode_missing_duration.enclosure_url
+        duration = overcast.fetch_audio_duration(session, enclosure_url)
+        db_episode_missing_duration.duration = duration
 
 
 if __name__ == "__main__":
