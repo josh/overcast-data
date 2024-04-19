@@ -54,6 +54,12 @@ class OvercastURL(HTTPURL):
         return str.__new__(cls, urlstring)
 
 
+def _overcast_fm_url_from_path(path: str) -> OvercastURL:
+    if not path.startswith("/"):
+        return OvercastURL("")
+    return OvercastURL(f"https://overcast.fm{path}")
+
+
 class OvercastAppURI(URL):
     """
     An overcast:// URL.
@@ -167,8 +173,8 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
     soup = BeautifulSoup(r.text, "html.parser")
 
     for feedcell_el in soup.select("a.feedcell[href]"):
-        href = feedcell_el["href"]
-        assert isinstance(href, str)
+        href = feedcell_el.attrs["href"]
+        html_url = _overcast_fm_url_from_path(href)
 
         if href == "/uploads":
             continue
@@ -186,7 +192,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         )
 
         feed = HTMLPodcastsFeed(
-            html_url=OvercastURL(f"https://overcast.fm{href}"),
+            html_url=html_url,
             art_url=HTTPURL(art_url),
             title=title,
             has_unplayed_episodes=has_unplayed_episodes,
@@ -310,14 +316,6 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
         if isinstance(content, str) and content.startswith("app-id=888422857"):
             overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
 
-    art_url: str = ""
-    if img_el := soup.select_one("img.fullart[src]"):
-        art_url = img_el.attrs["src"]
-
-    delete_url: str = ""
-    if delete_el := soup.select_one("form#deletepodcastform[action]"):
-        delete_url = delete_el.attrs["action"]
-
     feed_title: str = ""
     if title_el := soup.select_one("h2.centertext"):
         feed_title = title_el.text.strip()
@@ -326,6 +324,7 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
 
     for episodecell_el in soup.select("a.extendedepisodecell[href]"):
         href: str = episodecell_el.attrs["href"]
+        html_url = _overcast_fm_url_from_path(href)
 
         title: str = ""
         if title_el := episodecell_el.select_one(".title"):
@@ -347,7 +346,7 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
             description = description_el.text.strip()
 
         episode = HTMLPodcastEpisode(
-            html_url=OvercastURL(f"https://overcast.fm{href}"),
+            html_url=html_url,
             title=title,
             description=description,
             pub_date=caption_result.pub_date,
@@ -359,11 +358,23 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
         episode._validate()
         episodes.append(episode)
 
+    html_url = _overcast_fm_url_from_path(f"/{feed_id}")
+
+    if img_el := soup.select_one("img.fullart[src]"):
+        art_url = HTTPURL(img_el.attrs["src"])
+    else:
+        art_url = HTTPURL("")
+
+    if delete_el := soup.select_one("form#deletepodcastform[action]"):
+        delete_url = _overcast_fm_url_from_path(delete_el.attrs["action"])
+    else:
+        delete_url = OvercastURL("")
+
     feed = HTMLPodcastFeed(
-        html_url=OvercastURL(f"https://overcast.fm/{feed_id}"),
+        html_url=html_url,
         overcast_uri=OvercastAppURI(overcast_uri),
-        art_url=HTTPURL(art_url),
-        delete_url=OvercastURL(f"https://overcast.fm{delete_url}"),
+        art_url=art_url,
+        delete_url=delete_url,
         title=feed_title,
         episodes=episodes,
     )
@@ -481,6 +492,8 @@ def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
 
     soup = BeautifulSoup(r.text, "html.parser")
 
+    html_url = _overcast_fm_url_from_path(f"/{episode_id}")
+
     overcast_uri: str = ""
     if meta_el := soup.select_one("meta[name=apple-itunes-app]"):
         content: str = meta_el.attrs["content"]
@@ -496,10 +509,11 @@ def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
         audio_url = meta_el.attrs["content"]
         audio_url = audio_url.split("#", 1)[0]
 
-    podcast_html_url: str = ""
     if a_el := soup.select_one(".centertext > h3 > a[href]"):
-        href: str = a_el.attrs["href"]
-        podcast_html_url = f"https://overcast.fm{href}"
+        href = a_el.attrs["href"]
+        podcast_html_url = _overcast_fm_url_from_path(href)
+    else:
+        podcast_html_url = OvercastURL("")
 
     title: str = ""
     if title_el := soup.select_one("meta[name='og:title']"):
@@ -515,7 +529,7 @@ def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
     assert date_published
 
     episode = HTMLEpisode(
-        html_url=OvercastURL(f"https://overcast.fm/{episode_id}"),
+        html_url=html_url,
         overcast_uri=OvercastAppURI(overcast_uri),
         feed_art_url=HTTPURL(art_url),
         podcast_html_url=OvercastURL(podcast_html_url),
