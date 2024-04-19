@@ -126,7 +126,6 @@ class OvercastEpisodeURL(OvercastURL):
 
 
 # TODO: Deprecate these and use the full URL everywhere
-PodcastWebID = NewType("PodcastWebID", str)
 EpisodeWebID = NewType("EpisodeWebID", str)
 
 PodcastItemID = NewType("PodcastItemID", int)
@@ -164,21 +163,20 @@ class HTMLPodcastsFeed:
     title: str
     has_unplayed_episodes: bool
 
-    # TODO: Deprecate this
-    @property
-    def id(self) -> PodcastWebID:
-        return PodcastWebID(self.html_url.removeprefix("https://overcast.fm/"))
-
     @property
     def is_private(self) -> bool:
-        return self.id.startswith("p")
+        return self.html_url.startswith("https://overcast.fm/p")
 
     # TODO: Maybe use art_id instead of item_id
 
     @property
     def item_id(self) -> PodcastItemID | None:
-        if self.id.startswith("p"):
-            return PodcastItemID(int(self.id.removeprefix("p").split("-", 1)[0]))
+        if self.is_private:
+            return PodcastItemID(
+                int(
+                    self.html_url.removeprefix("https://overcast.fm/p").split("-", 1)[0]
+                )
+            )
         return None
 
     @property
@@ -189,12 +187,10 @@ class HTMLPodcastsFeed:
 
     def _validate(self) -> None:
         try:
-            assert not self.id.startswith("/"), self.id
             if self.is_private:
-                assert self.item_id, self.id
                 assert (
                     self.art_id == self.item_id
-                ), f"art_url: {self.art_url}, id: {self.id}"
+                ), f"art_url: {self.art_url}, id: {self.html_url}"
             assert self.art_url.startswith(
                 "https://public.overcast-cdn.com"
             ), self.art_url
@@ -498,11 +494,6 @@ class HTMLEpisode:
         if m := re.search(r"(?<=/art/)\d+", self.feed_art_url):
             return PodcastItemID(int(m.group(0)))
         return None
-
-    # TODO: deprecate this
-    @property
-    def podcast_id(self) -> PodcastWebID:
-        return PodcastWebID(self.podcast_html_url.removeprefix("https://overcast.fm/"))
 
     def _validate(self) -> None:
         try:

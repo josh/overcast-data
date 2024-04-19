@@ -94,7 +94,7 @@ def _refresh_random_feed(
     for html_episode in html_podcast.episodes:
         db_episode = db.Episode(
             id=html_episode.id,
-            feed_id=db_feed.id,
+            feed_url=db_feed.overcast_url,
             title=html_episode.title,
             duration=html_episode.duration,
         )

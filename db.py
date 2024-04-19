@@ -6,13 +6,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable, Iterator
 
-from overcast import (
-    EpisodeWebID,
-    HTMLPodcastsFeed,
-    OvercastFeedURL,
-    PodcastItemID,
-    PodcastWebID,
-)
+from overcast import EpisodeWebID, HTMLPodcastsFeed, OvercastFeedURL, PodcastItemID
 
 logger = logging.getLogger("db")
 
@@ -20,7 +14,6 @@ logger = logging.getLogger("db")
 @dataclass
 class Feed:
     overcast_url: OvercastFeedURL
-    id: PodcastWebID
     numeric_id: PodcastItemID | None
     title: str
     added_at: datetime | None
@@ -44,7 +37,7 @@ class Feed:
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["overcast_url", "id", "numeric_id", "title", "slug", "added_at"]
+        return ["overcast_url", "numeric_id", "title", "slug", "added_at"]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
@@ -59,7 +52,6 @@ class Feed:
 
         return Feed(
             overcast_url=OvercastFeedURL(data.get("overcast_url", "")),
-            id=PodcastWebID(data.get("id", "")),
             numeric_id=numeric_id,
             title=data.get("title", ""),
             added_at=added_at,
@@ -72,8 +64,6 @@ class Feed:
             d["overcast_url"] = str(self.overcast_url)
         if self.numeric_id:
             d["numeric_id"] = str(self.numeric_id)
-        if self.id:
-            d["id"] = self.id
         if self.title:
             d["title"] = self.title
             d["slug"] = self.slug()
@@ -86,7 +76,6 @@ class Feed:
     def from_html_feed(feed: HTMLPodcastsFeed) -> "Feed":
         return Feed(
             overcast_url=feed.html_url,
-            id=feed.id,
             numeric_id=feed.item_id,
             title=Feed.clean_title(feed.title),
             added_at=None,
@@ -117,7 +106,9 @@ class FeedCollection:
     def save(self, filename: Path) -> None:
         feeds_lst = list(self._feeds)
 
-        assert len(set(f.id for f in feeds_lst)) == len(feeds_lst), "Duplicate IDs"
+        assert len(set(f.overcast_url for f in feeds_lst)) == len(
+            feeds_lst
+        ), "Duplicate Overcast URLs"
         assert len(set(f.numeric_id for f in feeds_lst)) == len(
             feeds_lst
         ), "Duplicate numeric IDs"
@@ -134,9 +125,7 @@ class FeedCollection:
 
     def insert(self, feed: Feed) -> None:
         for i, f in enumerate(self._feeds):
-            if f.id == feed.id:
-                if feed.overcast_url:
-                    self._feeds[i].overcast_url = feed.overcast_url
+            if f.overcast_url == feed.overcast_url:
                 if feed.numeric_id:
                     self._feeds[i].numeric_id = feed.numeric_id
                 if feed.title:
@@ -145,8 +134,8 @@ class FeedCollection:
                     self._feeds[i].added_at = feed.added_at
                 return
 
-        if not feed.id:
-            logger.warning("Can't insert feed without ID: %s", feed)
+        if not feed.overcast_url:
+            logger.warning("Can't insert feed without Overcast URL: %s", feed)
             return
 
         self._feeds.append(feed)
@@ -156,27 +145,38 @@ class FeedCollection:
 @dataclass
 class Episode:
     id: EpisodeWebID
-    feed_id: PodcastWebID
+    feed_url: OvercastFeedURL
     title: str
     duration: timedelta | None
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["id", "feed_id", "title", "duration"]
+        return ["id", "feed_url", "title", "duration"]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
+        id = EpisodeWebID(data["id"])
+        feed_url = OvercastFeedURL(data["feed_url"])
+
+        title = ""
+        if data.get("title"):
+            title = data["title"]
+
+        duration = None
+        if data.get("duration"):
+            duration = _seconds_str_to_timedelta(data["duration"])
+
         return Episode(
-            id=EpisodeWebID(data["id"]),
-            feed_id=PodcastWebID(data["feed_id"]),
-            title=data["title"],
-            duration=_seconds_str_to_timedelta(data.get("duration")),
+            id=id,
+            feed_url=feed_url,
+            title=title,
+            duration=duration,
         )
 
     def to_dict(self) -> dict[str, str]:
         return {
-            "id": self.id,
-            "feed_id": self.feed_id,
+            "id": str(self.id),
+            "feed_url": str(self.feed_url),
             "title": self.title,
             "duration": _timedelta_to_seconds_str(self.duration),
         }
@@ -222,8 +222,10 @@ class EpisodeCollection:
     def insert(self, episode: Episode) -> None:
         for i, e in enumerate(self._episodes):
             if e.id == episode.id:
-                self._episodes[i].feed_id = episode.feed_id
-                self._episodes[i].title = episode.title
+                if episode.feed_url:
+                    self._episodes[i].feed_url = episode.feed_url
+                if episode.title:
+                    self._episodes[i].title = episode.title
                 if episode.duration:
                     self._episodes[i].duration = episode.duration
                 return
