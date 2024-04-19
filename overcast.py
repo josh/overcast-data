@@ -722,7 +722,7 @@ class ExtendedExportPlaylist:
     def _validate(self) -> None:
         try:
             assert len(self.title) > 0, self.title
-            assert self.sorting in ["chronological", "manual"], self.sorting
+            assert self.sorting in ["chronological"], self.sorting
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
