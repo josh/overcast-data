@@ -19,17 +19,8 @@ logger = logging.getLogger("db")
 
 @dataclass
 class Feed:
-    """
-    The numeric feed or item ID.
-    """
-
     id: OvercastFeedItemID
-
-    """
-    The overcast.fm website URL for the feed.
-    """
     overcast_url: OvercastFeedURL | None
-
     title: str
     added_at: datetime | None
 
