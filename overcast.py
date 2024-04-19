@@ -626,10 +626,11 @@ class ExtendedExportPlaylist:
     title: str
     smart: bool
     sorting: str
+    include_episode_ids: list[EpisodeItemID]
 
     def _validate(self) -> None:
         try:
-            assert len(self.title) > 3, self.title
+            assert len(self.title) > 0, self.title
             assert self.sorting in ["chronological", "manual"], self.sorting
         except AssertionError as e:
             logger.error(e)
@@ -646,7 +647,19 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
         title: str = outline.attrs["title"]
         smart: bool = outline.attrs["smart"] == "1"
         sorting: str = outline.attrs["sorting"]
-        playlist = ExtendedExportPlaylist(title=title, smart=smart, sorting=sorting)
+
+        include_episode_ids: list[EpisodeItemID] = []
+        if include_episode_ids_str := outline.attrs.get("includeEpisodeIds", ""):
+            include_episode_ids = [
+                EpisodeItemID(int(id)) for id in include_episode_ids_str.split(",")
+            ]
+
+        playlist = ExtendedExportPlaylist(
+            title=title,
+            smart=smart,
+            sorting=sorting,
+            include_episode_ids=include_episode_ids,
+        )
         playlist._validate()
         playlists.append(playlist)
 
