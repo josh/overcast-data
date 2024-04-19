@@ -19,7 +19,12 @@ logger = logging.getLogger("db")
 @dataclass
 class Feed:
     overcast_url: OvercastFeedURL
-    numeric_id: PodcastItemID | None
+
+    """
+    The numeric feed or item ID
+    """
+    id: PodcastItemID | None
+
     title: str
     added_at: datetime | None
 
@@ -42,36 +47,36 @@ class Feed:
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["overcast_url", "numeric_id", "title", "slug", "added_at"]
+        return ["overcast_url", "id", "title", "slug", "added_at"]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
-        numeric_id: PodcastItemID | None = None
+        overcast_url = OvercastFeedURL(data["overcast_url"])
+        id: PodcastItemID | None = None
+        title = data.get("title", "")
         added_at: datetime | None = None
 
-        if n := data.get("numeric_id"):
-            numeric_id = PodcastItemID(int(n))
+        if data.get("id"):
+            id = PodcastItemID(int(data["id"]))
 
-        if a := data.get("added_at"):
-            added_at = datetime.fromisoformat(a)
+        if data.get("added_at"):
+            added_at = datetime.fromisoformat(data["added_at"])
 
         return Feed(
-            overcast_url=OvercastFeedURL(data.get("overcast_url", "")),
-            numeric_id=numeric_id,
-            title=data.get("title", ""),
+            overcast_url=overcast_url,
+            id=id,
+            title=title,
             added_at=added_at,
         )
 
     def to_dict(self) -> dict[str, str]:
         d: dict[str, str] = {}
 
-        if self.overcast_url:
-            d["overcast_url"] = str(self.overcast_url)
-        if self.numeric_id:
-            d["numeric_id"] = str(self.numeric_id)
-        if self.title:
-            d["title"] = self.title
-            d["slug"] = self.slug()
+        d["overcast_url"] = str(self.overcast_url)
+        if self.id:
+            d["id"] = str(self.id)
+        d["title"] = self.title
+        d["slug"] = self.slug()
         if self.added_at:
             d["added_at"] = self.added_at.isoformat()
 
@@ -81,7 +86,7 @@ class Feed:
     def from_html_feed(feed: HTMLPodcastsFeed) -> "Feed":
         return Feed(
             overcast_url=feed.overcast_url,
-            numeric_id=feed.item_id,
+            id=feed.item_id,
             title=Feed.clean_title(feed.title),
             added_at=None,
         )
@@ -114,9 +119,7 @@ class FeedCollection:
         assert len(set(f.overcast_url for f in feeds_lst)) == len(
             feeds_lst
         ), "Duplicate Overcast URLs"
-        assert len(set(f.numeric_id for f in feeds_lst)) == len(
-            feeds_lst
-        ), "Duplicate numeric IDs"
+        assert len(set(f.id for f in feeds_lst)) == len(feeds_lst), "Duplicate IDs"
 
         with filename.open("w") as csvfile:
             writer = csv.DictWriter(
@@ -131,8 +134,8 @@ class FeedCollection:
     def insert(self, feed: Feed) -> None:
         for i, f in enumerate(self._feeds):
             if f.overcast_url == feed.overcast_url:
-                if feed.numeric_id:
-                    self._feeds[i].numeric_id = feed.numeric_id
+                if feed.id:
+                    self._feeds[i].id = feed.id
                 if feed.title:
                     self._feeds[i].title = feed.title
                 if feed.added_at:
@@ -162,12 +165,12 @@ class Episode:
     def from_dict(data: dict[str, str]) -> "Episode":
         overcast_url = OvercastEpisodeURL(data["overcast_url"])
         feed_url = OvercastFeedURL(data["feed_url"])
-
         title = ""
+        duration = None
+
         if data.get("title"):
             title = data["title"]
 
-        duration = None
         if data.get("duration"):
             duration = _seconds_str_to_timedelta(data["duration"])
 
@@ -179,12 +182,15 @@ class Episode:
         )
 
     def to_dict(self) -> dict[str, str]:
-        return {
-            "overcast_url": str(self.overcast_url),
-            "feed_url": str(self.feed_url),
-            "title": self.title,
-            "duration": _timedelta_to_seconds_str(self.duration),
-        }
+        d: dict[str, str] = {}
+
+        d["overcast_url"] = str(self.overcast_url)
+        d["feed_url"] = str(self.feed_url)
+        d["title"] = self.title
+        if self.duration:
+            d["duration"] = _timedelta_to_seconds_str(self.duration)
+
+        return d
 
 
 def _timedelta_to_seconds_str(td: timedelta | None) -> str:
