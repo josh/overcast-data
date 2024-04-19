@@ -202,7 +202,7 @@ class HTMLPodcastsFeed:
 def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
     r = _request(
         session=session,
-        path="/podcasts",
+        url=OvercastURL("https://overcast.fm/podcasts"),
         accept="text/html",
         cache_expires=timedelta(hours=1),
     )
@@ -312,7 +312,7 @@ class HTMLPodcastEpisode:
 def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFeed:
     r = _request(
         session=session,
-        path=feed_url,
+        url=feed_url,
         accept="text/html",
         cache_expires=timedelta(hours=1),
     )
@@ -472,7 +472,7 @@ class HTMLEpisode:
 def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpisode:
     r = _request(
         session=session,
-        path=episode_url,
+        url=episode_url,
         accept="text/html",
         cache_expires=timedelta(days=30),
     )
@@ -572,10 +572,9 @@ class AccountExport:
 
 
 def export_account_data(session: Session) -> AccountExport:
-    path = "/account/export_opml"
     r = _request(
         session,
-        path=path,
+        url=OvercastURL("https://overcast.fm/account/export_opml"),
         accept="application/xml",
         cache_expires=timedelta(days=7),
     )
@@ -636,10 +635,9 @@ class AccountExtendedExport:
 
 
 def export_account_extended_data(session: Session) -> AccountExtendedExport:
-    path = "/account/export_opml/extended"
     r = _request(
         session,
-        path=path,
+        url=OvercastURL("https://overcast.fm/account/export_opml/extended"),
         accept="application/xml",
         cache_expires=timedelta(days=7),
     )
@@ -806,14 +804,12 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
 
 def _request(
     session: Session,
-    path: str,
+    url: OvercastURL,
     accept: str | None,
     cache_expires: timedelta,
 ) -> requests.Response:
+    path = url.removeprefix("https://overcast.fm")
     try:
-        # TODO: Make this method take OvercastURL
-        if path.startswith("https://overcast.fm"):
-            path = path.removeprefix("https://overcast.fm")
         response = session.get(path=path, accept=accept, cache_expires=cache_expires)
     except requests.HTTPError as e:
         if e.response.status_code == 429:
