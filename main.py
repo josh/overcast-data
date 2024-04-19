@@ -60,6 +60,10 @@ def main(
     db_feeds = FeedCollection.load(feeds_path)
     db_episodes = EpisodeCollection.load(episodes_path)
 
+    html_feeds = overcast.fetch_podcasts(session=session)
+    for html_feed in html_feeds:
+        db_feeds.insert(db.Feed.from_html_feed(html_feed))
+
     _refresh_random_feed(session=session, db_feeds=db_feeds, db_episodes=db_episodes)
 
     export_data = overcast.export_account_extended_data(session=session)

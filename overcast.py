@@ -244,7 +244,6 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
             has_unplayed_episodes=has_unplayed_episodes,
         )
         feed._validate()
-        logger.debug("%s", feed)
         feeds.append(feed)
 
     if len(feeds) == 0:
@@ -801,7 +800,6 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
             episodes=_opml_extended_episode(outline),
         )
         feed._validate()
-        # logger.debug("%s", feed)
         feeds.append(feed)
 
     logger.debug("Found %d feeds in export", len(feeds))

@@ -1,19 +1,29 @@
 import csv
+import logging
 import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable, Iterator
 
-from overcast import EpisodeWebID, PodcastItemID, PodcastWebID
+from overcast import (
+    EpisodeWebID,
+    HTMLPodcastsFeed,
+    OvercastFeedURL,
+    PodcastItemID,
+    PodcastWebID,
+)
+
+logger = logging.getLogger("db")
 
 
 @dataclass
 class Feed:
+    overcast_url: OvercastFeedURL
     id: PodcastWebID
-    numeric_id: PodcastItemID
+    numeric_id: PodcastItemID | None
     title: str
-    added_at: datetime
+    added_at: datetime | None
 
     def slug(self) -> str:
         title = re.sub(r"[^\w\s]", "", self.title)
@@ -34,25 +44,53 @@ class Feed:
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["id", "numeric_id", "title", "slug", "added_at"]
+        return ["overcast_url", "id", "numeric_id", "title", "slug", "added_at"]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
+        numeric_id: PodcastItemID | None = None
+        added_at: datetime | None = None
+
+        if n := data.get("numeric_id"):
+            numeric_id = PodcastItemID(int(n))
+
+        if a := data.get("added_at"):
+            added_at = datetime.fromisoformat(a)
+
         return Feed(
-            id=PodcastWebID(data["id"]),
-            numeric_id=PodcastItemID(int(data["numeric_id"])),
-            title=data["title"],
-            added_at=datetime.fromisoformat(data["added_at"]),
+            overcast_url=OvercastFeedURL(data.get("overcast_url", "")),
+            id=PodcastWebID(data.get("id", "")),
+            numeric_id=numeric_id,
+            title=data.get("title", ""),
+            added_at=added_at,
         )
 
     def to_dict(self) -> dict[str, str]:
-        return {
-            "numeric_id": str(self.numeric_id),
-            "id": self.id,
-            "title": self.title,
-            "slug": self.slug(),
-            "added_at": self.added_at.isoformat(),
-        }
+        d: dict[str, str] = {}
+
+        if self.overcast_url:
+            d["overcast_url"] = str(self.overcast_url)
+        if self.numeric_id:
+            d["numeric_id"] = str(self.numeric_id)
+        if self.id:
+            d["id"] = self.id
+        if self.title:
+            d["title"] = self.title
+            d["slug"] = self.slug()
+        if self.added_at:
+            d["added_at"] = self.added_at.isoformat()
+
+        return d
+
+    @staticmethod
+    def from_html_feed(feed: HTMLPodcastsFeed) -> "Feed":
+        return Feed(
+            overcast_url=feed.html_url,
+            id=feed.id,
+            numeric_id=feed.item_id,
+            title=Feed.clean_title(feed.title),
+            added_at=None,
+        )
 
 
 class FeedCollection:
@@ -74,7 +112,7 @@ class FeedCollection:
         yield from self._feeds
 
     def sort(self) -> None:
-        self._feeds.sort(key=lambda f: f.numeric_id)
+        self._feeds.sort(key=lambda f: f.added_at or 0)
 
     def save(self, filename: Path) -> None:
         feeds_lst = list(self._feeds)
@@ -93,6 +131,26 @@ class FeedCollection:
             writer.writeheader()
             for feed in feeds_lst:
                 writer.writerow(feed.to_dict())
+
+    def insert(self, feed: Feed) -> None:
+        for i, f in enumerate(self._feeds):
+            if f.id == feed.id:
+                if feed.overcast_url:
+                    self._feeds[i].overcast_url = feed.overcast_url
+                if feed.numeric_id:
+                    self._feeds[i].numeric_id = feed.numeric_id
+                if feed.title:
+                    self._feeds[i].title = feed.title
+                if feed.added_at:
+                    self._feeds[i].added_at = feed.added_at
+                return
+
+        if not feed.id:
+            logger.warning("Can't insert feed without ID: %s", feed)
+            return
+
+        self._feeds.append(feed)
+        self.sort()
 
 
 @dataclass
