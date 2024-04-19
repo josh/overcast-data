@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Iterable, Iterator
 
 from overcast import (
+    ExtendedExportFeed,
     HTMLPodcastsFeed,
     OvercastEpisodeURL,
     OvercastFeedItemID,
@@ -18,12 +19,16 @@ logger = logging.getLogger("db")
 
 @dataclass
 class Feed:
-    overcast_url: OvercastFeedURL
+    """
+    The numeric feed or item ID.
+    """
+
+    id: OvercastFeedItemID
 
     """
-    The numeric feed or item ID
+    The overcast.fm website URL for the feed.
     """
-    id: OvercastFeedItemID
+    overcast_url: OvercastFeedURL | None
 
     title: str
     added_at: datetime | None
@@ -47,21 +52,24 @@ class Feed:
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["overcast_url", "id", "title", "slug", "added_at"]
+        return ["id", "overcast_url", "title", "slug", "added_at"]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
-        overcast_url = OvercastFeedURL(data["overcast_url"])
         id = OvercastFeedItemID(int(data["id"]))
+        overcast_url: OvercastFeedURL | None = None
         title = data.get("title", "")
         added_at: datetime | None = None
+
+        if data.get("overcast_url"):
+            overcast_url = OvercastFeedURL(data["overcast_url"])
 
         if data.get("added_at"):
             added_at = datetime.fromisoformat(data["added_at"])
 
         return Feed(
-            overcast_url=overcast_url,
             id=id,
+            overcast_url=overcast_url,
             title=title,
             added_at=added_at,
         )
@@ -69,8 +77,9 @@ class Feed:
     def to_dict(self) -> dict[str, str]:
         d: dict[str, str] = {}
 
-        d["overcast_url"] = str(self.overcast_url)
         d["id"] = str(self.id)
+        if self.overcast_url:
+            d["overcast_url"] = str(self.overcast_url)
         d["title"] = self.title
         d["slug"] = self.slug()
         if self.added_at:
@@ -81,10 +90,19 @@ class Feed:
     @staticmethod
     def from_html_feed(feed: HTMLPodcastsFeed) -> "Feed":
         return Feed(
-            overcast_url=feed.overcast_url,
             id=feed.item_id,
+            overcast_url=feed.overcast_url,
             title=Feed.clean_title(feed.title),
             added_at=None,
+        )
+
+    @staticmethod
+    def from_export_feed(feed: ExtendedExportFeed) -> "Feed":
+        return Feed(
+            id=feed.item_id,
+            overcast_url=None,
+            title=Feed.clean_title(feed.title),
+            added_at=feed.added_at,
         )
 
 
@@ -111,10 +129,6 @@ class FeedCollection:
 
     def save(self, filename: Path) -> None:
         feeds_lst = list(self._feeds)
-
-        assert len(set(f.overcast_url for f in feeds_lst)) == len(
-            feeds_lst
-        ), "Duplicate Overcast URLs"
         assert len(set(f.id for f in feeds_lst)) == len(feeds_lst), "Duplicate IDs"
 
         with filename.open("w") as csvfile:
@@ -129,17 +143,17 @@ class FeedCollection:
 
     def insert(self, feed: Feed) -> None:
         for i, f in enumerate(self._feeds):
-            if f.overcast_url == feed.overcast_url:
-                if feed.id:
-                    self._feeds[i].id = feed.id
+            if f.id == feed.id:
+                if feed.overcast_url:
+                    self._feeds[i].overcast_url = feed.overcast_url
                 if feed.title:
                     self._feeds[i].title = feed.title
                 if feed.added_at:
                     self._feeds[i].added_at = feed.added_at
                 return
 
-        if not feed.overcast_url:
-            logger.warning("Can't insert feed without Overcast URL: %s", feed)
+        if not feed.id:
+            logger.warning("Can't insert feed without Overcast ID: %s", feed)
             return
 
         self._feeds.append(feed)

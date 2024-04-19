@@ -64,9 +64,12 @@ def main(
     for html_feed in html_feeds:
         db_feeds.insert(db.Feed.from_html_feed(html_feed))
 
+    export_data = overcast.export_account_extended_data(session=session)
+    for export_feed in export_data.feeds:
+        db_feeds.insert(db.Feed.from_export_feed(export_feed))
+
     _refresh_random_feed(session=session, db_feeds=db_feeds, db_episodes=db_episodes)
 
-    export_data = overcast.export_account_extended_data(session=session)
     for i in range(5):
         _refresh_missing_episode_duration(
             session=session,
@@ -87,14 +90,17 @@ def _refresh_random_feed(
 ) -> None:
     db_feed = random.choice(list(db_feeds))
 
-    html_podcast = overcast.fetch_podcast(
-        session=session, feed_url=db_feed.overcast_url
-    )
+    feed_url = db_feed.overcast_url
+    if not feed_url:
+        logger.warning("Feed '%s' has no Overcast URL", db_feed.id)
+        return
+
+    html_podcast = overcast.fetch_podcast(session=session, feed_url=feed_url)
 
     for html_episode in html_podcast.episodes:
         db_episode = db.Episode(
             overcast_url=html_episode.overcast_url,
-            feed_url=db_feed.overcast_url,
+            feed_url=feed_url,
             title=html_episode.title,
             duration=html_episode.duration,
         )
