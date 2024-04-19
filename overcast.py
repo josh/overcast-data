@@ -6,6 +6,7 @@ from datetime import date, datetime, timedelta, timezone
 from io import BytesIO
 from pathlib import Path
 from typing import Literal, NewType
+from urllib.parse import urlparse
 
 import dateutil.parser
 import mutagen
@@ -78,6 +79,52 @@ class OvercastAppURI(URL):
         return str.__new__(cls, urlstring)
 
 
+class OvercastFeedURL(OvercastURL):
+    """
+    An https://overcast.fm/ feed URL.
+    """
+
+    def __new__(cls, urlstring: str) -> "OvercastFeedURL":
+        try:
+            components = urlparse(urlstring)
+            if components.scheme != "https":
+                raise ValueError(f"Invalid overcast.fm feed URL: {urlstring}")
+            elif not components.hostname == "overcast.fm":
+                raise ValueError(f"Invalid overcast.fm feed URL: {urlstring}")
+            elif components.path.startswith("/+"):
+                raise ValueError(f"Got overcast.fm episode URL: {urlstring}")
+        except ValueError as e:
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
+            else:
+                logger.error(e)
+
+        return str.__new__(cls, urlstring)
+
+
+class OvercastEpisodeURL(OvercastURL):
+    """
+    An https://overcast.fm/+ episode URL.
+    """
+
+    def __new__(cls, urlstring: str) -> "OvercastEpisodeURL":
+        try:
+            components = urlparse(urlstring)
+            if components.scheme != "https":
+                raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
+            elif not components.hostname == "overcast.fm":
+                raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
+            elif not components.path.startswith("/+"):
+                raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
+        except ValueError as e:
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
+            else:
+                logger.error(e)
+
+        return str.__new__(cls, urlstring)
+
+
 # TODO: Deprecate these and use the full URL everywhere
 PodcastWebID = NewType("PodcastWebID", str)
 EpisodeWebID = NewType("EpisodeWebID", str)
@@ -112,7 +159,7 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
 
 @dataclass
 class HTMLPodcastsFeed:
-    html_url: OvercastURL
+    html_url: OvercastFeedURL
     art_url: HTTPURL
     title: str
     has_unplayed_episodes: bool
@@ -142,7 +189,6 @@ class HTMLPodcastsFeed:
 
     def _validate(self) -> None:
         try:
-            assert self.html_url.startswith("https://overcast.fm/"), self.html_url
             assert not self.id.startswith("/"), self.id
             if self.is_private:
                 assert self.item_id, self.id
@@ -174,7 +220,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 
     for feedcell_el in soup.select("a.feedcell[href]"):
         href = feedcell_el.attrs["href"]
-        html_url = _overcast_fm_url_from_path(href)
+        html_url = OvercastFeedURL(_overcast_fm_url_from_path(href))
 
         if href == "/uploads":
             continue
@@ -210,7 +256,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 @dataclass
 class HTMLPodcastFeed:
     title: str
-    html_url: OvercastURL
+    html_url: OvercastFeedURL
     overcast_uri: OvercastAppURI
     art_url: HTTPURL
     delete_url: HTTPURL
@@ -358,7 +404,8 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
         episode._validate()
         episodes.append(episode)
 
-    html_url = _overcast_fm_url_from_path(f"/{feed_id}")
+    # TOOD: Function should just receive this as a parameter
+    html_url = OvercastFeedURL(_overcast_fm_url_from_path(f"/{feed_id}"))
 
     if img_el := soup.select_one("img.fullart[src]"):
         art_url = HTTPURL(img_el.attrs["src"])
@@ -431,10 +478,10 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
 
 @dataclass
 class HTMLEpisode:
-    html_url: OvercastURL
+    html_url: OvercastEpisodeURL
     overcast_uri: OvercastAppURI
     feed_art_url: HTTPURL
-    podcast_html_url: OvercastURL
+    podcast_html_url: OvercastFeedURL
     title: str
     description: str
     date_published: date
@@ -492,7 +539,7 @@ def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
 
     soup = BeautifulSoup(r.text, "html.parser")
 
-    html_url = _overcast_fm_url_from_path(f"/{episode_id}")
+    html_url = OvercastEpisodeURL(_overcast_fm_url_from_path(f"/{episode_id}"))
 
     overcast_uri: str = ""
     if meta_el := soup.select_one("meta[name=apple-itunes-app]"):
@@ -511,9 +558,9 @@ def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
 
     if a_el := soup.select_one(".centertext > h3 > a[href]"):
         href = a_el.attrs["href"]
-        podcast_html_url = _overcast_fm_url_from_path(href)
+        podcast_html_url = OvercastFeedURL(_overcast_fm_url_from_path(href))
     else:
-        podcast_html_url = OvercastURL("")
+        podcast_html_url = OvercastFeedURL("")
 
     title: str = ""
     if title_el := soup.select_one("meta[name='og:title']"):
@@ -532,7 +579,7 @@ def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
         html_url=html_url,
         overcast_uri=OvercastAppURI(overcast_uri),
         feed_art_url=HTTPURL(art_url),
-        podcast_html_url=OvercastURL(podcast_html_url),
+        podcast_html_url=podcast_html_url,
         title=title,
         description=description,
         date_published=date_published,
@@ -611,8 +658,6 @@ class ExportFeed:
     def _validate(self) -> None:
         try:
             assert self.item_id > 0, self.item_id
-            assert self.xml_url.startswith("http"), self.xml_url
-            assert self.html_url.startswith("http"), self.html_url
             assert len(self.title) > 3, self.title
             assert self.added_at < datetime.now(timezone.utc), self.added_at
         except AssertionError as e:
@@ -728,8 +773,6 @@ class ExtendedExportFeed:
             assert self.item_id > 0
             assert len(self.title) > 3, self.title
             assert self.added_at < datetime.now(timezone.utc), self.added_at
-            assert self.xml_url.startswith("http"), self.xml_url
-            assert self.html_url.startswith("http"), self.html_url
             assert len(self.episodes) > 0
         except AssertionError as e:
             logger.error(e)
@@ -741,18 +784,18 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
     feeds: list[ExtendedExportFeed] = []
 
     for outline in soup.select("outline[text='feeds'] > outline[type='rss']"):
-        item_id: int = int(outline.attrs["overcastId"])
+        item_id = PodcastItemID(int(outline.attrs["overcastId"]))
         title: str = outline.attrs["title"]
-        html_url: str = outline.attrs["htmlUrl"]
-        xml_url: str = outline.attrs["xmlUrl"]
+        html_url = HTTPURL(outline.attrs["htmlUrl"])
+        xml_url = HTTPURL(outline.attrs["xmlUrl"])
         added_at = dateutil.parser.parse(outline.attrs["overcastAddedDate"])
         is_subscribed: bool = outline.attrs["subscribed"] == "1"
 
         feed = ExtendedExportFeed(
-            item_id=PodcastItemID(item_id),
+            item_id=item_id,
             title=title,
-            xml_url=HTTPURL(xml_url),
-            html_url=HTTPURL(html_url),
+            xml_url=xml_url,
+            html_url=html_url,
             added_at=added_at,
             is_subscribed=is_subscribed,
             episodes=_opml_extended_episode(outline),
@@ -771,7 +814,7 @@ class ExtendedExportEpisode:
     title: str
     item_id: EpisodeItemID
     url: str
-    overcast_url: HTTPURL
+    overcast_url: OvercastEpisodeURL
     enclosure_url: HTTPURL
     user_updated_at: datetime
     user_deleted: bool
@@ -792,7 +835,6 @@ class ExtendedExportEpisode:
             assert self.user_updated_at < datetime.now(
                 timezone.utc
             ), self.user_updated_at
-            assert self.enclosure_url.startswith("http"), self.enclosure_url
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
@@ -803,23 +845,23 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
     episodes: list[ExtendedExportEpisode] = []
 
     for outline in rss_outline.select("outline[type='podcast-episode']"):
-        overcast_url: str = outline.attrs["overcastUrl"]
-        item_id = int(outline.attrs["overcastId"])
+        overcast_url = OvercastEpisodeURL(outline.attrs["overcastUrl"])
+        item_id = EpisodeItemID(int(outline.attrs["overcastId"]))
         pub_date = dateutil.parser.parse(outline.attrs["pubDate"]).date()
         title: str = outline.attrs["title"]
         url: str = outline.attrs["url"]
-        enclosure_url: str = outline.attrs["enclosureUrl"]
+        enclosure_url = HTTPURL(outline.attrs["enclosureUrl"])
         user_updated_at = dateutil.parser.parse(outline.attrs["userUpdatedDate"])
         user_deleted: bool = outline.attrs.get("userDeleted", "0") == "1"
         played: bool = outline.attrs.get("played", "0") == "1"
 
         episode = ExtendedExportEpisode(
-            item_id=EpisodeItemID(item_id),
+            item_id=item_id,
             pub_date=pub_date,
             title=title,
             url=url,
-            overcast_url=HTTPURL(overcast_url),
-            enclosure_url=HTTPURL(enclosure_url),
+            overcast_url=overcast_url,
+            enclosure_url=enclosure_url,
             user_updated_at=user_updated_at,
             user_deleted=user_deleted,
             played=played,
