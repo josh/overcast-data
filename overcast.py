@@ -61,6 +61,24 @@ def _overcast_fm_url_from_path(path: str) -> OvercastURL:
     return OvercastURL(f"https://overcast.fm{path}")
 
 
+class OvercastCDNURL(HTTPURL):
+    """
+    An https://public.overcast-cdn.com/ URL.
+    """
+
+    def __new__(cls, urlstring: str) -> "OvercastCDNURL":
+        try:
+            if not urlstring.startswith("https://public.overcast-cdn.com/"):
+                raise ValueError(f"Invalid public.overcast-cdn.com URL: {urlstring}")
+        except ValueError as e:
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
+            else:
+                logger.error(e)
+
+        return str.__new__(cls, urlstring)
+
+
 class OvercastAppURI(URL):
     """
     An overcast:// URL.
@@ -156,7 +174,7 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
 @dataclass
 class HTMLPodcastsFeed:
     overcast_url: OvercastFeedURL
-    art_url: HTTPURL
+    art_url: OvercastCDNURL
     title: str
     has_unplayed_episodes: bool
 
@@ -200,9 +218,10 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         if href == "/uploads":
             continue
 
-        art_url: str = ""
         if art_el := feedcell_el.select_one("img.art[src]"):
-            art_url = art_el.attrs["src"]
+            art_url = OvercastCDNURL(art_el.attrs["src"])
+        else:
+            art_url = OvercastCDNURL("")
 
         title: str = ""
         if title_el := feedcell_el.select_one(".titlestack > .title"):
@@ -214,7 +233,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 
         feed = HTMLPodcastsFeed(
             overcast_url=overcast_url,
-            art_url=HTTPURL(art_url),
+            art_url=art_url,
             title=title,
             has_unplayed_episodes=has_unplayed_episodes,
         )
@@ -232,7 +251,7 @@ class HTMLPodcastFeed:
     title: str
     overcast_url: OvercastFeedURL
     overcast_uri: OvercastAppURI
-    art_url: HTTPURL
+    art_url: OvercastCDNURL
     episodes: list["HTMLPodcastEpisode"]
 
     @property
@@ -349,9 +368,9 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         episodes.append(episode)
 
     if img_el := soup.select_one("img.fullart[src]"):
-        art_url = HTTPURL(img_el.attrs["src"])
+        art_url = OvercastCDNURL(img_el.attrs["src"])
     else:
-        art_url = HTTPURL("")
+        art_url = OvercastCDNURL("")
 
     feed = HTMLPodcastFeed(
         overcast_url=feed_url,
@@ -415,7 +434,7 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
 class HTMLEpisode:
     html_url: OvercastEpisodeURL
     overcast_uri: OvercastAppURI
-    feed_art_url: HTTPURL
+    feed_art_url: OvercastCDNURL
     podcast_html_url: OvercastFeedURL
     title: str
     description: str
@@ -466,9 +485,10 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
         if content.startswith("app-id=888422857"):
             overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
 
-    art_url: str = ""
     if img_el := soup.select_one("img.fullart[src]"):
-        art_url = img_el.attrs["src"]
+        art_url = OvercastCDNURL(img_el.attrs["src"])
+    else:
+        art_url = OvercastCDNURL("")
 
     audio_url: str = ""
     if meta_el := soup.select_one("meta[name='twitter:player:stream']"):
@@ -497,7 +517,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
     episode = HTMLEpisode(
         html_url=episode_url,
         overcast_uri=OvercastAppURI(overcast_uri),
-        feed_art_url=HTTPURL(art_url),
+        feed_art_url=art_url,
         podcast_html_url=podcast_html_url,
         title=title,
         description=description,
@@ -809,7 +829,7 @@ def _request(
     return response
 
 
-def _extract_feed_id_from_art_url(url: HTTPURL) -> OvercastFeedItemID:
+def _extract_feed_id_from_art_url(url: OvercastCDNURL) -> OvercastFeedItemID:
     """
     Extract numeric feed-id from an Overcast CDN artwork URL.
     e.g. "https://public.overcast-cdn.com/art/126160?v198"
