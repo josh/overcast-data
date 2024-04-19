@@ -9,8 +9,8 @@ from typing import Iterable, Iterator
 from overcast import (
     HTMLPodcastsFeed,
     OvercastEpisodeURL,
+    OvercastFeedItemID,
     OvercastFeedURL,
-    PodcastItemID,
 )
 
 logger = logging.getLogger("db")
@@ -23,7 +23,7 @@ class Feed:
     """
     The numeric feed or item ID
     """
-    id: PodcastItemID | None
+    id: OvercastFeedItemID
 
     title: str
     added_at: datetime | None
@@ -52,12 +52,9 @@ class Feed:
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
         overcast_url = OvercastFeedURL(data["overcast_url"])
-        id: PodcastItemID | None = None
+        id = OvercastFeedItemID(int(data["id"]))
         title = data.get("title", "")
         added_at: datetime | None = None
-
-        if data.get("id"):
-            id = PodcastItemID(int(data["id"]))
 
         if data.get("added_at"):
             added_at = datetime.fromisoformat(data["added_at"])
@@ -73,8 +70,7 @@ class Feed:
         d: dict[str, str] = {}
 
         d["overcast_url"] = str(self.overcast_url)
-        if self.id:
-            d["id"] = str(self.id)
+        d["id"] = str(self.id)
         d["title"] = self.title
         d["slug"] = self.slug()
         if self.added_at:
