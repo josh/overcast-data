@@ -5,11 +5,13 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable, Iterator
 
+from overcast import EpisodeWebID, PodcastItemID, PodcastWebID
+
 
 @dataclass
 class Feed:
-    numeric_id: int
-    id: str
+    id: PodcastWebID
+    numeric_id: PodcastItemID
     title: str
     added_at: datetime
 
@@ -37,8 +39,8 @@ class Feed:
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
         return Feed(
-            numeric_id=int(data["numeric_id"]),
-            id=data["id"],
+            id=PodcastWebID(data["id"]),
+            numeric_id=PodcastItemID(int(data["numeric_id"])),
             title=data["title"],
             added_at=datetime.fromisoformat(data["added_at"]),
         )
@@ -95,8 +97,8 @@ class FeedCollection:
 
 @dataclass
 class Episode:
-    id: str
-    feed_id: str
+    id: EpisodeWebID
+    feed_id: PodcastWebID
     title: str
     duration: timedelta | None
 
@@ -107,8 +109,8 @@ class Episode:
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
         return Episode(
-            id=data["id"],
-            feed_id=data["feed_id"],
+            id=EpisodeWebID(data["id"]),
+            feed_id=PodcastWebID(data["feed_id"]),
             title=data["title"],
             duration=_seconds_str_to_timedelta(data.get("duration")),
         )

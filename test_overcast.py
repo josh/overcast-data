@@ -6,6 +6,8 @@ import pytest
 
 import overcast
 from overcast import (
+    EpisodeWebID,
+    PodcastWebID,
     Session,
     export_account_data,
     export_account_extended_data,
@@ -67,7 +69,7 @@ def test_fetch_podcasts_bad_cookie(
 def test_fetch_podcast(overcast_session: Session) -> None:
     episodes_feed = fetch_podcast(
         session=overcast_session,
-        feed_id="itunes528458508/the-talk-show-with-john-gruber",
+        feed_id=PodcastWebID("itunes528458508/the-talk-show-with-john-gruber"),
     )
     assert episodes_feed.title == "The Talk Show With John Gruber"
     assert (
@@ -80,7 +82,9 @@ def test_fetch_podcast(overcast_session: Session) -> None:
 
 
 def test_fetch_episode(overcast_session: Session) -> None:
-    episode = fetch_episode(session=overcast_session, episode_id="+B7NAFKiP8")
+    episode = fetch_episode(
+        session=overcast_session, episode_id=EpisodeWebID("+B7NAFKiP8")
+    )
     assert episode.id == "+B7NAFKiP8"
     assert episode.item_id == 135463290177791
     assert episode.overcast_uri == "overcast:///135463290177791"

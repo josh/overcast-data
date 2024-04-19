@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from io import BytesIO
 from pathlib import Path
-from typing import Literal
+from typing import Literal, NewType
 
 import dateutil.parser
 import mutagen
@@ -33,6 +33,15 @@ _SAFARI_HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
     "Sec-Fetch-Dest": "document",
 }
+
+# TODO: Define URL type
+
+# TODO: Deprecate these and use the full URL everywhere
+PodcastWebID = NewType("PodcastWebID", str)
+EpisodeWebID = NewType("EpisodeWebID", str)
+
+PodcastItemID = NewType("PodcastItemID", int)
+EpisodeItemID = NewType("EpisodeItemID", int)
 
 
 class LoggedOutError(Exception):
@@ -68,8 +77,8 @@ class HTMLPodcastsFeed:
 
     # TODO: Deprecate this
     @property
-    def id(self) -> str:
-        return self.html_url.removeprefix("https://overcast.fm/")
+    def id(self) -> PodcastWebID:
+        return PodcastWebID(self.html_url.removeprefix("https://overcast.fm/"))
 
     @property
     def is_private(self) -> bool:
@@ -78,16 +87,16 @@ class HTMLPodcastsFeed:
     # TODO: Maybe use art_id instead of item_id
 
     @property
-    def item_id(self) -> int | None:
+    def item_id(self) -> PodcastItemID | None:
         if self.id.startswith("p"):
-            return int(self.id.removeprefix("p").split("-", 1)[0])
+            return PodcastItemID(int(self.id.removeprefix("p").split("-", 1)[0]))
         return None
 
     @property
-    def art_id(self) -> int:
+    def art_id(self) -> PodcastItemID | None:
         if m := re.search(r"(?<=/art/)\d+", self.art_url):
-            return int(m.group(0))
-        return 0
+            return PodcastItemID(int(m.group(0)))
+        return None
 
     def _validate(self) -> None:
         try:
@@ -168,20 +177,22 @@ class HTMLPodcastFeed:
     # TODO: Which is more reliable, item id, art id or delete id?
 
     @property
-    def item_id(self) -> int:
-        return int(self.overcast_uri.removeprefix("overcast:///F").split("-", 1)[0])
+    def item_id(self) -> PodcastItemID:
+        return PodcastItemID(
+            int(self.overcast_uri.removeprefix("overcast:///F").split("-", 1)[0])
+        )
 
     @property
-    def art_id(self) -> int:
+    def art_id(self) -> PodcastItemID | None:
         if m := re.search(r"(?<=/art/)\d+", self.art_url):
-            return int(m.group(0))
-        return 0
+            return PodcastItemID(int(m.group(0)))
+        return None
 
     @property
-    def delete_action_id(self) -> int:
+    def delete_action_id(self) -> PodcastItemID | None:
         if m := re.search(r"(?<=/delete/)\d+", self.delete_url):
-            return int(m.group(0))
-        return 0
+            return PodcastItemID(int(m.group(0)))
+        return None
 
     @property
     def is_private(self) -> bool:
@@ -220,8 +231,8 @@ class HTMLPodcastEpisode:
     download_state: Literal["new"] | Literal["deleted"] | None
 
     @property
-    def id(self) -> str:
-        return self.html_url.removeprefix("https://overcast.fm/")
+    def id(self) -> EpisodeWebID:
+        return EpisodeWebID(self.html_url.removeprefix("https://overcast.fm/"))
 
     @property
     def is_new(self) -> bool:
@@ -250,7 +261,7 @@ class HTMLPodcastEpisode:
                 raise e
 
 
-def fetch_podcast(session: Session, feed_id: str) -> HTMLPodcastFeed:
+def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
     r = _request(
         session=session,
         path=f"/{feed_id}",
@@ -387,24 +398,24 @@ class HTMLEpisode:
 
     # TODO: Maybe deprecate this
     @property
-    def id(self) -> str:
-        return self.html_url.removeprefix("https://overcast.fm/")
+    def id(self) -> EpisodeWebID:
+        return EpisodeWebID(self.html_url.removeprefix("https://overcast.fm/"))
 
     @property
-    def item_id(self) -> int:
-        return int(self.overcast_uri.removeprefix("overcast:///"))
+    def item_id(self) -> EpisodeItemID:
+        return EpisodeItemID(int(self.overcast_uri.removeprefix("overcast:///")))
 
     # TODO: I think this is actually podcast numeric id
     @property
-    def feed_art_id(self) -> int:
+    def feed_art_id(self) -> PodcastItemID | None:
         if m := re.search(r"(?<=/art/)\d+", self.feed_art_url):
-            return int(m.group(0))
-        return 0
+            return PodcastItemID(int(m.group(0)))
+        return None
 
     # TODO: deprecate this
     @property
-    def podcast_id(self) -> str:
-        return self.podcast_html_url.removeprefix("https://overcast.fm/")
+    def podcast_id(self) -> PodcastWebID:
+        return PodcastWebID(self.podcast_html_url.removeprefix("https://overcast.fm/"))
 
     def _validate(self) -> None:
         try:
@@ -426,7 +437,7 @@ class HTMLEpisode:
                 raise e
 
 
-def fetch_episode(session: Session, episode_id: str) -> HTMLEpisode:
+def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
     assert episode_id.startswith("+"), episode_id
 
     r = _request(
@@ -545,7 +556,7 @@ def export_account_data(session: Session) -> AccountExport:
 
 @dataclass
 class ExportFeed:
-    item_id: int
+    item_id: PodcastItemID
     title: str
     xml_url: str
     html_url: str
@@ -575,7 +586,7 @@ def _opml_feeds(soup: BeautifulSoup) -> list[ExportFeed]:
         added_at = dateutil.parser.parse(outline.attrs["overcastAddedDate"])
 
         feed = ExportFeed(
-            item_id=item_id,
+            item_id=PodcastItemID(item_id),
             title=title,
             xml_url=xml_url,
             html_url=html_url,
@@ -645,7 +656,7 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
 
 @dataclass
 class ExtendedExportFeed:
-    item_id: int
+    item_id: PodcastItemID
     title: str
     xml_url: str
     html_url: str
@@ -679,7 +690,7 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
         is_subscribed: bool = outline.attrs["subscribed"] == "1"
 
         feed = ExtendedExportFeed(
-            item_id=item_id,
+            item_id=PodcastItemID(item_id),
             title=title,
             xml_url=xml_url,
             html_url=html_url,
@@ -699,7 +710,7 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
 class ExtendedExportEpisode:
     pub_date: date
     title: str
-    item_id: int
+    item_id: EpisodeItemID
     url: str
     overcast_url: str
     enclosure_url: str
@@ -708,8 +719,8 @@ class ExtendedExportEpisode:
     played: bool
 
     @property
-    def id(self) -> str:
-        return self.overcast_url.removeprefix("https://overcast.fm/")
+    def id(self) -> EpisodeWebID:
+        return EpisodeWebID(self.overcast_url.removeprefix("https://overcast.fm/"))
 
     def _validate(self) -> None:
         try:
@@ -744,7 +755,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
         played: bool = outline.attrs.get("played", "0") == "1"
 
         episode = ExtendedExportEpisode(
-            item_id=item_id,
+            item_id=EpisodeItemID(item_id),
             pub_date=pub_date,
             title=title,
             url=url,
