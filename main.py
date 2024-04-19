@@ -93,7 +93,7 @@ def _refresh_random_feed(
 
     for html_episode in html_podcast.episodes:
         db_episode = db.Episode(
-            id=html_episode.id,
+            overcast_url=html_episode.overcast_url,
             feed_url=db_feed.overcast_url,
             title=html_episode.title,
             duration=html_episode.duration,
@@ -115,7 +115,7 @@ def _refresh_missing_episode_duration(
     export_episode_missing_duration: overcast.ExtendedExportEpisode | None = None
     for export_feed in export_feeds:
         for export_episode in export_feed.episodes:
-            if export_episode.id == db_episode_missing_duration.id:
+            if export_episode.overcast_url == db_episode_missing_duration.overcast_url:
                 export_episode_missing_duration = export_episode
                 break
 

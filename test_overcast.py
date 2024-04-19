@@ -6,7 +6,7 @@ import pytest
 
 import overcast
 from overcast import (
-    EpisodeWebID,
+    OvercastEpisodeURL,
     OvercastFeedURL,
     Session,
     export_account_data,
@@ -76,7 +76,7 @@ def test_fetch_podcast(overcast_session: Session) -> None:
     )
     assert episodes_feed.title == "The Talk Show With John Gruber"
     assert (
-        episodes_feed.html_url
+        episodes_feed.overcast_url
         == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
     )
     assert episodes_feed.item_id == 126160
@@ -86,9 +86,9 @@ def test_fetch_podcast(overcast_session: Session) -> None:
 
 def test_fetch_episode(overcast_session: Session) -> None:
     episode = fetch_episode(
-        session=overcast_session, episode_id=EpisodeWebID("+B7NAFKiP8")
+        session=overcast_session,
+        episode_url=OvercastEpisodeURL("https://overcast.fm/+B7NAFKiP8"),
     )
-    assert episode.id == "+B7NAFKiP8"
     assert episode.item_id == 135463290177791
     assert episode.overcast_uri == "overcast:///135463290177791"
     assert (

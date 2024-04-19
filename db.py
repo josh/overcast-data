@@ -6,7 +6,12 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable, Iterator
 
-from overcast import EpisodeWebID, HTMLPodcastsFeed, OvercastFeedURL, PodcastItemID
+from overcast import (
+    HTMLPodcastsFeed,
+    OvercastEpisodeURL,
+    OvercastFeedURL,
+    PodcastItemID,
+)
 
 logger = logging.getLogger("db")
 
@@ -75,7 +80,7 @@ class Feed:
     @staticmethod
     def from_html_feed(feed: HTMLPodcastsFeed) -> "Feed":
         return Feed(
-            overcast_url=feed.html_url,
+            overcast_url=feed.overcast_url,
             numeric_id=feed.item_id,
             title=Feed.clean_title(feed.title),
             added_at=None,
@@ -144,18 +149,18 @@ class FeedCollection:
 
 @dataclass
 class Episode:
-    id: EpisodeWebID
+    overcast_url: OvercastEpisodeURL
     feed_url: OvercastFeedURL
     title: str
     duration: timedelta | None
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["id", "feed_url", "title", "duration"]
+        return ["overcast_url", "feed_url", "title", "duration"]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
-        id = EpisodeWebID(data["id"])
+        overcast_url = OvercastEpisodeURL(data["overcast_url"])
         feed_url = OvercastFeedURL(data["feed_url"])
 
         title = ""
@@ -167,7 +172,7 @@ class Episode:
             duration = _seconds_str_to_timedelta(data["duration"])
 
         return Episode(
-            id=id,
+            overcast_url=overcast_url,
             feed_url=feed_url,
             title=title,
             duration=duration,
@@ -175,7 +180,7 @@ class Episode:
 
     def to_dict(self) -> dict[str, str]:
         return {
-            "id": str(self.id),
+            "overcast_url": str(self.overcast_url),
             "feed_url": str(self.feed_url),
             "title": self.title,
             "duration": _timedelta_to_seconds_str(self.duration),
@@ -221,7 +226,7 @@ class EpisodeCollection:
 
     def insert(self, episode: Episode) -> None:
         for i, e in enumerate(self._episodes):
-            if e.id == episode.id:
+            if e.overcast_url == episode.overcast_url:
                 if episode.feed_url:
                     self._episodes[i].feed_url = episode.feed_url
                 if episode.title:
@@ -235,14 +240,14 @@ class EpisodeCollection:
 
     def sort(self) -> None:
         # TODO: Sort by pubdate
-        self._episodes.sort(key=lambda e: e.id)
+        self._episodes.sort(key=lambda e: e.overcast_url)
 
     def save(self, filename: Path) -> None:
         episodes_lst = list(self._episodes)
 
-        assert len(set(e.id for e in episodes_lst)) == len(
+        assert len(set(e.overcast_url for e in episodes_lst)) == len(
             episodes_lst
-        ), "Duplicate IDs"
+        ), "Duplicate Overcast URLs"
 
         with filename.open("w") as csvfile:
             writer = csv.DictWriter(

@@ -125,9 +125,6 @@ class OvercastEpisodeURL(OvercastURL):
         return str.__new__(cls, urlstring)
 
 
-# TODO: Deprecate these and use the full URL everywhere
-EpisodeWebID = NewType("EpisodeWebID", str)
-
 PodcastItemID = NewType("PodcastItemID", int)
 EpisodeItemID = NewType("EpisodeItemID", int)
 
@@ -158,14 +155,14 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
 
 @dataclass
 class HTMLPodcastsFeed:
-    html_url: OvercastFeedURL
+    overcast_url: OvercastFeedURL
     art_url: HTTPURL
     title: str
     has_unplayed_episodes: bool
 
     @property
     def is_private(self) -> bool:
-        return self.html_url.startswith("https://overcast.fm/p")
+        return self.overcast_url.startswith("https://overcast.fm/p")
 
     # TODO: Maybe use art_id instead of item_id
 
@@ -174,7 +171,9 @@ class HTMLPodcastsFeed:
         if self.is_private:
             return PodcastItemID(
                 int(
-                    self.html_url.removeprefix("https://overcast.fm/p").split("-", 1)[0]
+                    self.overcast_url.removeprefix("https://overcast.fm/p").split(
+                        "-", 1
+                    )[0]
                 )
             )
         return None
@@ -190,7 +189,7 @@ class HTMLPodcastsFeed:
             if self.is_private:
                 assert (
                     self.art_id == self.item_id
-                ), f"art_url: {self.art_url}, id: {self.html_url}"
+                ), f"art_url: {self.art_url}, id: {self.overcast_url}"
             assert self.art_url.startswith(
                 "https://public.overcast-cdn.com"
             ), self.art_url
@@ -216,7 +215,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 
     for feedcell_el in soup.select("a.feedcell[href]"):
         href = feedcell_el.attrs["href"]
-        html_url = OvercastFeedURL(_overcast_fm_url_from_path(href))
+        overcast_url = OvercastFeedURL(_overcast_fm_url_from_path(href))
 
         if href == "/uploads":
             continue
@@ -234,7 +233,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         )
 
         feed = HTMLPodcastsFeed(
-            html_url=html_url,
+            overcast_url=overcast_url,
             art_url=HTTPURL(art_url),
             title=title,
             has_unplayed_episodes=has_unplayed_episodes,
@@ -251,7 +250,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 @dataclass
 class HTMLPodcastFeed:
     title: str
-    html_url: OvercastFeedURL
+    overcast_url: OvercastFeedURL
     overcast_uri: OvercastAppURI
     art_url: HTTPURL
     delete_url: HTTPURL
@@ -279,7 +278,7 @@ class HTMLPodcastFeed:
 
     @property
     def is_private(self) -> bool:
-        return self.html_url.startswith("https://overcast.fm/p")
+        return self.overcast_url.startswith("https://overcast.fm/p")
 
     def _validate(self) -> None:
         try:
@@ -302,7 +301,7 @@ class HTMLPodcastFeed:
 
 @dataclass
 class HTMLPodcastEpisode:
-    html_url: HTTPURL
+    overcast_url: OvercastEpisodeURL
     title: str
     description: str
     pub_date: date
@@ -310,10 +309,6 @@ class HTMLPodcastEpisode:
     is_played: bool
     in_progress: bool
     download_state: Literal["new"] | Literal["deleted"] | None
-
-    @property
-    def id(self) -> EpisodeWebID:
-        return EpisodeWebID(self.html_url.removeprefix("https://overcast.fm/"))
 
     @property
     def is_new(self) -> bool:
@@ -325,10 +320,6 @@ class HTMLPodcastEpisode:
 
     def _validate(self) -> None:
         try:
-            assert not self.id.startswith("/"), self.id
-            if self.id.startswith("p"):
-                assert len(self.id) == 15, self.id
-                assert "-" in self.id, self.id
             assert len(self.title) > 3, self.title
             assert self.pub_date <= datetime.now().date(), self.pub_date
             assert (
@@ -365,7 +356,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
 
     for episodecell_el in soup.select("a.extendedepisodecell[href]"):
         href: str = episodecell_el.attrs["href"]
-        html_url = _overcast_fm_url_from_path(href)
+        episode_url = OvercastEpisodeURL(_overcast_fm_url_from_path(href))
 
         title: str = ""
         if title_el := episodecell_el.select_one(".title"):
@@ -387,7 +378,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
             description = description_el.text.strip()
 
         episode = HTMLPodcastEpisode(
-            html_url=html_url,
+            overcast_url=episode_url,
             title=title,
             description=description,
             pub_date=caption_result.pub_date,
@@ -410,7 +401,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         delete_url = OvercastURL("")
 
     feed = HTMLPodcastFeed(
-        html_url=feed_url,
+        overcast_url=feed_url,
         overcast_uri=OvercastAppURI(overcast_uri),
         art_url=art_url,
         delete_url=delete_url,
@@ -479,11 +470,6 @@ class HTMLEpisode:
     date_published: date
     audio_url: HTTPURL
 
-    # TODO: Maybe deprecate this
-    @property
-    def id(self) -> EpisodeWebID:
-        return EpisodeWebID(self.html_url.removeprefix("https://overcast.fm/"))
-
     @property
     def item_id(self) -> EpisodeItemID:
         return EpisodeItemID(int(self.overcast_uri.removeprefix("overcast:///")))
@@ -498,7 +484,6 @@ class HTMLEpisode:
     def _validate(self) -> None:
         try:
             assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
-            assert self.id.startswith("+"), self.id
             assert self.item_id, self.item_id
             assert self.feed_art_url.startswith(
                 "https://public.overcast-cdn.com/"
@@ -514,19 +499,15 @@ class HTMLEpisode:
                 raise e
 
 
-def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
-    assert episode_id.startswith("+"), episode_id
-
+def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpisode:
     r = _request(
         session=session,
-        path=f"/{episode_id}",
+        path=episode_url,
         accept="text/html",
         cache_expires=timedelta(days=30),
     )
 
     soup = BeautifulSoup(r.text, "html.parser")
-
-    html_url = OvercastEpisodeURL(_overcast_fm_url_from_path(f"/{episode_id}"))
 
     overcast_uri: str = ""
     if meta_el := soup.select_one("meta[name=apple-itunes-app]"):
@@ -563,7 +544,7 @@ def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
     assert date_published
 
     episode = HTMLEpisode(
-        html_url=html_url,
+        html_url=episode_url,
         overcast_uri=OvercastAppURI(overcast_uri),
         feed_art_url=HTTPURL(art_url),
         podcast_html_url=podcast_html_url,
@@ -806,16 +787,8 @@ class ExtendedExportEpisode:
     user_deleted: bool
     played: bool
 
-    @property
-    def id(self) -> EpisodeWebID:
-        return EpisodeWebID(self.overcast_url.removeprefix("https://overcast.fm/"))
-
     def _validate(self) -> None:
         try:
-            assert self.id.startswith("+"), self.overcast_url
-            if self.id.startswith("p"):
-                assert len(self.id) == 15, self.overcast_url
-                assert "-" in self.id, self.overcast_url
             assert len(self.title) > 3, self.title
             assert self.pub_date <= datetime.now().date(), self.pub_date
             assert self.user_updated_at < datetime.now(
