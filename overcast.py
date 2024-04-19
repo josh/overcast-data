@@ -13,6 +13,7 @@ import requests
 from bs4 import BeautifulSoup, Tag
 
 import requests_cache
+from utils import HTTPURL, URL
 
 logger = logging.getLogger("overcast")
 
@@ -34,7 +35,42 @@ _SAFARI_HEADERS = {
     "Sec-Fetch-Dest": "document",
 }
 
-# TODO: Define URL type
+
+class OvercastURL(HTTPURL):
+    """
+    An https://overcast.fm/ URL.
+    """
+
+    def __new__(cls, urlstring: str) -> "OvercastURL":
+        try:
+            if not urlstring.startswith("https://overcast.fm/"):
+                raise ValueError(f"Invalid overcast.fm URL: {urlstring}")
+        except ValueError as e:
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
+            else:
+                logger.error(e)
+
+        return str.__new__(cls, urlstring)
+
+
+class OvercastAppURI(URL):
+    """
+    An overcast:// URL.
+    """
+
+    def __new__(cls, urlstring: str) -> "OvercastAppURI":
+        try:
+            if not urlstring.startswith("overcast://"):
+                raise ValueError(f"Invalid overcast: URL: {urlstring}")
+        except ValueError as e:
+            if _RAISE_VALIDATION_ERRORS:
+                raise e
+            else:
+                logger.error(e)
+
+        return str.__new__(cls, urlstring)
+
 
 # TODO: Deprecate these and use the full URL everywhere
 PodcastWebID = NewType("PodcastWebID", str)
@@ -70,8 +106,8 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
 
 @dataclass
 class HTMLPodcastsFeed:
-    html_url: str
-    art_url: str
+    html_url: OvercastURL
+    art_url: HTTPURL
     title: str
     has_unplayed_episodes: bool
 
@@ -150,8 +186,8 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         )
 
         feed = HTMLPodcastsFeed(
-            html_url=f"https://overcast.fm{href}",
-            art_url=art_url,
+            html_url=OvercastURL(f"https://overcast.fm{href}"),
+            art_url=HTTPURL(art_url),
             title=title,
             has_unplayed_episodes=has_unplayed_episodes,
         )
@@ -168,10 +204,10 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 @dataclass
 class HTMLPodcastFeed:
     title: str
-    html_url: str
-    overcast_uri: str
-    art_url: str
-    delete_url: str
+    html_url: OvercastURL
+    overcast_uri: OvercastAppURI
+    art_url: HTTPURL
+    delete_url: HTTPURL
     episodes: list["HTMLPodcastEpisode"]
 
     # TODO: Which is more reliable, item id, art id or delete id?
@@ -200,14 +236,12 @@ class HTMLPodcastFeed:
 
     def _validate(self) -> None:
         try:
-            assert self.html_url.startswith("https://overcast.fm/"), self.html_url
-            assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
             assert self.item_id, self.overcast_uri
             assert self.art_url.startswith(
                 "https://public.overcast-cdn.com/"
             ), self.art_url
             assert self.art_id, self.art_url
-            assert self.delete_url.startswith("/podcasts/delete/"), self.delete_url
+            assert "/podcasts/delete/" in self.delete_url, self.delete_url
             assert self.delete_action_id, self.delete_url
             assert self.item_id == self.art_id
             assert self.item_id == self.delete_action_id
@@ -221,7 +255,7 @@ class HTMLPodcastFeed:
 
 @dataclass
 class HTMLPodcastEpisode:
-    html_url: str
+    html_url: HTTPURL
     title: str
     description: str
     pub_date: date
@@ -244,7 +278,6 @@ class HTMLPodcastEpisode:
 
     def _validate(self) -> None:
         try:
-            assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
             assert not self.id.startswith("/"), self.id
             if self.id.startswith("p"):
                 assert len(self.id) == 15, self.id
@@ -314,7 +347,7 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
             description = description_el.text.strip()
 
         episode = HTMLPodcastEpisode(
-            html_url=f"https://overcast.fm{href}",
+            html_url=OvercastURL(f"https://overcast.fm{href}"),
             title=title,
             description=description,
             pub_date=caption_result.pub_date,
@@ -327,10 +360,10 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
         episodes.append(episode)
 
     feed = HTMLPodcastFeed(
-        html_url=f"https://overcast.fm/{feed_id}",
-        overcast_uri=overcast_uri,
-        art_url=art_url,
-        delete_url=delete_url,
+        html_url=OvercastURL(f"https://overcast.fm/{feed_id}"),
+        overcast_uri=OvercastAppURI(overcast_uri),
+        art_url=HTTPURL(art_url),
+        delete_url=OvercastURL(f"https://overcast.fm{delete_url}"),
         title=feed_title,
         episodes=episodes,
     )
@@ -387,14 +420,14 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
 
 @dataclass
 class HTMLEpisode:
-    html_url: str
-    overcast_uri: str
-    feed_art_url: str
-    podcast_html_url: str
+    html_url: OvercastURL
+    overcast_uri: OvercastAppURI
+    feed_art_url: HTTPURL
+    podcast_html_url: OvercastURL
     title: str
     description: str
     date_published: date
-    audio_url: str
+    audio_url: HTTPURL
 
     # TODO: Maybe deprecate this
     @property
@@ -422,7 +455,6 @@ class HTMLEpisode:
             assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
             assert self.id.startswith("+"), self.id
             assert self.item_id, self.item_id
-            assert self.overcast_uri.startswith("overcast:///"), self.overcast_uri
             assert self.feed_art_url.startswith(
                 "https://public.overcast-cdn.com/"
             ), self.feed_art_url
@@ -483,24 +515,24 @@ def fetch_episode(session: Session, episode_id: EpisodeWebID) -> HTMLEpisode:
     assert date_published
 
     episode = HTMLEpisode(
-        html_url=f"https://overcast.fm/{episode_id}",
-        overcast_uri=overcast_uri,
-        feed_art_url=art_url,
-        podcast_html_url=podcast_html_url,
+        html_url=OvercastURL(f"https://overcast.fm/{episode_id}"),
+        overcast_uri=OvercastAppURI(overcast_uri),
+        feed_art_url=HTTPURL(art_url),
+        podcast_html_url=OvercastURL(podcast_html_url),
         title=title,
         description=description,
         date_published=date_published,
-        audio_url=audio_url,
+        audio_url=HTTPURL(audio_url),
     )
     episode._validate()
     return episode
 
 
-def _fetch_audio_duration(url: str, max_bytes: int | None) -> timedelta | None:
+def _fetch_audio_duration(url: HTTPURL, max_bytes: int | None) -> timedelta | None:
     headers: dict[str, str] = {}
     if max_bytes:
         headers["Range"] = f"bytes=0-{max_bytes}"
-    response = requests.get(url, allow_redirects=True, headers=headers)
+    response = requests.get(str(url), allow_redirects=True, headers=headers)
     if not response.ok:
         logger.warning("Failed to fetch audio: %s", url)
         return None
@@ -519,7 +551,7 @@ def _fetch_audio_duration(url: str, max_bytes: int | None) -> timedelta | None:
     return timedelta(seconds=seconds)
 
 
-def fetch_audio_duration(session: Session, url: str) -> timedelta | None:
+def fetch_audio_duration(session: Session, url: HTTPURL) -> timedelta | None:
     def _inner() -> timedelta | None:
         if session._offline:
             raise requests_cache.OfflineError()
@@ -558,8 +590,8 @@ def export_account_data(session: Session) -> AccountExport:
 class ExportFeed:
     item_id: PodcastItemID
     title: str
-    xml_url: str
-    html_url: str
+    xml_url: HTTPURL
+    html_url: HTTPURL
     added_at: datetime
 
     def _validate(self) -> None:
@@ -588,8 +620,8 @@ def _opml_feeds(soup: BeautifulSoup) -> list[ExportFeed]:
         feed = ExportFeed(
             item_id=PodcastItemID(item_id),
             title=title,
-            xml_url=xml_url,
-            html_url=html_url,
+            xml_url=HTTPURL(xml_url),
+            html_url=HTTPURL(html_url),
             added_at=added_at,
         )
         feed._validate()
@@ -671,8 +703,8 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
 class ExtendedExportFeed:
     item_id: PodcastItemID
     title: str
-    xml_url: str
-    html_url: str
+    xml_url: HTTPURL
+    html_url: HTTPURL
     added_at: datetime
     is_subscribed: bool
     episodes: list["ExtendedExportEpisode"]
@@ -705,8 +737,8 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
         feed = ExtendedExportFeed(
             item_id=PodcastItemID(item_id),
             title=title,
-            xml_url=xml_url,
-            html_url=html_url,
+            xml_url=HTTPURL(xml_url),
+            html_url=HTTPURL(html_url),
             added_at=added_at,
             is_subscribed=is_subscribed,
             episodes=_opml_extended_episode(outline),
@@ -725,8 +757,8 @@ class ExtendedExportEpisode:
     title: str
     item_id: EpisodeItemID
     url: str
-    overcast_url: str
-    enclosure_url: str
+    overcast_url: HTTPURL
+    enclosure_url: HTTPURL
     user_updated_at: datetime
     user_deleted: bool
     played: bool
@@ -772,8 +804,8 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
             pub_date=pub_date,
             title=title,
             url=url,
-            overcast_url=overcast_url,
-            enclosure_url=enclosure_url,
+            overcast_url=HTTPURL(overcast_url),
+            enclosure_url=HTTPURL(enclosure_url),
             user_updated_at=user_updated_at,
             user_deleted=user_deleted,
             played=played,

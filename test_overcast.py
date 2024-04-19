@@ -17,6 +17,7 @@ from overcast import (
     fetch_podcasts,
     parse_episode_caption_text,
 )
+from utils import HTTPURL
 
 _OFFLINE = "PYTEST_OFFLINE" in os.environ
 
@@ -102,11 +103,13 @@ def test_fetch_episode(overcast_session: Session) -> None:
 
 
 def test_fetch_audio_duration(overcast_session: Session) -> None:
-    url = "http://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
+    url = HTTPURL(
+        "http://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
+    )
     duration = fetch_audio_duration(session=overcast_session, url=url)
     assert duration == timedelta(seconds=6538)
 
-    url = "http://example.com/"
+    url = HTTPURL("http://example.com/")
     duration = fetch_audio_duration(session=overcast_session, url=url)
     assert duration is None
 
