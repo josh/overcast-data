@@ -7,7 +7,7 @@ import pytest
 import overcast
 from overcast import (
     EpisodeWebID,
-    PodcastWebID,
+    OvercastFeedURL,
     Session,
     export_account_data,
     export_account_extended_data,
@@ -70,7 +70,9 @@ def test_fetch_podcasts_bad_cookie(
 def test_fetch_podcast(overcast_session: Session) -> None:
     episodes_feed = fetch_podcast(
         session=overcast_session,
-        feed_id=PodcastWebID("itunes528458508/the-talk-show-with-john-gruber"),
+        feed_url=OvercastFeedURL(
+            "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
+        ),
     )
     assert episodes_feed.title == "The Talk Show With John Gruber"
     assert (

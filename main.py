@@ -87,7 +87,9 @@ def _refresh_random_feed(
 ) -> None:
     db_feed = random.choice(list(db_feeds))
 
-    html_podcast = overcast.fetch_podcast(session=session, feed_id=db_feed.id)
+    html_podcast = overcast.fetch_podcast(
+        session=session, feed_url=db_feed.overcast_url
+    )
 
     for html_episode in html_podcast.episodes:
         db_episode = db.Episode(

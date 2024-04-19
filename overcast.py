@@ -345,10 +345,10 @@ class HTMLPodcastEpisode:
                 raise e
 
 
-def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
+def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFeed:
     r = _request(
         session=session,
-        path=f"/{feed_id}",
+        path=feed_url,
         accept="text/html",
         cache_expires=timedelta(hours=1),
     )
@@ -403,9 +403,6 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
         episode._validate()
         episodes.append(episode)
 
-    # TOOD: Function should just receive this as a parameter
-    html_url = OvercastFeedURL(_overcast_fm_url_from_path(f"/{feed_id}"))
-
     if img_el := soup.select_one("img.fullart[src]"):
         art_url = HTTPURL(img_el.attrs["src"])
     else:
@@ -417,7 +414,7 @@ def fetch_podcast(session: Session, feed_id: PodcastWebID) -> HTMLPodcastFeed:
         delete_url = OvercastURL("")
 
     feed = HTMLPodcastFeed(
-        html_url=html_url,
+        html_url=feed_url,
         overcast_uri=OvercastAppURI(overcast_uri),
         art_url=art_url,
         delete_url=delete_url,
@@ -878,6 +875,9 @@ def _request(
     cache_expires: timedelta,
 ) -> requests.Response:
     try:
+        # TODO: Make this method take OvercastURL
+        if path.startswith("https://overcast.fm"):
+            path = path.removeprefix("https://overcast.fm")
         response = session.get(path=path, accept=accept, cache_expires=cache_expires)
     except requests.HTTPError as e:
         if e.response.status_code == 429:
