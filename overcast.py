@@ -813,7 +813,7 @@ class ExtendedExportEpisode:
     pub_date: date
     title: str
     item_id: EpisodeItemID
-    url: str
+    url: HTTPURL
     overcast_url: OvercastEpisodeURL
     enclosure_url: HTTPURL
     user_updated_at: datetime
@@ -849,7 +849,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
         item_id = EpisodeItemID(int(outline.attrs["overcastId"]))
         pub_date = dateutil.parser.parse(outline.attrs["pubDate"]).date()
         title: str = outline.attrs["title"]
-        url: str = outline.attrs["url"]
+        url = HTTPURL(outline.attrs["url"])
         enclosure_url = HTTPURL(outline.attrs["enclosureUrl"])
         user_updated_at = dateutil.parser.parse(outline.attrs["userUpdatedDate"])
         user_deleted: bool = outline.attrs.get("userDeleted", "0") == "1"
