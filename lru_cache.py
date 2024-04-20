@@ -5,7 +5,7 @@ from collections import OrderedDict
 from pathlib import Path
 from typing import Any, Callable, Hashable, TypeVar
 
-_logger = logging.getLogger("cache")
+_logger = logging.getLogger("lru_cache")
 _caches_to_save: list["LRUCache"] = []
 
 _SENTINEL = object()

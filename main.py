@@ -149,10 +149,10 @@ def backfill_duration(ctx: Context, limit: int) -> None:
     logger.info("[backfill-duration]")
 
     db_episodes_missing_duration = [e for e in ctx.db_episodes if e.duration is None]
-    logger.info("Episodes missing duration: %d", len(db_episodes_missing_duration))
     if not db_episodes_missing_duration:
         return
     shuffle(db_episodes_missing_duration)
+    logger.warning("Episodes missing duration: %d", len(db_episodes_missing_duration))
 
     export_data = overcast.export_account_extended_data(session=ctx.session)
 

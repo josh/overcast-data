@@ -79,7 +79,7 @@ class Session:
         )
 
         filepath = self.cache_path(request=request)
-        logger.debug(f"Request cache path: {filepath} exists: {filepath.exists()}")
+        logger.debug("Retrieving request cache: %s", filepath)
 
         cached_response: requests.Response | None = None
         if filepath.exists():
@@ -101,10 +101,7 @@ class Session:
             raise OfflineError()
 
         self._throttle()
-        if logger.isEnabledFor(logging.DEBUG):
-            logger.debug("GET %s", request.url)
-        else:
-            logger.info("GET %s", self._base_url)
+        logger.warning("GET %s", request.url)
         prepped = self._session.prepare_request(request)
         r = self._session.send(prepped)
 
@@ -130,7 +127,7 @@ class Session:
             self._last_request_at + self._min_time_between_requests - datetime.now()
         ).total_seconds()
         if seconds_to_wait > 0:
-            logger.info("Waiting %s seconds...", seconds_to_wait)
+            logger.warning("Waiting %s seconds...", seconds_to_wait)
             time.sleep(seconds_to_wait)
         self._last_request_at = datetime.now()
 
@@ -150,8 +147,8 @@ class Session:
         if accept := prepped.headers.get("Accept"):
             if extname := self.mime_type_extnames.get(accept):
                 file_path = file_path.with_suffix(f".{extname}")
-            else:
-                logger.debug("No extname for Accept: %s", accept)
+            elif accept != "*/*":
+                logger.warning("No extname for Accept: %s", accept)
 
         return file_path
 
@@ -173,12 +170,12 @@ class Session:
         for path, response in self.cache_entries():
             response_date = _response_date(response)
             if now - response_date > older_than:
-                logger.info("Purging cache entry %s", path)
+                logger.debug("Purging cache entry %s", path)
                 path.unlink()
 
         for path in self._cache_dir.rglob("*"):
             if path.is_dir() and not any(path.iterdir()):
-                logger.info("Removing empty cache directory %s", path)
+                logger.debug("Removing empty cache directory %s", path)
                 path.rmdir()
 
 

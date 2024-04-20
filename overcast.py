@@ -544,6 +544,7 @@ def _fetch_audio_duration(url: HTTPURL) -> timedelta | None:
         logger.error("Failed to parse audio: %s", url)
         return None
     if f is None:
+        logger.error("Failed to parse audio: %s", url)
         return None
     seconds = int(f.info.length)
     return timedelta(seconds=seconds)
@@ -688,7 +689,7 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
         playlist._validate()
         playlists.append(playlist)
 
-    logger.debug("Found %d playlists in export", len(playlists))
+    logger.debug("Found %d playlists in extended export", len(playlists))
     return playlists
 
 
@@ -737,7 +738,11 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
         feed._validate()
         feeds.append(feed)
 
-    logger.debug("Found %d feeds in export", len(feeds))
+    feed_count = len(feeds)
+    episode_count = sum(len(feed.episodes) for feed in feeds)
+    logger.debug(
+        "Found %d feeds and %d episodes in extended export", feed_count, episode_count
+    )
     return feeds
 
 
@@ -794,7 +799,6 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
         episode._validate()
         episodes.append(episode)
 
-    logger.debug("Found %d episodes in export", len(episodes))
     return episodes
 
 
