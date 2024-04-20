@@ -190,11 +190,8 @@ class HTMLPodcastsFeed:
 
     def _validate(self) -> None:
         try:
-            assert self.art_url.startswith(
-                "https://public.overcast-cdn.com"
-            ), self.art_url
-            assert self.item_id, self.art_url
-            assert len(self.title) > 3
+            assert self.item_id
+            assert self.title
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
@@ -267,11 +264,8 @@ class HTMLPodcastFeed:
 
     def _validate(self) -> None:
         try:
-            assert self.item_id, self.art_url
-            assert self.art_url.startswith(
-                "https://public.overcast-cdn.com/"
-            ), self.art_url
-            assert len(self.title) > 3, self.title
+            assert self.item_id
+            assert self.title
             assert len(self.episodes) > 0
         except AssertionError as e:
             logger.error(e)
@@ -300,12 +294,9 @@ class HTMLPodcastEpisode:
 
     def _validate(self) -> None:
         try:
-            assert len(self.title) > 3, self.title
+            assert self.title, self.title
             assert self.pub_date <= datetime.now().date(), self.pub_date
-            assert (
-                self.is_deleted != self.is_new
-            ), "is_deleted and is_new can't be the same"
-            assert self.download_state, "unknown download state"
+            assert self.download_state is not None, "unknown download state"
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
@@ -457,13 +448,9 @@ class HTMLEpisode:
     def _validate(self) -> None:
         try:
             assert self.item_id, self.item_id
-            assert self.feed_art_url.startswith(
-                "https://public.overcast-cdn.com/"
-            ), self.feed_art_url
             assert self.feed_item_id, self.feed_art_url
-            assert len(self.title) > 3, self.title
+            assert self.title, self.title
             assert self.date_published <= datetime.now().date(), self.date_published
-            assert self.audio_url.startswith("http"), self.audio_url
             assert "#" not in self.audio_url, self.audio_url
         except AssertionError as e:
             logger.error(e)
@@ -591,8 +578,7 @@ class ExportFeed:
 
     def _validate(self) -> None:
         try:
-            assert self.item_id > 0, self.item_id
-            assert len(self.title) > 3, self.title
+            assert self.title, self.title
             assert self.added_at < datetime.now(timezone.utc), self.added_at
         except AssertionError as e:
             logger.error(e)
@@ -654,7 +640,7 @@ class ExtendedExportPlaylist:
 
     def _validate(self) -> None:
         try:
-            assert len(self.title) > 0, self.title
+            assert self.title, self.title
             assert self.sorting in ["chronological"], self.sorting
         except AssertionError as e:
             logger.error(e)
@@ -704,8 +690,7 @@ class ExtendedExportFeed:
 
     def _validate(self) -> None:
         try:
-            assert self.item_id > 0
-            assert len(self.title) > 3, self.title
+            assert self.title, self.title
             assert self.added_at < datetime.now(timezone.utc), self.added_at
             assert len(self.episodes) > 0
         except AssertionError as e:
@@ -759,7 +744,7 @@ class ExtendedExportEpisode:
 
     def _validate(self) -> None:
         try:
-            assert len(self.title) > 3, self.title
+            assert self.title, self.title
             assert self.pub_date <= datetime.now().date(), self.pub_date
             assert self.user_updated_at < datetime.now(
                 timezone.utc
