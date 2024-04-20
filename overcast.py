@@ -109,7 +109,9 @@ class OvercastFeedURL(OvercastURL):
                 raise ValueError(f"Invalid overcast.fm feed URL: {urlstring}")
             elif not components.hostname == "overcast.fm":
                 raise ValueError(f"Invalid overcast.fm feed URL: {urlstring}")
-            elif components.path.startswith("/+"):
+            elif not re.match(
+                r"^/(p\d+-[A-Za-z0-9]+|itunes\d+/[A-Za-z0-9-]+)$", components.path
+            ):
                 raise ValueError(f"Got overcast.fm episode URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
@@ -132,7 +134,7 @@ class OvercastEpisodeURL(OvercastURL):
                 raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
             elif not components.hostname == "overcast.fm":
                 raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
-            elif not components.path.startswith("/+"):
+            elif not re.match(r"^/(\+[A-Za-z0-9_-]+)$", components.path):
                 raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
@@ -213,10 +215,11 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 
     for feedcell_el in soup.select("a.feedcell[href]"):
         href = feedcell_el.attrs["href"]
-        overcast_url = OvercastFeedURL(_overcast_fm_url_from_path(href))
 
         if href == "/uploads":
             continue
+
+        overcast_url = OvercastFeedURL(_overcast_fm_url_from_path(href))
 
         if art_el := feedcell_el.select_one("img.art[src]"):
             art_url = OvercastCDNURL(art_el.attrs["src"])
