@@ -92,7 +92,7 @@ def test_fetch_episode(overcast_session: Session) -> None:
     assert episode.item_id == 135463290177791
     assert episode.overcast_uri == "overcast:///135463290177791"
     assert (
-        episode.podcast_html_url
+        episode.podcast_overcast_url
         == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
     )
     assert episode.feed_art_url == "https://public.overcast-cdn.com/art/126160?v198"

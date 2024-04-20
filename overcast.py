@@ -435,10 +435,10 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
 
 @dataclass
 class HTMLEpisode:
-    html_url: OvercastEpisodeURL
+    overcast_url: OvercastEpisodeURL
     overcast_uri: OvercastAppURI
     feed_art_url: OvercastCDNURL
-    podcast_html_url: OvercastFeedURL
+    podcast_overcast_url: OvercastFeedURL
     title: str
     description: str
     date_published: date
@@ -456,7 +456,6 @@ class HTMLEpisode:
 
     def _validate(self) -> None:
         try:
-            assert self.html_url.startswith("https://overcast.fm/+"), self.html_url
             assert self.item_id, self.item_id
             assert self.feed_art_url.startswith(
                 "https://public.overcast-cdn.com/"
@@ -500,9 +499,9 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
 
     if a_el := soup.select_one(".centertext > h3 > a[href]"):
         href = a_el.attrs["href"]
-        podcast_html_url = OvercastFeedURL(_overcast_fm_url_from_path(href))
+        podcast_overcast_url = OvercastFeedURL(_overcast_fm_url_from_path(href))
     else:
-        podcast_html_url = OvercastFeedURL("")
+        podcast_overcast_url = OvercastFeedURL("")
 
     title: str = ""
     if title_el := soup.select_one("meta[name='og:title']"):
@@ -518,10 +517,10 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
     assert date_published
 
     episode = HTMLEpisode(
-        html_url=episode_url,
+        overcast_url=episode_url,
         overcast_uri=OvercastAppURI(overcast_uri),
         feed_art_url=art_url,
-        podcast_html_url=podcast_html_url,
+        podcast_overcast_url=podcast_overcast_url,
         title=title,
         description=description,
         date_published=date_published,
