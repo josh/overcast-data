@@ -2,13 +2,16 @@ import logging
 import os
 import random
 from datetime import timedelta
+from itertools import islice
 from pathlib import Path
+from random import shuffle
 
 import click
 
 import db
 import overcast
 from db import EpisodeCollection, FeedCollection
+from utils import HTTPURL
 
 logger = logging.getLogger("overcast-data")
 
@@ -70,12 +73,12 @@ def main(
 
     _refresh_random_feed(session=session, db_feeds=db_feeds, db_episodes=db_episodes)
 
-    for i in range(5):
-        _refresh_missing_episode_duration(
-            session=session,
-            db_episodes=db_episodes,
-            export_feeds=export_data.feeds,
-        )
+    _refresh_missing_episodes_duration(
+        session=session,
+        db_episodes=db_episodes,
+        export_feeds=export_data.feeds,
+        times=5,
+    )
 
     db_feeds.save(feeds_path)
     db_episodes.save(episodes_path)
@@ -107,28 +110,43 @@ def _refresh_random_feed(
         db_episodes.insert(db_episode)
 
 
-def _refresh_missing_episode_duration(
+def _refresh_missing_episodes_duration(
     session: overcast.Session,
     db_episodes: EpisodeCollection,
     export_feeds: list[overcast.ExtendedExportFeed],
+    times: int,
 ) -> None:
     db_episodes_missing_duration = [e for e in db_episodes if e.duration is None]
     logger.info("Episodes missing duration: %d", len(db_episodes_missing_duration))
     if not db_episodes_missing_duration:
         return
-    db_episode_missing_duration = random.choice(db_episodes_missing_duration)
 
-    export_episode_missing_duration: overcast.ExtendedExportEpisode | None = None
+    shuffle(db_episodes_missing_duration)
+
+    for db_episode_missing_duration in islice(db_episodes_missing_duration, times):
+        if enclosure_url := _enclosure_url_for_episode_url(
+            session=session,
+            export_feeds=export_feeds,
+            episode_url=db_episode_missing_duration.overcast_url,
+        ):
+            duration = overcast.fetch_audio_duration(session, enclosure_url)
+            db_episode_missing_duration.duration = duration
+
+
+def _enclosure_url_for_episode_url(
+    session: overcast.Session,
+    export_feeds: list[overcast.ExtendedExportFeed],
+    episode_url: overcast.OvercastEpisodeURL,
+) -> HTTPURL | None:
     for export_feed in export_feeds:
         for export_episode in export_feed.episodes:
-            if export_episode.overcast_url == db_episode_missing_duration.overcast_url:
-                export_episode_missing_duration = export_episode
-                break
+            if export_episode.overcast_url == episode_url:
+                return export_episode.enclosure_url
 
-    if export_episode_missing_duration:
-        enclosure_url = export_episode_missing_duration.enclosure_url
-        duration = overcast.fetch_audio_duration(session, enclosure_url)
-        db_episode_missing_duration.duration = duration
+    if episode := overcast.fetch_episode(session=session, episode_url=episode_url):
+        return episode.audio_url
+
+    return None
 
 
 if __name__ == "__main__":
