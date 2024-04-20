@@ -545,8 +545,6 @@ def _fetch_audio_duration(url: HTTPURL, max_bytes: int | None) -> timedelta | No
     except Exception:
         logger.error("Failed to parse audio: %s, max-bytes: %i", url, max_bytes)
         return None
-    if not f:
-        return None
     seconds = f.info.length
     if seconds < 60:
         logger.error("Duration too short: %s", url)
@@ -565,7 +563,7 @@ def fetch_audio_duration(session: Session, url: HTTPURL) -> timedelta | None:
         else:
             return None
 
-    key = f"fetch_audio_duration:v1:{url}"
+    key = f"fetch_audio_duration:v2:{url}"
     return session.simple_cache.get(key, _inner)
 
 
