@@ -545,6 +545,8 @@ def _fetch_audio_duration(url: HTTPURL, max_bytes: int | None) -> timedelta | No
     except Exception:
         logger.error("Failed to parse audio: %s, max-bytes: %i", url, max_bytes)
         return None
+    if f is None:
+        return None
     seconds = f.info.length
     return timedelta(seconds=seconds)
 
