@@ -44,7 +44,12 @@ jobs:
 
       - name: Sync
         run: |
-          python main.py --feeds-path data/feeds.csv --episodes-path data/episodes.csv
+          python main.py --feeds-path data/feeds.csv --episodes-path data/episodes.csv \
+            refresh-opml-export \
+            refresh-feeds-index \
+            refresh-feeds --limit 2 \
+            backfill-duration --limit 5 \
+            purge-cache
         env:
           XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}
