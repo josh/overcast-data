@@ -111,6 +111,12 @@ def test_fetch_audio_duration(overcast_session: Session) -> None:
     duration = fetch_audio_duration(session=overcast_session, url=url)
     assert duration == timedelta(seconds=6538)
 
+    url = HTTPURL(
+        "https://cdn.twit.tv/members/twit/twit_913/twit_913_842322-6760df3c.mp3"
+    )
+    duration = fetch_audio_duration(session=overcast_session, url=url)
+    assert duration == timedelta(hours=2, minutes=16, seconds=16)
+
     url = HTTPURL("http://example.com/")
     duration = fetch_audio_duration(session=overcast_session, url=url)
     assert duration is None

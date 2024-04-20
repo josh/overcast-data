@@ -531,10 +531,8 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
     return episode
 
 
-def _fetch_audio_duration(url: HTTPURL, max_bytes: int | None) -> timedelta | None:
+def _fetch_audio_duration(url: HTTPURL) -> timedelta | None:
     headers: dict[str, str] = {}
-    if max_bytes:
-        headers["Range"] = f"bytes=0-{max_bytes}"
     response = requests.get(str(url), allow_redirects=True, headers=headers)
     if not response.ok:
         logger.warning("Failed to fetch audio: %s", url)
@@ -543,11 +541,11 @@ def _fetch_audio_duration(url: HTTPURL, max_bytes: int | None) -> timedelta | No
     try:
         f = mutagen.File(io)  # type: ignore
     except Exception:
-        logger.error("Failed to parse audio: %s, max-bytes: %i", url, max_bytes)
+        logger.error("Failed to parse audio: %s", url)
         return None
     if f is None:
         return None
-    seconds = f.info.length
+    seconds = int(f.info.length)
     return timedelta(seconds=seconds)
 
 
@@ -555,14 +553,12 @@ def fetch_audio_duration(session: Session, url: HTTPURL) -> timedelta | None:
     def _inner() -> timedelta | None:
         if session._offline:
             raise requests_cache.OfflineError()
-        elif duration := _fetch_audio_duration(url, max_bytes=1_000_000):
-            return duration
-        elif duration := _fetch_audio_duration(url, max_bytes=None):
+        elif duration := _fetch_audio_duration(url):
             return duration
         else:
             return None
 
-    key = f"fetch_audio_duration:v2:{url}"
+    key = f"fetch_audio_duration:v3:{url}"
     return session.simple_cache.get(key, _inner)
 
 
