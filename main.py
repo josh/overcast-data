@@ -7,6 +7,12 @@ from pathlib import Path
 from random import shuffle
 
 import click
+from prometheus_client import (
+    CollectorRegistry,
+    Gauge,
+    generate_latest,
+    write_to_textfile,
+)
 
 import db
 import overcast
@@ -182,6 +188,43 @@ def _enclosure_url_for_episode_url(
         return episode.audio_url
 
     return None
+
+
+@cli.command("metrics")
+@click.option("--metrics-filename", type=click.Path(path_type=Path))
+@click.pass_obj
+def metrics(ctx: Context, metrics_filename: str | None) -> None:
+    registry = CollectorRegistry()
+
+    overcast_episode_count = Gauge(
+        "overcast_episode_count",
+        "Count of Overcast episodes",
+        labelnames=["feed_slug"],
+        registry=registry,
+    )
+    overcast_episode_minutes = Gauge(
+        "overcast_episode_minutes",
+        "Minutes of Overcast episodes",
+        labelnames=["feed_slug"],
+        registry=registry,
+    )
+
+    logger.info("[metrics]")
+
+    for db_feed in ctx.db_feeds:
+        for db_episode in ctx.db_episodes:
+            feed_slug = db_feed.slug()
+            overcast_episode_count.labels(feed_slug=feed_slug).inc()
+            if db_episode.duration:
+                minutes = db_episode.duration.total_seconds() / 60
+                overcast_episode_minutes.labels(feed_slug=feed_slug).inc(minutes)
+
+    for line in generate_latest(registry=registry).splitlines():
+        logger.info(line.decode())
+
+    if metrics_filename:
+        logger.debug("Writing metrics to %s", metrics_filename)
+        write_to_textfile(metrics_filename, registry)
 
 
 @cli.command("purge-cache")

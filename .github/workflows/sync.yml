@@ -49,6 +49,7 @@ jobs:
             refresh-feeds-index \
             refresh-feeds --limit 2 \
             backfill-duration --limit 5 \
+            metrics --metrics-filename data/metrics.prom
             purge-cache
         env:
           XDG_CACHE_HOME: .cache/
