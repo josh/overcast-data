@@ -211,13 +211,19 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
 
     logger.info("[metrics]")
 
+    feed_slugs: dict[overcast.OvercastFeedURL, str] = {}
     for db_feed in ctx.db_feeds:
-        for db_episode in ctx.db_episodes:
-            feed_slug = db_feed.slug()
-            overcast_episode_count.labels(feed_slug=feed_slug).inc()
-            if db_episode.duration:
-                minutes = db_episode.duration.total_seconds() / 60
-                overcast_episode_minutes.labels(feed_slug=feed_slug).inc(minutes)
+        if db_feed.overcast_url:
+            feed_slugs[db_feed.overcast_url] = db_feed.slug()
+        else:
+            logger.warning("Feed '%s' has no Overcast URL", db_feed.id)
+
+    for db_episode in ctx.db_episodes:
+        feed_slug = feed_slugs[db_episode.feed_url]
+        overcast_episode_count.labels(feed_slug=feed_slug).inc()
+        if db_episode.duration:
+            minutes = db_episode.duration.total_seconds() / 60
+            overcast_episode_minutes.labels(feed_slug=feed_slug).inc(minutes)
 
     for line in generate_latest(registry=registry).splitlines():
         logger.info(line.decode())
