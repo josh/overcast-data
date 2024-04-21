@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from io import BytesIO
 from pathlib import Path
-from typing import Literal, NewType
+from typing import Literal, NewType, cast
 from urllib.parse import urlparse
 
 import dateutil.parser
@@ -631,17 +631,32 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
     )
 
 
+_PLAYLIST_SORTING_TYPE = Literal[
+    "chronological",
+    "chronological-by-podcast",
+    "reverse-chronological",
+    "reverse-chronological-by-podcast",
+]
+
+_PLAYLIST_SORTING_VALUES: list[str] = [
+    "chronological",
+    "chronological-by-podcast",
+    "reverse-chronological",
+    "reverse-chronological-by-podcast",
+]
+
+
 @dataclass
 class ExtendedExportPlaylist:
     title: str
     smart: bool
-    sorting: str
+    sorting: _PLAYLIST_SORTING_TYPE
     include_episode_ids: list[OvercastEpisodeItemID]
 
     def _validate(self) -> None:
         try:
             assert self.title, self.title
-            assert self.sorting in ["chronological"], self.sorting
+            assert self.sorting in _PLAYLIST_SORTING_VALUES, self.sorting
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
@@ -656,7 +671,7 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
     ):
         title: str = outline.attrs["title"]
         smart: bool = outline.attrs["smart"] == "1"
-        sorting: str = outline.attrs["sorting"]
+        sorting = cast(_PLAYLIST_SORTING_TYPE, outline.attrs["sorting"])
 
         include_episode_ids: list[OvercastEpisodeItemID] = []
         if include_episode_ids_str := outline.attrs.get("includeEpisodeIds", ""):
