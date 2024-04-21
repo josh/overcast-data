@@ -195,7 +195,7 @@ class Episode:
 
 
 def _timedelta_to_seconds_str(td: timedelta | None) -> str:
-    if not td:
+    if td is None:
         return ""
     return str(int(td.total_seconds()))
 
@@ -203,14 +203,7 @@ def _timedelta_to_seconds_str(td: timedelta | None) -> str:
 def _seconds_str_to_timedelta(s: str | None) -> timedelta | None:
     if not s:
         return None
-
-    seconds = int(s)
-    minutes = 0
-    if seconds >= 60:
-        minutes = seconds // 60
-        seconds %= 60
-
-    return timedelta(minutes=minutes, seconds=seconds)
+    return timedelta(seconds=int(s))
 
 
 class EpisodeCollection:
