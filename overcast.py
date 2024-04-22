@@ -775,6 +775,7 @@ class ExtendedExportEpisode:
     enclosure_url: HTTPURL
     user_updated_at: datetime
     user_deleted: bool
+    progress: int
     played: bool
 
     def _validate(self) -> None:
@@ -806,6 +807,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
         enclosure_url = HTTPURL(outline.attrs["enclosureUrl"])
         user_updated_at = dateutil.parser.parse(outline.attrs["userUpdatedDate"])
         user_deleted: bool = outline.attrs.get("userDeleted", "0") == "1"
+        progress: int = int(outline.attrs.get("progress", "0"))
         played: bool = outline.attrs.get("played", "0") == "1"
 
         episode = ExtendedExportEpisode(
@@ -817,6 +819,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
             enclosure_url=enclosure_url,
             user_updated_at=user_updated_at,
             user_deleted=user_deleted,
+            progress=progress,
             played=played,
         )
         episode._validate()
