@@ -190,6 +190,8 @@ class FeedCollection:
                 writer.writerow(feed.to_dict())
 
     def insert(self, feed: Feed) -> None:
+        append = True
+
         for i, f in enumerate(self._feeds):
             if f.id == feed.id:
                 if feed.overcast_url:
@@ -201,13 +203,12 @@ class FeedCollection:
                 if feed.added_at:
                     self._feeds[i].added_at = feed.added_at
                 self._feeds[i].is_subscribed = feed.is_subscribed
-                return
+                append = False
+                break
 
-        if not feed.id:
-            logger.warning("Can't insert feed without Overcast ID: %s", feed)
-            return
+        if append:
+            self._feeds.append(feed)
 
-        self._feeds.append(feed)
         self.sort()
 
 
@@ -375,6 +376,8 @@ class EpisodeCollection:
         yield from self._episodes
 
     def insert(self, episode: Episode) -> None:
+        append = True
+
         for i, e in enumerate(self._episodes):
             if e.overcast_url == episode.overcast_url:
                 if episode.id:
@@ -396,9 +399,12 @@ class EpisodeCollection:
                         )
                     else:
                         self._episodes[i].date_published = episode.date_published
-                return
+                append = False
+                break
 
-        self._episodes.append(episode)
+        if append:
+            self._episodes.append(episode)
+
         self.sort()
 
     def sort(self) -> None:
