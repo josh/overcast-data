@@ -107,6 +107,10 @@ def refresh_opml_export(ctx: Context) -> None:
 def refresh_feeds_index(ctx: Context) -> None:
     logger.info("[refresh-feeds-index]")
     db_feeds = ctx.db.feeds
+
+    for db_feed in db_feeds:
+        db_feed.is_subscribed = False
+
     html_feeds = overcast.fetch_podcasts(session=ctx.session)
     for html_feed in html_feeds:
         db_feeds.insert(db.Feed.from_html_feed(html_feed))

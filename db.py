@@ -26,6 +26,7 @@ class Feed:
     title: str
     html_url: str | None
     added_at: datetime | None
+    is_subscribed: bool
 
     def slug(self) -> str:
         title = re.sub(r"[^\w\s]", "", self.title)
@@ -46,7 +47,15 @@ class Feed:
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["id", "overcast_url", "title", "slug", "html_url", "added_at"]
+        return [
+            "id",
+            "overcast_url",
+            "title",
+            "slug",
+            "html_url",
+            "added_at",
+            "is_subscribed",
+        ]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
@@ -55,6 +64,7 @@ class Feed:
         title = data.get("title", "")
         html_url: str | None = None
         added_at: datetime | None = None
+        is_subscribed: bool = False
 
         if data.get("overcast_url"):
             overcast_url = OvercastFeedURL(data["overcast_url"])
@@ -65,12 +75,16 @@ class Feed:
         if data.get("added_at"):
             added_at = datetime.fromisoformat(data["added_at"])
 
+        if data.get("is_subscribed"):
+            is_subscribed = data["is_subscribed"] == "1"
+
         return Feed(
             id=id,
             overcast_url=overcast_url,
             title=title,
             html_url=html_url,
             added_at=added_at,
+            is_subscribed=is_subscribed,
         )
 
     def to_dict(self) -> dict[str, str]:
@@ -85,6 +99,7 @@ class Feed:
             d["html_url"] = self.html_url
         if self.added_at:
             d["added_at"] = self.added_at.isoformat()
+        d["is_subscribed"] = "1" if self.is_subscribed else "0"
 
         return d
 
@@ -96,6 +111,7 @@ class Feed:
             title=Feed.clean_title(feed.title),
             html_url=None,
             added_at=None,
+            is_subscribed=True,
         )
 
     @staticmethod
@@ -106,6 +122,7 @@ class Feed:
             title=Feed.clean_title(feed.title),
             html_url=feed.html_url,
             added_at=feed.added_at,
+            is_subscribed=feed.is_subscribed,
         )
 
 
@@ -155,6 +172,7 @@ class FeedCollection:
                     self._feeds[i].html_url = feed.html_url
                 if feed.added_at:
                     self._feeds[i].added_at = feed.added_at
+                self._feeds[i].is_subscribed = feed.is_subscribed
                 return
 
         if not feed.id:
