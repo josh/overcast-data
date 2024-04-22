@@ -3,7 +3,7 @@ import logging
 import re
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from types import TracebackType
 from typing import Iterable, Iterator
@@ -21,6 +21,8 @@ from overcast import (
 )
 
 logger = logging.getLogger("db")
+
+_DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
 
 
 @dataclass
@@ -149,7 +151,7 @@ class FeedCollection:
         yield from self._feeds
 
     def sort(self) -> None:
-        self._feeds.sort(key=lambda f: f.added_at or datetime.max)
+        self._feeds.sort(key=lambda f: f.added_at or _DATETIME_MAX_TZ_AWARE)
 
     def save(self, filename: Path) -> None:
         feeds_lst = list(self._feeds)
@@ -362,7 +364,7 @@ class EpisodeCollection:
 
     def sort(self) -> None:
         self._episodes.sort(
-            key=lambda e: (e.feed_id, (e.date_published or datetime.max))
+            key=lambda e: (e.feed_id, (e.date_published or _DATETIME_MAX_TZ_AWARE))
         )
 
     def save(self, filename: Path) -> None:
