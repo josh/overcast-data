@@ -149,10 +149,10 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
             ctx.db.episodes.insert(db_episode)
 
 
-@cli.command("backfill-duration")
+@cli.command("backfill-episode-duration")
 @click.option("--limit", type=int, default=1, show_default=True)
 @click.pass_obj
-def backfill_duration(ctx: Context, limit: int) -> None:
+def backfill_episode_duration(ctx: Context, limit: int) -> None:
     logger.info("[backfill-duration]")
 
     db_episodes_missing_duration = [e for e in ctx.db.episodes if e.duration is None]
@@ -187,6 +187,26 @@ def _enclosure_url_for_episode_url(
         return episode.audio_url
 
     return None
+
+
+@cli.command("backfill-episode-id")
+@click.option("--limit", type=int, default=1, show_default=True)
+@click.pass_obj
+def backfill_episode_id(ctx: Context, limit: int) -> None:
+    logger.info("[backfill-episode-id]")
+
+    db_episodes_missing_id = [e for e in ctx.db.episodes if e.id is None]
+    if not db_episodes_missing_id:
+        return
+    shuffle(db_episodes_missing_id)
+
+    for db_episode_missing_id in islice(db_episodes_missing_id, limit):
+        html_episode = overcast.fetch_episode(
+            session=ctx.session,
+            episode_url=db_episode_missing_id.overcast_url,
+        )
+        db_episode = db.Episode.from_html_episode(html_episode)
+        ctx.db.episodes.insert(db_episode)
 
 
 @cli.command("metrics")
