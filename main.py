@@ -126,6 +126,7 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
     shuffle(db_feeds_to_refresh)
 
     for db_feed in islice(db_feeds_to_refresh, limit):
+        feed_id = db_feed.id
         feed_url = db_feed.overcast_url
         if not feed_url:
             logger.warning("Feed '%s' has no Overcast URL", db_feed.id)
@@ -134,11 +135,10 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
         html_podcast = overcast.fetch_podcast(session=ctx.session, feed_url=feed_url)
 
         for html_episode in html_podcast.episodes:
-            db_episode = db.Episode(
-                overcast_url=html_episode.overcast_url,
+            db_episode = db.Episode.from_html_episode(
+                html_episode,
                 feed_url=feed_url,
-                title=html_episode.title,
-                duration=html_episode.duration,
+                feed_id=feed_id,
             )
             ctx.db.episodes.insert(db_episode)
 

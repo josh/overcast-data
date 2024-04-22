@@ -10,7 +10,9 @@ from typing import Iterable, Iterator
 
 from overcast import (
     ExtendedExportFeed,
+    HTMLPodcastEpisode,
     HTMLPodcastsFeed,
+    OvercastEpisodeItemID,
     OvercastEpisodeURL,
     OvercastFeedItemID,
     OvercastFeedURL,
@@ -185,21 +187,38 @@ class FeedCollection:
 
 @dataclass
 class Episode:
+    id: OvercastEpisodeItemID | None
     overcast_url: OvercastEpisodeURL
+    feed_id: OvercastFeedItemID | None
     feed_url: OvercastFeedURL
     title: str
     duration: timedelta | None
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["overcast_url", "feed_url", "title", "duration"]
+        return [
+            "id",
+            "overcast_url",
+            "feed_id",
+            "feed_url",
+            "title",
+            "duration",
+        ]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
+        id: OvercastEpisodeItemID | None = None
         overcast_url = OvercastEpisodeURL(data["overcast_url"])
+        feed_id: OvercastFeedItemID | None = None
         feed_url = OvercastFeedURL(data["feed_url"])
         title = ""
         duration = None
+
+        if data.get("id"):
+            id = OvercastEpisodeItemID(int(data["id"]))
+
+        if data.get("feed_id"):
+            feed_id = OvercastFeedItemID(int(data["feed_id"]))
 
         if data.get("title"):
             title = data["title"]
@@ -208,7 +227,9 @@ class Episode:
             duration = _seconds_str_to_timedelta(data["duration"])
 
         return Episode(
+            id=id,
             overcast_url=overcast_url,
+            feed_id=feed_id,
             feed_url=feed_url,
             title=title,
             duration=duration,
@@ -217,13 +238,33 @@ class Episode:
     def to_dict(self) -> dict[str, str]:
         d: dict[str, str] = {}
 
+        if self.id:
+            d["id"] = str(self.id)
         d["overcast_url"] = str(self.overcast_url)
+        if self.feed_id:
+            d["feed_id"] = str(self.feed_id)
         d["feed_url"] = str(self.feed_url)
         d["title"] = self.title
         if self.duration:
             d["duration"] = _timedelta_to_seconds_str(self.duration)
 
         return d
+
+    @staticmethod
+    def from_html_episode(
+        episode: HTMLPodcastEpisode,
+        feed_url: OvercastFeedURL,
+        episode_id: OvercastEpisodeItemID | None = None,
+        feed_id: OvercastFeedItemID | None = None,
+    ) -> "Episode":
+        return Episode(
+            id=episode_id,
+            overcast_url=episode.overcast_url,
+            feed_id=feed_id,
+            feed_url=feed_url,
+            title=episode.title,
+            duration=episode.duration,
+        )
 
 
 def _timedelta_to_seconds_str(td: timedelta | None) -> str:
@@ -259,6 +300,10 @@ class EpisodeCollection:
     def insert(self, episode: Episode) -> None:
         for i, e in enumerate(self._episodes):
             if e.overcast_url == episode.overcast_url:
+                if episode.id:
+                    self._episodes[i].id = episode.id
+                if episode.feed_id:
+                    self._episodes[i].feed_id = episode.feed_id
                 if episode.feed_url:
                     self._episodes[i].feed_url = episode.feed_url
                 if episode.title:
