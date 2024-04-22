@@ -118,7 +118,7 @@ class FeedCollection:
         yield from self._feeds
 
     def sort(self) -> None:
-        self._feeds.sort(key=lambda f: f.added_at or 0)
+        self._feeds.sort(key=lambda f: f.added_at or datetime.max)
 
     def save(self, filename: Path) -> None:
         feeds_lst = list(self._feeds)
