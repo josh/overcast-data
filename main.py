@@ -101,6 +101,30 @@ def refresh_opml_export(ctx: Context) -> None:
     for export_feed in export_data.feeds:
         ctx.db.feeds.insert(db.Feed.from_export_feed(export_feed))
 
+        feed_url = _feed_url_for_feed_id(
+            feeds=ctx.db.feeds,
+            feed_id=export_feed.item_id,
+        )
+        if not feed_url:
+            logger.warning("Feed '%s' has no Overcast URL", export_feed.item_id)
+            continue
+
+        for export_episode in export_feed.episodes:
+            ctx.db.episodes.insert(
+                db.Episode.from_export_episode(export_episode, export_feed, feed_url)
+            )
+
+
+# TMP
+def _feed_url_for_feed_id(
+    feeds: db.FeedCollection,
+    feed_id: overcast.OvercastFeedItemID,
+) -> overcast.OvercastFeedURL | None:
+    for db_feed in feeds:
+        if db_feed.id == feed_id:
+            return db_feed.overcast_url
+    return None
+
 
 @cli.command("refresh-feeds-index")
 @click.pass_obj

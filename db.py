@@ -9,6 +9,7 @@ from types import TracebackType
 from typing import Iterable, Iterator
 
 from overcast import (
+    ExtendedExportEpisode,
     ExtendedExportFeed,
     HTMLPodcastEpisode,
     HTMLPodcastsFeed,
@@ -264,6 +265,21 @@ class Episode:
             feed_url=feed_url,
             title=episode.title,
             duration=episode.duration,
+        )
+
+    @staticmethod
+    def from_export_episode(
+        episode: ExtendedExportEpisode,
+        feed: ExtendedExportFeed,
+        feed_url: OvercastFeedURL,
+    ) -> "Episode":
+        return Episode(
+            id=episode.item_id,
+            overcast_url=episode.overcast_url,
+            feed_id=feed.item_id,
+            feed_url=feed_url,
+            title=episode.title,
+            duration=None,
         )
 
 
