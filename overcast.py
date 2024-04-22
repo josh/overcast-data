@@ -491,8 +491,8 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
         podcast_overcast_url = OvercastFeedURL("")
 
     title: str = ""
-    if title_el := soup.select_one("meta[name='og:title']"):
-        title = title_el.attrs["content"]
+    if title_el := soup.select_one(".centertext > h2"):
+        title = title_el.text.strip()
 
     description: str = ""
     if description_el := soup.select_one("meta[name='og:description']"):

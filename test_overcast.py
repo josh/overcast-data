@@ -96,7 +96,10 @@ def test_fetch_episode(overcast_session: Session) -> None:
         == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
     )
     assert episode.feed_art_url == "https://public.overcast-cdn.com/art/126160?v198"
-    assert episode.title.startswith("83: Live From WWDC 2014")
+    assert (
+        episode.title
+        == "83: Live From WWDC 2014 With Marco Arment, Casey Liss, John Siracusa, and Scott Simpson"
+    )
     assert episode.date_published == date(2014, 6, 6)
     assert (
         episode.audio_url
