@@ -278,7 +278,7 @@ class HTMLPodcastEpisode:
     overcast_url: OvercastEpisodeURL
     title: str
     description: str
-    pub_date: date
+    date_published: date
     duration: timedelta | None
     is_played: bool
     in_progress: bool
@@ -295,7 +295,7 @@ class HTMLPodcastEpisode:
     def _validate(self) -> None:
         try:
             assert self.title, self.title
-            assert self.pub_date <= datetime.now().date(), self.pub_date
+            assert self.date_published <= datetime.now().date(), self.date_published
             assert self.download_state is not None, "unknown download state"
         except AssertionError as e:
             logger.error(e)
@@ -352,7 +352,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
             overcast_url=episode_url,
             title=title,
             description=description,
-            pub_date=caption_result.pub_date,
+            date_published=caption_result.date_published,
             duration=caption_result.duration,
             is_played=caption_result.is_played,
             in_progress=caption_result.in_progress,
@@ -379,7 +379,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
 
 @dataclass
 class CaptionResult:
-    pub_date: date
+    date_published: date
     duration: timedelta | None
     is_played: bool = False
     in_progress: bool = False
@@ -394,7 +394,7 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
     in_progress: bool = False
     is_played: bool = False
 
-    pub_date = dateutil.parser.parse(parts[0]).date()
+    date_published = dateutil.parser.parse(parts[0]).date()
 
     if len(parts) == 2 and parts[1] == "played":
         is_played = True
@@ -417,7 +417,7 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
         logger.warning("Unknown caption2 format: %s", text)
 
     return CaptionResult(
-        pub_date=pub_date,
+        date_published=date_published,
         duration=duration,
         is_played=is_played,
         in_progress=in_progress,
@@ -747,7 +747,7 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
 
 @dataclass
 class ExtendedExportEpisode:
-    pub_date: date
+    date_published: date
     title: str
     item_id: OvercastEpisodeItemID
     url: HTTPURL
@@ -760,7 +760,7 @@ class ExtendedExportEpisode:
     def _validate(self) -> None:
         try:
             assert self.title, self.title
-            assert self.pub_date <= datetime.now().date(), self.pub_date
+            assert self.date_published <= datetime.now().date(), self.date_published
             assert self.user_updated_at < datetime.now(
                 timezone.utc
             ), self.user_updated_at
@@ -776,7 +776,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
     for outline in rss_outline.select("outline[type='podcast-episode']"):
         overcast_url = OvercastEpisodeURL(outline.attrs["overcastUrl"])
         item_id = OvercastEpisodeItemID(int(outline.attrs["overcastId"]))
-        pub_date = dateutil.parser.parse(outline.attrs["pubDate"]).date()
+        date_published = dateutil.parser.parse(outline.attrs["pubDate"]).date()
         title: str = outline.attrs["title"]
         url = HTTPURL(outline.attrs["url"])
         enclosure_url = HTTPURL(outline.attrs["enclosureUrl"])
@@ -786,7 +786,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
 
         episode = ExtendedExportEpisode(
             item_id=item_id,
-            pub_date=pub_date,
+            date_published=date_published,
             title=title,
             url=url,
             overcast_url=overcast_url,
