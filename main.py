@@ -122,10 +122,7 @@ def refresh_feeds_index(ctx: Context) -> None:
 def refresh_feeds(ctx: Context, limit: int) -> None:
     logger.info("[refresh-feeds]")
 
-    db_feeds = ctx.db.feeds
-    db_episodes = ctx.db.episodes
-
-    db_feeds_to_refresh = list(db_feeds)
+    db_feeds_to_refresh = [f for f in ctx.db.feeds if f.is_subscribed]
     shuffle(db_feeds_to_refresh)
 
     for db_feed in islice(db_feeds_to_refresh, limit):
@@ -143,7 +140,7 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
                 title=html_episode.title,
                 duration=html_episode.duration,
             )
-            db_episodes.insert(db_episode)
+            ctx.db.episodes.insert(db_episode)
 
 
 @cli.command("backfill-duration")
