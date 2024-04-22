@@ -142,7 +142,7 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
         html_podcast = overcast.fetch_podcast(session=ctx.session, feed_url=feed_url)
 
         for html_episode in html_podcast.episodes:
-            db_episode = db.Episode.from_html_episode(
+            db_episode = db.Episode.from_html_podcast_episode(
                 html_episode,
                 feed_id=feed_id,
             )

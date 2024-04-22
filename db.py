@@ -11,6 +11,7 @@ from typing import Iterable, Iterator
 from overcast import (
     ExtendedExportEpisode,
     ExtendedExportFeed,
+    HTMLEpisode,
     HTMLPodcastEpisode,
     HTMLPodcastsFeed,
     OvercastEpisodeItemID,
@@ -243,7 +244,7 @@ class Episode:
         return d
 
     @staticmethod
-    def from_html_episode(
+    def from_html_podcast_episode(
         episode: HTMLPodcastEpisode,
         feed_id: OvercastFeedItemID,
         episode_id: OvercastEpisodeItemID | None = None,
@@ -254,6 +255,16 @@ class Episode:
             feed_id=feed_id,
             title=episode.title,
             duration=episode.duration,
+        )
+
+    @staticmethod
+    def from_html_episode(episode: HTMLEpisode) -> "Episode":
+        return Episode(
+            id=episode.item_id,
+            overcast_url=episode.overcast_url,
+            feed_id=episode.feed_item_id,
+            title=episode.title,
+            duration=None,
         )
 
     @staticmethod
