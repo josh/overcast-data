@@ -24,6 +24,7 @@ class Feed:
     id: OvercastFeedItemID
     overcast_url: OvercastFeedURL | None
     title: str
+    html_url: str | None
     added_at: datetime | None
 
     def slug(self) -> str:
@@ -45,17 +46,21 @@ class Feed:
 
     @staticmethod
     def fieldnames() -> list[str]:
-        return ["id", "overcast_url", "title", "slug", "added_at"]
+        return ["id", "overcast_url", "title", "slug", "html_url", "added_at"]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
         id = OvercastFeedItemID(int(data["id"]))
         overcast_url: OvercastFeedURL | None = None
         title = data.get("title", "")
+        html_url: str | None = None
         added_at: datetime | None = None
 
         if data.get("overcast_url"):
             overcast_url = OvercastFeedURL(data["overcast_url"])
+
+        if data.get("html_url"):
+            html_url = data["html_url"]
 
         if data.get("added_at"):
             added_at = datetime.fromisoformat(data["added_at"])
@@ -64,6 +69,7 @@ class Feed:
             id=id,
             overcast_url=overcast_url,
             title=title,
+            html_url=html_url,
             added_at=added_at,
         )
 
@@ -75,6 +81,8 @@ class Feed:
             d["overcast_url"] = str(self.overcast_url)
         d["title"] = self.title
         d["slug"] = self.slug()
+        if self.html_url:
+            d["html_url"] = self.html_url
         if self.added_at:
             d["added_at"] = self.added_at.isoformat()
 
@@ -86,6 +94,7 @@ class Feed:
             id=feed.item_id,
             overcast_url=feed.overcast_url,
             title=Feed.clean_title(feed.title),
+            html_url=None,
             added_at=None,
         )
 
@@ -95,6 +104,7 @@ class Feed:
             id=feed.item_id,
             overcast_url=None,
             title=Feed.clean_title(feed.title),
+            html_url=feed.html_url,
             added_at=feed.added_at,
         )
 
@@ -141,6 +151,8 @@ class FeedCollection:
                     self._feeds[i].overcast_url = feed.overcast_url
                 if feed.title:
                     self._feeds[i].title = feed.title
+                if feed.html_url:
+                    self._feeds[i].html_url = feed.html_url
                 if feed.added_at:
                     self._feeds[i].added_at = feed.added_at
                 return
