@@ -3,12 +3,13 @@ import logging
 import re
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from types import TracebackType
 from typing import Iterable, Iterator
 
 from overcast import (
+    SERVER_TZINFO,
     ExtendedExportEpisode,
     ExtendedExportFeed,
     HTMLEpisode,
@@ -21,6 +22,8 @@ from overcast import (
 )
 
 logger = logging.getLogger("db")
+
+_DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
 
 
 @dataclass
@@ -50,7 +53,7 @@ class Feed:
         return title
 
     def _sort_key(self) -> datetime:
-        return (self.added_at or datetime.max).replace(tzinfo=None)
+        return self.added_at or _DATETIME_MAX_TZ_AWARE
 
     @staticmethod
     def fieldnames() -> list[str]:
@@ -81,6 +84,11 @@ class Feed:
 
         if data.get("added_at"):
             added_at = datetime.fromisoformat(data["added_at"])
+            if added_at.tzinfo is None:
+                logger.warning(
+                    "Feed '%s' added_at is not timezone-aware: %s", title, added_at
+                )
+                added_at = added_at.replace(tzinfo=SERVER_TZINFO)
 
         if data.get("is_subscribed"):
             is_subscribed = data["is_subscribed"] == "1"
@@ -205,8 +213,7 @@ class Episode:
     date_published: datetime | None
 
     def _sort_key(self) -> tuple[int, datetime]:
-        pubdate = (self.date_published or datetime.max).replace(tzinfo=None)
-        return (self.feed_id, pubdate)
+        return (self.feed_id, self.date_published or _DATETIME_MAX_TZ_AWARE)
 
     @staticmethod
     def fieldnames() -> list[str]:
@@ -239,6 +246,13 @@ class Episode:
 
         if data.get("date_published"):
             date_published = datetime.fromisoformat(data["date_published"])
+            if date_published.tzinfo is None:
+                logger.warning(
+                    "Episode '%s' date_published is not timezone-aware: %s",
+                    title,
+                    date_published,
+                )
+                date_published = date_published.replace(tzinfo=SERVER_TZINFO)
 
         return Episode(
             id=id,
@@ -318,7 +332,7 @@ def _seconds_str_to_timedelta(s: str | None) -> timedelta | None:
 
 
 def _date_to_datetime(d: date) -> datetime:
-    return datetime.combine(d, datetime.min.time())
+    return datetime.combine(d, datetime.min.time(), tzinfo=SERVER_TZINFO)
 
 
 def _datetime_has_time_components(dt: datetime | None) -> bool:

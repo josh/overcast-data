@@ -36,6 +36,9 @@ _SAFARI_HEADERS = {
     "Sec-Fetch-Dest": "document",
 }
 
+# America/New_York
+SERVER_TZINFO = timezone(-timedelta(hours=5))
+
 
 class OvercastURL(HTTPURL):
     """
