@@ -3,7 +3,7 @@ import logging
 import re
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from types import TracebackType
 from typing import Iterable, Iterator
@@ -21,8 +21,6 @@ from overcast import (
 )
 
 logger = logging.getLogger("db")
-
-_DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
 
 
 @dataclass
@@ -50,6 +48,9 @@ class Feed:
         title = title.split(" | ")[0]
         title = title.strip()
         return title
+
+    def _sort_key(self) -> datetime:
+        return (self.added_at or datetime.max).replace(tzinfo=None)
 
     @staticmethod
     def fieldnames() -> list[str]:
@@ -151,7 +152,7 @@ class FeedCollection:
         yield from self._feeds
 
     def sort(self) -> None:
-        self._feeds.sort(key=lambda f: f.added_at or _DATETIME_MAX_TZ_AWARE)
+        self._feeds.sort(key=Feed._sort_key)
 
     def save(self, filename: Path) -> None:
         feeds_lst = list(self._feeds)
@@ -197,6 +198,10 @@ class Episode:
     title: str
     duration: timedelta | None
     date_published: datetime | None
+
+    def _sort_key(self) -> tuple[int, datetime]:
+        pubdate = (self.date_published or datetime.max).replace(tzinfo=None)
+        return (self.feed_id, pubdate)
 
     @staticmethod
     def fieldnames() -> list[str]:
@@ -308,7 +313,7 @@ def _seconds_str_to_timedelta(s: str | None) -> timedelta | None:
 
 
 def _date_to_datetime(d: date) -> datetime:
-    return datetime.combine(d, datetime.min.time(), timezone.utc)
+    return datetime.combine(d, datetime.min.time())
 
 
 def _datetime_has_time_components(dt: datetime | None) -> bool:
@@ -363,9 +368,7 @@ class EpisodeCollection:
         self.sort()
 
     def sort(self) -> None:
-        self._episodes.sort(
-            key=lambda e: (e.feed_id, (e.date_published or _DATETIME_MAX_TZ_AWARE))
-        )
+        self._episodes.sort(key=Episode._sort_key)
 
     def save(self, filename: Path) -> None:
         episodes_lst = list(self._episodes)
