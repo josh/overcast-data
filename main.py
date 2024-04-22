@@ -1,10 +1,11 @@
 import logging
 import os
-from dataclasses import dataclass
+from contextlib import AbstractContextManager
 from datetime import timedelta
 from itertools import islice
 from pathlib import Path
 from random import shuffle
+from types import TracebackType
 
 import click
 from prometheus_client import (
@@ -16,7 +17,7 @@ from prometheus_client import (
 
 import db
 import overcast
-from db import EpisodeCollection, FeedCollection
+from db import Database
 from utils import HTTPURL
 
 logger = logging.getLogger("overcast-data")
@@ -29,31 +30,35 @@ def _xdg_cache_home() -> Path:
         return Path.home() / ".cache"
 
 
-@dataclass
-class Context:
-    feeds_path: Path
-    episodes_path: Path
-    cache_dir: Path
+class Context(AbstractContextManager["Context"]):
     session: overcast.Session
-    db_feeds: FeedCollection
-    db_episodes: EpisodeCollection
+    db: Database
 
-    def save(self) -> None:
-        self.db_feeds.save(self.feeds_path)
-        self.db_episodes.save(self.episodes_path)
+    def __init__(self, session: overcast.Session, db_path: Path) -> None:
+        self.session = session
+        self.db = Database(path=db_path)
+
+    def __enter__(self) -> "Context":
+        logger.debug("Entering cli context")
+        self.db.__enter__()
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_value: BaseException | None,
+        traceback: TracebackType | None,
+    ) -> None:
+        logger.debug("Exiting cli context")
+        self.db.__exit__(exc_type, exc_value, traceback)
 
 
 @click.group(chain=True)
 @click.option("--overcast-cookie", envvar="OVERCAST_COOKIE", required=True)
 @click.option("--offline", is_flag=True)
 @click.option(
-    "--feeds-path",
-    type=click.Path(path_type=Path, dir_okay=False, writable=True),
-    required=True,
-)
-@click.option(
-    "--episodes-path",
-    type=click.Path(path_type=Path, dir_okay=False, writable=True),
+    "--db-path",
+    type=click.Path(path_type=Path, dir_okay=True, file_okay=False, writable=True),
     required=True,
 )
 @click.option(
@@ -67,8 +72,7 @@ class Context:
 def cli(
     ctx: click.Context,
     overcast_cookie: str,
-    feeds_path: Path,
-    episodes_path: Path,
+    db_path: Path,
     cache_dir: Path,
     offline: bool,
     verbose: bool,
@@ -82,17 +86,11 @@ def cli(
         offline=offline,
     )
 
-    db_feeds = FeedCollection.load(feeds_path)
-    db_episodes = EpisodeCollection.load(episodes_path)
-
-    ctx.obj = Context(
-        feeds_path=feeds_path,
-        episodes_path=episodes_path,
-        cache_dir=cache_dir,
+    context = Context(
         session=session,
-        db_feeds=db_feeds,
-        db_episodes=db_episodes,
+        db_path=db_path,
     )
+    ctx.obj = ctx.with_resource(context)
 
 
 @cli.command("refresh-opml-export")
@@ -101,19 +99,17 @@ def refresh_opml_export(ctx: Context) -> None:
     logger.info("[refresh-opml-export]")
     export_data = overcast.export_account_extended_data(session=ctx.session)
     for export_feed in export_data.feeds:
-        ctx.db_feeds.insert(db.Feed.from_export_feed(export_feed))
-    ctx.save()
+        ctx.db.feeds.insert(db.Feed.from_export_feed(export_feed))
 
 
 @cli.command("refresh-feeds-index")
 @click.pass_obj
 def refresh_feeds_index(ctx: Context) -> None:
     logger.info("[refresh-feeds-index]")
-    db_feeds = ctx.db_feeds
+    db_feeds = ctx.db.feeds
     html_feeds = overcast.fetch_podcasts(session=ctx.session)
     for html_feed in html_feeds:
         db_feeds.insert(db.Feed.from_html_feed(html_feed))
-    ctx.save()
 
 
 @cli.command("refresh-feeds")
@@ -122,8 +118,8 @@ def refresh_feeds_index(ctx: Context) -> None:
 def refresh_feeds(ctx: Context, limit: int) -> None:
     logger.info("[refresh-feeds]")
 
-    db_feeds = ctx.db_feeds
-    db_episodes = ctx.db_episodes
+    db_feeds = ctx.db.feeds
+    db_episodes = ctx.db.episodes
 
     db_feeds_to_refresh = list(db_feeds)
     shuffle(db_feeds_to_refresh)
@@ -145,8 +141,6 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
             )
             db_episodes.insert(db_episode)
 
-    ctx.save()
-
 
 @cli.command("backfill-duration")
 @click.option("--limit", type=int, default=1, show_default=True)
@@ -154,7 +148,7 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
 def backfill_duration(ctx: Context, limit: int) -> None:
     logger.info("[backfill-duration]")
 
-    db_episodes_missing_duration = [e for e in ctx.db_episodes if e.duration is None]
+    db_episodes_missing_duration = [e for e in ctx.db.episodes if e.duration is None]
     if not db_episodes_missing_duration:
         return
     shuffle(db_episodes_missing_duration)
@@ -170,8 +164,6 @@ def backfill_duration(ctx: Context, limit: int) -> None:
         ):
             duration = overcast.fetch_audio_duration(ctx.session, enclosure_url)
             db_episode_missing_duration.duration = duration
-
-    ctx.save()
 
 
 def _enclosure_url_for_episode_url(
@@ -212,13 +204,13 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
     logger.info("[metrics]")
 
     feed_slugs: dict[overcast.OvercastFeedURL, str] = {}
-    for db_feed in ctx.db_feeds:
+    for db_feed in ctx.db.feeds:
         if db_feed.overcast_url:
             feed_slugs[db_feed.overcast_url] = db_feed.slug()
         else:
             logger.warning("Feed '%s' has no Overcast URL", db_feed.id)
 
-    for db_episode in ctx.db_episodes:
+    for db_episode in ctx.db.episodes:
         feed_slug = feed_slugs[db_episode.feed_url]
         overcast_episode_count.labels(feed_slug=feed_slug).inc()
         if db_episode.duration:

@@ -1,9 +1,11 @@
 import csv
 import logging
 import re
+from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
+from types import TracebackType
 from typing import Iterable, Iterator
 
 from overcast import (
@@ -106,7 +108,7 @@ class FeedCollection:
 
     _feeds: list[Feed]
 
-    def __init__(self, feeds: Iterable[Feed]) -> None:
+    def __init__(self, feeds: Iterable[Feed] = []) -> None:
         self._feeds = list(feeds)
 
     def __len__(self) -> int:
@@ -215,7 +217,7 @@ class EpisodeCollection:
 
     _episodes: list[Episode]
 
-    def __init__(self, episodes: Iterable[Episode]) -> None:
+    def __init__(self, episodes: Iterable[Episode] = []) -> None:
         self._episodes = list(episodes)
 
     def __len__(self) -> int:
@@ -258,3 +260,33 @@ class EpisodeCollection:
             writer.writeheader()
             for episode in episodes_lst:
                 writer.writerow(episode.to_dict())
+
+
+class Database(AbstractContextManager["Database"]):
+    path: Path
+    feeds: FeedCollection
+    episodes: EpisodeCollection
+
+    def __init__(self, path: Path) -> None:
+        self.path = path
+        self.feeds = FeedCollection()
+        self.episodes = EpisodeCollection()
+
+    def __enter__(self) -> "Database":
+        logger.debug("loading database: %s", self.path)
+        self.feeds = FeedCollection.load(self.path / "feeds.csv")
+        self.episodes = EpisodeCollection.load(self.path / "episodes.csv")
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_value: BaseException | None,
+        traceback: TracebackType | None,
+    ) -> None:
+        if exc_type is None:
+            logger.debug("saving database: %s", self.path)
+            self.feeds.save(self.path / "feeds.csv")
+            self.episodes.save(self.path / "episodes.csv")
+        else:
+            logger.error("not saving database due to exception")

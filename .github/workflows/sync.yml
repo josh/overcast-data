@@ -44,7 +44,7 @@ jobs:
 
       - name: Sync
         run: |
-          python main.py --feeds-path data/feeds.csv --episodes-path data/episodes.csv \
+          python main.py --db-path data/ \
             refresh-opml-export \
             refresh-feeds-index \
             refresh-feeds --limit 2 \
