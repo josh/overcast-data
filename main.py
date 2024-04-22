@@ -199,6 +199,7 @@ def backfill_episode_id(ctx: Context, limit: int) -> None:
     if not db_episodes_missing_id:
         return
     shuffle(db_episodes_missing_id)
+    logger.warning("Episodes missing IDs: %d", len(db_episodes_missing_id))
 
     for db_episode_missing_id in islice(db_episodes_missing_id, limit):
         html_episode = overcast.fetch_episode(
