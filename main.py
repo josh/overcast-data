@@ -18,7 +18,6 @@ from prometheus_client import (
 import db
 import overcast
 from db import Database
-from utils import HTTPURL
 
 logger = logging.getLogger("overcast-data")
 
@@ -149,65 +148,33 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
             ctx.db.episodes.insert(db_episode)
 
 
-@cli.command("backfill-episode-duration")
+@cli.command("backfill-episode")
 @click.option("--limit", type=int, default=1, show_default=True)
 @click.pass_obj
-def backfill_episode_duration(ctx: Context, limit: int) -> None:
-    logger.info("[backfill-duration]")
+def backfill_episode(ctx: Context, limit: int) -> None:
+    logger.info("[backfill-episode] %s", limit)
 
-    db_episodes_missing_duration = [e for e in ctx.db.episodes if e.duration is None]
-    if not db_episodes_missing_duration:
+    db_episodes_missing_info = [
+        e for e in ctx.db.episodes if e.is_missing_optional_info
+    ]
+    if not db_episodes_missing_info:
         return
-    shuffle(db_episodes_missing_duration)
-    logger.warning("Episodes missing duration: %d", len(db_episodes_missing_duration))
+    shuffle(db_episodes_missing_info)
+    logger.warning("Episodes missing optional info: %d", len(db_episodes_missing_info))
 
-    export_data = overcast.export_account_extended_data(session=ctx.session)
-
-    for db_episode_missing_duration in islice(db_episodes_missing_duration, limit):
-        if enclosure_url := _enclosure_url_for_episode_url(
-            session=ctx.session,
-            export_feeds=export_data.feeds,
-            episode_url=db_episode_missing_duration.overcast_url,
-        ):
-            duration = overcast.fetch_audio_duration(ctx.session, enclosure_url)
-            db_episode_missing_duration.duration = duration
-
-
-def _enclosure_url_for_episode_url(
-    session: overcast.Session,
-    export_feeds: list[overcast.ExtendedExportFeed],
-    episode_url: overcast.OvercastEpisodeURL,
-) -> HTTPURL | None:
-    for export_feed in export_feeds:
-        for export_episode in export_feed.episodes:
-            if export_episode.overcast_url == episode_url:
-                return export_episode.enclosure_url
-
-    if episode := overcast.fetch_episode(session=session, episode_url=episode_url):
-        return episode.audio_url
-
-    return None
-
-
-@cli.command("backfill-episode-id")
-@click.option("--limit", type=int, default=1, show_default=True)
-@click.pass_obj
-def backfill_episode_id(ctx: Context, limit: int) -> None:
-    logger.info("[backfill-episode-id]")
-
-    db_episodes_missing_id = [e for e in ctx.db.episodes if e.id is None]
-    if not db_episodes_missing_id:
-        return
-    shuffle(db_episodes_missing_id)
-    logger.warning("Episodes missing IDs: %d", len(db_episodes_missing_id))
-
-    for db_episode_missing_id in islice(db_episodes_missing_id, limit):
+    for db_episode in islice(db_episodes_missing_info, limit):
         html_episode = overcast.fetch_episode(
             session=ctx.session,
-            episode_url=db_episode_missing_id.overcast_url,
+            episode_url=db_episode.overcast_url,
         )
-        db_episode = db.Episode.from_html_episode(html_episode)
-        ctx.db.episodes.insert(db_episode)
+        new_db_episode = db.Episode.from_html_episode(html_episode)
+
+        if db_episode.duration is None:
+            new_db_episode.duration = overcast.fetch_audio_duration(
+                ctx.session, html_episode.audio_url
+            )
+
+        ctx.db.episodes.insert(new_db_episode)
 
 
 @cli.command("metrics")

@@ -222,6 +222,10 @@ class Episode:
     duration: timedelta | None
     date_published: datetime | None
 
+    @property
+    def is_missing_optional_info(self) -> bool:
+        return self.id is None or self.duration is None or self.date_published is None
+
     def _sort_key(self) -> tuple[int, datetime]:
         return (self.feed_id, self.date_published or _DATETIME_MAX_TZ_AWARE)
 
