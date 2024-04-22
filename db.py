@@ -361,7 +361,9 @@ class EpisodeCollection:
         self.sort()
 
     def sort(self) -> None:
-        self._episodes.sort(key=lambda e: (e.feed_id, (e.date_published or datetime.max)))
+        self._episodes.sort(
+            key=lambda e: (e.feed_id, (e.date_published or datetime.max))
+        )
 
     def save(self, filename: Path) -> None:
         episodes_lst = list(self._episodes)
