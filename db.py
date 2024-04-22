@@ -149,11 +149,18 @@ class FeedCollection:
             return FeedCollection(Feed.from_dict(row) for row in rows)
 
     _feeds: list[Feed]
-    _initial_len: int
+    _initial_nonnull_counts: dict[str, int]
 
     def __init__(self, feeds: Iterable[Feed] = []) -> None:
         self._feeds = list(feeds)
-        self._initial_len = len(self._feeds)
+        self._initial_nonnull_counts = self._nonnull_counts()
+
+    def _nonnull_counts(self) -> dict[str, int]:
+        counts = {}
+        for field_name in Feed.fieldnames():
+            count = len([f for f in self._feeds if getattr(f, field_name) is not None])
+            counts[field_name] = count
+        return counts
 
     def __len__(self) -> int:
         return len(self._feeds)
@@ -167,9 +174,12 @@ class FeedCollection:
     def save(self, filename: Path) -> None:
         feeds_lst = list(self._feeds)
 
-        current_len = len(feeds_lst)
-        assert current_len >= self._initial_len, "Feed count decreased"
-        assert len(set(f.id for f in feeds_lst)) == current_len, "Duplicate IDs"
+        for field, count in self._nonnull_counts().items():
+            assert (
+                count >= self._initial_nonnull_counts[field]
+            ), f"{field} non-null count decreased"
+
+        assert len(set(f.id for f in feeds_lst)) == len(feeds_lst), "Duplicate IDs"
 
         with filename.open("w") as csvfile:
             writer = csv.DictWriter(
@@ -349,15 +359,20 @@ class EpisodeCollection:
             return EpisodeCollection(Episode.from_dict(row) for row in rows)
 
     _episodes: list[Episode]
-    _initial_len: int
-    _initial_duration_nonnull_len: int
+    _initial_nonnull_counts: dict[str, int]
 
     def __init__(self, episodes: Iterable[Episode] = []) -> None:
         self._episodes = list(episodes)
-        self._initial_len = len(self._episodes)
-        self._initial_duration_nonnull_len = len(
-            [e for e in self._episodes if e.duration is not None]
-        )
+        self._initial_nonnull_counts = self._nonnull_counts()
+
+    def _nonnull_counts(self) -> dict[str, int]:
+        counts = {}
+        for field_name in Episode.fieldnames():
+            count = len(
+                [f for f in self._episodes if getattr(f, field_name) is not None]
+            )
+            counts[field_name] = count
+        return counts
 
     def __len__(self) -> int:
         return len(self._episodes)
@@ -398,16 +413,13 @@ class EpisodeCollection:
     def save(self, filename: Path) -> None:
         episodes_lst = list(self._episodes)
 
-        current_len = len(episodes_lst)
-        current_duration_nonnull_len = len(
-            [e for e in self._episodes if e.duration is not None]
-        )
-        assert current_len >= self._initial_len, "Episode count decreased"
-        assert (
-            current_duration_nonnull_len >= self._initial_duration_nonnull_len
-        ), "Duration count decreased"
-        assert (
-            len(set(e.overcast_url for e in episodes_lst)) == current_len
+        for field, count in self._nonnull_counts().items():
+            assert (
+                count >= self._initial_nonnull_counts[field]
+            ), f"{field} non-null count decreased"
+
+        assert len(set(e.overcast_url for e in episodes_lst)) == len(
+            episodes_lst
         ), "Duplicate Overcast URLs"
 
         with filename.open("w") as csvfile:
