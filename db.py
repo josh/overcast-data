@@ -3,13 +3,12 @@ import logging
 import re
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from types import TracebackType
 from typing import Iterable, Iterator
 
 from overcast import (
-    SERVER_TZINFO,
     ExtendedExportEpisode,
     ExtendedExportFeed,
     HTMLEpisode,
@@ -88,7 +87,6 @@ class Feed:
                 logger.warning(
                     "Feed '%s' added_at is not timezone-aware: %s", title, added_at
                 )
-                added_at = added_at.replace(tzinfo=SERVER_TZINFO)
 
         if data.get("is_subscribed"):
             is_subscribed = data["is_subscribed"] == "1"
@@ -266,7 +264,6 @@ class Episode:
                     title,
                     date_published,
                 )
-                date_published = date_published.replace(tzinfo=SERVER_TZINFO)
 
         return Episode(
             id=id,
@@ -304,7 +301,7 @@ class Episode:
             feed_id=feed_id,
             title=episode.title,
             duration=episode.duration,
-            date_published=_date_to_datetime(episode.date_published),
+            date_published=episode.date_published_datetime,
         )
 
     @staticmethod
@@ -315,7 +312,7 @@ class Episode:
             feed_id=episode.feed_item_id,
             title=episode.title,
             duration=None,
-            date_published=_date_to_datetime(episode.date_published),
+            date_published=episode.date_published_datetime,
         )
 
     @staticmethod
@@ -343,10 +340,6 @@ def _seconds_str_to_timedelta(s: str | None) -> timedelta | None:
     if not s:
         return None
     return timedelta(seconds=int(s))
-
-
-def _date_to_datetime(d: date) -> datetime:
-    return datetime.combine(d, datetime.min.time(), tzinfo=SERVER_TZINFO)
 
 
 def _datetime_has_time_components(dt: datetime | None) -> bool:

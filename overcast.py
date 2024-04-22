@@ -37,7 +37,7 @@ _SAFARI_HEADERS = {
 }
 
 # America/New_York
-SERVER_TZINFO = timezone(-timedelta(hours=5))
+_SERVER_TZINFO = timezone(-timedelta(hours=5))
 
 
 class OvercastURL(HTTPURL):
@@ -295,6 +295,14 @@ class HTMLPodcastEpisode:
     def is_deleted(self) -> bool:
         return self.download_state == "deleted"
 
+    @property
+    def date_published_datetime(self) -> datetime:
+        return datetime.combine(
+            self.date_published,
+            datetime.min.time(),
+            _SERVER_TZINFO,
+        )
+
     def _validate(self) -> None:
         try:
             assert self.title, self.title
@@ -447,6 +455,14 @@ class HTMLEpisode:
     @property
     def feed_item_id(self) -> OvercastFeedItemID:
         return _extract_feed_id_from_art_url(self.feed_art_url)
+
+    @property
+    def date_published_datetime(self) -> datetime:
+        return datetime.combine(
+            self.date_published,
+            datetime.min.time(),
+            _SERVER_TZINFO,
+        )
 
     def _validate(self) -> None:
         try:
