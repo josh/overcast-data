@@ -295,7 +295,7 @@ class HTMLPodcastEpisode:
     def _validate(self) -> None:
         try:
             assert self.title, self.title
-            assert self.date_published <= datetime.now().date(), self.date_published
+            assert self.date_published <= date.today(), self.date_published
             assert self.download_state is not None, "unknown download state"
         except AssertionError as e:
             logger.error(e)
@@ -450,7 +450,7 @@ class HTMLEpisode:
             assert self.item_id, self.item_id
             assert self.feed_item_id, self.feed_art_url
             assert self.title, self.title
-            assert self.date_published <= datetime.now().date(), self.date_published
+            assert self.date_published <= date.today(), self.date_published
             assert "#" not in self.audio_url, self.audio_url
         except AssertionError as e:
             logger.error(e)
@@ -579,6 +579,7 @@ class ExportFeed:
     def _validate(self) -> None:
         try:
             assert self.title, self.title
+            assert self.added_at.tzinfo, "added date must be timezone-aware"
             assert self.added_at < datetime.now(timezone.utc), self.added_at
         except AssertionError as e:
             logger.error(e)
@@ -706,6 +707,7 @@ class ExtendedExportFeed:
     def _validate(self) -> None:
         try:
             assert self.title, self.title
+            assert self.added_at.tzinfo, "added date must be timezone-aware"
             assert self.added_at < datetime.now(timezone.utc), self.added_at
             assert len(self.episodes) > 0
         except AssertionError as e:
@@ -760,6 +762,8 @@ class ExtendedExportEpisode:
     def _validate(self) -> None:
         try:
             assert self.title, self.title
+            assert self.date_published.tzinfo, "published date must be timezone-aware"
+            assert self.user_updated_at.tzinfo, "updated date must be timezone-aware"
             assert self.date_published <= datetime.now(
                 timezone.utc
             ), self.date_published
