@@ -747,7 +747,7 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
 
 @dataclass
 class ExtendedExportEpisode:
-    date_published: date
+    date_published: datetime
     title: str
     item_id: OvercastEpisodeItemID
     url: HTTPURL
@@ -760,7 +760,9 @@ class ExtendedExportEpisode:
     def _validate(self) -> None:
         try:
             assert self.title, self.title
-            assert self.date_published <= datetime.now().date(), self.date_published
+            assert self.date_published <= datetime.now(
+                timezone.utc
+            ), self.date_published
             assert self.user_updated_at < datetime.now(
                 timezone.utc
             ), self.user_updated_at
@@ -776,7 +778,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
     for outline in rss_outline.select("outline[type='podcast-episode']"):
         overcast_url = OvercastEpisodeURL(outline.attrs["overcastUrl"])
         item_id = OvercastEpisodeItemID(int(outline.attrs["overcastId"]))
-        date_published = dateutil.parser.parse(outline.attrs["pubDate"]).date()
+        date_published = dateutil.parser.parse(outline.attrs["pubDate"])
         title: str = outline.attrs["title"]
         url = HTTPURL(outline.attrs["url"])
         enclosure_url = HTTPURL(outline.attrs["enclosureUrl"])
