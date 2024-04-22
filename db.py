@@ -361,8 +361,7 @@ class EpisodeCollection:
         self.sort()
 
     def sort(self) -> None:
-        # TODO: Sort by pubdate
-        self._episodes.sort(key=lambda e: e.overcast_url)
+        self._episodes.sort(key=lambda e: (e.feed_id, e.date_published))
 
     def save(self, filename: Path) -> None:
         episodes_lst = list(self._episodes)
