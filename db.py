@@ -188,8 +188,8 @@ class FeedCollection:
 
 @dataclass
 class Episode:
-    id: OvercastEpisodeItemID | None
     overcast_url: OvercastEpisodeURL
+    id: OvercastEpisodeItemID | None
     feed_id: OvercastFeedItemID
     title: str
     duration: timedelta | None
@@ -197,8 +197,8 @@ class Episode:
     @staticmethod
     def fieldnames() -> list[str]:
         return [
-            "id",
             "overcast_url",
+            "id",
             "feed_id",
             "title",
             "duration",
