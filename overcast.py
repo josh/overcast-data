@@ -548,7 +548,7 @@ def fetch_audio_duration(session: Session, url: HTTPURL) -> timedelta | None:
         else:
             return None
 
-    key = f"fetch_audio_duration:v3:{url}"
+    key = f"fetch_audio_duration:v4:{url}"
     return session.simple_cache.get(key, _inner)
 
 
