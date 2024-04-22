@@ -537,8 +537,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
 
 
 def _fetch_audio_duration(url: HTTPURL) -> timedelta | None:
-    headers: dict[str, str] = {}
-    response = requests.get(str(url), allow_redirects=True, headers=headers)
+    response = requests.get(str(url), allow_redirects=True, headers=_SAFARI_HEADERS)
     if not response.ok:
         logger.warning("Failed to fetch audio: %s", url)
         return None
