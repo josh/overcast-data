@@ -3,7 +3,7 @@ import logging
 import re
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from types import TracebackType
 from typing import Iterable, Iterator
@@ -194,6 +194,7 @@ class Episode:
     feed_id: OvercastFeedItemID
     title: str
     duration: timedelta | None
+    date_published: datetime | None
 
     @staticmethod
     def fieldnames() -> list[str]:
@@ -203,6 +204,7 @@ class Episode:
             "feed_id",
             "title",
             "duration",
+            "date_published",
         ]
 
     @staticmethod
@@ -212,6 +214,7 @@ class Episode:
         feed_id = OvercastFeedItemID(int(data["feed_id"]))
         title = ""
         duration = None
+        date_published = None
 
         if data.get("id"):
             id = OvercastEpisodeItemID(int(data["id"]))
@@ -222,12 +225,16 @@ class Episode:
         if data.get("duration"):
             duration = _seconds_str_to_timedelta(data["duration"])
 
+        if data.get("date_published"):
+            date_published = datetime.fromisoformat(data["date_published"])
+
         return Episode(
             id=id,
             overcast_url=overcast_url,
             feed_id=feed_id,
             title=title,
             duration=duration,
+            date_published=date_published,
         )
 
     def to_dict(self) -> dict[str, str]:
@@ -240,6 +247,8 @@ class Episode:
         d["title"] = self.title
         if self.duration:
             d["duration"] = _timedelta_to_seconds_str(self.duration)
+        if self.date_published:
+            d["date_published"] = self.date_published.isoformat()
 
         return d
 
@@ -255,6 +264,7 @@ class Episode:
             feed_id=feed_id,
             title=episode.title,
             duration=episode.duration,
+            date_published=_date_to_datetime(episode.date_published),
         )
 
     @staticmethod
@@ -265,6 +275,7 @@ class Episode:
             feed_id=episode.feed_item_id,
             title=episode.title,
             duration=None,
+            date_published=_date_to_datetime(episode.date_published),
         )
 
     @staticmethod
@@ -278,6 +289,7 @@ class Episode:
             feed_id=feed_id,
             title=episode.title,
             duration=None,
+            date_published=episode.date_published,
         )
 
 
@@ -291,6 +303,16 @@ def _seconds_str_to_timedelta(s: str | None) -> timedelta | None:
     if not s:
         return None
     return timedelta(seconds=int(s))
+
+
+def _date_to_datetime(d: date) -> datetime:
+    return datetime.combine(d, datetime.min.time())
+
+
+def _datetime_has_time_components(dt: datetime | None) -> bool:
+    if not dt:
+        return False
+    return dt.time() != datetime.min.time()
 
 
 class EpisodeCollection:
@@ -322,6 +344,17 @@ class EpisodeCollection:
                     self._episodes[i].title = episode.title
                 if episode.duration:
                     self._episodes[i].duration = episode.duration
+                if episode.date_published:
+                    if _datetime_has_time_components(e.date_published) and (
+                        not _datetime_has_time_components(episode.date_published)
+                    ):
+                        logger.debug(
+                            "Not replacing existing date published with less precision: (%s, %s)",
+                            e.date_published,
+                            episode.date_published,
+                        )
+                    else:
+                        self._episodes[i].date_published = episode.date_published
                 return
 
         self._episodes.append(episode)
