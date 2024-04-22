@@ -218,14 +218,14 @@ class Episode:
     feed_id: OvercastFeedItemID
     title: str
     duration: timedelta | None
-    date_published: datetime | None
+    date_published: datetime
 
     @property
     def is_missing_optional_info(self) -> bool:
-        return self.id is None or self.duration is None or self.date_published is None
+        return self.id is None or self.duration is None
 
     def _sort_key(self) -> tuple[int, datetime]:
-        return (self.feed_id, self.date_published or _DATETIME_MAX_TZ_AWARE)
+        return (self.feed_id, self.date_published)
 
     @staticmethod
     def fieldnames() -> list[str]:
@@ -245,7 +245,7 @@ class Episode:
         feed_id = OvercastFeedItemID(int(data["feed_id"]))
         title = ""
         duration = None
-        date_published = None
+        date_published = datetime.fromisoformat(data["date_published"])
 
         if data.get("id"):
             id = OvercastEpisodeItemID(int(data["id"]))
@@ -256,14 +256,12 @@ class Episode:
         if data.get("duration"):
             duration = _seconds_str_to_timedelta(data["duration"])
 
-        if data.get("date_published"):
-            date_published = datetime.fromisoformat(data["date_published"])
-            if date_published.tzinfo is None:
-                logger.warning(
-                    "Episode '%s' date_published is not timezone-aware: %s",
-                    title,
-                    date_published,
-                )
+        if date_published.tzinfo is None:
+            logger.warning(
+                "Episode '%s' date_published is not timezone-aware: %s",
+                title,
+                date_published,
+            )
 
         return Episode(
             id=id,
@@ -284,8 +282,7 @@ class Episode:
         d["title"] = self.title
         if self.duration:
             d["duration"] = _timedelta_to_seconds_str(self.duration)
-        if self.date_published:
-            d["date_published"] = self.date_published.isoformat()
+        d["date_published"] = self.date_published.isoformat()
 
         return d
 
