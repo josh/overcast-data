@@ -101,29 +101,12 @@ def refresh_opml_export(ctx: Context) -> None:
     for export_feed in export_data.feeds:
         ctx.db.feeds.insert(db.Feed.from_export_feed(export_feed))
 
-        feed_url = _feed_url_for_feed_id(
-            feeds=ctx.db.feeds,
-            feed_id=export_feed.item_id,
-        )
-        if not feed_url:
-            logger.warning("Feed '%s' has no Overcast URL", export_feed.item_id)
-            continue
-
         for export_episode in export_feed.episodes:
             ctx.db.episodes.insert(
-                db.Episode.from_export_episode(export_episode, export_feed, feed_url)
+                db.Episode.from_export_episode(
+                    export_episode, feed_id=export_feed.item_id
+                )
             )
-
-
-# TMP
-def _feed_url_for_feed_id(
-    feeds: db.FeedCollection,
-    feed_id: overcast.OvercastFeedItemID,
-) -> overcast.OvercastFeedURL | None:
-    for db_feed in feeds:
-        if db_feed.id == feed_id:
-            return db_feed.overcast_url
-    return None
 
 
 @cli.command("refresh-feeds-index")
@@ -161,7 +144,6 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
         for html_episode in html_podcast.episodes:
             db_episode = db.Episode.from_html_episode(
                 html_episode,
-                feed_url=feed_url,
                 feed_id=feed_id,
             )
             ctx.db.episodes.insert(db_episode)
@@ -228,15 +210,12 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
 
     logger.info("[metrics]")
 
-    feed_slugs: dict[overcast.OvercastFeedURL, str] = {}
+    feed_slugs: dict[overcast.OvercastFeedItemID, str] = {}
     for db_feed in ctx.db.feeds:
-        if db_feed.overcast_url:
-            feed_slugs[db_feed.overcast_url] = db_feed.slug()
-        else:
-            logger.warning("Feed '%s' has no Overcast URL", db_feed.id)
+        feed_slugs[db_feed.id] = db_feed.slug()
 
     for db_episode in ctx.db.episodes:
-        feed_slug = feed_slugs[db_episode.feed_url]
+        feed_slug = feed_slugs[db_episode.feed_id]
         overcast_episode_count.labels(feed_slug=feed_slug).inc()
         if db_episode.duration:
             minutes = db_episode.duration.total_seconds() / 60
