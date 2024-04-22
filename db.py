@@ -141,9 +141,11 @@ class FeedCollection:
             return FeedCollection(Feed.from_dict(row) for row in rows)
 
     _feeds: list[Feed]
+    _initial_len: int
 
     def __init__(self, feeds: Iterable[Feed] = []) -> None:
         self._feeds = list(feeds)
+        self._initial_len = len(self._feeds)
 
     def __len__(self) -> int:
         return len(self._feeds)
@@ -156,7 +158,10 @@ class FeedCollection:
 
     def save(self, filename: Path) -> None:
         feeds_lst = list(self._feeds)
-        assert len(set(f.id for f in feeds_lst)) == len(feeds_lst), "Duplicate IDs"
+
+        current_len = len(feeds_lst)
+        assert current_len >= self._initial_len, "Feed count decreased"
+        assert len(set(f.id for f in feeds_lst)) == current_len, "Duplicate IDs"
 
         with filename.open("w") as csvfile:
             writer = csv.DictWriter(
@@ -330,9 +335,15 @@ class EpisodeCollection:
             return EpisodeCollection(Episode.from_dict(row) for row in rows)
 
     _episodes: list[Episode]
+    _initial_len: int
+    _initial_duration_nonnull_len: int
 
     def __init__(self, episodes: Iterable[Episode] = []) -> None:
         self._episodes = list(episodes)
+        self._initial_len = len(self._episodes)
+        self._initial_duration_nonnull_len = len(
+            [e for e in self._episodes if e.duration is not None]
+        )
 
     def __len__(self) -> int:
         return len(self._episodes)
@@ -373,8 +384,16 @@ class EpisodeCollection:
     def save(self, filename: Path) -> None:
         episodes_lst = list(self._episodes)
 
-        assert len(set(e.overcast_url for e in episodes_lst)) == len(
-            episodes_lst
+        current_len = len(episodes_lst)
+        current_duration_nonnull_len = len(
+            [e for e in self._episodes if e.duration is not None]
+        )
+        assert current_len >= self._initial_len, "Episode count decreased"
+        assert (
+            current_duration_nonnull_len >= self._initial_duration_nonnull_len
+        ), "Duration count decreased"
+        assert (
+            len(set(e.overcast_url for e in episodes_lst)) == current_len
         ), "Duplicate Overcast URLs"
 
         with filename.open("w") as csvfile:
