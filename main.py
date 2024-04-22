@@ -96,30 +96,37 @@ def cli(
 @click.pass_obj
 def refresh_opml_export(ctx: Context) -> None:
     logger.info("[refresh-opml-export]")
-    export_data = overcast.export_account_extended_data(session=ctx.session)
-    for export_feed in export_data.feeds:
-        ctx.db.feeds.insert(db.Feed.from_export_feed(export_feed))
 
-        for export_episode in export_feed.episodes:
-            ctx.db.episodes.insert(
-                db.Episode.from_export_episode(
-                    export_episode, feed_id=export_feed.item_id
+    try:
+        export_data = overcast.export_account_extended_data(session=ctx.session)
+        for export_feed in export_data.feeds:
+            ctx.db.feeds.insert(db.Feed.from_export_feed(export_feed))
+
+            for export_episode in export_feed.episodes:
+                ctx.db.episodes.insert(
+                    db.Episode.from_export_episode(
+                        export_episode, feed_id=export_feed.item_id
+                    )
                 )
-            )
+    except overcast.RatedLimitedError:
+        logger.error("Rate limited")
+        return
 
 
 @cli.command("refresh-feeds-index")
 @click.pass_obj
 def refresh_feeds_index(ctx: Context) -> None:
     logger.info("[refresh-feeds-index]")
-    db_feeds = ctx.db.feeds
 
-    for db_feed in db_feeds:
-        db_feed.is_subscribed = False
-
-    html_feeds = overcast.fetch_podcasts(session=ctx.session)
-    for html_feed in html_feeds:
-        db_feeds.insert(db.Feed.from_html_feed(html_feed))
+    try:
+        html_feeds = overcast.fetch_podcasts(session=ctx.session)
+        for db_feed in ctx.db.feeds:
+            db_feed.is_subscribed = False
+        for html_feed in html_feeds:
+            ctx.db.feeds.insert(db.Feed.from_html_feed(html_feed))
+    except overcast.RatedLimitedError:
+        logger.error("Rate limited")
+        return
 
 
 @cli.command("refresh-feeds")
@@ -136,16 +143,21 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
         feed_url = db_feed.overcast_url
         if not feed_url:
             logger.warning("Feed '%s' has no Overcast URL", db_feed.id)
-            break
+            continue
 
-        html_podcast = overcast.fetch_podcast(session=ctx.session, feed_url=feed_url)
-
-        for html_episode in html_podcast.episodes:
-            db_episode = db.Episode.from_html_podcast_episode(
-                html_episode,
-                feed_id=feed_id,
+        try:
+            html_podcast = overcast.fetch_podcast(
+                session=ctx.session, feed_url=feed_url
             )
-            ctx.db.episodes.insert(db_episode)
+            for html_episode in html_podcast.episodes:
+                db_episode = db.Episode.from_html_podcast_episode(
+                    html_episode,
+                    feed_id=feed_id,
+                )
+                ctx.db.episodes.insert(db_episode)
+        except overcast.RatedLimitedError:
+            logger.error("Rate limited")
+            continue
 
 
 @cli.command("backfill-episode")
@@ -163,18 +175,22 @@ def backfill_episode(ctx: Context, limit: int) -> None:
     logger.warning("Episodes missing optional info: %d", len(db_episodes_missing_info))
 
     for db_episode in islice(db_episodes_missing_info, limit):
-        html_episode = overcast.fetch_episode(
-            session=ctx.session,
-            episode_url=db_episode.overcast_url,
-        )
-        new_db_episode = db.Episode.from_html_episode(html_episode)
-
-        if db_episode.duration is None:
-            new_db_episode.duration = overcast.fetch_audio_duration(
-                ctx.session, html_episode.audio_url
+        try:
+            html_episode = overcast.fetch_episode(
+                session=ctx.session,
+                episode_url=db_episode.overcast_url,
             )
+            new_db_episode = db.Episode.from_html_episode(html_episode)
 
-        ctx.db.episodes.insert(new_db_episode)
+            if db_episode.duration is None:
+                new_db_episode.duration = overcast.fetch_audio_duration(
+                    ctx.session, html_episode.audio_url
+                )
+
+            ctx.db.episodes.insert(new_db_episode)
+        except overcast.RatedLimitedError:
+            logger.error("Rate limited")
+            continue
 
 
 @cli.command("metrics")
