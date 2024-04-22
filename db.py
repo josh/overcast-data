@@ -308,7 +308,7 @@ def _seconds_str_to_timedelta(s: str | None) -> timedelta | None:
 
 
 def _date_to_datetime(d: date) -> datetime:
-    return datetime.combine(d, datetime.min.time())
+    return datetime.combine(d, datetime.min.time(), timezone.utc)
 
 
 def _datetime_has_time_components(dt: datetime | None) -> bool:
