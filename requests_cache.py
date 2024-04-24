@@ -66,7 +66,7 @@ class Session:
         accept: str | None = None,
         cache_expires: timedelta = timedelta(seconds=0),
         stale_cache_on_error: bool = True,
-    ) -> requests.Response:
+    ) -> tuple[requests.Response, bool]:
         assert path.startswith("/")
 
         headers: dict[str, str] = {}
@@ -89,14 +89,14 @@ class Session:
 
             if datetime.now() - cache_response_date < cache_expires:
                 logger.debug("Cache valid")
-                return cached_response
+                return cached_response, True
             else:
                 logger.debug("Cache expired, ignoring")
 
         if self._offline is True:
             if cached_response:
                 logger.warning("Offline mode, returning stale cache")
-                return cached_response
+                return cached_response, True
             logger.error("Offline mode, no cache available")
             raise OfflineError()
 
@@ -110,7 +110,7 @@ class Session:
         except requests.HTTPError as e:
             if stale_cache_on_error and cached_response:
                 logger.warning("Request failed, returning stale cache")
-                return cached_response
+                return cached_response, True
 
             raise e
 
@@ -120,7 +120,7 @@ class Session:
         with filepath.open("wb") as f:
             f.write(response_to_bytes(r))
 
-        return r
+        return r, False
 
     def _throttle(self) -> None:
         seconds_to_wait = (

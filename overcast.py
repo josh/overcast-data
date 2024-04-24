@@ -205,6 +205,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
     r = _request(
         session=session,
         url=OvercastURL("https://overcast.fm/podcasts"),
+        controller="index",
         accept="text/html",
         cache_expires=timedelta(hours=1),
     )
@@ -318,6 +319,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
     r = _request(
         session=session,
         url=feed_url,
+        controller="podcast",
         accept="text/html",
         cache_expires=timedelta(hours=1),
     )
@@ -481,6 +483,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
     r = _request(
         session=session,
         url=episode_url,
+        controller="episode",
         accept="text/html",
         cache_expires=timedelta(days=30),
     )
@@ -576,6 +579,7 @@ def export_account_data(session: Session) -> AccountExport:
     r = _request(
         session,
         url=OvercastURL("https://overcast.fm/account/export_opml"),
+        controller="export",
         accept="application/xml",
         cache_expires=timedelta(days=7),
     )
@@ -639,6 +643,7 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
     r = _request(
         session,
         url=OvercastURL("https://overcast.fm/account/export_opml/extended"),
+        controller="export",
         accept="application/xml",
         cache_expires=timedelta(days=7),
     )
@@ -827,15 +832,32 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
     return episodes
 
 
+_CONTROLER = Literal["index", "podcast", "episode", "export"]
+
+
 def _request(
     session: Session,
     url: OvercastURL,
+    controller: _CONTROLER,
     accept: str | None,
     cache_expires: timedelta,
 ) -> requests.Response:
     path = url.removeprefix("https://overcast.fm")
     try:
-        response = session.get(path=path, accept=accept, cache_expires=cache_expires)
+        response, is_cached = session.get(
+            path=path, accept=accept, cache_expires=cache_expires
+        )
+
+        if is_cached is False:
+            key = f"overcast:{controller}:last_request_at"
+            if key in session.simple_cache:
+                logger.debug(
+                    "Overcast '%s' controller last request at %s",
+                    controller,
+                    session.simple_cache[key],
+                )
+            session.simple_cache[key] = datetime.now()
+
     except requests.HTTPError as e:
         if e.response.status_code == 429:
             logger.critical("Rate limited")

@@ -31,15 +31,19 @@ def session(module_cache_dir: Path) -> Session:
 
 
 def test_get_httpbin_delay(session: Session) -> None:
-    for _i in range(60):
-        r = session.get(
+    for i in range(60):
+        res, is_cached = session.get(
             "/delay/1",
             accept="application/json",
             cache_expires=timedelta(days=360),
         )
-        assert r.status_code == 200
-        assert r.headers["Content-Type"] == "application/json"
-        assert r.json()["url"] == "https://httpbin.org/delay/1"
+
+        assert res.status_code == 200
+        assert res.headers["Content-Type"] == "application/json"
+        assert res.json()["url"] == "https://httpbin.org/delay/1"
+
+        if i > 0:
+            assert is_cached is True
 
 
 def test_response_bytes_roundtrip() -> None:
