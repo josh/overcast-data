@@ -743,7 +743,7 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
         html_url = HTTPURL(outline.attrs["htmlUrl"])
         xml_url = HTTPURL(outline.attrs["xmlUrl"])
         added_at = dateutil.parser.parse(outline.attrs["overcastAddedDate"])
-        is_subscribed: bool = outline.attrs["subscribed"] == "1"
+        is_subscribed: bool = outline.attrs.get("subscribed", "0") == "1"
 
         feed = ExtendedExportFeed(
             item_id=item_id,
