@@ -99,6 +99,11 @@ def refresh_opml_export(ctx: Context) -> None:
 
     try:
         export_data = overcast.export_account_extended_data(session=ctx.session)
+
+        # Reset following and use current value from export data
+        for db_feed in ctx.db.feeds:
+            db_feed.is_following = False
+
         for export_feed in export_data.feeds:
             ctx.db.feeds.insert(db.Feed.from_export_feed(export_feed))
 
@@ -120,8 +125,11 @@ def refresh_feeds_index(ctx: Context) -> None:
 
     try:
         html_feeds = overcast.fetch_podcasts(session=ctx.session)
+
+        # Reset is added and use current value from index
         for db_feed in ctx.db.feeds:
-            db_feed.is_subscribed = False
+            db_feed.is_added = False
+
         for html_feed in html_feeds:
             ctx.db.feeds.insert(db.Feed.from_html_feed(html_feed))
     except overcast.RatedLimitedError:
@@ -135,7 +143,7 @@ def refresh_feeds_index(ctx: Context) -> None:
 def refresh_feeds(ctx: Context, limit: int) -> None:
     logger.info("[refresh-feeds]")
 
-    db_feeds_to_refresh = [f for f in ctx.db.feeds if f.is_subscribed]
+    db_feeds_to_refresh = [f for f in ctx.db.feeds if f.is_added]
     shuffle(db_feeds_to_refresh)
 
     for db_feed in islice(db_feeds_to_refresh, limit):
