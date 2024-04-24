@@ -101,6 +101,11 @@ class Feed:
         if data.get("is_following"):
             is_following = data["is_following"] == "1"
 
+        if is_following is True and is_added is False:
+            logger.warning(
+                "Feed '%s' is_following is True but is_added is False", title
+            )
+
         return Feed(
             id=id,
             overcast_url=overcast_url,
