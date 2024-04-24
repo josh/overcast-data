@@ -727,7 +727,6 @@ class ExtendedExportFeed:
             assert self.title, self.title
             assert self.added_at.tzinfo, "added date must be timezone-aware"
             assert self.added_at < datetime.now(timezone.utc), self.added_at
-            assert len(self.episodes) > 0
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
