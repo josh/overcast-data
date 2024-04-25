@@ -675,7 +675,7 @@ class ExtendedExportPlaylist:
     title: str
     smart: bool
     sorting: _PLAYLIST_SORTING_TYPE
-    include_episode_ids: list[OvercastEpisodeItemID]
+    episode_ids: list[OvercastEpisodeItemID]
 
     def _validate(self) -> None:
         try:
@@ -697,18 +697,23 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
         smart: bool = outline.attrs["smart"] == "1"
         sorting = cast(_PLAYLIST_SORTING_TYPE, outline.attrs["sorting"])
 
-        include_episode_ids: list[OvercastEpisodeItemID] = []
+        episode_ids: list[OvercastEpisodeItemID] = []
         if include_episode_ids_str := outline.attrs.get("includeEpisodeIds", ""):
-            include_episode_ids = [
+            episode_ids = [
                 OvercastEpisodeItemID(int(id))
                 for id in include_episode_ids_str.split(",")
+            ]
+        elif sorted_episode_ids_str := outline.attrs.get("sortedEpisodeIds", ""):
+            episode_ids = [
+                OvercastEpisodeItemID(int(id))
+                for id in sorted_episode_ids_str.split(",")
             ]
 
         playlist = ExtendedExportPlaylist(
             title=title,
             smart=smart,
             sorting=sorting,
-            include_episode_ids=include_episode_ids,
+            episode_ids=episode_ids,
         )
         playlist._validate()
         playlists.append(playlist)
