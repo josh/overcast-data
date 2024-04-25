@@ -69,7 +69,7 @@ def test_purge_cache(session: Session) -> None:
 def test_cache_path(module_cache_dir: Path, session: Session) -> None:
     request = requests.Request("GET", "https://httpbin.org/get")
     path = session.cache_path(request=request)
-    assert path == module_cache_dir / "get"
+    assert path == module_cache_dir / "httpbin.org" / "get"
 
     request = requests.Request(
         "GET",
@@ -77,7 +77,7 @@ def test_cache_path(module_cache_dir: Path, session: Session) -> None:
         headers={"Accept": "application/json"},
     )
     path = session.cache_path(request=request)
-    assert path == module_cache_dir / "get.json"
+    assert path == module_cache_dir / "httpbin.org" / "get.json"
 
     request = requests.Request(
         "GET",
@@ -86,7 +86,7 @@ def test_cache_path(module_cache_dir: Path, session: Session) -> None:
         headers={"Accept": "application/json"},
     )
     path = session.cache_path(request=request)
-    assert path == module_cache_dir / "get?foo=bar.json"
+    assert path == module_cache_dir / "httpbin.org" / "get?foo=bar.json"
 
     request = requests.Request(
         "GET",
@@ -94,4 +94,4 @@ def test_cache_path(module_cache_dir: Path, session: Session) -> None:
         headers={"Accept": "application/json"},
     )
     path = session.cache_path(request=request)
-    assert path == module_cache_dir / "status/200.json"
+    assert path == module_cache_dir / "httpbin.org" / "status/200.json"

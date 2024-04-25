@@ -42,6 +42,10 @@ jobs:
           restore-keys: |
             cache-
 
+      - name: Cache migration
+        run: |
+          python cache_migration.py
+
       - name: Sync
         run: |
           python main.py --db-path data/ \
@@ -50,8 +54,7 @@ jobs:
             refresh-feeds --limit 2 \
             backfill-episode --limit 5 \
             metrics --metrics-filename data/metrics.prom \
-            purge-cache \
-            inspect-cache
+            purge-cache
         env:
           XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}

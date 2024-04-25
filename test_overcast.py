@@ -25,7 +25,7 @@ _OFFLINE = "PYTEST_OFFLINE" in os.environ
 @pytest.fixture(scope="module")
 def module_cache_dir() -> Path:
     cache_home = os.environ.get("XDG_CACHE_HOME") or "/tmp/pytest"
-    return Path(cache_home) / "overcast"
+    return Path(cache_home)
 
 
 @pytest.fixture(scope="function")
@@ -189,4 +189,4 @@ def test_parse_episode_caption_text() -> None:
 
 
 def test_session_purge_cache(overcast_session: Session) -> None:
-    overcast_session.purge_cache(older_than=timedelta(days=90))
+    overcast_session.requests_session.purge_cache(older_than=timedelta(days=90))

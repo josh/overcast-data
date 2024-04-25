@@ -62,7 +62,7 @@ class Context(AbstractContextManager["Context"]):
 )
 @click.option(
     "--cache-dir",
-    default=_xdg_cache_home() / "overcast",
+    default=_xdg_cache_home(),
     show_default=True,
     type=Path,
 )
@@ -245,25 +245,7 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
 @click.pass_obj
 def purge_cache(ctx: Context) -> None:
     logger.info("[purge-cache]")
-    ctx.session.purge_cache(older_than=timedelta(days=90))
-
-
-@cli.command("inspect-cache")
-@click.pass_obj
-def inspect_cache(ctx: Context) -> None:
-    logger.info("[inspect-cache]")
-
-    cache_entries_count = list(ctx.session.cache_entries())
-    logger.info("Request cache entries: %d", len(cache_entries_count))
-
-    simple_cache_count = len(ctx.session.simple_cache)
-    simple_cache_bytesize = ctx.session.simple_cache.bytesize()
-    logger.info("Simple cache entries: %d", simple_cache_count)
-    logger.info("Simple cache bytesize: %d", simple_cache_bytesize)
-
-    cache_dir = _xdg_cache_home()
-    for cache_path in cache_dir.glob("**/*"):
-        logger.info("Cache file: %s", cache_path)
+    ctx.session.requests_session.purge_cache(older_than=timedelta(days=90))
 
 
 if __name__ == "__main__":

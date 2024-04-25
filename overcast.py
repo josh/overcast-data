@@ -14,6 +14,7 @@ import requests
 from bs4 import BeautifulSoup, Tag
 
 import requests_cache
+from lru_cache import LRUCache
 from utils import HTTPURL, URL
 
 logger = logging.getLogger("overcast")
@@ -160,20 +161,31 @@ class RatedLimitedError(Exception):
     pass
 
 
-Session = requests_cache.Session
+@dataclass
+class Session:
+    requests_session: requests_cache.Session
+    lru_cache: LRUCache
 
 
 def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
     headers = _SAFARI_HEADERS.copy()
     headers["Cookie"] = f"o={cookie}; qr=-"
 
-    return Session(
+    lru_cache = LRUCache(
+        path=cache_dir / "overcast.pickle",
+        max_bytesize=1024 * 1024,  # 1 MB
+        save_on_exit=True,
+    )
+
+    requests_session = requests_cache.Session(
         cache_dir=cache_dir,
         base_url="https://overcast.fm",
         headers=headers,
         min_time_between_requests=timedelta(seconds=10),
         offline=offline,
     )
+
+    return Session(requests_session=requests_session, lru_cache=lru_cache)
 
 
 @dataclass
@@ -559,7 +571,7 @@ def _fetch_audio_duration(url: HTTPURL) -> timedelta | None:
 
 def fetch_audio_duration(session: Session, url: HTTPURL) -> timedelta | None:
     def _inner() -> timedelta | None:
-        if session._offline:
+        if session.requests_session._offline:
             raise requests_cache.OfflineError()
         elif duration := _fetch_audio_duration(url):
             return duration
@@ -567,7 +579,7 @@ def fetch_audio_duration(session: Session, url: HTTPURL) -> timedelta | None:
             return None
 
     key = f"fetch_audio_duration:v4:{url}"
-    return session.simple_cache.get(key, _inner)
+    return session.lru_cache.get(key, _inner)
 
 
 @dataclass
@@ -849,19 +861,19 @@ def _request(
 ) -> requests.Response:
     path = url.removeprefix("https://overcast.fm")
     try:
-        response, is_cached = session.get(
+        response, is_cached = session.requests_session.get(
             path=path, accept=accept, cache_expires=cache_expires
         )
 
         if is_cached is False:
             key = f"overcast:{controller}:last_request_at"
-            if key in session.simple_cache:
+            if key in session.lru_cache:
                 logger.debug(
                     "Overcast '%s' controller last request at %s",
                     controller,
-                    session.simple_cache[key],
+                    session.lru_cache[key],
                 )
-            session.simple_cache[key] = datetime.now()
+            session.lru_cache[key] = datetime.now()
 
     except requests.HTTPError as e:
         if e.response.status_code == 429:

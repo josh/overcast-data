@@ -16,6 +16,7 @@ class LRUCache:
     path: Path | None
     _data: OrderedDict[Hashable, Any]
     _max_bytesize: int
+    _did_change: bool = False
 
     def __init__(
         self,
@@ -40,10 +41,15 @@ class LRUCache:
 
         with self.path.open("rb") as f:
             self._data.update(pickle.load(f))
+        self._did_change = False
 
     def save(self) -> None:
         if not self.path:
             _logger.error("failed to save LRU cache: no path provided")
+            return
+
+        if self._did_change is False:
+            _logger.info("no changes to save")
             return
 
         self.trim()
@@ -58,6 +64,7 @@ class LRUCache:
         count = 0
         while self.bytesize() > self._max_bytesize:
             key = sorted_keys.pop(0)
+            self._did_change = True
             del self._data[key]
             count += 1
         if count > 0:
@@ -71,11 +78,13 @@ class LRUCache:
             return None
         else:
             _logger.debug("hit key=%s", key)
+            self._did_change = True
             self._data.move_to_end(key, last=True)
             return value
 
     def __setitem__(self, key: Hashable, value: Any) -> None:
         _logger.debug("set key=%s", key)
+        self._did_change = True
         self._data[key] = value
         self._data.move_to_end(key, last=True)
 
@@ -93,10 +102,12 @@ class LRUCache:
         if value is _SENTINEL:
             _logger.debug("miss key=%s", key)
             value = load_value()
+            self._did_change = True
             self._data[key] = value
             return value
         else:
             _logger.debug("hit key=%s", key)
+            self._did_change = True
             self._data.move_to_end(key, last=True)
             return value
 
