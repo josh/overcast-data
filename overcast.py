@@ -581,7 +581,7 @@ def export_account_data(session: Session) -> AccountExport:
         url=OvercastURL("https://overcast.fm/account/export_opml"),
         controller="export",
         accept="application/xml",
-        cache_expires=timedelta(days=7),
+        cache_expires=timedelta(days=6),
     )
 
     soup = BeautifulSoup(r.content, "xml")
@@ -645,7 +645,7 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
         url=OvercastURL("https://overcast.fm/account/export_opml/extended"),
         controller="export",
         accept="application/xml",
-        cache_expires=timedelta(days=7),
+        cache_expires=timedelta(days=6),
     )
 
     soup = BeautifulSoup(r.content, "xml")
