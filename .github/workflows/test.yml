@@ -29,12 +29,6 @@ jobs:
           restore-keys: |
             cache-
 
-      - name: Cache migration
-        run: |
-          python cache_migration.py
-        env:
-          XDG_CACHE_HOME: .cache/
-
       - name: Test with pytest
         run: |
           pytest --log-cli-level info --verbose

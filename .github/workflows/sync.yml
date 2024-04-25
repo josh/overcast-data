@@ -42,12 +42,6 @@ jobs:
           restore-keys: |
             cache-
 
-      - name: Cache migration
-        run: |
-          python cache_migration.py
-        env:
-          XDG_CACHE_HOME: .cache/
-
       - name: Sync
         run: |
           python main.py --db-path data/ \
