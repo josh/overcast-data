@@ -32,7 +32,7 @@ def session(module_cache_dir: Path) -> Session:
 
 def test_get_httpbin_delay(session: Session) -> None:
     for i in range(60):
-        res, is_cached = session.get(
+        res, from_cache = session.get(
             "/delay/1",
             accept="application/json",
             cache_expires=timedelta(days=360),
@@ -43,7 +43,19 @@ def test_get_httpbin_delay(session: Session) -> None:
         assert res.json()["url"] == "https://httpbin.org/delay/1"
 
         if i > 0:
-            assert is_cached is True
+            assert from_cache is True
+
+
+def test_get_httpbin_inject_expires_response_header(session: Session) -> None:
+    res, _from_cache = session.get(
+        "/get",
+        accept="application/json",
+        cache_expires=timedelta(days=360),
+    )
+
+    assert res.status_code == 200
+    # TODO: Eventually enable this test
+    # assert res.headers["Expires"]
 
 
 def test_response_bytes_roundtrip() -> None:

@@ -108,7 +108,13 @@ class Session:
 
             raise e
 
+        # TODO: Eventually use Expires header
         assert "Date" in r.headers, "Response must have a Date header"
+
+        if cache_expires:
+            r.headers["Expires"] = (datetime.now() + cache_expires).strftime(
+                "%a, %d %b %Y %H:%M:%S GMT"
+            )
 
         filepath.parent.mkdir(parents=True, exist_ok=True)
         with filepath.open("wb") as f:
