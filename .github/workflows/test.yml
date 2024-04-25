@@ -35,7 +35,3 @@ jobs:
         env:
           XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}
-
-      - name: Print cache
-        run: |
-          find .cache/ -type f
