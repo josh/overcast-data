@@ -261,7 +261,6 @@ def inspect_cache(ctx: Context) -> None:
     logger.info("Simple cache entries: %d", simple_cache_count)
     logger.info("Simple cache bytesize: %d", simple_cache_bytesize)
 
-    # Iterate over all filenames in cache_dir
     cache_dir = _xdg_cache_home()
     for cache_path in cache_dir.glob("**/*"):
         logger.info("Cache file: %s", cache_path)
