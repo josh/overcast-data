@@ -50,7 +50,8 @@ jobs:
             refresh-feeds --limit 2 \
             backfill-episode --limit 5 \
             metrics --metrics-filename data/metrics.prom \
-            purge-cache
+            purge-cache \
+            inspect-cache
         env:
           XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}
