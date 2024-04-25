@@ -45,6 +45,8 @@ jobs:
       - name: Cache migration
         run: |
           python cache_migration.py
+        env:
+          XDG_CACHE_HOME: .cache/
 
       - name: Sync
         run: |
