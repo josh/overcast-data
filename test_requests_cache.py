@@ -54,8 +54,16 @@ def test_get_httpbin_inject_expires_response_header(session: Session) -> None:
     )
 
     assert res.status_code == 200
+
     # TODO: Eventually enable this test
     # assert res.headers["Expires"]
+    #
+    # request = requests.Request(
+    #     "GET",
+    #     "https://httpbin.org/get",
+    #     headers={"Accept": "application/json"},
+    # )
+    # assert session.is_cache_fresh(request)
 
 
 def test_response_bytes_roundtrip() -> None:
