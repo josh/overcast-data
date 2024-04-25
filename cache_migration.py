@@ -29,8 +29,13 @@ def main() -> None:
     )
 
     _mv(cache_dir / "overcast" / "cache.pickle", cache_dir / "overcast.pickle")
+    for src_path in (cache_dir / "overcast").rglob("*"):
+        _mv(
+            src_path,
+            cache_dir / "overcast.fm" / src_path.relative_to(cache_dir / "overcast"),
+        )
+    _rm(cache_dir / "overcast")
 
-    _mv(cache_dir / "overcast", cache_dir / "overcast.fm")
     _mv(cache_dir / "overcast.fm" / "cache.pickle", cache_dir / "overcast.pickle")
 
     _mv(
@@ -42,7 +47,6 @@ def main() -> None:
         if path.is_file() and path.suffix == "":
             _rm(path)
 
-    _rm(cache_dir / "overcast" / "cache.pickle")
     _rm(cache_dir / "overcast.fm" / "cache.pickle")
     _rm(cache_dir / "cache.pickle")
     _rm(cache_dir / "test_fetch_podcasts_bad_cookie" / "cache.pickle")
@@ -52,7 +56,10 @@ def main() -> None:
 def _rm(path: Path) -> None:
     if path.exists():
         logger.warning("rm %s", path)
-        path.unlink()
+        if path.is_file():
+            path.unlink()
+        else:
+            path.rmdir()
 
 
 def _mv(src: Path, dst: Path) -> None:
