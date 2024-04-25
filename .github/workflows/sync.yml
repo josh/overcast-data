@@ -56,6 +56,10 @@ jobs:
           XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}
 
+      - name: Print cache
+        run: |
+          find .cache/ -type f
+
       - name: Commit changes
         run: |
           git config user.name 'GitHub Actions'

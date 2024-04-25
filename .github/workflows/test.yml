@@ -38,7 +38,4 @@ jobs:
 
       - name: Print cache
         run: |
-          python main.py --db-path data/ inspect-cache
-        env:
-          XDG_CACHE_HOME: .cache/
-          OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}
+          find .cache/ -type f
