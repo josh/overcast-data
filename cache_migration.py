@@ -59,7 +59,10 @@ def _rm(path: Path) -> None:
         if path.is_file():
             path.unlink()
         else:
-            path.rmdir()
+            try:
+                path.rmdir()
+            except OSError:
+                logger.error("Failed to remove %s", path)
 
 
 def _mv(src: Path, dst: Path) -> None:
