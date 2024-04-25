@@ -42,6 +42,8 @@ def main() -> None:
         cache_dir / "overcast.fm" / "test_fetch_podcasts_bad_cookie" / "podcasts.html",
         cache_dir / "test_fetch_podcasts_bad_cookie" / "overcast.fm" / "podcasts.html",
     )
+    _rm(cache_dir / "overcast.fm" / "test_fetch_podcasts_bad_cookie" / "cache.pickle")
+    _rm(cache_dir / "overcast.fm" / "test_fetch_podcasts_bad_cookie")
 
     for path in (cache_dir / "overcast.fm").rglob("*"):
         if path.is_file() and path.suffix == "":
