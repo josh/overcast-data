@@ -132,6 +132,14 @@ def refresh_feeds_index(ctx: Context) -> None:
 
         for html_feed in html_feeds:
             ctx.db.feeds.insert(db.Feed.from_html_feed(html_feed))
+
+        # Clear download flag on episodes for feeds that don't have any unplayed episodes
+        for html_feed in html_feeds:
+            if html_feed.has_unplayed_episodes is False:
+                for db_episode in ctx.db.episodes:
+                    if db_episode.feed_id == html_feed.item_id:
+                        db_episode.is_downloaded = False
+
     except overcast.RatedLimitedError:
         logger.error("Rate limited")
         return

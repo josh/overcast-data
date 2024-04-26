@@ -219,7 +219,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         url=OvercastURL("https://overcast.fm/podcasts"),
         controller="index",
         accept="text/html",
-        cache_expires=timedelta(hours=1),
+        cache_expires=timedelta(hours=2, minutes=30),
     )
 
     feeds: list[HTMLPodcastsFeed] = []
