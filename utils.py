@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 
 _RAISE_VALIDATION_ERRORS = "pytest" in sys.modules
 
-logger = logging.getLogger("overcast")
+logger = logging.getLogger("utils")
 
 
 class URL(str):
