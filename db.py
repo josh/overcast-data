@@ -309,6 +309,9 @@ class Episode:
         if data.get("is_downloaded"):
             is_downloaded = data["is_downloaded"] == "1"
 
+        if is_downloaded is True and is_played is True:
+            logger.warning("Episode is downloaded but already played: %s", title)
+
         return Episode(
             id=id,
             overcast_url=overcast_url,

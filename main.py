@@ -207,16 +207,18 @@ def backfill_episode(ctx: Context, limit: int) -> None:
 def metrics(ctx: Context, metrics_filename: str | None) -> None:
     registry = CollectorRegistry()
 
+    episode_labelnames = ["feed_slug", "played", "downloaded"]
+
     overcast_episode_count = Gauge(
         "overcast_episode_count",
         "Count of Overcast episodes",
-        labelnames=["feed_slug"],
+        labelnames=episode_labelnames,
         registry=registry,
     )
     overcast_episode_minutes = Gauge(
         "overcast_episode_minutes",
         "Minutes of Overcast episodes",
-        labelnames=["feed_slug"],
+        labelnames=episode_labelnames,
         registry=registry,
     )
 
@@ -224,14 +226,34 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
 
     feed_slugs: dict[overcast.OvercastFeedItemID, str] = {}
     for db_feed in ctx.db.feeds:
-        feed_slugs[db_feed.id] = db_feed.slug()
+        feed_slug = db_feed.slug()
+        feed_slugs[db_feed.id] = feed_slug
+
+        overcast_episode_count.labels(
+            feed_slug=feed_slug, played="true", downloaded="true"
+        ).set(0)
+        overcast_episode_count.labels(
+            feed_slug=feed_slug, played="true", downloaded="false"
+        ).set(0)
+        overcast_episode_count.labels(
+            feed_slug=feed_slug, played="false", downloaded="true"
+        ).set(0)
+        overcast_episode_count.labels(
+            feed_slug=feed_slug, played="false", downloaded="false"
+        ).set(0)
 
     for db_episode in ctx.db.episodes:
         feed_slug = feed_slugs[db_episode.feed_id]
-        overcast_episode_count.labels(feed_slug=feed_slug).inc()
+        played: str = "true" if db_episode.is_played is True else "false"
+        downloaded: str = "true" if db_episode.is_downloaded is True else "false"
+        overcast_episode_count.labels(
+            feed_slug=feed_slug, played=played, downloaded=downloaded
+        ).inc()
         if db_episode.duration:
             minutes = db_episode.duration.total_seconds() / 60
-            overcast_episode_minutes.labels(feed_slug=feed_slug).inc(minutes)
+            overcast_episode_minutes.labels(
+                feed_slug=feed_slug, played=played, downloaded=downloaded
+            ).inc(minutes)
 
     for line in generate_latest(registry=registry).splitlines():
         logger.info(line.decode())
