@@ -170,12 +170,18 @@ class Session:
                 continue
             yield path, response
 
-    def purge_cache(self, older_than: timedelta) -> None:
+    def purge_cache(self, older_than: timedelta = timedelta.max) -> None:
         now = datetime.now()
+        oldest_date = now + older_than
+
         for path, response in self.cache_entries():
             date = response_date(response)
-            if now - date > older_than:
-                logger.debug("Purging cache entry %s", path)
+            expires = response_expires(response)
+            if expires < now:
+                logger.debug("Purging expired cache entry %s", path)
+                path.unlink()
+            elif date > oldest_date:
+                logger.debug("Purging old cache entry %s", path)
                 path.unlink()
 
         for path in self._cache_dir.rglob("*"):
