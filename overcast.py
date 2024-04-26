@@ -220,7 +220,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         url=OvercastURL("https://overcast.fm/podcasts"),
         controller="index",
         accept="text/html",
-        cache_expires=timedelta(hours=2, minutes=30),
+        response_expires_in=timedelta(hours=2, minutes=30),
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -338,7 +338,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         url=feed_url,
         controller="podcast",
         accept="text/html",
-        cache_expires=timedelta(hours=1),
+        response_expires_in=timedelta(hours=1),
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -512,7 +512,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
         url=episode_url,
         controller="episode",
         accept="text/html",
-        cache_expires=timedelta(days=30),
+        response_expires_in=timedelta(days=30),
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -611,7 +611,7 @@ def export_account_data(session: Session) -> AccountExport:
         url=OvercastURL("https://overcast.fm/account/export_opml"),
         controller="export",
         accept="application/xml",
-        cache_expires=timedelta(days=6),
+        response_expires_in=timedelta(days=6),
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -680,7 +680,7 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
         url=OvercastURL("https://overcast.fm/account/export_opml/extended"),
         controller="export",
         accept="application/xml",
-        cache_expires=timedelta(days=6),
+        response_expires_in=timedelta(days=6),
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -898,12 +898,14 @@ def _request(
     url: OvercastURL,
     controller: _CONTROLER,
     accept: str | None,
-    cache_expires: timedelta,
+    response_expires_in: timedelta,
 ) -> requests.Response:
     path = url.removeprefix("https://overcast.fm")
     try:
         response, is_cached = session.requests_session.get(
-            path=path, accept=accept, cache_expires=cache_expires
+            path=path,
+            request_accept=accept,
+            response_expires_in=response_expires_in,
         )
 
         if is_cached is False:

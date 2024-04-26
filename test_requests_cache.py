@@ -34,8 +34,8 @@ def test_get_httpbin_delay(session: Session) -> None:
     for i in range(60):
         res, from_cache = session.get(
             "/delay/1",
-            accept="application/json",
-            cache_expires=timedelta(days=30),
+            request_accept="application/json",
+            response_expires_in=timedelta(days=30),
         )
 
         assert res.status_code == 200
@@ -49,21 +49,19 @@ def test_get_httpbin_delay(session: Session) -> None:
 def test_get_httpbin_inject_expires_response_header(session: Session) -> None:
     res, _from_cache = session.get(
         "/get",
-        accept="application/json",
-        cache_expires=timedelta(days=30),
+        request_accept="application/json",
+        response_expires_in=timedelta(days=30),
     )
 
     assert res.status_code == 200
+    assert res.headers["Expires"]
 
-    # TODO: Eventually enable this test
-    # assert res.headers["Expires"]
-    #
-    # request = requests.Request(
-    #     "GET",
-    #     "https://httpbin.org/get",
-    #     headers={"Accept": "application/json"},
-    # )
-    # assert session.is_cache_fresh(request)
+    request = requests.Request(
+        "GET",
+        "https://httpbin.org/get",
+        headers={"Accept": "application/json"},
+    )
+    assert session.is_cache_fresh(request)
 
 
 def test_response_bytes_roundtrip() -> None:
@@ -78,7 +76,11 @@ def test_response_bytes_roundtrip() -> None:
 
 
 def test_cache_entries(session: Session) -> None:
-    session.get("/get", accept="application/json", cache_expires=timedelta(days=30))
+    session.get(
+        "/get",
+        request_accept="application/json",
+        response_expires_in=timedelta(days=30),
+    )
     assert len(list(session.cache_entries())) >= 1
 
 

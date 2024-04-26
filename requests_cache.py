@@ -57,15 +57,15 @@ class Session:
     def get(
         self,
         path: str,
-        accept: str | None = None,
-        cache_expires: timedelta = timedelta(seconds=0),
+        request_accept: str | None = None,
+        response_expires_in: timedelta = timedelta(seconds=0),
         stale_cache_on_error: bool = True,
     ) -> tuple[requests.Response, bool]:
         assert path.startswith("/")
 
         headers: dict[str, str] = {}
-        if accept:
-            headers["Accept"] = accept
+        if request_accept:
+            headers["Accept"] = request_accept
         request = requests.Request(
             method="GET",
             url=self._base_url + path,
@@ -79,13 +79,18 @@ class Session:
         if filepath.exists():
             cached_response = bytes_to_response(filepath.read_bytes())
             cache_response_date = response_date(cached_response)
-            logger.debug("Found cache response date: %s", cache_response_date)
+            cache_expires = response_expires(cached_response)
+            logger.debug(
+                "Found cache response date: %s, expires: %s",
+                cache_response_date,
+                cache_expires,
+            )
 
-            if datetime.now() - cache_response_date < cache_expires:
+            if cache_expires > datetime.now():
                 logger.debug("Cache valid")
                 return cached_response, True
             else:
-                logger.debug("Cache expired, ignoring")
+                logger.debug("Cache expired at %s", cache_expires)
 
         if self._offline is True:
             if cached_response:
@@ -108,13 +113,9 @@ class Session:
 
             raise e
 
-        # TODO: Eventually use Expires header
-        assert "Date" in r.headers, "Response must have a Date header"
-
-        if cache_expires:
-            r.headers["Expires"] = (datetime.now() + cache_expires).strftime(
-                "%a, %d %b %Y %H:%M:%S GMT"
-            )
+        response_expires_at = response_date(r) + response_expires_in
+        logger.debug("Response will expire at %s", response_expires_at)
+        r.headers["Expires"] = response_expires_at.strftime("%a, %d %b %Y %H:%M:%S GMT")
 
         filepath.parent.mkdir(parents=True, exist_ok=True)
         with filepath.open("wb") as f:
@@ -155,11 +156,7 @@ class Session:
     def is_cache_fresh(self, request: requests.Request) -> bool:
         path = self.cache_path(request)
         response = bytes_to_response(path.read_bytes())
-
-        expires = datetime.min
-        if expires_str := response.headers.get("Expires"):
-            expires = datetime.strptime(expires_str, "%a, %d %b %Y %H:%M:%S GMT")
-
+        expires = response_expires(response)
         return datetime.now() < expires
 
     def cache_entries(self) -> Iterator[tuple[Path, requests.Response]]:
@@ -223,3 +220,9 @@ def bytes_to_response(data: bytes) -> requests.Response:
 
 def response_date(response: requests.Response) -> datetime:
     return datetime.strptime(response.headers["Date"], "%a, %d %b %Y %H:%M:%S GMT")
+
+
+def response_expires(response: requests.Response) -> datetime:
+    if "Expires" not in response.headers:
+        return datetime.min
+    return datetime.strptime(response.headers["Expires"], "%a, %d %b %Y %H:%M:%S GMT")
