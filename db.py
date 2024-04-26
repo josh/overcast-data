@@ -254,7 +254,7 @@ class Episode:
     duration: timedelta | None
     date_published: datetime
     is_played: bool | None
-    is_downloaded: bool | None
+    is_downloaded: bool
 
     @property
     def is_missing_optional_info(self) -> bool:
@@ -285,7 +285,7 @@ class Episode:
         duration = None
         date_published = datetime.fromisoformat(data["date_published"])
         is_played: bool | None = None
-        is_downloaded: bool | None = None
+        is_downloaded: bool = data["is_downloaded"] == "1"
 
         if data.get("id"):
             id = OvercastEpisodeItemID(int(data["id"]))
@@ -305,9 +305,6 @@ class Episode:
 
         if data.get("is_played"):
             is_played = data["is_played"] == "1"
-
-        if data.get("is_downloaded"):
-            is_downloaded = data["is_downloaded"] == "1"
 
         if is_downloaded is True and is_played is True:
             logger.warning("Episode is downloaded but already played: %s", title)
@@ -336,8 +333,7 @@ class Episode:
         d["date_published"] = self.date_published.isoformat()
         if self.is_played is not None:
             d["is_played"] = "1" if self.is_played else "0"
-        if self.is_downloaded is not None:
-            d["is_downloaded"] = "1" if self.is_downloaded else "0"
+        d["is_downloaded"] = "1" if self.is_downloaded else "0"
 
         return d
 
@@ -368,7 +364,7 @@ class Episode:
             duration=None,
             date_published=episode.date_published_datetime,
             is_played=None,
-            is_downloaded=None,
+            is_downloaded=episode.is_new,
         )
 
     @staticmethod

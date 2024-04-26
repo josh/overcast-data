@@ -474,6 +474,15 @@ class HTMLEpisode:
     description: str
     date_published: date
     audio_url: HTTPURL
+    download_state: Literal["new"] | Literal["existing"]
+
+    @property
+    def is_new(self) -> bool:
+        return self.download_state == "new"
+
+    @property
+    def is_existing(self) -> bool:
+        return self.download_state == "existing"
 
     @property
     def item_id(self) -> OvercastEpisodeItemID:
@@ -553,6 +562,14 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
         date_published = dateutil.parser.parse(div_el.text).date()
     assert date_published
 
+    download_state: Literal["new"] | Literal["existing"] | None = None
+    if soup.select_one(".new_episode_for_user"):
+        download_state = "new"
+    elif soup.select_one(".existing_episode_for_user"):
+        download_state = "existing"
+    else:
+        assert False, "Unknown download state"
+
     episode = HTMLEpisode(
         fetched_at=fetched_at,
         overcast_url=episode_url,
@@ -563,6 +580,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
         description=description,
         date_published=date_published,
         audio_url=HTTPURL(audio_url),
+        download_state=download_state,
     )
     episode._validate()
     return episode
