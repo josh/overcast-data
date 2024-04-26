@@ -78,7 +78,7 @@ class Session:
         cached_response: requests.Response | None = None
         if filepath.exists():
             cached_response = bytes_to_response(filepath.read_bytes())
-            cache_response_date = _response_date(cached_response)
+            cache_response_date = response_date(cached_response)
             logger.debug("Found cache response date: %s", cache_response_date)
 
             if datetime.now() - cache_response_date < cache_expires:
@@ -176,8 +176,8 @@ class Session:
     def purge_cache(self, older_than: timedelta) -> None:
         now = datetime.now()
         for path, response in self.cache_entries():
-            response_date = _response_date(response)
-            if now - response_date > older_than:
+            date = response_date(response)
+            if now - date > older_than:
                 logger.debug("Purging cache entry %s", path)
                 path.unlink()
 
@@ -221,5 +221,5 @@ def bytes_to_response(data: bytes) -> requests.Response:
     return response
 
 
-def _response_date(response: requests.Response) -> datetime:
+def response_date(response: requests.Response) -> datetime:
     return datetime.strptime(response.headers["Date"], "%a, %d %b %Y %H:%M:%S GMT")

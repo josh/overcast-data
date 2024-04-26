@@ -190,6 +190,7 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
 
 @dataclass
 class HTMLPodcastsFeed:
+    fetched_at: datetime
     overcast_url: OvercastFeedURL
     art_url: OvercastCDNURL
     title: str
@@ -221,6 +222,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         accept="text/html",
         cache_expires=timedelta(hours=2, minutes=30),
     )
+    fetched_at = requests_cache.response_date(r)
 
     feeds: list[HTMLPodcastsFeed] = []
 
@@ -248,6 +250,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         )
 
         feed = HTMLPodcastsFeed(
+            fetched_at=fetched_at,
             overcast_url=overcast_url,
             art_url=art_url,
             title=title,
@@ -264,6 +267,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
 
 @dataclass
 class HTMLPodcastFeed:
+    fetched_at: datetime
     title: str
     overcast_url: OvercastFeedURL
     overcast_uri: OvercastAppURI
@@ -291,6 +295,7 @@ class HTMLPodcastFeed:
 
 @dataclass
 class HTMLPodcastEpisode:
+    fetched_at: datetime
     overcast_url: OvercastEpisodeURL
     title: str
     description: str
@@ -335,6 +340,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         accept="text/html",
         cache_expires=timedelta(hours=1),
     )
+    fetched_at = requests_cache.response_date(r)
 
     soup = BeautifulSoup(r.text, "html.parser")
 
@@ -376,6 +382,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
             description = description_el.text.strip()
 
         episode = HTMLPodcastEpisode(
+            fetched_at=fetched_at,
             overcast_url=episode_url,
             title=title,
             description=description,
@@ -394,6 +401,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         art_url = OvercastCDNURL("")
 
     feed = HTMLPodcastFeed(
+        fetched_at=fetched_at,
         overcast_url=feed_url,
         overcast_uri=OvercastAppURI(overcast_uri),
         art_url=art_url,
@@ -457,6 +465,7 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
 
 @dataclass
 class HTMLEpisode:
+    fetched_at: datetime
     overcast_url: OvercastEpisodeURL
     overcast_uri: OvercastAppURI
     feed_art_url: OvercastCDNURL
@@ -505,6 +514,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
         accept="text/html",
         cache_expires=timedelta(days=30),
     )
+    fetched_at = requests_cache.response_date(r)
 
     soup = BeautifulSoup(r.text, "html.parser")
 
@@ -544,6 +554,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
     assert date_published
 
     episode = HTMLEpisode(
+        fetched_at=fetched_at,
         overcast_url=episode_url,
         overcast_uri=OvercastAppURI(overcast_uri),
         feed_art_url=art_url,
@@ -590,6 +601,7 @@ def fetch_audio_duration(session: Session, url: HTTPURL) -> timedelta | None:
 
 @dataclass
 class AccountExport:
+    fetched_at: datetime
     feeds: list["ExportFeed"]
 
 
@@ -601,15 +613,18 @@ def export_account_data(session: Session) -> AccountExport:
         accept="application/xml",
         cache_expires=timedelta(days=6),
     )
+    fetched_at = requests_cache.response_date(r)
 
     soup = BeautifulSoup(r.content, "xml")
     return AccountExport(
-        feeds=_opml_feeds(soup),
+        fetched_at=fetched_at,
+        feeds=_opml_feeds(soup, fetched_at=fetched_at),
     )
 
 
 @dataclass
 class ExportFeed:
+    fetched_at: datetime
     item_id: OvercastFeedItemID
     title: str
     xml_url: HTTPURL
@@ -627,7 +642,7 @@ class ExportFeed:
                 raise e
 
 
-def _opml_feeds(soup: BeautifulSoup) -> list[ExportFeed]:
+def _opml_feeds(soup: BeautifulSoup, fetched_at: datetime) -> list[ExportFeed]:
     feeds: list[ExportFeed] = []
 
     for outline in soup.select("outline[text='feeds'] > outline[type='rss']"):
@@ -638,6 +653,7 @@ def _opml_feeds(soup: BeautifulSoup) -> list[ExportFeed]:
         added_at = dateutil.parser.parse(outline.attrs["overcastAddedDate"])
 
         feed = ExportFeed(
+            fetched_at=fetched_at,
             item_id=OvercastFeedItemID(item_id),
             title=title,
             xml_url=HTTPURL(xml_url),
@@ -653,6 +669,7 @@ def _opml_feeds(soup: BeautifulSoup) -> list[ExportFeed]:
 
 @dataclass
 class AccountExtendedExport:
+    fetched_at: datetime
     playlists: list["ExtendedExportPlaylist"]
     feeds: list["ExtendedExportFeed"]
 
@@ -665,11 +682,13 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
         accept="application/xml",
         cache_expires=timedelta(days=6),
     )
+    fetched_at = requests_cache.response_date(r)
 
     soup = BeautifulSoup(r.content, "xml")
     return AccountExtendedExport(
-        playlists=_opml_extended_playlists(soup),
-        feeds=_opml_extended_feeds(soup),
+        fetched_at=fetched_at,
+        playlists=_opml_extended_playlists(soup, fetched_at=fetched_at),
+        feeds=_opml_extended_feeds(soup, fetched_at=fetched_at),
     )
 
 
@@ -690,6 +709,7 @@ _PLAYLIST_SORTING_VALUES: list[str] = [
 
 @dataclass
 class ExtendedExportPlaylist:
+    fetched_at: datetime
     title: str
     smart: bool
     sorting: _PLAYLIST_SORTING_TYPE
@@ -705,7 +725,9 @@ class ExtendedExportPlaylist:
                 raise e
 
 
-def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist]:
+def _opml_extended_playlists(
+    soup: BeautifulSoup, fetched_at: datetime
+) -> list[ExtendedExportPlaylist]:
     playlists: list[ExtendedExportPlaylist] = []
 
     for outline in soup.select(
@@ -728,6 +750,7 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
             ]
 
         playlist = ExtendedExportPlaylist(
+            fetched_at=fetched_at,
             title=title,
             smart=smart,
             sorting=sorting,
@@ -742,6 +765,7 @@ def _opml_extended_playlists(soup: BeautifulSoup) -> list[ExtendedExportPlaylist
 
 @dataclass
 class ExtendedExportFeed:
+    fetched_at: datetime
     item_id: OvercastFeedItemID
     title: str
     xml_url: HTTPURL
@@ -761,7 +785,9 @@ class ExtendedExportFeed:
                 raise e
 
 
-def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
+def _opml_extended_feeds(
+    soup: BeautifulSoup, fetched_at: datetime
+) -> list[ExtendedExportFeed]:
     feeds: list[ExtendedExportFeed] = []
 
     for outline in soup.select("outline[text='feeds'] > outline[type='rss']"):
@@ -773,13 +799,14 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
         is_subscribed: bool = outline.attrs.get("subscribed", "0") == "1"
 
         feed = ExtendedExportFeed(
+            fetched_at=fetched_at,
             item_id=item_id,
             title=title,
             xml_url=xml_url,
             html_url=html_url,
             added_at=added_at,
             is_subscribed=is_subscribed,
-            episodes=_opml_extended_episode(outline),
+            episodes=_opml_extended_episode(outline, fetched_at=fetched_at),
         )
         feed._validate()
         feeds.append(feed)
@@ -794,6 +821,7 @@ def _opml_extended_feeds(soup: BeautifulSoup) -> list[ExtendedExportFeed]:
 
 @dataclass
 class ExtendedExportEpisode:
+    fetched_at: datetime
     date_published: datetime
     title: str
     item_id: OvercastEpisodeItemID
@@ -826,7 +854,9 @@ class ExtendedExportEpisode:
                 raise e
 
 
-def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
+def _opml_extended_episode(
+    rss_outline: Tag, fetched_at: datetime
+) -> list[ExtendedExportEpisode]:
     episodes: list[ExtendedExportEpisode] = []
 
     for outline in rss_outline.select("outline[type='podcast-episode']"):
@@ -842,6 +872,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
         is_played: bool = outline.attrs.get("played", "0") == "1"
 
         episode = ExtendedExportEpisode(
+            fetched_at=fetched_at,
             item_id=item_id,
             date_published=date_published,
             title=title,
