@@ -275,7 +275,7 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
 @click.pass_obj
 def purge_cache(ctx: Context) -> None:
     logger.info("[purge-cache]")
-    ctx.session.requests_session.purge_cache(older_than=timedelta(days=90))
+    ctx.session.requests_session.purge_cache(older_than=timedelta(days=30))
 
 
 if __name__ == "__main__":

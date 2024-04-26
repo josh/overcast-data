@@ -195,4 +195,4 @@ def test_parse_episode_caption_text() -> None:
 
 
 def test_session_purge_cache(overcast_session: Session) -> None:
-    overcast_session.requests_session.purge_cache(older_than=timedelta(days=90))
+    overcast_session.requests_session.purge_cache(older_than=timedelta(days=30))

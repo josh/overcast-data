@@ -35,7 +35,7 @@ def test_get_httpbin_delay(session: Session) -> None:
         res, from_cache = session.get(
             "/delay/1",
             accept="application/json",
-            cache_expires=timedelta(days=360),
+            cache_expires=timedelta(days=30),
         )
 
         assert res.status_code == 200
@@ -50,7 +50,7 @@ def test_get_httpbin_inject_expires_response_header(session: Session) -> None:
     res, _from_cache = session.get(
         "/get",
         accept="application/json",
-        cache_expires=timedelta(days=360),
+        cache_expires=timedelta(days=30),
     )
 
     assert res.status_code == 200
@@ -78,12 +78,12 @@ def test_response_bytes_roundtrip() -> None:
 
 
 def test_cache_entries(session: Session) -> None:
-    session.get("/get", accept="application/json", cache_expires=timedelta(days=360))
+    session.get("/get", accept="application/json", cache_expires=timedelta(days=30))
     assert len(list(session.cache_entries())) >= 1
 
 
 def test_purge_cache(session: Session) -> None:
-    session.purge_cache(older_than=timedelta(days=90))
+    session.purge_cache(older_than=timedelta(days=30))
 
 
 def test_cache_path(module_cache_dir: Path, session: Session) -> None:
