@@ -160,32 +160,38 @@ def test_parse_episode_caption_text() -> None:
     result = parse_episode_caption_text("Jan 16 • at 99 min")
     assert result.date_published == date(now.year, 1, 16)
     assert result.duration is None
-    assert result.is_played is True
+    assert result.is_played is False
     assert result.in_progress is True
 
     result = parse_episode_caption_text("Nov 14, 2023 • at 82 min")
     assert result.date_published == date(2023, 11, 14)
     assert result.duration is None
-    assert result.is_played is True
+    assert result.is_played is False
     assert result.in_progress is True
 
     result = parse_episode_caption_text("Apr 3, 2015 • 0 min left")
     assert result.date_published == date(2015, 4, 3)
     assert result.duration is None
-    assert result.is_played
-    assert result.in_progress is False
+    assert result.is_played is False
+    assert result.in_progress is True
+
+    result = parse_episode_caption_text("Apr 17 • 44 min left")
+    assert result.date_published == date(now.year, 4, 17)
+    assert result.duration is None
+    assert result.is_played is False
+    assert result.in_progress is True
 
     result = parse_episode_caption_text("Dec 29, 2023")
     assert result.date_published == date(2023, 12, 29)
     assert result.duration is None
-    assert result.is_played is False
-    assert result.in_progress is False
+    assert result.is_played is None
+    assert result.in_progress is None
 
     result = parse_episode_caption_text("Apr 11")
     assert result.date_published == date(now.year, 4, 11)
     assert result.duration is None
-    assert result.is_played is False
-    assert result.in_progress is False
+    assert result.is_played is None
+    assert result.in_progress is None
 
 
 def test_session_purge_cache(overcast_session: Session) -> None:

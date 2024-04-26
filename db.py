@@ -253,6 +253,8 @@ class Episode:
     title: str
     duration: timedelta | None
     date_published: datetime
+    is_played: bool | None
+    is_downloaded: bool | None
 
     @property
     def is_missing_optional_info(self) -> bool:
@@ -270,6 +272,8 @@ class Episode:
             "title",
             "duration",
             "date_published",
+            "is_played",
+            "is_downloaded",
         ]
 
     @staticmethod
@@ -280,6 +284,8 @@ class Episode:
         title = ""
         duration = None
         date_published = datetime.fromisoformat(data["date_published"])
+        is_played: bool | None = None
+        is_downloaded: bool | None = None
 
         if data.get("id"):
             id = OvercastEpisodeItemID(int(data["id"]))
@@ -297,6 +303,12 @@ class Episode:
                 date_published,
             )
 
+        if data.get("is_played"):
+            is_played = data["is_played"] == "1"
+
+        if data.get("is_downloaded"):
+            is_downloaded = data["is_downloaded"] == "1"
+
         return Episode(
             id=id,
             overcast_url=overcast_url,
@@ -304,6 +316,8 @@ class Episode:
             title=title,
             duration=duration,
             date_published=date_published,
+            is_played=is_played,
+            is_downloaded=is_downloaded,
         )
 
     def to_dict(self) -> dict[str, str]:
@@ -317,6 +331,10 @@ class Episode:
         if self.duration:
             d["duration"] = _timedelta_to_seconds_str(self.duration)
         d["date_published"] = self.date_published.isoformat()
+        if self.is_played is not None:
+            d["is_played"] = "1" if self.is_played else "0"
+        if self.is_downloaded is not None:
+            d["is_downloaded"] = "1" if self.is_downloaded else "0"
 
         return d
 
@@ -333,6 +351,8 @@ class Episode:
             title=episode.title,
             duration=episode.duration,
             date_published=episode.date_published_datetime,
+            is_played=episode.is_played,
+            is_downloaded=episode.is_new,
         )
 
     @staticmethod
@@ -344,6 +364,8 @@ class Episode:
             title=episode.title,
             duration=None,
             date_published=episode.date_published_datetime,
+            is_played=None,
+            is_downloaded=None,
         )
 
     @staticmethod
@@ -358,6 +380,8 @@ class Episode:
             title=episode.title,
             duration=None,
             date_published=episode.date_published,
+            is_played=episode.is_played,
+            is_downloaded=not episode.is_deleted,
         )
 
 
@@ -432,6 +456,10 @@ class EpisodeCollection:
                         )
                     else:
                         self._episodes[i].date_published = episode.date_published
+                if episode.is_played is not None:
+                    self._episodes[i].is_played = episode.is_played
+                if episode.is_downloaded is not None:
+                    self._episodes[i].is_downloaded = episode.is_downloaded
                 append = False
                 break
 

@@ -296,9 +296,9 @@ class HTMLPodcastEpisode:
     description: str
     date_published: date
     duration: timedelta | None
-    is_played: bool
-    in_progress: bool
-    download_state: Literal["new"] | Literal["deleted"] | None
+    is_played: bool | None
+    in_progress: bool | None
+    download_state: Literal["new"] | Literal["deleted"]
 
     @property
     def is_new(self) -> bool:
@@ -364,6 +364,8 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
             download_state = "deleted"
         elif "usernewepisode" in class_name:
             download_state = "new"
+        else:
+            assert False, f"Unknown download state: {class_name}"
 
         if caption2_el := episodecell_el.select_one(".caption2"):
             caption_result = parse_episode_caption_text(caption2_el.text)
@@ -406,8 +408,8 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
 class CaptionResult:
     date_published: date
     duration: timedelta | None
-    is_played: bool = False
-    in_progress: bool = False
+    is_played: bool | None = None
+    in_progress: bool | None = None
 
 
 def parse_episode_caption_text(text: str) -> CaptionResult:
@@ -416,27 +418,31 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
     assert len(parts) >= 1, text
 
     duration: timedelta | None = None
-    in_progress: bool = False
-    is_played: bool = False
+    in_progress: bool | None
+    is_played: bool | None
 
     date_published = dateutil.parser.parse(parts[0]).date()
 
     if len(parts) == 2 and parts[1] == "played":
-        is_played = True
-
-    elif len(parts) == 2 and parts[1].endswith("left"):
         in_progress = False
         is_played = True
 
+    elif len(parts) == 2 and parts[1].endswith("left"):
+        in_progress = True
+        is_played = False
+
     elif len(parts) == 2 and parts[1].startswith("at "):
         in_progress = True
-        is_played = True
+        is_played = False
 
     elif len(parts) == 2:
         duration = _parse_duration(parts[1])
+        in_progress = False
+        is_played = False
 
     elif len(parts) == 1:
-        pass
+        in_progress = None
+        is_played = None
 
     else:
         logger.warning("Unknown caption2 format: %s", text)
@@ -797,7 +803,11 @@ class ExtendedExportEpisode:
     user_updated_at: datetime
     user_deleted: bool
     progress: int
-    played: bool
+    is_played: bool
+
+    @property
+    def is_deleted(self) -> bool:
+        return True if self.user_deleted else False
 
     def _validate(self) -> None:
         try:
@@ -829,7 +839,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
         user_updated_at = dateutil.parser.parse(outline.attrs["userUpdatedDate"])
         user_deleted: bool = outline.attrs.get("userDeleted", "0") == "1"
         progress: int = int(outline.attrs.get("progress", "0"))
-        played: bool = outline.attrs.get("played", "0") == "1"
+        is_played: bool = outline.attrs.get("played", "0") == "1"
 
         episode = ExtendedExportEpisode(
             item_id=item_id,
@@ -841,7 +851,7 @@ def _opml_extended_episode(rss_outline: Tag) -> list[ExtendedExportEpisode]:
             user_updated_at=user_updated_at,
             user_deleted=user_deleted,
             progress=progress,
-            played=played,
+            is_played=is_played,
         )
         episode._validate()
         episodes.append(episode)
