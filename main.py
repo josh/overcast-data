@@ -2,6 +2,7 @@ import logging
 import os
 from contextlib import AbstractContextManager
 from datetime import timedelta
+from functools import partial
 from itertools import islice
 from pathlib import Path
 from random import shuffle
@@ -104,15 +105,89 @@ def refresh_opml_export(ctx: Context) -> None:
         for db_feed in ctx.db.feeds:
             db_feed.is_following = False
 
+        def on_feed_insert(
+            feed_id: overcast.OvercastFeedItemID,
+            export_feed: overcast.ExtendedExportFeed,
+        ) -> db.Feed:
+            assert feed_id == export_feed.item_id
+            return db.Feed(
+                id=feed_id,
+                overcast_url=None,
+                title=db.Feed.clean_title(export_feed.title),
+                html_url=export_feed.html_url,
+                added_at=export_feed.added_at,
+                is_added=True,
+                is_following=export_feed.is_subscribed,
+            )
+
+        def on_feed_update(
+            db_feed: db.Feed,
+            export_feed: overcast.ExtendedExportFeed,
+        ) -> db.Feed:
+            assert db_feed.id == export_feed.item_id
+            db_feed.html_url = export_feed.html_url
+            db_feed.added_at = export_feed.added_at
+            db_feed.is_added = True
+            db_feed.is_following = export_feed.is_subscribed
+            return db_feed
+
+        def on_episode_insert(
+            episode_url: overcast.OvercastEpisodeURL,
+            export_feed: overcast.ExtendedExportFeed,
+            export_episode: overcast.ExtendedExportEpisode,
+        ) -> db.Episode:
+            assert episode_url == export_episode.overcast_url
+            # TODO: Fetch duration here
+            return db.Episode(
+                id=export_episode.item_id,
+                overcast_url=episode_url,
+                feed_id=export_feed.item_id,
+                title=export_episode.title,
+                duration=None,
+                date_published=export_episode.date_published,
+                is_played=export_episode.is_played,
+                is_downloaded=not export_episode.is_deleted,
+            )
+
+        def on_episode_update(
+            db_episode: db.Episode,
+            export_feed: overcast.ExtendedExportFeed,
+            export_episode: overcast.ExtendedExportEpisode,
+        ) -> db.Episode:
+            assert db_episode.overcast_url == export_episode.overcast_url
+            db_episode.id = export_episode.item_id
+            db_episode.feed_id = export_feed.item_id
+            db_episode.date_published = export_episode.date_published
+
+            if db_episode.is_played is None:
+                db_episode.is_played = export_episode.is_played
+            # if db_episode.is_downloaded is None:
+            #     db_episode.is_downloaded = not export_episode.is_deleted
+
+            return db_episode
+
         for export_feed in export_data.feeds:
-            ctx.db.feeds.insert(db.Feed.from_export_feed(export_feed))
+            ctx.db.feeds.insert_or_update(
+                feed_id=export_feed.item_id,
+                on_insert=partial(on_feed_insert, export_feed=export_feed),
+                on_update=partial(on_feed_update, export_feed=export_feed),
+            )
 
             for export_episode in export_feed.episodes:
-                ctx.db.episodes.insert(
-                    db.Episode.from_export_episode(
-                        export_episode, feed_id=export_feed.item_id
-                    )
+                ctx.db.episodes.insert_or_update(
+                    episode_url=export_episode.overcast_url,
+                    on_insert=partial(
+                        on_episode_insert,
+                        export_feed=export_feed,
+                        export_episode=export_episode,
+                    ),
+                    on_update=partial(
+                        on_episode_update,
+                        export_feed=export_feed,
+                        export_episode=export_episode,
+                    ),
                 )
+
     except overcast.RatedLimitedError:
         logger.error("Rate limited")
         return
@@ -130,8 +205,36 @@ def refresh_feeds_index(ctx: Context) -> None:
         for db_feed in ctx.db.feeds:
             db_feed.is_added = False
 
+        def on_feed_insert(
+            feed_id: overcast.OvercastFeedItemID,
+            html_feed: overcast.HTMLPodcastsFeed,
+        ) -> db.Feed:
+            assert feed_id == html_feed.item_id
+            return db.Feed(
+                id=feed_id,
+                overcast_url=html_feed.overcast_url,
+                title=db.Feed.clean_title(html_feed.title),
+                html_url=None,
+                added_at=None,
+                is_added=True,
+                is_following=None,
+            )
+
+        def on_feed_update(
+            db_feed: db.Feed,
+            html_feed: overcast.HTMLPodcastsFeed,
+        ) -> db.Feed:
+            assert db_feed.id == html_feed.item_id
+            db_feed.overcast_url = html_feed.overcast_url
+            db_feed.is_added = True
+            return db_feed
+
         for html_feed in html_feeds:
-            ctx.db.feeds.insert(db.Feed.from_html_feed(html_feed))
+            ctx.db.feeds.insert_or_update(
+                feed_id=html_feed.item_id,
+                on_insert=partial(on_feed_insert, html_feed=html_feed),
+                on_update=partial(on_feed_update, html_feed=html_feed),
+            )
 
         # Clear download flag on episodes for feeds that don't have any unplayed episodes
         for html_feed in html_feeds:
@@ -155,25 +258,63 @@ def refresh_feeds(ctx: Context, limit: int) -> None:
     shuffle(db_feeds_to_refresh)
 
     for db_feed in islice(db_feeds_to_refresh, limit):
-        feed_id = db_feed.id
-        feed_url = db_feed.overcast_url
-        if not feed_url:
-            logger.warning("Feed '%s' has no Overcast URL", db_feed.id)
-            continue
+        _refresh_feed(ctx, db_feed)
 
-        try:
-            html_podcast = overcast.fetch_podcast(
-                session=ctx.session, feed_url=feed_url
+
+def _refresh_feed(ctx: Context, db_feed: db.Feed) -> None:
+    feed_id = db_feed.id
+    feed_url = db_feed.overcast_url
+    if not feed_url:
+        logger.warning("Feed '%s' has no Overcast URL", db_feed.id)
+        return
+
+    def on_episode_insert(
+        episode_url: overcast.OvercastEpisodeURL,
+        html_episode: overcast.HTMLPodcastEpisode,
+    ) -> db.Episode:
+        assert episode_url == html_episode.overcast_url
+        return db.Episode(
+            id=None,
+            overcast_url=episode_url,
+            feed_id=feed_id,
+            title=html_episode.title,
+            duration=html_episode.duration,
+            date_published=html_episode.date_published_datetime,
+            is_played=html_episode.is_played,
+            is_downloaded=html_episode.is_new,
+        )
+
+    def on_episode_update(
+        db_episode: db.Episode,
+        html_episode: overcast.HTMLPodcastEpisode,
+    ) -> db.Episode:
+        assert db_episode.overcast_url == html_episode.overcast_url
+
+        if db_episode.duration is None and html_episode.duration is not None:
+            db_episode.duration = html_episode.duration
+
+        if db_episode.date_published is None:
+            db_episode.date_published = html_episode.date_published_datetime
+
+        if html_episode.is_played is not None:
+            db_episode.is_played = html_episode.is_played
+
+        db_episode.is_downloaded = html_episode.is_new
+
+        return db_episode
+
+    try:
+        html_podcast = overcast.fetch_podcast(session=ctx.session, feed_url=feed_url)
+        for html_episode in html_podcast.episodes:
+            ctx.db.episodes.insert_or_update(
+                episode_url=html_episode.overcast_url,
+                on_insert=partial(on_episode_insert, html_episode=html_episode),
+                on_update=partial(on_episode_update, html_episode=html_episode),
             )
-            for html_episode in html_podcast.episodes:
-                db_episode = db.Episode.from_html_podcast_episode(
-                    html_episode,
-                    feed_id=feed_id,
-                )
-                ctx.db.episodes.insert(db_episode)
-        except overcast.RatedLimitedError:
-            logger.error("Rate limited")
-            continue
+
+    except overcast.RatedLimitedError:
+        logger.error("Rate limited")
+        return
 
 
 @cli.command("backfill-episode")
@@ -183,7 +324,7 @@ def backfill_episode(ctx: Context, limit: int) -> None:
     logger.info("[backfill-episode] %s", limit)
 
     db_episodes_missing_info = [
-        e for e in ctx.db.episodes if e.is_missing_optional_info
+        e for e in ctx.db.episodes if (e.id is None or e.duration is None)
     ]
     if not db_episodes_missing_info:
         return
@@ -196,14 +337,14 @@ def backfill_episode(ctx: Context, limit: int) -> None:
                 session=ctx.session,
                 episode_url=db_episode.overcast_url,
             )
-            new_db_episode = db.Episode.from_html_episode(html_episode)
+
+            db_episode.id = html_episode.item_id
 
             if db_episode.duration is None:
-                new_db_episode.duration = overcast.fetch_audio_duration(
+                db_episode.duration = overcast.fetch_audio_duration(
                     ctx.session, html_episode.audio_url
                 )
 
-            ctx.db.episodes.insert(new_db_episode)
         except overcast.RatedLimitedError:
             logger.error("Rate limited")
             continue

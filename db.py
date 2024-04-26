@@ -6,14 +6,9 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from types import TracebackType
-from typing import Iterable, Iterator
+from typing import Callable, Iterable, Iterator
 
 from overcast import (
-    ExtendedExportEpisode,
-    ExtendedExportFeed,
-    HTMLEpisode,
-    HTMLPodcastEpisode,
-    HTMLPodcastsFeed,
     OvercastEpisodeItemID,
     OvercastEpisodeURL,
     OvercastFeedItemID,
@@ -144,30 +139,6 @@ class Feed:
 
         return d
 
-    @staticmethod
-    def from_html_feed(feed: HTMLPodcastsFeed) -> "Feed":
-        return Feed(
-            id=feed.item_id,
-            overcast_url=feed.overcast_url,
-            title=Feed.clean_title(feed.title),
-            html_url=None,
-            added_at=None,
-            is_added=True,
-            is_following=None,
-        )
-
-    @staticmethod
-    def from_export_feed(feed: ExtendedExportFeed) -> "Feed":
-        return Feed(
-            id=feed.item_id,
-            overcast_url=None,
-            title=Feed.clean_title(feed.title),
-            html_url=feed.html_url,
-            added_at=feed.added_at,
-            is_added=True,
-            is_following=feed.is_subscribed,
-        )
-
 
 class FeedCollection:
     @staticmethod
@@ -219,27 +190,22 @@ class FeedCollection:
             for feed in feeds_lst:
                 writer.writerow(feed.to_dict())
 
-    def insert(self, feed: Feed) -> None:
+    def insert_or_update(
+        self,
+        feed_id: OvercastFeedItemID,
+        on_insert: Callable[[OvercastFeedItemID], Feed],
+        on_update: Callable[[Feed], Feed],
+    ) -> None:
         append = True
 
         for i, f in enumerate(self._feeds):
-            if f.id == feed.id:
-                if feed.overcast_url:
-                    self._feeds[i].overcast_url = feed.overcast_url
-                if feed.title:
-                    self._feeds[i].title = feed.title
-                if feed.html_url:
-                    self._feeds[i].html_url = feed.html_url
-                if feed.added_at:
-                    self._feeds[i].added_at = feed.added_at
-                if feed.is_added is not None:
-                    self._feeds[i].is_added = feed.is_added
-                if feed.is_following is not None:
-                    self._feeds[i].is_following = feed.is_following
+            if f.id == feed_id:
+                self._feeds[i] = on_update(f)
                 append = False
                 break
 
         if append:
+            feed = on_insert(feed_id)
             self._feeds.append(feed)
 
         self.sort()
@@ -255,10 +221,6 @@ class Episode:
     date_published: datetime
     is_played: bool | None
     is_downloaded: bool
-
-    @property
-    def is_missing_optional_info(self) -> bool:
-        return self.id is None or self.duration is None
 
     def _sort_key(self) -> tuple[int, datetime]:
         return (self.feed_id, self.date_published)
@@ -337,52 +299,6 @@ class Episode:
 
         return d
 
-    @staticmethod
-    def from_html_podcast_episode(
-        episode: HTMLPodcastEpisode,
-        feed_id: OvercastFeedItemID,
-        episode_id: OvercastEpisodeItemID | None = None,
-    ) -> "Episode":
-        return Episode(
-            id=episode_id,
-            overcast_url=episode.overcast_url,
-            feed_id=feed_id,
-            title=episode.title,
-            duration=episode.duration,
-            date_published=episode.date_published_datetime,
-            is_played=episode.is_played,
-            is_downloaded=episode.is_new,
-        )
-
-    @staticmethod
-    def from_html_episode(episode: HTMLEpisode) -> "Episode":
-        return Episode(
-            id=episode.item_id,
-            overcast_url=episode.overcast_url,
-            feed_id=episode.feed_item_id,
-            title=episode.title,
-            duration=None,
-            date_published=episode.date_published_datetime,
-            is_played=None,
-            is_downloaded=episode.is_new,
-        )
-
-    @staticmethod
-    def from_export_episode(
-        episode: ExtendedExportEpisode,
-        feed_id: OvercastFeedItemID,
-    ) -> "Episode":
-        return Episode(
-            id=episode.item_id,
-            overcast_url=episode.overcast_url,
-            feed_id=feed_id,
-            title=episode.title,
-            duration=None,
-            date_published=episode.date_published,
-            is_played=episode.is_played,
-            is_downloaded=not episode.is_deleted,
-        )
-
 
 def _timedelta_to_seconds_str(td: timedelta | None) -> str:
     if td is None:
@@ -431,38 +347,22 @@ class EpisodeCollection:
     def __iter__(self) -> Iterator[Episode]:
         yield from self._episodes
 
-    def insert(self, episode: Episode) -> None:
+    def insert_or_update(
+        self,
+        episode_url: OvercastEpisodeURL,
+        on_insert: Callable[[OvercastEpisodeURL], Episode],
+        on_update: Callable[[Episode], Episode],
+    ) -> None:
         append = True
 
         for i, e in enumerate(self._episodes):
-            if e.overcast_url == episode.overcast_url:
-                if episode.id:
-                    self._episodes[i].id = episode.id
-                if episode.feed_id:
-                    self._episodes[i].feed_id = episode.feed_id
-                if episode.title:
-                    self._episodes[i].title = episode.title
-                if episode.duration:
-                    self._episodes[i].duration = episode.duration
-                if episode.date_published:
-                    if _datetime_has_time_components(e.date_published) and (
-                        not _datetime_has_time_components(episode.date_published)
-                    ):
-                        logger.debug(
-                            "Not replacing existing date published with less precision: (%s, %s)",
-                            e.date_published,
-                            episode.date_published,
-                        )
-                    else:
-                        self._episodes[i].date_published = episode.date_published
-                if episode.is_played is not None:
-                    self._episodes[i].is_played = episode.is_played
-                if episode.is_downloaded is not None:
-                    self._episodes[i].is_downloaded = episode.is_downloaded
+            if e.overcast_url == episode_url:
+                self._episodes[i] = on_update(e)
                 append = False
                 break
 
         if append:
+            episode = on_insert(episode_url)
             self._episodes.append(episode)
 
         self.sort()
