@@ -7,6 +7,7 @@ from itertools import islice
 from pathlib import Path
 from random import shuffle
 from types import TracebackType
+from typing import Iterator
 
 import click
 from prometheus_client import (
@@ -323,15 +324,7 @@ def _refresh_feed(ctx: Context, db_feed: db.Feed) -> None:
 def backfill_episode(ctx: Context, limit: int) -> None:
     logger.info("[backfill-episode] %s", limit)
 
-    db_episodes_missing_info = [
-        e for e in ctx.db.episodes if (e.id is None or e.duration is None)
-    ]
-    if not db_episodes_missing_info:
-        return
-    shuffle(db_episodes_missing_info)
-    logger.warning("Episodes missing optional info: %d", len(db_episodes_missing_info))
-
-    for db_episode in islice(db_episodes_missing_info, limit):
+    for db_episode in islice(_episodes_missing_optional_info(ctx), limit):
         try:
             html_episode = overcast.fetch_episode(
                 session=ctx.session,
@@ -348,6 +341,16 @@ def backfill_episode(ctx: Context, limit: int) -> None:
         except overcast.RatedLimitedError:
             logger.error("Rate limited")
             continue
+
+
+def _episodes_missing_optional_info(ctx: Context) -> Iterator[db.Episode]:
+    db_episodes_missing_duration = [e for e in ctx.db.episodes if e.duration is None]
+    shuffle(db_episodes_missing_duration)
+    yield from db_episodes_missing_duration
+
+    db_episodes_missing_id = [e for e in ctx.db.episodes if e.id is None]
+    shuffle(db_episodes_missing_id)
+    yield from db_episodes_missing_id
 
 
 @cli.command("metrics")
