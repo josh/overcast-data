@@ -111,15 +111,17 @@ def refresh_opml_export(ctx: Context) -> None:
             export_feed: overcast.ExtendedExportFeed,
         ) -> db.Feed:
             assert feed_id == export_feed.item_id
-            return db.Feed(
+            db_feed = db.Feed(
                 id=feed_id,
                 overcast_url=None,
-                clean_title=db.Feed._clean_title(export_feed.title),
+                encrypted_title="",
                 html_url=export_feed.html_url,
                 added_at=export_feed.added_at,
                 is_added=True,
                 is_following=export_feed.is_subscribed,
             )
+            db_feed.title = export_feed.title
+            return db_feed
 
         def on_feed_update(
             db_feed: db.Feed,
@@ -211,21 +213,24 @@ def refresh_feeds_index(ctx: Context) -> None:
             html_feed: overcast.HTMLPodcastsFeed,
         ) -> db.Feed:
             assert feed_id == html_feed.item_id
-            return db.Feed(
+            db_feed = db.Feed(
                 id=feed_id,
                 overcast_url=html_feed.overcast_url,
-                clean_title=db.Feed._clean_title(html_feed.title),
+                encrypted_title="",
                 html_url=None,
                 added_at=None,
                 is_added=True,
                 is_following=None,
             )
+            db_feed.title = html_feed.title
+            return db_feed
 
         def on_feed_update(
             db_feed: db.Feed,
             html_feed: overcast.HTMLPodcastsFeed,
         ) -> db.Feed:
             assert db_feed.id == html_feed.item_id
+            db_feed.title = html_feed.title
             db_feed.overcast_url = html_feed.overcast_url
             db_feed.is_added = True
             return db_feed
@@ -418,7 +423,7 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
 
     feed_slugs: dict[overcast.OvercastFeedItemID, str] = {}
     for db_feed in ctx.db.feeds:
-        feed_slug = db_feed.slug()
+        feed_slug = db_feed.slug
         feed_slugs[db_feed.id] = feed_slug
 
         overcast_episode_count.labels(

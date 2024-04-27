@@ -5,6 +5,7 @@ def test_feed_dict_roundtrip() -> None:
     feed_dict = {
         "overcast_url": "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber",
         "id": "126160",
+        "encrypted_title": "z/tWEzgSTWzWY03CGwvlbIhqfssDwOzoQvGuI4K8uDA=",
         "clean_title": "The Talk Show With John Gruber",
         "slug": "the-talk-show-with-john-gruber",
         "html_url": "https://daringfireball.net/thetalkshow/",

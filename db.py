@@ -15,6 +15,7 @@ from overcast import (
     OvercastFeedItemID,
     OvercastFeedURL,
 )
+from utils import decrypt, encrypt
 
 logger = logging.getLogger("db")
 
@@ -28,7 +29,7 @@ if _ENCRYPTION_KEY is None:
 class Feed:
     id: OvercastFeedItemID
     overcast_url: OvercastFeedURL | None
-    clean_title: str
+    encrypted_title: str
     html_url: str | None
     added_at: datetime | None
 
@@ -38,21 +39,45 @@ class Feed:
     # Is "Follow All New Episodes" checked
     is_following: bool | None
 
-    def slug(self) -> str:
-        title = re.sub(r"[^\w\s]", "", self.clean_title)
-        title = re.sub(r"\s+", "-", title)
-        title = title.lower().removesuffix("-")
-        return title
+    @property
+    def is_private(self) -> bool:
+        if self.overcast_url is None:
+            return True
+        return self.overcast_url.startswith("https://overcast.fm/p")
 
-    @staticmethod
-    def _clean_title(title: str) -> str:
-        title = re.sub(r" — Private to .+", "", title)
+    @property
+    def title(self) -> str:
+        if self.encrypted_title == "":
+            return ""
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        return decrypt(_ENCRYPTION_KEY, self.encrypted_title)
+
+    @title.setter
+    def title(self, value: str) -> None:
+        if value == "":
+            self.encrypted_title = ""
+            return
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        self.encrypted_title = encrypt(_ENCRYPTION_KEY, value)
+
+    @property
+    def clean_title(self) -> str:
+        if not self.is_private:
+            return self.title
+        title = re.sub(r" — Private to .+", "", self.title)
         title = re.sub(r"\s*\([^)]*\)\s*", "", title)
         title = re.sub(r"\s*\[[^]]*\]\s*", "", title)
         title = re.sub(r"\s*:[^:]*$", "", title)
         title = re.sub(r"\s*- Patreon Exclusive Feed$", "", title)
         title = title.split(" | ")[0]
         title = title.strip()
+        return title
+
+    @property
+    def slug(self) -> str:
+        title = re.sub(r"[^\w\s]", "", self.clean_title)
+        title = re.sub(r"\s+", "-", title)
+        title = title.lower().removesuffix("-")
         return title
 
     def _sort_key(self) -> datetime:
@@ -63,6 +88,7 @@ class Feed:
         return [
             "id",
             "overcast_url",
+            "encrypted_title",
             "clean_title",
             "slug",
             "html_url",
@@ -75,7 +101,7 @@ class Feed:
     def from_dict(data: dict[str, str]) -> "Feed":
         id = OvercastFeedItemID(int(data["id"]))
         overcast_url: OvercastFeedURL | None = None
-        clean_title = data.get("clean_title", "")
+        encrypted_title = data.get("encrypted_title", "")
         html_url: str | None = None
         added_at: datetime | None = None
         is_added: bool = False
@@ -91,8 +117,8 @@ class Feed:
             added_at = datetime.fromisoformat(data["added_at"])
             if added_at.tzinfo is None:
                 logger.warning(
-                    "Feed '%s' added_at is not timezone-aware: %s",
-                    clean_title,
+                    "Feed '%d' added_at is not timezone-aware: %s",
+                    id,
                     added_at,
                 )
 
@@ -103,14 +129,12 @@ class Feed:
             is_following = data["is_following"] == "1"
 
         if is_following is True and is_added is False:
-            logger.warning(
-                "Feed '%s' is_following is True but is_added is False", clean_title
-            )
+            logger.warning("Feed '%d' is_following is True but is_added is False", id)
 
         return Feed(
             id=id,
             overcast_url=overcast_url,
-            clean_title=clean_title,
+            encrypted_title=encrypted_title,
             html_url=html_url,
             added_at=added_at,
             is_added=is_added,
@@ -126,8 +150,9 @@ class Feed:
         if self.overcast_url:
             d["overcast_url"] = str(self.overcast_url)
 
+        d["encrypted_title"] = self.encrypted_title
         d["clean_title"] = self.clean_title
-        d["slug"] = self.slug()
+        d["slug"] = self.slug
 
         d["html_url"] = ""
         if self.html_url:
