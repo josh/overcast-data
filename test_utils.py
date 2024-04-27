@@ -1,6 +1,6 @@
 import pytest
 
-from utils import HTTPURL, URL
+from utils import HTTPURL, URL, decrypt, encrypt, generate_encryption_key
 
 
 def _is_str(s: str) -> None:
@@ -42,3 +42,18 @@ def test_http_url() -> None:
         HTTPURL("example.com")
     with pytest.raises(ValueError):
         HTTPURL("ftp://www.example.com")
+
+
+def test_generate_encryption_key() -> None:
+    assert len(generate_encryption_key()) == 64
+
+
+_KEY = "O9NDmG2cSd4sI3REWjp17M7gboscMKBHD9qFLyrMUk41KVzyuKd/3/PtNs9VUb++"
+
+
+def test_encrypt() -> None:
+    assert encrypt(_KEY, "Hello, World!") == "pXpHLUxmGI0TtR+GPE43sg=="
+
+
+def test_decrypt() -> None:
+    assert decrypt(_KEY, "pXpHLUxmGI0TtR+GPE43sg==") == "Hello, World!"
