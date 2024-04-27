@@ -24,7 +24,7 @@ _DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
 class Feed:
     id: OvercastFeedItemID
     overcast_url: OvercastFeedURL | None
-    title: str
+    clean_title: str
     html_url: str | None
     added_at: datetime | None
 
@@ -35,13 +35,13 @@ class Feed:
     is_following: bool | None
 
     def slug(self) -> str:
-        title = re.sub(r"[^\w\s]", "", self.title)
+        title = re.sub(r"[^\w\s]", "", self.clean_title)
         title = re.sub(r"\s+", "-", title)
         title = title.lower().removesuffix("-")
         return title
 
     @staticmethod
-    def clean_title(title: str) -> str:
+    def _clean_title(title: str) -> str:
         title = re.sub(r" — Private to .+", "", title)
         title = re.sub(r"\s*\([^)]*\)\s*", "", title)
         title = re.sub(r"\s*\[[^]]*\]\s*", "", title)
@@ -59,7 +59,7 @@ class Feed:
         return [
             "id",
             "overcast_url",
-            "title",
+            "clean_title",
             "slug",
             "html_url",
             "added_at",
@@ -71,7 +71,7 @@ class Feed:
     def from_dict(data: dict[str, str]) -> "Feed":
         id = OvercastFeedItemID(int(data["id"]))
         overcast_url: OvercastFeedURL | None = None
-        title = data.get("title", "")
+        clean_title = data.get("clean_title", data.get("title", ""))
         html_url: str | None = None
         added_at: datetime | None = None
         is_added: bool = False
@@ -87,7 +87,9 @@ class Feed:
             added_at = datetime.fromisoformat(data["added_at"])
             if added_at.tzinfo is None:
                 logger.warning(
-                    "Feed '%s' added_at is not timezone-aware: %s", title, added_at
+                    "Feed '%s' added_at is not timezone-aware: %s",
+                    clean_title,
+                    added_at,
                 )
 
         if data.get("is_added"):
@@ -98,13 +100,13 @@ class Feed:
 
         if is_following is True and is_added is False:
             logger.warning(
-                "Feed '%s' is_following is True but is_added is False", title
+                "Feed '%s' is_following is True but is_added is False", clean_title
             )
 
         return Feed(
             id=id,
             overcast_url=overcast_url,
-            title=title,
+            clean_title=clean_title,
             html_url=html_url,
             added_at=added_at,
             is_added=is_added,
@@ -120,7 +122,7 @@ class Feed:
         if self.overcast_url:
             d["overcast_url"] = str(self.overcast_url)
 
-        d["title"] = self.title
+        d["clean_title"] = self.clean_title
         d["slug"] = self.slug()
 
         d["html_url"] = ""

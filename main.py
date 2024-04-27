@@ -114,7 +114,7 @@ def refresh_opml_export(ctx: Context) -> None:
             return db.Feed(
                 id=feed_id,
                 overcast_url=None,
-                title=db.Feed.clean_title(export_feed.title),
+                clean_title=db.Feed._clean_title(export_feed.title),
                 html_url=export_feed.html_url,
                 added_at=export_feed.added_at,
                 is_added=True,
@@ -214,7 +214,7 @@ def refresh_feeds_index(ctx: Context) -> None:
             return db.Feed(
                 id=feed_id,
                 overcast_url=html_feed.overcast_url,
-                title=db.Feed.clean_title(html_feed.title),
+                clean_title=db.Feed._clean_title(html_feed.title),
                 html_url=None,
                 added_at=None,
                 is_added=True,
@@ -273,7 +273,7 @@ def _feeds_to_refresh(ctx: Context) -> Iterator[db.Feed]:
         if html_feed.is_current != (db_feed_downloads > 0):
             logger.info(
                 "Feed out of sync: %s; current: %s but downloads count: %i",
-                db_feed.title,
+                db_feed.clean_title,
                 html_feed.is_current,
                 db_feed_downloads,
             )
