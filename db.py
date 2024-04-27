@@ -71,7 +71,7 @@ class Feed:
     def from_dict(data: dict[str, str]) -> "Feed":
         id = OvercastFeedItemID(int(data["id"]))
         overcast_url: OvercastFeedURL | None = None
-        clean_title = data.get("clean_title", data.get("title", ""))
+        clean_title = data.get("clean_title", "")
         html_url: str | None = None
         added_at: datetime | None = None
         is_added: bool = False
