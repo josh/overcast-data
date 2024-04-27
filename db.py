@@ -1,5 +1,6 @@
 import csv
 import logging
+import os
 import re
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
@@ -18,6 +19,9 @@ from overcast import (
 logger = logging.getLogger("db")
 
 _DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
+_ENCRYPTION_KEY: str | None = os.environ.get("ENCRYPTION_KEY")
+if _ENCRYPTION_KEY is None:
+    logger.warning("ENCRYPTION_KEY is not set")
 
 
 @dataclass
