@@ -153,11 +153,17 @@ class Session:
 
         return file_path
 
-    def is_cache_fresh(self, request: requests.Request) -> bool:
+    def cached_response(self, request: requests.Request) -> requests.Response | None:
         path = self.cache_path(request)
-        response = bytes_to_response(path.read_bytes())
-        expires = response_expires(response)
-        return datetime.now() < expires
+        if not path.exists():
+            return None
+        return bytes_to_response(path.read_bytes())
+
+    def is_cache_fresh(self, request: requests.Request) -> bool:
+        if response := self.cached_response(request):
+            expires = response_expires(response)
+            return datetime.now() < expires
+        return False
 
     def cache_entries(self) -> Iterator[tuple[Path, requests.Response]]:
         for path in self._cache_dir.rglob("*"):

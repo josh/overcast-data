@@ -919,6 +919,13 @@ def _opml_extended_episode(
 _CONTROLER = Literal["index", "podcast", "episode", "export"]
 
 
+def last_request_date(session: Session, url: OvercastURL) -> datetime:
+    request = requests.Request(method="GET", url=url, headers={"Accept": "text/html"})
+    if cached_response := session.requests_session.cached_response(request):
+        return requests_cache.response_date(cached_response)
+    return datetime.min
+
+
 def _request(
     session: Session,
     url: OvercastURL,

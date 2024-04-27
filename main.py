@@ -1,13 +1,13 @@
 import logging
 import os
 from contextlib import AbstractContextManager
-from datetime import timedelta
+from datetime import datetime, timedelta
 from functools import partial
 from itertools import islice
 from pathlib import Path
 from random import shuffle
 from types import TracebackType
-from typing import Iterator
+from typing import Iterable, Iterator
 
 import click
 from prometheus_client import (
@@ -254,12 +254,52 @@ def refresh_feeds_index(ctx: Context) -> None:
 @click.pass_obj
 def refresh_feeds(ctx: Context, limit: int) -> None:
     logger.info("[refresh-feeds]")
-
-    db_feeds_to_refresh = [f for f in ctx.db.feeds if f.is_added]
-    shuffle(db_feeds_to_refresh)
-
-    for db_feed in islice(db_feeds_to_refresh, limit):
+    for db_feed in islice(_feeds_to_refresh(ctx), limit):
         _refresh_feed(ctx, db_feed)
+
+
+def _feeds_to_refresh(ctx: Context) -> Iterator[db.Feed]:
+    try:
+        html_feeds = overcast.fetch_podcasts(session=ctx.session)
+    except overcast.RatedLimitedError:
+        logger.error("Rate limited")
+        return
+
+    feeds = list(_zip_html_db_feeds(html_feeds=html_feeds, db_feeds=ctx.db.feeds))
+
+    db_download_counts = ctx.db.episodes.download_counts
+    for html_feed, db_feed in feeds:
+        db_feed_downloads = db_download_counts.get(db_feed.id, 0)
+        if html_feed.is_current != (db_feed_downloads > 0):
+            logger.info(
+                "Feed out of sync: %s; current: %s but downloads count: %i",
+                db_feed.title,
+                html_feed.is_current,
+                db_feed_downloads,
+            )
+            yield db_feed
+
+    def cache_request_date(feed: tuple[overcast.HTMLPodcastsFeed, db.Feed]) -> datetime:
+        url = feed[0].overcast_url
+        cache_date = overcast.last_request_date(ctx.session, url)
+        logger.debug("%s last request date: %s", url, cache_date)
+        return cache_date
+
+    for html_feed, db_feed in sorted(feeds, key=cache_request_date):
+        yield db_feed
+
+
+def _zip_html_db_feeds(
+    html_feeds: Iterable[overcast.HTMLPodcastsFeed],
+    db_feeds: Iterable[db.Feed],
+) -> Iterator[tuple[overcast.HTMLPodcastsFeed, db.Feed]]:
+    id_to_db_feed = {f.id: f for f in db_feeds}
+    for html_feed in html_feeds:
+        db_feed = id_to_db_feed.get(html_feed.item_id)
+        if not db_feed:
+            logger.warning("Feed '%s' not found in database", html_feed.item_id)
+            continue
+        yield html_feed, db_feed
 
 
 def _refresh_feed(ctx: Context, db_feed: db.Feed) -> None:

@@ -392,6 +392,14 @@ class EpisodeCollection:
             for episode in episodes_lst:
                 writer.writerow(episode.to_dict())
 
+    @property
+    def download_counts(self) -> dict[OvercastFeedItemID, int]:
+        counts: dict[OvercastFeedItemID, int] = {}
+        for episode in self._episodes:
+            if episode.is_downloaded:
+                counts[episode.feed_id] = counts.get(episode.feed_id, 0) + 1
+        return counts
+
 
 class Database(AbstractContextManager["Database"]):
     path: Path
