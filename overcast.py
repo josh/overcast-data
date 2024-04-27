@@ -197,6 +197,14 @@ class HTMLPodcastsFeed:
     has_unplayed_episodes: bool
 
     @property
+    def is_current(self) -> bool:
+        return self.has_unplayed_episodes
+
+    @property
+    def is_played(self) -> bool:
+        return not self.has_unplayed_episodes
+
+    @property
     def is_private(self) -> bool:
         return self.overcast_url.startswith("https://overcast.fm/p")
 

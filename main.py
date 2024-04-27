@@ -239,7 +239,7 @@ def refresh_feeds_index(ctx: Context) -> None:
 
         # Clear download flag on episodes for feeds that don't have any unplayed episodes
         for html_feed in html_feeds:
-            if html_feed.has_unplayed_episodes is False:
+            if html_feed.is_played:
                 for db_episode in ctx.db.episodes:
                     if db_episode.feed_id == html_feed.item_id:
                         db_episode.is_downloaded = False
