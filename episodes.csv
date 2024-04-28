@@ -328,12 +328,12 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 1766758395648433,NwV4/eMlCjU7m8ydqO/YeOOGUYlx+lW9py29SU79PhM=,1645421,Summertime Beta Fun Time,3660,2019-07-26T00:00:00-05:00,,0
 1766757472113412,NwV4/eMlCjU7m8ydqO/YeBM/XmbZJ9tLy3CG+PpPcVo=,1645421,Staying Productive While Trying New Apps,2760,2019-08-30T00:00:00-05:00,,0
 1766758318646881,NwV4/eMlCjU7m8ydqO/YeOgHjMpYT9mmC8iXI6JW3P8=,1645421,Behind the Scenes of Federico’s iOS and iPadOS 13 Review,3840,2019-09-21T00:00:00-05:00,,0
-,NwV4/eMlCjU7m8ydqO/YeCAzCDtNoYMD2g9YPcgxA00=,1645421,A Look at a Few of Our Favorite iOS and iPadOS 13 Apps,1980,2019-09-27T00:00:00-05:00,,0
-,NwV4/eMlCjU7m8ydqO/YeJNAzKQFTTbrx8V0BUKZ1b0=,1645421,Unwinding After the Review Season,2280,2019-10-31T00:00:00-05:00,,0
-,NwV4/eMlCjU7m8ydqO/YeG9ggBGfKbbYs7+dgdudnE4=,1645421,Black Friday,2340,2019-11-29T00:00:00-05:00,,0
-,NwV4/eMlCjU7m8ydqO/YeF3BJtB9hjrtrbRvcWVZh7w=,1645421,La Dolce Vita,2400,2019-12-20T00:00:00-05:00,,0
-,NwV4/eMlCjU7m8ydqO/YeAh3IAbmhshC8CKPY2xuLsY=,1645421,Ducks in a Row,2460,2020-01-24T00:00:00-05:00,,0
-,NwV4/eMlCjU7m8ydqO/YeMZBI3rneYJHNZ5aiTNhtV4=,1645421,Putting Your Money Where Your Mouth Is,2280,2020-02-29T00:00:00-05:00,,0
+1766757496587545,NwV4/eMlCjU7m8ydqO/YeCAzCDtNoYMD2g9YPcgxA00=,1645421,A Look at a Few of Our Favorite iOS and iPadOS 13 Apps,1980,2019-09-27T00:00:00-05:00,,0
+1766758059298295,NwV4/eMlCjU7m8ydqO/YeJNAzKQFTTbrx8V0BUKZ1b0=,1645421,Unwinding After the Review Season,2280,2019-10-31T00:00:00-05:00,,0
+1766757844546863,NwV4/eMlCjU7m8ydqO/YeG9ggBGfKbbYs7+dgdudnE4=,1645421,Black Friday,2340,2019-11-29T00:00:00-05:00,,0
+1766758220068251,NwV4/eMlCjU7m8ydqO/YeF3BJtB9hjrtrbRvcWVZh7w=,1645421,La Dolce Vita,2400,2019-12-20T00:00:00-05:00,,0
+1766757646980165,NwV4/eMlCjU7m8ydqO/YeAh3IAbmhshC8CKPY2xuLsY=,1645421,Ducks in a Row,2460,2020-01-24T00:00:00-05:00,,0
+1766757673012322,NwV4/eMlCjU7m8ydqO/YeMZBI3rneYJHNZ5aiTNhtV4=,1645421,Putting Your Money Where Your Mouth Is,2280,2020-02-29T00:00:00-05:00,,0
 ,NwV4/eMlCjU7m8ydqO/YeDyWwtgJR1EKKSjYKZYMrCs=,1645421,Putting a Wrench In Your Plans,2160,2020-03-21T00:00:00-05:00,,0
 1766758092209373,NwV4/eMlCjU7m8ydqO/YeAOIg+5YW2n0JGz34exDflo=,1645421,A Little Punch Drunk,2100,2020-04-04T00:00:00-05:00,,0
 ,NwV4/eMlCjU7m8ydqO/YeBZT8elmpU88G3A8OkbG42o=,1645421,A Really Weird Week,2040,2020-04-17T00:00:00-05:00,,0
@@ -4800,7 +4800,7 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 4395110897005773,NwV4/eMlCjU7m8ydqO/YeGCcz3oaAcm6oBb18ajDxVw=,4093265,Designing for disability: how video games become more accessible,550,2024-04-23T17:19:53-04:00,1,0
 4395110259448572,NwV4/eMlCjU7m8ydqO/YeOvJt48szIHw9nebmjTLU68=,4093265,The boom and bust of esports,540,2024-04-24T18:22:34-04:00,1,0
 4395110002995012,NwV4/eMlCjU7m8ydqO/YeBbP+i7o54euJZG4i12akZ0=,4093265,Work. Crunch. Repeat: Why gaming demands so much of its employees,540,2024-04-25T15:41:08-04:00,1,0
-,NwV4/eMlCjU7m8ydqO/YeCvJxOZ8AK89Ec9c+TN0v1o=,4093265,Video Game Industry Week: The Final Level,540,2024-04-26T00:00:00-05:00,0,0
+,NwV4/eMlCjU7m8ydqO/YeCvJxOZ8AK89Ec9c+TN0v1o=,4093265,Video Game Industry Week: The Final Level,540,2024-04-26T00:00:00-05:00,1,0
 ,NwV4/eMlCjU7m8ydqO/YeAZqTdsPYrVHbMfTqIPiNJk=,4306082,0: Welcome to Downstream,3420,2021-09-29T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YePTX3C0LUVN05dxLpz5085Y=,4306082,1: Movies are Back! Movies are Dead!,3300,2021-10-06T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeCBsr+KpYEyOTjthIBaM2sE=,4306082,2: Churn and Return,4080,2021-10-20T00:00:00-05:00,0,0
@@ -5657,7 +5657,7 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 4915464808584674,NwV4/eMlCjU7m8ydqO/YeHJ6u/W9pu+xHCNwc8T1Txg=,4577883,584. How to Pave the Road to Hell,2640,2024-04-17T23:00:00-04:00,1,0
 4915465428908393,NwV4/eMlCjU7m8ydqO/YeE9j0zzy0MgQai/wHuAOu7s=,4577883,"PLUS: Making Connections, the Esalen Way",1920,2024-04-19T20:00:00-04:00,1,0
 ,NwV4/eMlCjU7m8ydqO/YeAhuwlSBTmfTA1PGNWZJBG0=,4577883,585. A Social Activist in Prime Minister’s Clothing,3120,2024-04-24T00:00:00-05:00,1,0
-,NwV4/eMlCjU7m8ydqO/YeGL7cHcCoz7do96tuEkW4PQ=,4577883,PLUS: Canada’s Basic Income Experiment,2220,2024-04-26T00:00:00-05:00,0,0
+,NwV4/eMlCjU7m8ydqO/YeGL7cHcCoz7do96tuEkW4PQ=,4577883,PLUS: Canada’s Basic Income Experiment,2220,2024-04-26T00:00:00-05:00,1,0
 4915473762779905,NwV4/eMlCjU7m8ydqO/YeDlhkUbEmBYoFz7ZdNyoYrI=,4577891,Coming Soon: The Economics of Everyday Things,40,2023-01-19T09:00:00-05:00,1,0
 4915473730246694,NwV4/eMlCjU7m8ydqO/YeC6ciihgrICBP85xpNWADhw=,4577891,1. Gas Stations,842,2023-01-22T23:00:00-05:00,1,0
 4915473642247901,NwV4/eMlCjU7m8ydqO/YeAQHNhFhg0Qu0nZ581tS5eg=,4577891,2. Girl Scout Cookies,799,2023-01-29T23:00:00-05:00,1,0
