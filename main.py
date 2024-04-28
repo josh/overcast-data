@@ -305,6 +305,8 @@ def _zip_html_db_feeds(
 
 
 def _refresh_feed(ctx: Context, db_feed: db.Feed) -> None:
+    logger.info("Refreshing feed '%s'", db_feed.clean_title)
+
     feed_id = db_feed.id
     feed_url = db_feed.overcast_url
     if not feed_url:
