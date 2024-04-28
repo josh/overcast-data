@@ -386,11 +386,11 @@ def backfill_episode(ctx: Context, limit: int) -> None:
 
 def _episodes_missing_optional_info(ctx: Context) -> Iterator[db.Episode]:
     db_episodes_missing_duration = [e for e in ctx.db.episodes if e.duration is None]
-    shuffle(db_episodes_missing_duration)
+    # shuffle(db_episodes_missing_duration)
     yield from db_episodes_missing_duration
 
     db_episodes_missing_id = [e for e in ctx.db.episodes if e.id is None]
-    shuffle(db_episodes_missing_id)
+    # shuffle(db_episodes_missing_id)
     yield from db_episodes_missing_id
 
 
