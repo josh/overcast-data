@@ -50,10 +50,10 @@ class Feed:
     ) -> None:
         self.id = id
         self.overcast_url = overcast_url
-        if title is not None:
-            self.title = title
-        elif encrypted_title is not None:
+        if encrypted_title is not None:
             self.encrypted_title = encrypted_title
+        elif title is not None:
+            self.title = title
         else:
             self.encrypted_title = None
         self.html_url = html_url
@@ -279,6 +279,7 @@ class FeedCollection:
 @dataclass
 class Episode:
     id: OvercastEpisodeItemID | None
+    overcast_url: OvercastEpisodeURL
     encrypted_overcast_url: Ciphertext
     feed_id: OvercastFeedItemID
     title: str
@@ -299,29 +300,25 @@ class Episode:
         overcast_url: OvercastEpisodeURL | None = None,
         encrypted_overcast_url: Ciphertext | None = None,
     ) -> None:
-        self.id = id
-        if overcast_url is not None:
-            self.overcast_url = overcast_url
-        elif encrypted_overcast_url is not None:
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        if encrypted_overcast_url is not None:
+            self.overcast_url = OvercastEpisodeURL(
+                decrypt(_ENCRYPTION_KEY, encrypted_overcast_url)
+            )
             self.encrypted_overcast_url = encrypted_overcast_url
+        elif overcast_url is not None:
+            self.overcast_url = overcast_url
+            self.encrypted_overcast_url = encrypt(_ENCRYPTION_KEY, str(overcast_url))
         else:
             assert False, "overcast_url or encrypted_overcast_url must be set"
+
+        self.id = id
         self.feed_id = feed_id
         self.title = title
         self.duration = duration
         self.date_published = date_published
         self.is_played = is_played
         self.is_downloaded = is_downloaded
-
-    @property
-    def overcast_url(self) -> OvercastEpisodeURL:
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
-        return OvercastEpisodeURL(decrypt(_ENCRYPTION_KEY, self.encrypted_overcast_url))
-
-    @overcast_url.setter
-    def overcast_url(self, value: OvercastEpisodeURL) -> None:
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
-        self.encrypted_overcast_url = encrypt(_ENCRYPTION_KEY, str(value))
 
     def _sort_key(self) -> tuple[int, datetime]:
         return (self.feed_id, self.date_published)
