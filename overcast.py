@@ -940,17 +940,6 @@ def _request(
             request_accept=accept,
             response_expires_in=response_expires_in,
         )
-
-        if is_cached is False:
-            key = f"overcast:{controller}:last_request_at"
-            if key in session.lru_cache:
-                logger.debug(
-                    "Overcast '%s' controller last request at %s",
-                    controller,
-                    session.lru_cache[key],
-                )
-            session.lru_cache[key] = datetime.now()
-
     except requests.HTTPError as e:
         if e.response.status_code == 429:
             logger.critical("Rate limited")
