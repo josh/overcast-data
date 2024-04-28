@@ -361,12 +361,12 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 1766758260209959,NwV4/eMlCjU7m8ydqO/YeA09UvRY/LPV4PrZphRdK3k=,1645421,"Parades, Private Investigators, Ambulance Chasers, and Open Houses",1740,2021-07-30T00:00:00-05:00,0,0
 1766757353231653,NwV4/eMlCjU7m8ydqO/YeP/6nOYy6oFX1G8eiFPhr04=,1645421,Behind-the-Scenes of the All-New Club MacStories,2340,2021-08-23T00:00:00-05:00,0,0
 1766757800613725,NwV4/eMlCjU7m8ydqO/YePg1txahKlsHUvMIRywbJJc=,1645421,Anticipating New Macs and Living with Shortcuts Bugs,1500,2021-10-08T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeGp0BGmu8HuerraH050HA0U=,1645421,The Making of John’s macOS Monterey Review,1260,2021-10-29T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeD6Pum6MhwzkuZygtWckwQw=,1645421,A Very MacStories Thanksgiving,1140,2021-11-25T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeGFwby4EauzOPuOUTCGsLsQ=,1645421,Our Holiday Project Piles,1620,2021-12-17T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeB5ejZpv393rueASEz16ZiQ=,1645421,Snowasis and the 2013 Apple Polishing Cloth,1680,2022-01-21T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeP9XEwsgulGeUje6C/c7Rvg=,1645421,"Winter, Dog Parks, and Videogame Advice",1620,2022-02-25T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeF/WTTLkr4FToEiVBvS4CK0=,1645421,"One Xbox Enters, One Xbox Leaves",1740,2022-04-01T00:00:00-05:00,0,0
+1766757681616615,NwV4/eMlCjU7m8ydqO/YeGp0BGmu8HuerraH050HA0U=,1645421,The Making of John’s macOS Monterey Review,1260,2021-10-29T00:00:00-05:00,0,0
+1766758089087533,NwV4/eMlCjU7m8ydqO/YeD6Pum6MhwzkuZygtWckwQw=,1645421,A Very MacStories Thanksgiving,1140,2021-11-25T00:00:00-05:00,0,0
+1766758131515315,NwV4/eMlCjU7m8ydqO/YeGFwby4EauzOPuOUTCGsLsQ=,1645421,Our Holiday Project Piles,1620,2021-12-17T00:00:00-05:00,0,0
+1766758343737953,NwV4/eMlCjU7m8ydqO/YeB5ejZpv393rueASEz16ZiQ=,1645421,Snowasis and the 2013 Apple Polishing Cloth,1680,2022-01-21T00:00:00-05:00,0,0
+1766758297212137,NwV4/eMlCjU7m8ydqO/YeP9XEwsgulGeUje6C/c7Rvg=,1645421,"Winter, Dog Parks, and Videogame Advice",1620,2022-02-25T00:00:00-05:00,0,0
+1766758102853270,NwV4/eMlCjU7m8ydqO/YeF/WTTLkr4FToEiVBvS4CK0=,1645421,"One Xbox Enters, One Xbox Leaves",1740,2022-04-01T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeMo5TOsorjMZ2fbTIromJJs=,1645421,Our Latest Non-Apple Electronics Explorations,1440,2022-04-29T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeG+xy1Q7EuOXJW3LDjHKfLM=,1645421,"Boars, Bugs, and Coyotes",1380,2022-05-27T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeKiGB1oWJMCtARKVGkzmrXA=,1645421,"Universal Control, Stage Manager, and the Search for the Perfect Gaming Monitor",1680,2022-07-08T00:00:00-05:00,0,0
@@ -1471,7 +1471,7 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 2341364361262517,NwV4/eMlCjU7m8ydqO/YePzPzYUao0eu17o7PaWUMtY=,2180565,"Bonus Audio: Seeing the Solar Eclipse, Soap Etiquette",3835,2024-04-10T18:52:37-04:00,1,0
 2341364358411794,NwV4/eMlCjU7m8ydqO/YeP0VKHgvQGGvnR6mX1dFWq0=,2180565,"Bonus Audio: Splitting the Check, Abigail, Ungentlemanly Warfare, Rebel Moon 2, Reducing Screen Time, Taylor Swift’s Latest",4433,2024-04-20T00:00:00-05:00,,0
 2341364787018688,NwV4/eMlCjU7m8ydqO/YeKCx5b//BlbZsxpFr5qyoJU=,2180565,Dave on Dave: How to Blow Up a Podcast,3740,2024-04-26T00:00:00-05:00,0,0
-2341364100077363,NwV4/eMlCjU7m8ydqO/YeMG5T95OzPNoN4f0hCsDmsQ=,2180565,Bonus Audio: ‘Challengers’ Was Incredible,3605,2024-04-28T00:00:00-05:00,,1
+2341364100077363,NwV4/eMlCjU7m8ydqO/YeMG5T95OzPNoN4f0hCsDmsQ=,2180565,Bonus Audio: ‘Challengers’ Was Incredible,3605,2024-04-28T00:00:00-05:00,0,1
 ,NwV4/eMlCjU7m8ydqO/YeEIwoWsihqfryJTTQ2scdlA=,2994216,"SN 813: A Spy in Our Pocket - Ubiquity Coverup, Facebook Data Dump, Malicious Call of Duty Cheats",6540,2021-04-06T00:00:00-05:00,1,0
 ,NwV4/eMlCjU7m8ydqO/YeGbSOpx/tuN8fK8kmcWfZk0=,2994216,"SN 814: PwnIt And OwnIt - Why Port 10080 is Blocked, FLoC Rollout, PHP GIT Hack Revisited, CISCO Router Problems",6420,2021-04-13T00:00:00-05:00,1,0
 ,NwV4/eMlCjU7m8ydqO/YeP8miOAQJbGAYmmJ2CNXHFY=,2994216,"SN 815: Homogeneity Attacks - Is FLoC All That Bad?, Humble Bundle For Programmers, Chrome 90",6480,2021-04-20T00:00:00-05:00,1,0
