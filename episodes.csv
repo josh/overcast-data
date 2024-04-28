@@ -347,13 +347,13 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 1766757643332969,NwV4/eMlCjU7m8ydqO/YeMlEqfrtByjtczaCITVkuh8=,1645421,Designing Better Burrito Cooking Instructions,2460,2020-08-31T00:00:00-05:00,0,0
 1766758364307061,NwV4/eMlCjU7m8ydqO/YeO+Br6yGGZTY5nhtAhUuc2w=,1645421,Pizza as a Qualifier,1500,2020-09-11T00:00:00-05:00,0,0
 1766758333443980,NwV4/eMlCjU7m8ydqO/YeKBElxJWXlzzccjRnJYocYA=,1645421,"It’s Important Not Just to Be, but to Become",1140,2020-09-25T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeJ4zMuQmrA4vIczb3w+chRI=,1645421,Federico’s iOS and iPadOS 14 Review: Behind the Scenes,2640,2020-10-17T00:00:00-05:00,0,0
+1766758185390182,NwV4/eMlCjU7m8ydqO/YeJ4zMuQmrA4vIczb3w+chRI=,1645421,Federico’s iOS and iPadOS 14 Review: Behind the Scenes,2640,2020-10-17T00:00:00-05:00,0,0
 1766757785947835,NwV4/eMlCjU7m8ydqO/YeCBbkHsMvxr6RAZJE8p3UmA=,1645421,Bugs Along the Way,1800,2020-10-30T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeLYoW9H6qRwLXkrhTzmDAac=,1645421,Behind the Scenes: The MacStories Big Sur Review,1680,2020-11-13T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeLoVz6JQ0apnJ8P/UGCViEE=,1645421,"The Year in Music, 2020 Edition",1560,2020-11-27T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeBJaSGZY2DP/SV2g7OXbrTI=,1645421,Craft for Work,1620,2020-12-11T00:00:00-05:00,0,0
+1766757977730224,NwV4/eMlCjU7m8ydqO/YeLYoW9H6qRwLXkrhTzmDAac=,1645421,Behind the Scenes: The MacStories Big Sur Review,1680,2020-11-13T00:00:00-05:00,0,0
+1766757987530703,NwV4/eMlCjU7m8ydqO/YeLoVz6JQ0apnJ8P/UGCViEE=,1645421,"The Year in Music, 2020 Edition",1560,2020-11-27T00:00:00-05:00,0,0
+1766758094384888,NwV4/eMlCjU7m8ydqO/YeBJaSGZY2DP/SV2g7OXbrTI=,1645421,Craft for Work,1620,2020-12-11T00:00:00-05:00,0,0
 1766758025515547,NwV4/eMlCjU7m8ydqO/YeOHwamUQHhFz7nRN4qZtViI=,1645421,"Food, Travel, and Very Good Dogs",1620,2021-01-15T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeD3nHsHe76MpAUgmJupy8hY=,1645421,"A Productivity Parable, Boston Slang, and Accents",1860,2021-02-12T00:00:00-05:00,0,0
+1766757642667978,NwV4/eMlCjU7m8ydqO/YeD3nHsHe76MpAUgmJupy8hY=,1645421,"A Productivity Parable, Boston Slang, and Accents",1860,2021-02-12T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeAUbepsVOFIxmE6UB42XqCk=,1645421,Where in America Would You Go to Buy New Dishes?,1740,2021-03-12T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeGhdgUw1bUH9HTf0/5TbS0I=,1645421,Viva L’Umarell,2100,2021-04-23T00:00:00-05:00,0,0
 1766758071976830,NwV4/eMlCjU7m8ydqO/YeGyvVge5mJZNlS6xYGxj800=,1645421,Behind the Scenes of Federico’s Coverage of Rome’s New Via del Corso Apple Store,1680,2021-05-31T00:00:00-05:00,0,0
@@ -1471,6 +1471,7 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 2341364361262517,NwV4/eMlCjU7m8ydqO/YePzPzYUao0eu17o7PaWUMtY=,2180565,"Bonus Audio: Seeing the Solar Eclipse, Soap Etiquette",3835,2024-04-10T18:52:37-04:00,1,0
 2341364358411794,NwV4/eMlCjU7m8ydqO/YeP0VKHgvQGGvnR6mX1dFWq0=,2180565,"Bonus Audio: Splitting the Check, Abigail, Ungentlemanly Warfare, Rebel Moon 2, Reducing Screen Time, Taylor Swift’s Latest",4433,2024-04-20T00:00:00-05:00,,0
 2341364787018688,NwV4/eMlCjU7m8ydqO/YeKCx5b//BlbZsxpFr5qyoJU=,2180565,Dave on Dave: How to Blow Up a Podcast,3740,2024-04-26T00:00:00-05:00,0,0
+2341364100077363,NwV4/eMlCjU7m8ydqO/YeMG5T95OzPNoN4f0hCsDmsQ=,2180565,Bonus Audio: ‘Challengers’ Was Incredible,3605,2024-04-28T00:00:00-05:00,,1
 ,NwV4/eMlCjU7m8ydqO/YeEIwoWsihqfryJTTQ2scdlA=,2994216,"SN 813: A Spy in Our Pocket - Ubiquity Coverup, Facebook Data Dump, Malicious Call of Duty Cheats",6540,2021-04-06T00:00:00-05:00,1,0
 ,NwV4/eMlCjU7m8ydqO/YeGbSOpx/tuN8fK8kmcWfZk0=,2994216,"SN 814: PwnIt And OwnIt - Why Port 10080 is Blocked, FLoC Rollout, PHP GIT Hack Revisited, CISCO Router Problems",6420,2021-04-13T00:00:00-05:00,1,0
 ,NwV4/eMlCjU7m8ydqO/YeP8miOAQJbGAYmmJ2CNXHFY=,2994216,"SN 815: Homogeneity Attacks - Is FLoC All That Bad?, Humble Bundle For Programmers, Chrome 90",6480,2021-04-20T00:00:00-05:00,1,0
