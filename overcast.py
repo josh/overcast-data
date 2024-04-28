@@ -385,6 +385,14 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
             caption_result = parse_episode_caption_text(caption2_el.text)
         assert caption_result
 
+        is_played: bool | None = None
+        if "usernewepisode" in class_name:
+            is_played = False
+        elif caption_result.is_played is not None:
+            is_played = caption_result.is_played
+        else:
+            is_played = None
+
         description: str = ""
         if description_el := episodecell_el.select_one(".lighttext"):
             description = description_el.text.strip()
@@ -396,7 +404,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
             description=description,
             date_published=caption_result.date_published,
             duration=caption_result.duration,
-            is_played=caption_result.is_played,
+            is_played=is_played,
             in_progress=caption_result.in_progress,
             download_state=download_state,
         )
