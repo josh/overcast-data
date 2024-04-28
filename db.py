@@ -37,6 +37,30 @@ class Feed:
     # Is "Follow All New Episodes" checked
     is_following: bool | None
 
+    def __init__(
+        self,
+        id: OvercastFeedItemID,
+        overcast_url: OvercastFeedURL | None,
+        html_url: str | None,
+        added_at: datetime | None,
+        is_added: bool,
+        is_following: bool | None,
+        title: str | None = None,
+        encrypted_title: Ciphertext | None = None,
+    ) -> None:
+        self.id = id
+        self.overcast_url = overcast_url
+        if title is not None:
+            self.title = title
+        elif encrypted_title is not None:
+            self.encrypted_title = encrypted_title
+        else:
+            self.encrypted_title = None
+        self.html_url = html_url
+        self.added_at = added_at
+        self.is_added = is_added
+        self.is_following = is_following
+
     @property
     def is_private(self) -> bool:
         if self.overcast_url is None:
@@ -44,15 +68,15 @@ class Feed:
         return self.overcast_url.startswith("https://overcast.fm/p")
 
     @property
-    def title(self) -> str:
+    def title(self) -> str | None:
         if self.encrypted_title is None:
-            return ""
+            return None
         assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
         return decrypt(_ENCRYPTION_KEY, self.encrypted_title)
 
     @title.setter
-    def title(self, value: str) -> None:
-        if value == "":
+    def title(self, value: str | None) -> None:
+        if value is None:
             self.encrypted_title = None
             return
         assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
@@ -60,7 +84,9 @@ class Feed:
 
     @property
     def clean_title(self) -> str:
-        if not self.is_private:
+        if self.title is None:
+            return ""
+        elif not self.is_private:
             return self.title
         title = re.sub(r" — Private to .+", "", self.title)
         title = re.sub(r"\s*\([^)]*\)\s*", "", title)
@@ -99,11 +125,15 @@ class Feed:
     def from_dict(data: dict[str, str]) -> "Feed":
         id = OvercastFeedItemID(int(data["id"]))
         overcast_url: OvercastFeedURL | None = None
+        title: str | None = None
         encrypted_title: Ciphertext | None = None
         html_url: str | None = None
         added_at: datetime | None = None
         is_added: bool = False
         is_following: bool = False
+
+        if data.get("title"):
+            title = data["title"]
 
         if data.get("encrypted_title"):
             encrypted_title = Ciphertext(data["encrypted_title"])
@@ -135,6 +165,7 @@ class Feed:
         return Feed(
             id=id,
             overcast_url=overcast_url,
+            title=title,
             encrypted_title=encrypted_title,
             html_url=html_url,
             added_at=added_at,
@@ -247,8 +278,8 @@ class FeedCollection:
 
 @dataclass
 class Episode:
-    overcast_url: OvercastEpisodeURL
     id: OvercastEpisodeItemID | None
+    encrypted_overcast_url: Ciphertext
     feed_id: OvercastFeedItemID
     title: str
     duration: timedelta | None
@@ -256,14 +287,50 @@ class Episode:
     is_played: bool | None
     is_downloaded: bool
 
+    def __init__(
+        self,
+        id: OvercastEpisodeItemID | None,
+        feed_id: OvercastFeedItemID,
+        title: str,
+        duration: timedelta | None,
+        date_published: datetime,
+        is_played: bool | None,
+        is_downloaded: bool,
+        overcast_url: OvercastEpisodeURL | None = None,
+        encrypted_overcast_url: Ciphertext | None = None,
+    ) -> None:
+        self.id = id
+        if overcast_url is not None:
+            self.overcast_url = overcast_url
+        elif encrypted_overcast_url is not None:
+            self.encrypted_overcast_url = encrypted_overcast_url
+        else:
+            assert False, "overcast_url or encrypted_overcast_url must be set"
+        self.feed_id = feed_id
+        self.title = title
+        self.duration = duration
+        self.date_published = date_published
+        self.is_played = is_played
+        self.is_downloaded = is_downloaded
+
+    @property
+    def overcast_url(self) -> OvercastEpisodeURL:
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        return OvercastEpisodeURL(decrypt(_ENCRYPTION_KEY, self.encrypted_overcast_url))
+
+    @overcast_url.setter
+    def overcast_url(self, value: OvercastEpisodeURL) -> None:
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        self.encrypted_overcast_url = encrypt(_ENCRYPTION_KEY, str(value))
+
     def _sort_key(self) -> tuple[int, datetime]:
         return (self.feed_id, self.date_published)
 
     @staticmethod
     def fieldnames() -> list[str]:
         return [
-            "overcast_url",
             "id",
+            "encrypted_overcast_url",
             "feed_id",
             "title",
             "duration",
@@ -275,13 +342,20 @@ class Episode:
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
         id: OvercastEpisodeItemID | None = None
-        overcast_url = OvercastEpisodeURL(data["overcast_url"])
         feed_id = OvercastFeedItemID(int(data["feed_id"]))
         title = ""
         duration = None
         date_published = datetime.fromisoformat(data["date_published"])
         is_played: bool | None = None
         is_downloaded: bool = data["is_downloaded"] == "1"
+
+        overcast_url: OvercastEpisodeURL | None = None
+        if data.get("overcast_url"):
+            overcast_url = OvercastEpisodeURL(data["overcast_url"])
+
+        encrypted_overcast_url: Ciphertext | None = None
+        if data.get("encrypted_overcast_url"):
+            encrypted_overcast_url = Ciphertext(data["encrypted_overcast_url"])
 
         if data.get("id"):
             id = OvercastEpisodeItemID(int(data["id"]))
@@ -308,6 +382,7 @@ class Episode:
         return Episode(
             id=id,
             overcast_url=overcast_url,
+            encrypted_overcast_url=encrypted_overcast_url,
             feed_id=feed_id,
             title=title,
             duration=duration,
@@ -321,7 +396,7 @@ class Episode:
 
         if self.id:
             d["id"] = str(self.id)
-        d["overcast_url"] = str(self.overcast_url)
+        d["encrypted_overcast_url"] = str(self.encrypted_overcast_url)
         d["feed_id"] = str(self.feed_id)
         d["title"] = self.title
         if self.duration:

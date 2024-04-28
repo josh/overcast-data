@@ -111,17 +111,15 @@ def refresh_opml_export(ctx: Context) -> None:
             export_feed: overcast.ExtendedExportFeed,
         ) -> db.Feed:
             assert feed_id == export_feed.item_id
-            db_feed = db.Feed(
+            return db.Feed(
                 id=feed_id,
                 overcast_url=None,
-                encrypted_title=None,
+                title=export_feed.title,
                 html_url=export_feed.html_url,
                 added_at=export_feed.added_at,
                 is_added=True,
                 is_following=export_feed.is_subscribed,
             )
-            db_feed.title = export_feed.title
-            return db_feed
 
         def on_feed_update(
             db_feed: db.Feed,
@@ -213,17 +211,15 @@ def refresh_feeds_index(ctx: Context) -> None:
             html_feed: overcast.HTMLPodcastsFeed,
         ) -> db.Feed:
             assert feed_id == html_feed.item_id
-            db_feed = db.Feed(
+            return db.Feed(
                 id=feed_id,
                 overcast_url=html_feed.overcast_url,
-                encrypted_title=None,
+                title=html_feed.title,
                 html_url=None,
                 added_at=None,
                 is_added=True,
                 is_following=None,
             )
-            db_feed.title = html_feed.title
-            return db_feed
 
         def on_feed_update(
             db_feed: db.Feed,
