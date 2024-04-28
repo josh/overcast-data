@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 from functools import partial
 from itertools import islice
 from pathlib import Path
-from random import shuffle
 from types import TracebackType
 from typing import Iterable, Iterator
 
@@ -138,13 +137,15 @@ def refresh_opml_export(ctx: Context) -> None:
             export_episode: overcast.ExtendedExportEpisode,
         ) -> db.Episode:
             assert episode_url == export_episode.overcast_url
-            # TODO: Fetch duration here
+            duration = overcast.fetch_audio_duration(
+                ctx.session, export_episode.enclosure_url
+            )
             return db.Episode(
                 id=export_episode.item_id,
                 overcast_url=episode_url,
                 feed_id=export_feed.item_id,
                 title=export_episode.title,
-                duration=None,
+                duration=duration,
                 date_published=export_episode.date_published,
                 is_played=export_episode.is_played,
                 is_downloaded=not export_episode.is_deleted,
