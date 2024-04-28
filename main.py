@@ -424,9 +424,6 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
         feed_slugs[db_feed.id] = feed_slug
 
         overcast_episode_count.labels(
-            feed_slug=feed_slug, played="true", downloaded="true"
-        ).set(0)
-        overcast_episode_count.labels(
             feed_slug=feed_slug, played="true", downloaded="false"
         ).set(0)
         overcast_episode_count.labels(
@@ -436,10 +433,28 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
             feed_slug=feed_slug, played="false", downloaded="false"
         ).set(0)
 
+        overcast_episode_minutes.labels(
+            feed_slug=feed_slug, played="true", downloaded="false"
+        ).set(0)
+        overcast_episode_minutes.labels(
+            feed_slug=feed_slug, played="false", downloaded="true"
+        ).set(0)
+        overcast_episode_minutes.labels(
+            feed_slug=feed_slug, played="false", downloaded="false"
+        ).set(0)
+
     for db_episode in ctx.db.episodes:
         feed_slug = feed_slugs[db_episode.feed_id]
         played: str = "true" if db_episode.is_played is True else "false"
         downloaded: str = "true" if db_episode.is_downloaded is True else "false"
+
+        if played == "true" and downloaded == "true":
+            logger.warning(
+                "Episode %s is played and downloaded",
+                db_episode.overcast_url,
+            )
+            continue
+
         overcast_episode_count.labels(
             feed_slug=feed_slug, played=played, downloaded=downloaded
         ).inc()
