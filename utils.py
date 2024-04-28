@@ -2,6 +2,7 @@ import base64
 import logging
 import os
 import sys
+from typing import NewType
 from urllib.parse import urlparse
 
 from cryptography.hazmat.primitives import padding
@@ -42,16 +43,20 @@ class HTTPURL(URL):
         return str.__new__(cls, urlstring)
 
 
-def encrypt(key: str, plaintext: str) -> str:
+EncryptionKey = NewType("EncryptionKey", str)
+Ciphertext = NewType("Ciphertext", str)
+
+
+def encrypt(key: EncryptionKey, plaintext: str) -> Ciphertext:
     cipher, pkcs7 = _encryption_cipher(key)
     encryptor, padder = cipher.encryptor(), pkcs7.padder()
     plainbytes = plaintext.encode()
     padded_data = padder.update(plainbytes) + padder.finalize()
     cipherbytes = encryptor.update(padded_data) + encryptor.finalize()
-    return base64.b64encode(cipherbytes).decode("utf-8")
+    return Ciphertext(base64.b64encode(cipherbytes).decode("utf-8"))
 
 
-def decrypt(key: str, ciphertext: str) -> str:
+def decrypt(key: EncryptionKey, ciphertext: Ciphertext) -> str:
     cipher, pkcs7 = _encryption_cipher(key)
     decryptor, unpadder = cipher.decryptor(), pkcs7.unpadder()
     cipherbytes = base64.b64decode(ciphertext)
@@ -60,11 +65,19 @@ def decrypt(key: str, ciphertext: str) -> str:
     return plainbytes.decode()
 
 
-def generate_encryption_key() -> str:
-    return base64.b64encode(os.urandom(32 + 16)).decode()
+def environ_encryption_key() -> EncryptionKey | None:
+    key = os.environ.get("ENCRYPTION_KEY", "")
+    if not key:
+        logger.warning("ENCRYPTION_KEY is not set")
+        return None
+    return EncryptionKey(key)
 
 
-def _encryption_cipher(key: str) -> tuple[Cipher[modes.CBC], padding.PKCS7]:
+def generate_encryption_key() -> EncryptionKey:
+    return EncryptionKey(base64.b64encode(os.urandom(32 + 16)).decode())
+
+
+def _encryption_cipher(key: EncryptionKey) -> tuple[Cipher[modes.CBC], padding.PKCS7]:
     assert len(key) == 64
     key_data: bytes = base64.b64decode(key)
     assert len(key_data) == 48

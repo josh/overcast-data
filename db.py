@@ -1,6 +1,5 @@
 import csv
 import logging
-import os
 import re
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
@@ -15,21 +14,20 @@ from overcast import (
     OvercastFeedItemID,
     OvercastFeedURL,
 )
-from utils import decrypt, encrypt
+from utils import Ciphertext, decrypt, encrypt, environ_encryption_key
 
 logger = logging.getLogger("db")
 
+
 _DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
-_ENCRYPTION_KEY: str | None = os.environ.get("ENCRYPTION_KEY")
-if _ENCRYPTION_KEY is None:
-    logger.warning("ENCRYPTION_KEY is not set")
+_ENCRYPTION_KEY = environ_encryption_key()
 
 
 @dataclass
 class Feed:
     id: OvercastFeedItemID
     overcast_url: OvercastFeedURL | None
-    encrypted_title: str
+    encrypted_title: Ciphertext | None
     html_url: str | None
     added_at: datetime | None
 
@@ -47,7 +45,7 @@ class Feed:
 
     @property
     def title(self) -> str:
-        if self.encrypted_title == "":
+        if self.encrypted_title is None:
             return ""
         assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
         return decrypt(_ENCRYPTION_KEY, self.encrypted_title)
@@ -55,7 +53,7 @@ class Feed:
     @title.setter
     def title(self, value: str) -> None:
         if value == "":
-            self.encrypted_title = ""
+            self.encrypted_title = None
             return
         assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
         self.encrypted_title = encrypt(_ENCRYPTION_KEY, value)
@@ -101,11 +99,14 @@ class Feed:
     def from_dict(data: dict[str, str]) -> "Feed":
         id = OvercastFeedItemID(int(data["id"]))
         overcast_url: OvercastFeedURL | None = None
-        encrypted_title = data.get("encrypted_title", "")
+        encrypted_title: Ciphertext | None = None
         html_url: str | None = None
         added_at: datetime | None = None
         is_added: bool = False
         is_following: bool = False
+
+        if data.get("encrypted_title"):
+            encrypted_title = Ciphertext(data["encrypted_title"])
 
         if data.get("overcast_url"):
             overcast_url = OvercastFeedURL(data["overcast_url"])
@@ -150,7 +151,9 @@ class Feed:
         if self.overcast_url:
             d["overcast_url"] = str(self.overcast_url)
 
-        d["encrypted_title"] = self.encrypted_title
+        d["encrypted_title"] = ""
+        if self.encrypted_title:
+            d["encrypted_title"] = self.encrypted_title
         d["clean_title"] = self.clean_title
         d["slug"] = self.slug
 

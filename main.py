@@ -114,7 +114,7 @@ def refresh_opml_export(ctx: Context) -> None:
             db_feed = db.Feed(
                 id=feed_id,
                 overcast_url=None,
-                encrypted_title="",
+                encrypted_title=None,
                 html_url=export_feed.html_url,
                 added_at=export_feed.added_at,
                 is_added=True,
@@ -216,7 +216,7 @@ def refresh_feeds_index(ctx: Context) -> None:
             db_feed = db.Feed(
                 id=feed_id,
                 overcast_url=html_feed.overcast_url,
-                encrypted_title="",
+                encrypted_title=None,
                 html_url=None,
                 added_at=None,
                 is_added=True,
