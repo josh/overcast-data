@@ -449,10 +449,10 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 2112515737062141,NwV4/eMlCjU7m8ydqO/YeN7b3i2qND7iTi/C136wI64=,1967433,19: 1Password,3300,2010-02-07T00:00:00-05:00,0,0
 2112515771872139,NwV4/eMlCjU7m8ydqO/YeIUzMgFKwKwcUtrXODXlO8U=,1967433,20: Live from Macworld 2010,3660,2010-02-15T00:00:00-05:00,0,0
 2112515438819958,NwV4/eMlCjU7m8ydqO/YeIT52uheqza6L3mXjyxYkiQ=,1967433,21: Interviews from the Macworld 2010 Show Floor,3300,2010-02-20T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeIsxMSV0WlCttVwrVDILiA0=,1967433,22: Traveling With Your Mac,4380,2010-03-05T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeO8j40eKCVTB7ze2jzr6USk=,1967433,23: Workflows with Merlin Mann,6060,2010-03-13T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YePmZCAJi68kYOkAdQ3Ldf0c=,1967433,24: Home Networking,5220,2010-04-03T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeK1+IUBbns45QpEls6UPGw4=,1967433,25: Geeking Out With Hazel,4500,2010-04-24T00:00:00-05:00,0,0
+2112515419835380,NwV4/eMlCjU7m8ydqO/YeIsxMSV0WlCttVwrVDILiA0=,1967433,22: Traveling With Your Mac,4380,2010-03-05T00:00:00-05:00,0,0
+2112515992562507,NwV4/eMlCjU7m8ydqO/YeO8j40eKCVTB7ze2jzr6USk=,1967433,23: Workflows with Merlin Mann,6060,2010-03-13T00:00:00-05:00,0,0
+2112515290405686,NwV4/eMlCjU7m8ydqO/YePmZCAJi68kYOkAdQ3Ldf0c=,1967433,24: Home Networking,5220,2010-04-03T00:00:00-05:00,0,0
+2112515890638073,NwV4/eMlCjU7m8ydqO/YeK1+IUBbns45QpEls6UPGw4=,1967433,25: Geeking Out With Hazel,4500,2010-04-24T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeAGZ54xyMBiF8oDHbR/mszA=,1967433,26: Workflows with Dan Benjamin,5160,2010-05-16T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YePMJrfzo+wbmdGg+XGlbKM0=,1967433,27: iPad Power Session,5820,2010-05-31T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeGWFzeMIXOr5JqBnzaT457g=,1967433,28: Using a Mac in a Windows World,4980,2010-06-13T00:00:00-05:00,0,0
@@ -1169,7 +1169,7 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 2112515614161721,NwV4/eMlCjU7m8ydqO/YeCneXbRKoCAdL21OJszzN3Q=,1967433,739: Checking in on Freeform,4962,2024-04-07T16:30:00-04:00,1,0
 2112515675445222,NwV4/eMlCjU7m8ydqO/YeJ70i/0U/8gNn7UukmZhdao=,1967433,"740: “From The Beatles to The Libertines,” with Lee Garrett",6000,2024-04-14T16:30:00-04:00,1,0
 2112515709104248,NwV4/eMlCjU7m8ydqO/YeMcXhRIAL53pk/iUvupTOSs=,1967433,741: In the Apple Trust Zone,4500,2024-04-21T16:30:00-04:00,1,0
-2112515964253158,NwV4/eMlCjU7m8ydqO/YePDafDmrV0b9u0yjXH3iwPQ=,1967433,"742: All About Mimestream, with Neil Jhaveri",6420,2024-04-28T16:30:00-04:00,0,1
+2112515964253158,NwV4/eMlCjU7m8ydqO/YePDafDmrV0b9u0yjXH3iwPQ=,1967433,"742: All About Mimestream, with Neil Jhaveri",6420,2024-04-28T16:30:00-04:00,0,0
 2341364511666689,NwV4/eMlCjU7m8ydqO/YeB/1wTZ2be2eJPF2ZBG4Ffs=,2180565,"Right, What’s All This, Then?",2672,2020-08-15T23:53:24-04:00,1,0
 2341364870841166,NwV4/eMlCjU7m8ydqO/YeETR78gcpOwBOfZFfBl+Cjo=,2180565,Lovecraft Country S1E01 - Sundown (with Joanna Robinson),3716,2020-08-16T22:01:00-04:00,1,0
 2341364488179277,NwV4/eMlCjU7m8ydqO/YeJ3Zsuon8L2Oo6LZ4AAHRv0=,2180565,Reflecting on the 2020 Democratic National Convention (with Melissa Tamminga),1613,2020-08-21T00:31:43-04:00,1,0
@@ -1951,6 +1951,7 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 3218766558379569,NwV4/eMlCjU7m8ydqO/YeDn/74IxE6liq4ycEdXLNZM=,2997709,"TWiT 974: Get at the Young Youngs - Tesla Robotaxi, Marissa Mayer’s Sunshine",8911,2024-04-07T22:25:00-04:00,1,0
 3218765941103641,NwV4/eMlCjU7m8ydqO/YeOZ3VB0Kn8ZDzT2y/6rcxrQ=,2997709,"TWiT 975: You Don’t Want to Make Gandhi Mad - AI Music, Broadband Nutrition Labels",8738,2024-04-14T20:56:10-04:00,1,0
 3218765825963239,NwV4/eMlCjU7m8ydqO/YeEBKsHR7KD/Ei/SsbLVcVbw=,2997709,"TWiT 976: Serial Churners - Netflix Earnings, Cybertruck Recall, FISA",7980,2024-04-21T22:00:30-04:00,1,0
+3218766003833986,NwV4/eMlCjU7m8ydqO/YePrCxMgPGH/QRKYk3srspSA=,2997709,"TWiT 977: Gahoo Yoogle - TikTok Ban, Intel’s Struggles, Google’s Ensh*ttification",9719,2024-04-28T00:00:00-05:00,0,1
 ,NwV4/eMlCjU7m8ydqO/YeK03T/ke8kQnaSFzuq3YZzw=,3567012,Welcome to AppStories,1860,2017-04-20T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeHU+jMbOelB9WcFsswpjgho=,3567012,Setting Up a New iOS Device,1860,2017-04-24T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeDo0bNSZgL0QAZp3nvytCRs=,3567012,Interview: App Camp for Girls with Jean MacDonald and Grey Osten,1740,2017-05-01T00:00:00-05:00,0,0
@@ -3237,6 +3238,7 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 3918875569113819,NwV4/eMlCjU7m8ydqO/YeD+TzMXqEbxMJXhuEmVb8lU=,3649737,"Ben Hanson: No Rest for the Wicked, Hades 2, FFVII Rebirth, Delta Emulator, Nintendo Indie World, Steamworld Heist 2, Little Kitty Big City, Stitch, Yars Rising, PS5 Pro specs",7337,2024-04-22T02:01:31-04:00,1,0
 3918876097808500,NwV4/eMlCjU7m8ydqO/YeHt67UwYfNWLMvOTw4eoB94=,3649737,"Paid DLC for April 24th, 2024",3788,2024-04-24T13:47:56-04:00,1,0
 3918876168059156,NwV4/eMlCjU7m8ydqO/YeNWBJDOB3lGmOu66k1hyrKc=,3649737,DLC Bookclub - MIDNIGHT TIDES - Chapters 12-14 - MALAZAN BOOK OF THE FALLEN,5881,2024-04-25T00:00:00-05:00,0,0
+3918876179098329,NwV4/eMlCjU7m8ydqO/YeGunJ7UppXLUqcFZ+vGpQa4=,3649737,"Jill Grodt: Stellar Blade, Hades 2, Manor Lords, Another Crab’s Treasure, Sucker For Love: Date To Die For, Fortnite Festival, Rotwood, Switch 2 with magnets, Blizzcon canceled",7127,2024-04-29T00:00:00-05:00,0,1
 4273905801193841,NwV4/eMlCjU7m8ydqO/YeLYy5doXRYFnubW9qKn6VK4=,3980384,Mission Impossible vs The Bourne Identity (Part 1 MI:1),7442,2022-10-05T12:00:00-04:00,1,0
 4273905264834324,NwV4/eMlCjU7m8ydqO/YeKp4am7leQTXCze18CeYGIE=,3980384,Mission Impossible vs The Bourne Identity (Part 2: Bourne),9031,2022-10-11T22:00:00-04:00,1,0
 4273905077810156,NwV4/eMlCjU7m8ydqO/YeOQETVdcK/99yn4Ron1cteo=,3980384,Sideways vs Swingers (Part 1: Sideways),7200,2022-10-18T21:00:00-04:00,1,0
