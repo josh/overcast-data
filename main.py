@@ -163,8 +163,6 @@ def refresh_opml_export(ctx: Context) -> None:
 
             if db_episode.is_played is None:
                 db_episode.is_played = export_episode.is_played
-            # if db_episode.is_downloaded is None:
-            #     db_episode.is_downloaded = not export_episode.is_deleted
 
             return db_episode
 
@@ -343,6 +341,8 @@ def _refresh_feed(ctx: Context, db_feed: db.Feed) -> None:
 
         if html_episode.is_played is not None:
             db_episode.is_played = html_episode.is_played
+        if html_episode.is_new:
+            db_episode.is_played = False
 
         db_episode.is_downloaded = html_episode.is_new
 
