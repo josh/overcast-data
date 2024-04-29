@@ -13,4 +13,4 @@ def test_feed_dict_roundtrip() -> None:
         "is_added": "1",
         "is_following": "1",
     }
-    assert Feed.from_dict(feed_dict).to_dict() == feed_dict
+    assert feed_dict == Feed.from_dict(feed_dict).to_dict()
