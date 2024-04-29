@@ -8,13 +8,14 @@ from pathlib import Path
 from types import TracebackType
 from typing import Callable, Iterable, Iterator
 
+from csvmodel import ascsvdict, fromcsvdict, register_cast
 from overcast import (
     OvercastEpisodeItemID,
     OvercastEpisodeURL,
     OvercastFeedItemID,
     OvercastFeedURL,
 )
-from utils import Ciphertext, decrypt, encrypt, environ_encryption_key
+from utils import HTTPURL, Ciphertext, decrypt, encrypt, environ_encryption_key
 
 logger = logging.getLogger("db")
 
@@ -22,12 +23,16 @@ logger = logging.getLogger("db")
 _DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
 _ENCRYPTION_KEY = environ_encryption_key()
 
+register_cast(OvercastFeedURL, fromstr=OvercastFeedURL)
+register_cast(OvercastEpisodeURL, fromstr=OvercastEpisodeURL)
+register_cast(HTTPURL, fromstr=HTTPURL)
+
 
 @dataclass
 class Feed:
     id: OvercastFeedItemID
     overcast_url: OvercastFeedURL | None
-    encrypted_title: Ciphertext | None
+    title: str
     html_url: str | None
     added_at: datetime | None
 
@@ -37,30 +42,6 @@ class Feed:
     # Is "Follow All New Episodes" checked
     is_following: bool | None
 
-    def __init__(
-        self,
-        id: OvercastFeedItemID,
-        overcast_url: OvercastFeedURL | None,
-        html_url: str | None,
-        added_at: datetime | None,
-        is_added: bool,
-        is_following: bool | None,
-        title: str | None = None,
-        encrypted_title: Ciphertext | None = None,
-    ) -> None:
-        self.id = id
-        self.overcast_url = overcast_url
-        if encrypted_title is not None:
-            self.encrypted_title = encrypted_title
-        elif title is not None:
-            self.title = title
-        else:
-            self.encrypted_title = None
-        self.html_url = html_url
-        self.added_at = added_at
-        self.is_added = is_added
-        self.is_following = is_following
-
     @property
     def is_private(self) -> bool:
         if self.overcast_url is None:
@@ -68,25 +49,8 @@ class Feed:
         return self.overcast_url.startswith("https://overcast.fm/p")
 
     @property
-    def title(self) -> str | None:
-        if self.encrypted_title is None:
-            return None
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
-        return decrypt(_ENCRYPTION_KEY, self.encrypted_title)
-
-    @title.setter
-    def title(self, value: str | None) -> None:
-        if value is None:
-            self.encrypted_title = None
-            return
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
-        self.encrypted_title = encrypt(_ENCRYPTION_KEY, value)
-
-    @property
     def clean_title(self) -> str:
-        if self.title is None:
-            return ""
-        elif not self.is_private:
+        if not self.is_private:
             return self.title
         title = re.sub(r" — Private to .+", "", self.title)
         title = re.sub(r"\s*\([^)]*\)\s*", "", title)
@@ -123,85 +87,21 @@ class Feed:
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
-        id = OvercastFeedItemID(int(data["id"]))
-        overcast_url: OvercastFeedURL | None = None
-        title: str | None = None
-        encrypted_title: Ciphertext | None = None
-        html_url: str | None = None
-        added_at: datetime | None = None
-        is_added: bool = False
-        is_following: bool = False
-
-        if data.get("title"):
-            title = data["title"]
-
-        if data.get("encrypted_title"):
-            encrypted_title = Ciphertext(data["encrypted_title"])
-
-        if data.get("overcast_url"):
-            overcast_url = OvercastFeedURL(data["overcast_url"])
-
-        if data.get("html_url"):
-            html_url = data["html_url"]
-
-        if data.get("added_at"):
-            added_at = datetime.fromisoformat(data["added_at"])
-            if added_at.tzinfo is None:
-                logger.warning(
-                    "Feed '%d' added_at is not timezone-aware: %s",
-                    id,
-                    added_at,
-                )
-
-        if data.get("is_added"):
-            is_added = data["is_added"] == "1"
-
-        if data.get("is_following"):
-            is_following = data["is_following"] == "1"
-
-        if is_following is True and is_added is False:
-            logger.warning("Feed '%d' is_following is True but is_added is False", id)
-
-        return Feed(
-            id=id,
-            overcast_url=overcast_url,
-            title=title,
-            encrypted_title=encrypted_title,
-            html_url=html_url,
-            added_at=added_at,
-            is_added=is_added,
-            is_following=is_following,
-        )
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        data = data.copy()
+        data["title"] = decrypt(_ENCRYPTION_KEY, Ciphertext(data["encrypted_title"]))
+        del data["encrypted_title"]
+        del data["clean_title"]
+        del data["slug"]
+        return fromcsvdict(Feed, data)
 
     def to_dict(self) -> dict[str, str]:
-        d: dict[str, str] = {}
-
-        d["id"] = str(self.id)
-
-        d["overcast_url"] = ""
-        if self.overcast_url:
-            d["overcast_url"] = str(self.overcast_url)
-
-        d["encrypted_title"] = ""
-        if self.encrypted_title:
-            d["encrypted_title"] = self.encrypted_title
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        d = ascsvdict(self)
+        d["encrypted_title"] = encrypt(_ENCRYPTION_KEY, str(d["title"]))
         d["clean_title"] = self.clean_title
         d["slug"] = self.slug
-
-        d["html_url"] = ""
-        if self.html_url:
-            d["html_url"] = self.html_url
-
-        d["added_at"] = ""
-        if self.added_at:
-            d["added_at"] = self.added_at.isoformat()
-
-        d["is_added"] = "1" if self.is_added else "0"
-
-        d["is_following"] = ""
-        if self.is_following is not None:
-            d["is_following"] = "1" if self.is_following else "0"
-
+        del d["title"]
         return d
 
 
@@ -222,6 +122,8 @@ class FeedCollection:
     def _nonnull_counts(self) -> dict[str, int]:
         counts = {}
         for field_name in Feed.fieldnames():
+            if field_name == "encrypted_title":
+                field_name = "title"
             count = len([f for f in self._feeds if getattr(f, field_name) is not None])
             counts[field_name] = count
         return counts
@@ -280,45 +182,12 @@ class FeedCollection:
 class Episode:
     id: OvercastEpisodeItemID | None
     overcast_url: OvercastEpisodeURL
-    encrypted_overcast_url: Ciphertext
     feed_id: OvercastFeedItemID
     title: str
     duration: timedelta | None
     date_published: datetime
     is_played: bool | None
     is_downloaded: bool
-
-    def __init__(
-        self,
-        id: OvercastEpisodeItemID | None,
-        feed_id: OvercastFeedItemID,
-        title: str,
-        duration: timedelta | None,
-        date_published: datetime,
-        is_played: bool | None,
-        is_downloaded: bool,
-        overcast_url: OvercastEpisodeURL | None = None,
-        encrypted_overcast_url: Ciphertext | None = None,
-    ) -> None:
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
-        if encrypted_overcast_url is not None:
-            self.overcast_url = OvercastEpisodeURL(
-                decrypt(_ENCRYPTION_KEY, encrypted_overcast_url)
-            )
-            self.encrypted_overcast_url = encrypted_overcast_url
-        elif overcast_url is not None:
-            self.overcast_url = overcast_url
-            self.encrypted_overcast_url = encrypt(_ENCRYPTION_KEY, str(overcast_url))
-        else:
-            assert False, "overcast_url or encrypted_overcast_url must be set"
-
-        self.id = id
-        self.feed_id = feed_id
-        self.title = title
-        self.duration = duration
-        self.date_published = date_published
-        self.is_played = is_played
-        self.is_downloaded = is_downloaded
 
     def _sort_key(self) -> tuple[int, datetime]:
         return (self.feed_id, self.date_published)
@@ -338,90 +207,20 @@ class Episode:
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
-        id: OvercastEpisodeItemID | None = None
-        feed_id = OvercastFeedItemID(int(data["feed_id"]))
-        title = ""
-        duration = None
-        date_published = datetime.fromisoformat(data["date_published"])
-        is_played: bool | None = None
-        is_downloaded: bool = data["is_downloaded"] == "1"
-
-        overcast_url: OvercastEpisodeURL | None = None
-        if data.get("overcast_url"):
-            overcast_url = OvercastEpisodeURL(data["overcast_url"])
-
-        encrypted_overcast_url: Ciphertext | None = None
-        if data.get("encrypted_overcast_url"):
-            encrypted_overcast_url = Ciphertext(data["encrypted_overcast_url"])
-
-        if data.get("id"):
-            id = OvercastEpisodeItemID(int(data["id"]))
-
-        if data.get("title"):
-            title = data["title"]
-
-        if data.get("duration"):
-            duration = _seconds_str_to_timedelta(data["duration"])
-
-        if date_published.tzinfo is None:
-            logger.warning(
-                "Episode '%s' date_published is not timezone-aware: %s",
-                title,
-                date_published,
-            )
-
-        if data.get("is_played"):
-            is_played = data["is_played"] == "1"
-
-        if is_downloaded is True and is_played is True:
-            logger.warning("Episode is downloaded but already played: %s", title)
-
-        return Episode(
-            id=id,
-            overcast_url=overcast_url,
-            encrypted_overcast_url=encrypted_overcast_url,
-            feed_id=feed_id,
-            title=title,
-            duration=duration,
-            date_published=date_published,
-            is_played=is_played,
-            is_downloaded=is_downloaded,
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        data = data.copy()
+        data["overcast_url"] = decrypt(
+            _ENCRYPTION_KEY, Ciphertext(data["encrypted_overcast_url"])
         )
+        del data["encrypted_overcast_url"]
+        return fromcsvdict(Episode, data)
 
     def to_dict(self) -> dict[str, str]:
-        d: dict[str, str] = {}
-
-        if self.id:
-            d["id"] = str(self.id)
-        d["encrypted_overcast_url"] = str(self.encrypted_overcast_url)
-        d["feed_id"] = str(self.feed_id)
-        d["title"] = self.title
-        if self.duration:
-            d["duration"] = _timedelta_to_seconds_str(self.duration)
-        d["date_published"] = self.date_published.isoformat()
-        if self.is_played is not None:
-            d["is_played"] = "1" if self.is_played else "0"
-        d["is_downloaded"] = "1" if self.is_downloaded else "0"
-
+        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+        d = ascsvdict(self)
+        d["encrypted_overcast_url"] = encrypt(_ENCRYPTION_KEY, str(d["overcast_url"]))
+        del d["overcast_url"]
         return d
-
-
-def _timedelta_to_seconds_str(td: timedelta | None) -> str:
-    if td is None:
-        return ""
-    return str(int(td.total_seconds()))
-
-
-def _seconds_str_to_timedelta(s: str | None) -> timedelta | None:
-    if not s:
-        return None
-    return timedelta(seconds=int(s))
-
-
-def _datetime_has_time_components(dt: datetime | None) -> bool:
-    if not dt:
-        return False
-    return dt.time() != datetime.min.time()
 
 
 class EpisodeCollection:
@@ -441,6 +240,8 @@ class EpisodeCollection:
     def _nonnull_counts(self) -> dict[str, int]:
         counts = {}
         for field_name in Episode.fieldnames():
+            if field_name == "encrypted_overcast_url":
+                field_name = "overcast_url"
             count = len(
                 [f for f in self._episodes if getattr(f, field_name) is not None]
             )
