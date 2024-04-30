@@ -228,7 +228,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         url=OvercastURL("https://overcast.fm/podcasts"),
         controller="index",
         accept="text/html",
-        response_expires_in=timedelta(hours=2, minutes=30),
+        response_expires_in=timedelta(hours=1),
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -346,7 +346,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         url=feed_url,
         controller="podcast",
         accept="text/html",
-        response_expires_in=timedelta(hours=1),
+        response_expires_in=timedelta(days=1),
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -645,7 +645,7 @@ def export_account_data(session: Session) -> AccountExport:
         url=OvercastURL("https://overcast.fm/account/export_opml"),
         controller="export",
         accept="application/xml",
-        response_expires_in=timedelta(days=6),
+        response_expires_in=timedelta(days=5),
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -714,7 +714,7 @@ def export_account_extended_data(session: Session) -> AccountExtendedExport:
         url=OvercastURL("https://overcast.fm/account/export_opml/extended"),
         controller="export",
         accept="application/xml",
-        response_expires_in=timedelta(days=6),
+        response_expires_in=timedelta(days=5),
     )
     fetched_at = requests_cache.response_date(r)
 

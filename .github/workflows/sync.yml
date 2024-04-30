@@ -2,7 +2,7 @@ name: Sync
 
 on:
   schedule:
-    - cron: "0 0,4,8,12,16,20 * * *"
+    - cron: "0 0,3,6,9,12,15,18,21 * * *"
   workflow_dispatch:
 
 permissions:
@@ -47,8 +47,8 @@ jobs:
           python main.py --db-path data/ \
             refresh-opml-export \
             refresh-feeds-index \
-            refresh-feeds --limit 3 \
-            backfill-episode --limit 6 \
+            refresh-feeds --limit 5 \
+            backfill-episode --limit 10 \
             metrics --metrics-filename data/metrics.prom \
             purge-cache
         env:
