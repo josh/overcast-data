@@ -22,8 +22,8 @@ overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",pl
 overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
-overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 61.0
+overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 62.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 104.0
 overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
@@ -96,8 +96,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",
 overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
-overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 118.78333333333333
-overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 4815.95
+overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 4934.733333333334
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5269.083333333336
 overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 55.0
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35

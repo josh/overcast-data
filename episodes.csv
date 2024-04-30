@@ -498,12 +498,12 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 2112515425566826,NwV4/eMlCjU7m8ydqO/YeEWx2LA1UpOyL4w5Nifl7hk=,1967433,67: Web Security and your Apple Devices,5460,2011-12-19T00:00:00-05:00,0,0
 2112515666009891,NwV4/eMlCjU7m8ydqO/YeHElk1PH2siTk89nA0p6Jwg=,1967433,68: Workflows with Rod Roddenberry,5100,2012-01-09T00:00:00-05:00,0,0
 2112515420445286,NwV4/eMlCjU7m8ydqO/YeIR7mYk+Aic07q0UrPF0fjg=,1967433,69: Browser Wars,5820,2012-01-17T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeCa9VzM9iueyhtX32sA3WKI=,1967433,70: Using Automator with Ben Waldie,5040,2012-01-23T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeFFZDR67O0iU+YMKUOx26bg=,1967433,71: Harry McCracken’s iPad,4740,2012-01-30T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeC37pfHYHB/W45Ih3M3WweE=,1967433,72: Workflows with Colleen Wainwright,3960,2012-02-06T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YePQef9q6lVwHi4E2FuHJz3s=,1967433,73: Podcasting: The How and the Why,5700,2012-02-13T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeNWsy4zzhhZ1HHG4v9IksZo=,1967433,74: Workflows with Don McAllister,5400,2012-02-20T00:00:00-05:00,0,0
-,NwV4/eMlCjU7m8ydqO/YeOsDOcrak0EnZ60Q1Dt/1Ao=,1967433,75: Remote Access,5640,2012-03-05T00:00:00-05:00,0,0
+2112515404458329,NwV4/eMlCjU7m8ydqO/YeCa9VzM9iueyhtX32sA3WKI=,1967433,70: Using Automator with Ben Waldie,5040,2012-01-23T00:00:00-05:00,0,0
+2112515351900851,NwV4/eMlCjU7m8ydqO/YeFFZDR67O0iU+YMKUOx26bg=,1967433,71: Harry McCracken’s iPad,4740,2012-01-30T00:00:00-05:00,0,0
+2112515362045071,NwV4/eMlCjU7m8ydqO/YeC37pfHYHB/W45Ih3M3WweE=,1967433,72: Workflows with Colleen Wainwright,3960,2012-02-06T00:00:00-05:00,0,0
+2112515446973815,NwV4/eMlCjU7m8ydqO/YePQef9q6lVwHi4E2FuHJz3s=,1967433,73: Podcasting: The How and the Why,5700,2012-02-13T00:00:00-05:00,0,0
+2112515464960012,NwV4/eMlCjU7m8ydqO/YeNWsy4zzhhZ1HHG4v9IksZo=,1967433,74: Workflows with Don McAllister,5400,2012-02-20T00:00:00-05:00,0,0
+2112515835790266,NwV4/eMlCjU7m8ydqO/YeOsDOcrak0EnZ60Q1Dt/1Ao=,1967433,75: Remote Access,5640,2012-03-05T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeMcgg5NKE5RnFN1AFUUHqaE=,1967433,76: Workflows with Daniel Jalkut,6720,2012-03-11T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeC0D4+vxnYjD83Mcjf+oH6I=,1967433,77: Dumping Google,5460,2012-03-19T00:00:00-05:00,0,0
 ,NwV4/eMlCjU7m8ydqO/YeDwVvyqYBPV9hS/khsPDLH4=,1967433,78: Workflows with Kourosh Dini,3960,2012-03-26T00:00:00-05:00,0,0
@@ -3240,7 +3240,7 @@ id,encrypted_overcast_url,feed_id,title,duration,date_published,is_played,is_dow
 3918875569113819,NwV4/eMlCjU7m8ydqO/YeD+TzMXqEbxMJXhuEmVb8lU=,3649737,"Ben Hanson: No Rest for the Wicked, Hades 2, FFVII Rebirth, Delta Emulator, Nintendo Indie World, Steamworld Heist 2, Little Kitty Big City, Stitch, Yars Rising, PS5 Pro specs",7337,2024-04-22T02:01:31-04:00,1,0
 3918876097808500,NwV4/eMlCjU7m8ydqO/YeHt67UwYfNWLMvOTw4eoB94=,3649737,"Paid DLC for April 24th, 2024",3788,2024-04-24T13:47:56-04:00,1,0
 3918876168059156,NwV4/eMlCjU7m8ydqO/YeNWBJDOB3lGmOu66k1hyrKc=,3649737,DLC Bookclub - MIDNIGHT TIDES - Chapters 12-14 - MALAZAN BOOK OF THE FALLEN,5881,2024-04-25T00:00:00-05:00,0,0
-3918876179098329,NwV4/eMlCjU7m8ydqO/YeGunJ7UppXLUqcFZ+vGpQa4=,3649737,"Jill Grodt: Stellar Blade, Hades 2, Manor Lords, Another Crab’s Treasure, Sucker For Love: Date To Die For, Fortnite Festival, Rotwood, Switch 2 with magnets, Blizzcon canceled",7127,2024-04-29T00:00:00-05:00,0,1
+3918876179098329,NwV4/eMlCjU7m8ydqO/YeGunJ7UppXLUqcFZ+vGpQa4=,3649737,"Jill Grodt: Stellar Blade, Hades 2, Manor Lords, Another Crab’s Treasure, Sucker For Love: Date To Die For, Fortnite Festival, Rotwood, Switch 2 with magnets, Blizzcon canceled",7127,2024-04-29T00:00:00-05:00,0,0
 4273905801193841,NwV4/eMlCjU7m8ydqO/YeLYy5doXRYFnubW9qKn6VK4=,3980384,Mission Impossible vs The Bourne Identity (Part 1 MI:1),7442,2022-10-05T12:00:00-04:00,1,0
 4273905264834324,NwV4/eMlCjU7m8ydqO/YeKp4am7leQTXCze18CeYGIE=,3980384,Mission Impossible vs The Bourne Identity (Part 2: Bourne),9031,2022-10-11T22:00:00-04:00,1,0
 4273905077810156,NwV4/eMlCjU7m8ydqO/YeOQETVdcK/99yn4Ron1cteo=,3980384,Sideways vs Swingers (Part 1: Sideways),7200,2022-10-18T21:00:00-04:00,1,0
