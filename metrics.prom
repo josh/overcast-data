@@ -48,9 +48,9 @@ overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-m
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="true"} 29.0
 overcast_episode_count{downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="false"} 39.0
-overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 44.0
+overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 98.0
 overcast_episode_count{downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 745.0
+overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 692.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 51.0
 overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
@@ -122,9 +122,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="true"} 1893.5833333333337
 overcast_episode_minutes{downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="false"} 2467.0
-overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 2166.2333333333327
+overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 4846.233333333333
 overcast_episode_minutes{downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 29387.0
+overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26769.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 826.3833333333334
 overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 18.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
