@@ -438,12 +438,11 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
     )
     feed._validate()
 
-    mean_date_published_interval = _mean_date_published_interval(episodes)
-    expires_at: datetime = (
-        episodes[0].date_published_datetime + mean_date_published_interval
+    default_expires_at = datetime.now(timezone.utc) + timedelta(days=1)
+    expires_at: datetime = episodes[0].date_published_datetime + (
+        _mean_date_published_interval(episodes) / 2
     )
-    if expires_at < datetime.now(timezone.utc):
-        expires_at = datetime.now(timezone.utc) + timedelta(days=1)
+    expires_at = max(expires_at, default_expires_at)
     # TODO: Drop log level
     logger.info("Setting '%s' expires at: %s", feed_url, expires_at)
     session.lru_cache[expires_at_key] = expires_at
