@@ -341,12 +341,24 @@ class HTMLPodcastEpisode:
 
 
 def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFeed:
+    expires_at_key = f"podcast:{feed_url}:expires_at"
+    expires_in: timedelta = timedelta(days=1)
+    if cache_expires_at := session.lru_cache[expires_at_key]:
+        assert isinstance(
+            cache_expires_at, datetime
+        ), f"Invalid expires_at: {cache_expires_at}"
+        # TODO: Drop log level
+        logger.info(
+            "Loaded '%s' expires at: %s, but not used", feed_url, cache_expires_at
+        )
+        # expires_in = cache_expires_at - datetime.now()
+
     r = _request(
         session=session,
         url=feed_url,
         controller="podcast",
         accept="text/html",
-        response_expires_in=timedelta(days=1),
+        response_expires_in=expires_in,
     )
     fetched_at = requests_cache.response_date(r)
 
@@ -425,7 +437,26 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         episodes=episodes,
     )
     feed._validate()
+
+    mean_date_published_interval = _mean_date_published_interval(episodes)
+    expires_at: datetime = (
+        episodes[0].date_published_datetime + mean_date_published_interval
+    )
+    if expires_at < datetime.now(timezone.utc):
+        expires_at = datetime.now(timezone.utc) + timedelta(days=1)
+    # TODO: Drop log level
+    logger.info("Setting '%s' expires at: %s", feed_url, expires_at)
+    session.lru_cache[expires_at_key] = expires_at
+
     return feed
+
+
+def _mean_date_published_interval(episodes: list[HTMLPodcastEpisode]) -> timedelta:
+    dates: list[date] = [episode.date_published for episode in episodes]
+    tds: list[timedelta] = [a - b for a, b in zip(dates, dates[1:])]
+    mean_interval = sum(tds, timedelta()) / len(tds)
+    assert mean_interval >= timedelta(seconds=0)
+    return mean_interval
 
 
 @dataclass
