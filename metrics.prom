@@ -12,7 +12,7 @@ overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",pla
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 157.0
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
-overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 155.0
+overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 156.0
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 149.0
@@ -58,8 +58,8 @@ overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"}
 overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 300.0
-overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
+overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 32.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 109.0
@@ -86,7 +86,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",p
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16538.516666666663
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 122.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
-overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19265.99999999999
+overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19368.233333333323
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 20676.750000000004
@@ -132,8 +132,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true
 overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 33.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4455.75
-overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 15.0
-overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
+overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 60.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 2126.883333333333
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 65.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 7176.333333333333
