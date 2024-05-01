@@ -10,7 +10,7 @@ overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",pla
 overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 42.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 157.0
-overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 155.0
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
@@ -84,7 +84,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",p
 overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1549.4999999999998
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16538.516666666663
-overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 122.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19265.99999999999
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
