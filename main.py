@@ -379,7 +379,7 @@ def backfill_episode(ctx: Context, limit: int) -> None:
 
             if db_episode.duration is None:
                 db_episode.duration = overcast.fetch_audio_duration(
-                    ctx.session, html_episode.audio_url
+                    ctx.session, html_episode.enclosure_url
                 )
 
         except overcast.RatedLimitedError:

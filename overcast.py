@@ -497,7 +497,7 @@ class HTMLEpisode:
     title: str
     description: str
     date_published: date
-    audio_url: HTTPURL
+    enclosure_url: HTTPURL
     download_state: Literal["new"] | Literal["existing"]
 
     @property
@@ -532,7 +532,7 @@ class HTMLEpisode:
             assert self.feed_item_id, self.feed_art_url
             assert self.title, self.title
             assert self.date_published <= date.today(), self.date_published
-            assert "#" not in self.audio_url, self.audio_url
+            assert "#" not in self.enclosure_url, self.enclosure_url
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
@@ -562,10 +562,10 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
     else:
         art_url = OvercastCDNURL("")
 
-    audio_url: str = ""
+    enclosure_url: str = ""
     if meta_el := soup.select_one("meta[name='twitter:player:stream']"):
-        audio_url = meta_el.attrs["content"]
-        audio_url = audio_url.split("#", 1)[0]
+        enclosure_url = meta_el.attrs["content"]
+        enclosure_url = enclosure_url.split("#", 1)[0]
 
     if a_el := soup.select_one(".centertext > h3 > a[href]"):
         href = a_el.attrs["href"]
@@ -603,7 +603,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
         title=title,
         description=description,
         date_published=date_published,
-        audio_url=HTTPURL(audio_url),
+        enclosure_url=HTTPURL(enclosure_url),
         download_state=download_state,
     )
     episode._validate()

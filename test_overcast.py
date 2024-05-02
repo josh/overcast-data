@@ -102,7 +102,7 @@ def test_fetch_episode(overcast_session: Session) -> None:
     )
     assert episode.date_published == date(2014, 6, 6)
     assert (
-        episode.audio_url
+        episode.enclosure_url
         == "http://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
     )
 
