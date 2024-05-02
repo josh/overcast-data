@@ -64,7 +64,7 @@ overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompso
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 109.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 167.0
-overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 19.0
 overcast_episode_count{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_count{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
@@ -138,7 +138,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thomp
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 7176.333333333333
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 10928.11666666667
-overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 92.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1226.4
 overcast_episode_minutes{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_minutes{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
