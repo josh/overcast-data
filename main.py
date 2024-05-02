@@ -145,6 +145,7 @@ def refresh_opml_export(ctx: Context) -> None:
                 overcast_url=episode_url,
                 feed_id=export_feed.item_id,
                 title=export_episode.title,
+                enclosure_url=export_episode.enclosure_url,
                 duration=duration,
                 date_published=export_episode.date_published,
                 is_played=export_episode.is_played,
@@ -160,6 +161,7 @@ def refresh_opml_export(ctx: Context) -> None:
             db_episode.id = export_episode.item_id
             db_episode.feed_id = export_feed.item_id
             db_episode.date_published = export_episode.date_published
+            db_episode.enclosure_url = export_episode.enclosure_url
 
             if db_episode.is_played is None:
                 db_episode.is_played = export_episode.is_played
@@ -322,6 +324,7 @@ def _refresh_feed(ctx: Context, db_feed: db.Feed) -> None:
             feed_id=feed_id,
             title=html_episode.title,
             duration=html_episode.duration,
+            enclosure_url=None,
             date_published=html_episode.date_published_datetime,
             is_played=html_episode.is_played,
             is_downloaded=html_episode.is_new,

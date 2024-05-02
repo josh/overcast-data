@@ -87,21 +87,17 @@ class Feed:
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Feed":
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
         data = data.copy()
-        data["title"] = decrypt(_ENCRYPTION_KEY, Ciphertext(data["encrypted_title"]))
-        del data["encrypted_title"]
         del data["clean_title"]
         del data["slug"]
+        _decrypt_csv_field(data, "title")
         return fromcsvdict(Feed, data)
 
     def to_dict(self) -> dict[str, str]:
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
         d = ascsvdict(self)
-        d["encrypted_title"] = encrypt(_ENCRYPTION_KEY, str(d["title"]))
         d["clean_title"] = self.clean_title
         d["slug"] = self.slug
-        del d["title"]
+        _encrypt_csv_field(d, "title")
         return d
 
 
@@ -122,8 +118,8 @@ class FeedCollection:
     def _nonnull_counts(self) -> dict[str, int]:
         counts = {}
         for field_name in Feed.fieldnames():
-            if field_name == "encrypted_title":
-                field_name = "title"
+            if field_name.startswith("encrypted_"):
+                field_name = field_name.removeprefix("encrypted_")
             count = len([f for f in self._feeds if getattr(f, field_name) is not None])
             counts[field_name] = count
         return counts
@@ -184,6 +180,7 @@ class Episode:
     overcast_url: OvercastEpisodeURL
     feed_id: OvercastFeedItemID
     title: str
+    enclosure_url: HTTPURL | None
     duration: timedelta | None
     date_published: datetime
     is_played: bool | None
@@ -199,6 +196,7 @@ class Episode:
             "encrypted_overcast_url",
             "feed_id",
             "title",
+            "encrypted_enclosure_url",
             "duration",
             "date_published",
             "is_played",
@@ -207,19 +205,15 @@ class Episode:
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
         data = data.copy()
-        data["overcast_url"] = decrypt(
-            _ENCRYPTION_KEY, Ciphertext(data["encrypted_overcast_url"])
-        )
-        del data["encrypted_overcast_url"]
+        _decrypt_csv_field(data, "overcast_url")
+        _decrypt_csv_field(data, "enclosure_url")
         return fromcsvdict(Episode, data)
 
     def to_dict(self) -> dict[str, str]:
-        assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
         d = ascsvdict(self)
-        d["encrypted_overcast_url"] = encrypt(_ENCRYPTION_KEY, str(d["overcast_url"]))
-        del d["overcast_url"]
+        _encrypt_csv_field(d, "overcast_url")
+        _encrypt_csv_field(d, "enclosure_url")
         return d
 
 
@@ -240,8 +234,8 @@ class EpisodeCollection:
     def _nonnull_counts(self) -> dict[str, int]:
         counts = {}
         for field_name in Episode.fieldnames():
-            if field_name == "encrypted_overcast_url":
-                field_name = "overcast_url"
+            if field_name.startswith("encrypted_"):
+                field_name = field_name.removeprefix("encrypted_")
             count = len(
                 [f for f in self._episodes if getattr(f, field_name) is not None]
             )
@@ -336,3 +330,25 @@ class Database(AbstractContextManager["Database"]):
             self.episodes.save(self.path / "episodes.csv")
         else:
             logger.error("not saving database due to exception")
+
+
+def _decrypt_csv_field(data: dict[str, str], name: str) -> None:
+    assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+    encrypted_name = f"encrypted_{name}"
+    if data.get(encrypted_name):
+        data[name] = decrypt(_ENCRYPTION_KEY, Ciphertext(data[encrypted_name]))
+    else:
+        data[name] = ""
+    if encrypted_name in data:
+        del data[encrypted_name]
+
+
+def _encrypt_csv_field(data: dict[str, str], name: str) -> None:
+    assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
+    encrypted_name = f"encrypted_{name}"
+    if data.get(name):
+        data[encrypted_name] = encrypt(_ENCRYPTION_KEY, str(data[name]))
+    else:
+        data[encrypted_name] = ""
+    if name in data:
+        del data[name]
