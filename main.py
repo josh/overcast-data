@@ -378,7 +378,11 @@ def backfill_episode(ctx: Context, limit: int) -> None:
                 episode_url=db_episode.overcast_url,
             )
 
-            db_episode.id = html_episode.item_id
+            if db_episode.id is None:
+                db_episode.id = html_episode.item_id
+
+            if db_episode.enclosure_url is None:
+                db_episode.enclosure_url = html_episode.enclosure_url
 
             if db_episode.duration is None:
                 db_episode.duration = overcast.fetch_audio_duration(
@@ -391,12 +395,15 @@ def backfill_episode(ctx: Context, limit: int) -> None:
 
 
 def _episodes_missing_optional_info(ctx: Context) -> Iterator[db.Episode]:
-    db_episodes_missing_duration = [e for e in ctx.db.episodes if e.duration is None]
-    # shuffle(db_episodes_missing_duration)
+    episodes = sorted(ctx.db.episodes, key=lambda e: e.date_published, reverse=True)
+
+    db_episodes_missing_duration = [e for e in episodes if e.duration is None]
     yield from db_episodes_missing_duration
 
-    db_episodes_missing_id = [e for e in ctx.db.episodes if e.id is None]
-    # shuffle(db_episodes_missing_id)
+    db_episodes_missing_enclosure_url = [e for e in episodes if e.enclosure_url is None]
+    yield from db_episodes_missing_enclosure_url
+
+    db_episodes_missing_id = [e for e in episodes if e.id is None]
     yield from db_episodes_missing_id
 
 
