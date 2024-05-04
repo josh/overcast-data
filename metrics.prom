@@ -57,9 +57,9 @@ overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-t
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 303.0
 overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
-overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 301.0
+overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 302.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 4.0
+overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 34.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 109.0
@@ -131,9 +131,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7658.866666666664
 overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
-overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4470.75
+overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4485.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 60.0
+overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 2252.85
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 7176.333333333333
