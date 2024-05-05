@@ -190,6 +190,11 @@ def refresh_opml_export(ctx: Context) -> None:
                     ),
                 )
 
+        # If still missing downloaded state, fill with False
+        for db_episode in ctx.db.episodes:
+            if db_episode.is_played is None:
+                db_episode.is_played = False
+
     except overcast.RatedLimitedError:
         logger.error("Rate limited")
         return
