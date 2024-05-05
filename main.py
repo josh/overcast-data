@@ -284,6 +284,7 @@ def _feeds_to_refresh(ctx: Context) -> Iterator[db.Feed]:
                 html_feed.is_current,
                 db_feed_downloads,
             )
+            overcast.expire_podcast(ctx.session, html_feed.overcast_url)
             yield db_feed
 
     def cache_request_date(feed: tuple[overcast.HTMLPodcastsFeed, db.Feed]) -> datetime:

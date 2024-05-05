@@ -428,6 +428,14 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
     return feed
 
 
+def expire_podcast(session: Session, feed_url: OvercastFeedURL) -> None:
+    request = session.requests_session.get_request(feed_url, request_accept="text/html")
+    path = session.requests_session.cache_path(request)
+    if path.exists():
+        logger.info("Expiring podcast cache: %s", feed_url)
+        path.unlink()
+
+
 def _mean_date_published_interval(episodes: list[HTMLPodcastEpisode]) -> timedelta:
     dates: list[date] = [episode.date_published for episode in episodes]
     tds: list[timedelta] = [a - b for a, b in zip(dates, dates[1:])]
@@ -936,7 +944,7 @@ _CONTROLER = Literal["index", "podcast", "episode", "export"]
 
 
 def last_request_date(session: Session, url: OvercastURL) -> datetime:
-    request = requests.Request(method="GET", url=url, headers={"Accept": "text/html"})
+    request = session.requests_session.get_request(url, request_accept="text/html")
     if cached_response := session.requests_session.cached_response(request):
         return requests_cache.response_date(cached_response)
     return datetime.min

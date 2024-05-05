@@ -54,6 +54,19 @@ class Session:
         self.mime_type_extnames = _DEFAULT_MIME_TYPE_EXTNAMES.copy()
         self.mime_type_extnames.update(mime_type_extnames)
 
+    def get_request(
+        self, url: str, request_accept: str | None = None
+    ) -> requests.Request:
+        if not url.startswith(self._base_url):
+            assert url.startswith("/"), f"Path must start with /: {url}"
+            url = self._base_url + url
+
+        headers: dict[str, str] = {}
+        if request_accept:
+            headers["Accept"] = request_accept
+        request = requests.Request(method="GET", url=url, headers=headers)
+        return request
+
     def get(
         self,
         path: str,
@@ -61,16 +74,7 @@ class Session:
         response_expires_in: timedelta = timedelta(seconds=0),
         stale_cache_on_error: bool = True,
     ) -> tuple[requests.Response, bool]:
-        assert path.startswith("/")
-
-        headers: dict[str, str] = {}
-        if request_accept:
-            headers["Accept"] = request_accept
-        request = requests.Request(
-            method="GET",
-            url=self._base_url + path,
-            headers=headers,
-        )
+        request = self.get_request(url=path, request_accept=request_accept)
 
         filepath = self.cache_path(request=request)
         logger.debug("Retrieving request cache: %s", filepath)
