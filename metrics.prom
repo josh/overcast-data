@@ -24,9 +24,9 @@ overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",pl
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 64.0
-overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 105.0
+overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 106.0
 overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 277.0
+overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="true"} 41.0
 overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="false"} 70.0
@@ -52,7 +52,7 @@ overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",pl
 overcast_episode_count{downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 692.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 52.0
-overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 303.0
 overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
@@ -98,9 +98,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5090.516666666666
-overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5324.083333333336
+overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5364.083333333336
 overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11575.35
+overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="true"} 1115.5666666666668
 overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="false"} 2345.6333333333337
@@ -126,7 +126,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",
 overcast_episode_minutes{downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26769.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 844.3833333333334
-overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 17.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7658.866666666664
 overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
