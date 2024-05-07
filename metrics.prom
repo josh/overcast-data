@@ -16,8 +16,8 @@ overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="tr
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 149.0
-overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 12.0
+overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 13.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 602.0
 overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
@@ -43,7 +43,7 @@ overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 74.
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 486.0
-overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="true"} 30.0
 overcast_episode_count{downloaded="true",feed_slug="downstream",played="false"} 0.0
@@ -55,8 +55,8 @@ overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-t
 overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 303.0
-overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
+overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 8.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 302.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
@@ -90,8 +90,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 20676.750000000004
-overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 172.0
-overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1625.583333333333
+overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1797.583333333333
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 70918.4
 overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
@@ -117,7 +117,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 7
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4412.033333333328
-overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="true"} 1954.5833333333337
 overcast_episode_minutes{downloaded="true",feed_slug="downstream",played="false"} 0.0
@@ -129,8 +129,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday
 overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 17.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7658.866666666664
-overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 15.0
-overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
+overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 189.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4485.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
