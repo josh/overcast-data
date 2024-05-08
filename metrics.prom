@@ -4,7 +4,7 @@ overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gru
 overcast_episode_count{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="true"} 445.0
-overcast_episode_count{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="more-power-users",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="false"} 298.0
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
@@ -55,8 +55,8 @@ overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-t
 overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 305.0
-overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
+overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 8.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 303.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
@@ -78,7 +78,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-g
 overcast_episode_minutes{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="true"} 43763.34999999998
-overcast_episode_minutes{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="more-power-users",played="false"} 103.0
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="false"} 26481.083333333332
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 83.55
@@ -129,8 +129,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday
 overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7691.866666666664
-overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 13.0
-overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
+overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 187.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4500.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
