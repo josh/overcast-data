@@ -12,9 +12,9 @@ overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",pla
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 158.0
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
-overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 156.0
+overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 157.0
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 5.0
+overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 149.0
 overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 13.0
@@ -86,9 +86,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",p
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16660.516666666663
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 132.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
-overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19368.233333333323
+overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19495.233333333323
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 609.0166666666667
+overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 20676.750000000004
 overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1797.583333333333
