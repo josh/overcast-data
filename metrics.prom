@@ -60,9 +60,9 @@ overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 303.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
-overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 141.0
+overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 142.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
+overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 168.0
 overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 20.0
@@ -134,9 +134,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="fals
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4500.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 15.0
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
-overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9278.850000000004
+overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9346.850000000004
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 283.3333333333333
+overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11020.11666666667
 overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 86.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1256.4
