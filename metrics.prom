@@ -7,7 +7,7 @@ overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="t
 overcast_episode_count{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="false"} 298.0
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
-overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
+overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 42.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 158.0
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 1.0
@@ -81,7 +81,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played=
 overcast_episode_minutes{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="false"} 26481.083333333332
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
-overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 83.55
+overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 119.31666666666666
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1549.4999999999998
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16660.516666666663
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 132.0
