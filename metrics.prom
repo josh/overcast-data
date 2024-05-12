@@ -34,8 +34,8 @@ overcast_episode_count{downloaded="false",feed_slug="title-fights",played="true"
 overcast_episode_count{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
-overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 19.0
+overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 20.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 152.0
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
@@ -63,8 +63,8 @@ overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 142.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
-overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 168.0
-overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 2.0
+overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 169.0
+overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 20.0
 overcast_episode_count{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_count{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
@@ -108,8 +108,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="tru
 overcast_episode_minutes{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
-overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 51.86666666666667
-overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1469.3833333333334
+overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1521.25
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11678.1
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
@@ -137,8 +137,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9346.850000000004
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
-overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11020.11666666667
-overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 114.0
+overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11106.11666666667
+overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 28.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1256.4
 overcast_episode_minutes{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_minutes{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
