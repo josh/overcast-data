@@ -15,9 +15,9 @@ overcast_episode_count{downloaded="false",feed_slug="security-now",played="false
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 157.0
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
-overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 149.0
+overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 150.0
 overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 13.0
+overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 12.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 603.0
 overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
@@ -39,9 +39,9 @@ overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed"
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 152.0
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
-overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 74.0
+overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 75.0
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 437.0
+overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 489.0
 overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
@@ -89,9 +89,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="fal
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19495.233333333323
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
-overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 20676.750000000004
+overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 20848.750000000004
 overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1797.583333333333
+overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1625.583333333333
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 71074.4
 overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
@@ -113,9 +113,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-fee
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11678.1
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
-overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 7770.616666666667
+overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 7892.616666666667
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42770.0
+overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4437.033333333328
 overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 18.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
