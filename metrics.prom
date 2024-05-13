@@ -42,8 +42,8 @@ overcast_episode_count{downloaded="false",feed_slug="automators-max",played="fal
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 75.0
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
-overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 489.0
-overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 2.0
+overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 491.0
+overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="true"} 30.0
 overcast_episode_count{downloaded="true",feed_slug="downstream",played="false"} 0.0
@@ -116,8 +116,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="f
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 7892.616666666667
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
-overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4437.033333333328
-overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 18.0
+overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4455.033333333328
+overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="true"} 1954.5833333333337
 overcast_episode_minutes{downloaded="true",feed_slug="downstream",played="false"} 0.0
