@@ -1,12 +1,12 @@
 import logging
 import os
+from collections.abc import Iterable, Iterator
 from contextlib import AbstractContextManager
 from datetime import datetime, timedelta
 from functools import partial
 from itertools import islice
 from pathlib import Path
 from types import TracebackType
-from typing import Iterable, Iterator
 
 import click
 from prometheus_client import (

@@ -1,8 +1,8 @@
 import logging
 import time
+from collections.abc import Iterator
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Iterator
 from urllib.parse import urlparse
 
 import requests

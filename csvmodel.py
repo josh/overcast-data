@@ -1,12 +1,11 @@
 import logging
 import typing
+from collections.abc import Callable
 from dataclasses import Field, is_dataclass
 from datetime import date, datetime, timedelta
 from typing import (
     Any,
-    Callable,
     ClassVar,
-    Optional,
     Protocol,
     TypeVar,
     Union,
@@ -40,8 +39,8 @@ def register_cast(
             return ""
         return tostr(v)
 
-    _STR_TO_VALUE_REGISTERY[Optional[typ]] = fromstr_optional
-    _VALUE_TO_STR_REGISTERY[Optional[typ]] = tostr_optional
+    _STR_TO_VALUE_REGISTERY[typ | None] = fromstr_optional
+    _VALUE_TO_STR_REGISTERY[typ | None] = tostr_optional
 
 
 def _register_cast_alias(from_type: type, to_type: type) -> None:

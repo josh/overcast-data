@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
-from typing import NewType, Optional, Union
+from typing import NewType
 
 from csvmodel import ascsvdict, ascsvrow, castcsvstr, csvstr, fromcsvdict
 
@@ -43,27 +43,27 @@ def test_fromcsvstr() -> None:
     assert castcsvstr(NonEmptyStr, "Alice") == NonEmptyStr("Alice")
     assert castcsvstr(PostiveInt, "42") == PostiveInt(42)
 
-    assert castcsvstr(Union[bool, None], "1") is True
-    assert castcsvstr(Union[None, bool], "1") is True
-    assert castcsvstr(Optional[bool], "0") is False
+    assert castcsvstr(bool | None, "1") is True
+    assert castcsvstr(None | bool, "1") is True
+    assert castcsvstr(bool | None, "0") is False
     assert castcsvstr(bool | None, "0") is False
     assert castcsvstr(bool | None, "") is None
 
-    assert castcsvstr(Union[int, None], "42") == 42
-    assert castcsvstr(Union[None, int], "42") == 42
-    assert castcsvstr(Optional[int], "42") == 42
+    assert castcsvstr(int | None, "42") == 42
+    assert castcsvstr(None | int, "42") == 42
+    assert castcsvstr(int | None, "42") == 42
     assert castcsvstr(int | None, "42") == 42
     assert castcsvstr(int | None, "") is None
 
-    assert castcsvstr(Optional[str], "") is None
-    assert castcsvstr(Optional[str], "Hello") == "Hello"
+    assert castcsvstr(str | None, "") is None
+    assert castcsvstr(str | None, "Hello") == "Hello"
 
     assert castcsvstr(date, "2020-01-01") == date(2020, 1, 1)
     assert castcsvstr(datetime, "2020-01-01T12:00:00") == datetime(2020, 1, 1, 12, 0, 0)
     assert castcsvstr(timedelta, "4500") == timedelta(hours=1, minutes=15)
 
-    assert castcsvstr(Optional[PostiveInt], "42") == PostiveInt(42)
-    assert castcsvstr(Optional[PostiveInt], "") is None
+    assert castcsvstr(PostiveInt | None, "42") == PostiveInt(42)
+    assert castcsvstr(PostiveInt | None, "") is None
 
 
 def test_ascsvrow() -> None:
@@ -119,7 +119,7 @@ def test_fromcsvdict() -> None:
 
 @dataclass
 class FooFlag:
-    flag: Optional[bool]
+    flag: bool | None
 
 
 def test_fromcsvdict_optionals() -> None:

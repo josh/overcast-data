@@ -1,12 +1,12 @@
 import csv
 import logging
 import re
+from collections.abc import Callable, Iterable, Iterator
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from types import TracebackType
-from typing import Callable, Iterable, Iterator
 
 from csvmodel import ascsvdict, fromcsvdict, register_cast
 from overcast import (
