@@ -14,7 +14,7 @@ import requests
 from bs4 import BeautifulSoup, Tag
 
 import requests_cache
-from lru_cache import LRUCache
+from lru_cache import PersistentLRUCache
 from utils import HTTPURL, URL
 
 logger = logging.getLogger("overcast")
@@ -164,17 +164,17 @@ class RatedLimitedError(Exception):
 @dataclass
 class Session:
     requests_session: requests_cache.Session
-    lru_cache: LRUCache
+    lru_cache: PersistentLRUCache
 
 
 def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
     headers = _SAFARI_HEADERS.copy()
     headers["Cookie"] = f"o={cookie}; qr=-"
 
-    lru_cache = LRUCache(
-        path=cache_dir / "overcast.pickle",
+    lru_cache = PersistentLRUCache(
+        filename=cache_dir / "overcast.pickle",
         max_bytesize=1024 * 1024,  # 1 MB
-        save_on_exit=True,
+        close_on_exit=True,
     )
 
     requests_session = requests_cache.Session(
