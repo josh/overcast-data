@@ -98,20 +98,12 @@ class DataclassInstance(Protocol):
 
 def ascsvdict(obj: DataclassInstance) -> dict[str, str]:
     assert is_dataclass(obj), f"{repr(obj)} is not a dataclass"
-    return {name: _getcsvattr(obj, name) for name in obj.__dataclass_fields__}
+    return {name: csvstr(getattr(obj, name)) for name in obj.__dataclass_fields__}
 
 
 def ascsvrow(obj: DataclassInstance) -> tuple[str, ...]:
     assert is_dataclass(obj), f"{repr(obj)} is not a dataclass"
-    return tuple(_getcsvattr(obj, name) for name in obj.__dataclass_fields__)
-
-
-def _getcsvattr(obj: DataclassInstance, name: str) -> str:
-    try:
-        return csvstr(getattr(obj, name))
-    except ValueError:
-        logger.error(f"Failed to convert {name}={getattr(obj, name)} to csv")
-        raise
+    return tuple(csvstr(getattr(obj, name)) for name in obj.__dataclass_fields__)
 
 
 DataclassType = TypeVar("DataclassType", bound=DataclassInstance)
