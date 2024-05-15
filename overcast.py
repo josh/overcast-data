@@ -646,7 +646,7 @@ def fetch_audio_duration(session: Session, url: HTTPURL) -> timedelta | None:
             return None
 
     key = f"fetch_audio_duration:v4:{url}"
-    return session.lru_cache.get(key, _inner)
+    return cast(timedelta | None, session.lru_cache.get_or_load(key, load_value=_inner))
 
 
 @dataclass
