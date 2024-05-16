@@ -7,8 +7,8 @@ overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="t
 overcast_episode_count{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="false"} 298.0
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
-overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 43.0
+overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 44.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 159.0
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
@@ -23,7 +23,7 @@ overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",pla
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 2.0
-overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 67.0
+overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 68.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 107.0
 overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
@@ -63,8 +63,8 @@ overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 143.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
-overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 169.0
-overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 2.0
+overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 170.0
+overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 20.0
 overcast_episode_count{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_count{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
@@ -81,8 +81,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played=
 overcast_episode_minutes{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="false"} 26481.083333333332
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
-overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 35.766666666666666
-overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1633.0499999999997
+overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1668.8166666666664
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16792.516666666663
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 101.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
@@ -97,7 +97,7 @@ overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",p
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 103.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 171.51666666666665
-overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5377.133333333332
+overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5463.566666666666
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5407.083333333336
 overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
@@ -137,8 +137,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9402.850000000004
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
-overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11106.11666666667
-overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 116.0
+overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11134.11666666667
+overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 88.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1256.4
 overcast_episode_minutes{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_minutes{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
