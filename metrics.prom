@@ -37,7 +37,7 @@ overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed"
 overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 20.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 152.0
-overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 76.0
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
@@ -111,7 +111,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-fee
 overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 184.38333333333335
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1521.25
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11678.1
-overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 49.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8010.616666666667
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
