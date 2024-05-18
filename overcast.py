@@ -14,7 +14,7 @@ import requests
 from bs4 import BeautifulSoup, Tag
 
 import requests_cache
-from lru_cache import PersistentLRUCache
+from lru_cache import PersistentLRUCache, bytesize
 from utils import HTTPURL, URL
 
 logger = logging.getLogger("overcast")
@@ -173,8 +173,7 @@ def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
 
     lru_cache = PersistentLRUCache(
         filename=cache_dir / "overcast.pickle",
-        max_bytesize=1024 * 1024,  # 1 MB
-        close_on_exit=True,
+        max_bytesize=bytesize(mb=1),
     )
 
     requests_session = requests_cache.Session(
