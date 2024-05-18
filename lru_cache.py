@@ -1,5 +1,6 @@
 import atexit
 import contextlib
+import io
 import logging
 import pickle
 import sys
@@ -27,7 +28,7 @@ __license__ = "MIT"
 __copyright__ = "Copyright 2024 Joshua Peek"
 
 _logger = logging.getLogger("lru_cache")
-_caches_to_close_atexit: WeakSet["PersistentLRUCache"] = WeakSet()
+_caches: WeakSet["PersistentLRUCache"] = WeakSet()
 
 _SENTINEL = object()
 _KWD_MARK = ("__KWD_MARK__",)
@@ -36,8 +37,28 @@ T = TypeVar("T")
 P = ParamSpec("P")
 R = TypeVar("R")
 
+
+def bytesize(gb: int = 0, mb: int = 0, kb: int = 0, b: int = 0) -> int:
+    return gb << 30 | mb << 20 | kb << 10 | b
+
+
+def format_bytesize(size: int) -> str:
+    """Formats an integer representing a byte size into a human-readable string."""
+    s: float = float(size)
+    if s < 1024:
+        return f"{s} B"
+    s /= 1024
+    if s < 1024:
+        return f"{s:.1f} KB"
+    s /= 1024
+    if s < 1024:
+        return f"{s:.1f} MB"
+    s /= 1024
+    return f"{s:.1f} GB"
+
+
 DEFAULT_MAX_ITEMS = sys.maxsize
-DEFAULT_MAX_BYTESIZE = 1024 * 1024 * 1024  # 1 GB
+DEFAULT_MAX_BYTESIZE = bytesize(mb=10)
 
 
 class LRUCache(MutableMapping[Hashable, Any]):
@@ -61,8 +82,8 @@ class LRUCache(MutableMapping[Hashable, Any]):
 
     def __repr__(self) -> str:
         count = len(self)
-        size = self.bytesize()
-        return f"<LRUCache {count} items, {size} bytes>"
+        size = format_bytesize(self.bytesize())
+        return f"<LRUCache {count} items, {size}>"
 
     def __eq__(self, other: Any) -> bool:
         return other is self
@@ -82,17 +103,13 @@ class LRUCache(MutableMapping[Hashable, Any]):
         """Return the number of items in the cache."""
         return len(self._data)
 
-    def __getitem__(self, key: Hashable) -> Any | None:
+    def __getitem__(self, key: Hashable) -> Any:
         """Return value for key in cache, else None."""
-        value = self._data.get(key, _SENTINEL)
-        if value is _SENTINEL:
-            _logger.debug("miss key=%s", key)
-            return None
-        else:
-            _logger.debug("hit key=%s", key)
-            self._did_change = True
-            self._data.move_to_end(key, last=True)
-            return value
+        value = self._data[key]
+        _logger.debug("hit key=%s", key)
+        self._did_change = True
+        self._data.move_to_end(key, last=True)
+        return value
 
     def __setitem__(self, key: Hashable, value: Any) -> None:
         """Set value for key in cache."""
@@ -164,7 +181,7 @@ class LRUCache(MutableMapping[Hashable, Any]):
 
         self._needs_trim = False
         if count > 0:
-            _logger.debug("trimmed %i items", count)
+            _logger.warning("trimmed %i items", count)
         return count
 
     def bytesize(self) -> int:
@@ -206,27 +223,26 @@ class LRUCache(MutableMapping[Hashable, Any]):
 class PersistentLRUCache(LRUCache, contextlib.AbstractContextManager["LRUCache"]):
     """A managed LRUCache that is persist to disk."""
 
+    _file: io.BufferedRandom | None = None
     filename: Path
-    _closed: bool = False
+    closed: bool = False
 
     def __init__(
         self,
         filename: Path | str,
         max_items: int = DEFAULT_MAX_ITEMS,
         max_bytesize: int = DEFAULT_MAX_BYTESIZE,
-        close_on_exit: bool = True,
     ) -> None:
         self.filename = Path(filename)
         super().__init__(max_items=max_items, max_bytesize=max_bytesize)
         self._load()
-        if close_on_exit:
-            _caches_to_close_atexit.add(self)
+        _caches.add(self)
 
     def __del__(self) -> None:
-        if not self._closed:
+        if not self.closed:
             self.close()
 
-    def __enter__(self) -> "LRUCache":
+    def __enter__(self) -> "PersistentLRUCache":
         return self
 
     def __exit__(
@@ -237,33 +253,61 @@ class PersistentLRUCache(LRUCache, contextlib.AbstractContextManager["LRUCache"]
     ) -> None:
         self.close()
 
+    def _open(self) -> io.BufferedRandom:
+        if self._file:
+            return self._file
+        self.filename.parent.mkdir(parents=True, exist_ok=True)
+        self.filename.touch(exist_ok=True)
+        self._file = self.filename.open(mode="rb+")
+        _logger.debug("opened cache %d '%s'", self._file.fileno(), self.filename)
+        return self._file
+
     def _load(self) -> None:
         if not self.filename.exists():
-            _logger.debug("persisted cache not found: %s", self.filename)
+            _logger.debug("cache not found: '%s'", self.filename)
             return
 
-        with self.filename.open("rb") as f:
-            self._data.update(pickle.load(f))
+        f = self._open()
+        self._data.update(pickle.load(f))
         self._did_change = False
+
+        _logger.info(
+            "loaded cache: '%s' (%i items, %s bytes)",
+            self.filename,
+            len(self),
+            format_bytesize(self.bytesize()),
+        )
 
     def save(self) -> None:
         """Save the cache to disk."""
         if self._did_change is False:
-            _logger.info("no changes to save")
+            _logger.debug("no changes to save")
             return
 
         self.trim()
-        _logger.debug("saving cache: %s", self.filename)
-        self.filename.parent.mkdir(parents=True, exist_ok=True)
-        with self.filename.open("wb") as f:
-            pickle.dump(self._data, f, pickle.HIGHEST_PROTOCOL)
+        _logger.info(
+            "saving cache: '%s' (%i items, %s)",
+            self.filename,
+            len(self),
+            format_bytesize(self.bytesize()),
+        )
+        f = self._open()
+        f.seek(0)
+        pickle.dump(self._data, f, pickle.HIGHEST_PROTOCOL)
+        self._did_change = False
 
     def close(self) -> None:
         """Close the cache and save it to disk."""
-        if self._closed:
-            raise ValueError("cache is closed")
+        if self.closed:
+            assert self._file is None, "file should be closed"
+            raise ValueError("cache is already closed")
         self.save()
-        self._closed = True
+        if self._file:
+            fd = self._file.fileno()
+            self._file.close()
+            self._file = None
+            _logger.debug("closed cache %d '%s'", fd, self.filename)
+        self.closed = True
 
 
 def open(
@@ -279,9 +323,11 @@ def open(
 
 
 def _close_atexit() -> None:
-    for cache in _caches_to_close_atexit:
-        if not cache._closed:
-            cache.close()
+    open_caches = [cache for cache in _caches if not cache.closed]
+    if open_caches:
+        _logger.warning("closing open %d caches", len(open_caches))
+    for cache in open_caches:
+        cache.close()
 
 
 atexit.register(_close_atexit)
