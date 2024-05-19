@@ -10,8 +10,8 @@ overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",pla
 overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 44.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 159.0
-overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
+overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 3.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 157.0
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
@@ -28,8 +28,8 @@ overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 
 overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="true"} 42.0
-overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="false"} 70.0
+overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="false"} 71.0
 overcast_episode_count{downloaded="false",feed_slug="title-fights",played="true"} 22.0
 overcast_episode_count{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="title-fights",played="false"} 2.0
@@ -84,8 +84,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",p
 overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1668.8166666666664
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16792.516666666663
-overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 101.0
-overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
+overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 323.45
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19495.233333333323
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 128.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
@@ -102,8 +102,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"
 overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 48.0
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="true"} 1139.5666666666668
-overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 18.0
-overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="false"} 2345.6333333333337
+overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="false"} 2363.6333333333337
 overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="true"} 3640.55
 overcast_episode_minutes{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="false"} 346.0
