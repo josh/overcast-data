@@ -25,7 +25,7 @@ overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-c
 overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 68.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 107.0
-overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="true"} 42.0
 overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 1.0
@@ -99,7 +99,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and
 overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 171.51666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5463.566666666666
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5407.083333333336
-overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 48.0
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="true"} 1139.5666666666668
 overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 18.0
