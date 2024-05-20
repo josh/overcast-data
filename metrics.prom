@@ -12,9 +12,9 @@ overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",pla
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 160.0
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
-overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 157.0
+overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 158.0
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 5.0
+overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 151.0
 overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 12.0
@@ -55,7 +55,7 @@ overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-t
 overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 310.0
-overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 1.0
+overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 306.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
@@ -86,9 +86,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",p
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16893.516666666663
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
-overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19495.233333333323
+overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19623.233333333323
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 610.0166666666667
+overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 20997.750000000004
 overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 139.0
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1625.583333333333
@@ -129,7 +129,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday
 overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 13.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7815.866666666664
-overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 62.0
+overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 73.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4545.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
