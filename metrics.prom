@@ -52,7 +52,7 @@ overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",pl
 overcast_episode_count{downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 693.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 54.0
-overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 310.0
 overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 1.0
@@ -63,8 +63,8 @@ overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 143.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
-overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 170.0
-overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 2.0
+overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 171.0
+overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 20.0
 overcast_episode_count{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_count{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
@@ -126,7 +126,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",
 overcast_episode_minutes{downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 98.0
 overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26802.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 880.3833333333334
-overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 13.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7815.866666666664
 overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 62.0
@@ -137,8 +137,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9402.850000000004
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 65.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
-overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11134.11666666667
-overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 119.0
+overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11222.11666666667
+overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 31.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1256.4
 overcast_episode_minutes{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_minutes{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
