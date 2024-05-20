@@ -9,9 +9,9 @@ overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="f
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 44.0
-overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 159.0
+overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 160.0
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 3.0
+overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 157.0
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
@@ -83,9 +83,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played=
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1668.8166666666664
-overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16792.516666666663
+overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16893.516666666663
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 323.45
+overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19495.233333333323
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 128.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
