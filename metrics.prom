@@ -63,8 +63,8 @@ overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 143.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
-overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 171.0
-overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
+overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 172.0
+overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 20.0
 overcast_episode_count{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_count{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
@@ -137,8 +137,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9402.850000000004
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 65.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
-overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11222.11666666667
-overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 31.0
+overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11253.11666666667
+overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1256.4
 overcast_episode_minutes{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_minutes{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
