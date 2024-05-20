@@ -13,8 +13,8 @@ overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 157.0
-overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
+overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 5.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 151.0
 overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 12.0
@@ -87,8 +87,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="tru
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19495.233333333323
-overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 128.0
-overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
+overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 610.0166666666667
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 20997.750000000004
 overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 139.0
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1625.583333333333
