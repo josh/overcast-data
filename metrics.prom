@@ -40,10 +40,10 @@ overcast_episode_count{downloaded="false",feed_slug="automators-max",played="tru
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 76.0
-overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 496.0
-overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="true"} 30.0
 overcast_episode_count{downloaded="true",feed_slug="downstream",played="false"} 1.0
@@ -61,8 +61,8 @@ overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 3
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 144.0
-overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
+overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 172.0
 overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 20.0
@@ -114,10 +114,10 @@ overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="t
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 49.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8010.616666666667
-overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 108.0
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4499.033333333328
-overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="true"} 1954.5833333333337
 overcast_episode_minutes{downloaded="true",feed_slug="downstream",played="false"} 70.0
@@ -135,8 +135,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"}
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9467.850000000004
-overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 65.0
-overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
+overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 280.3333333333333
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11253.11666666667
 overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1256.4
