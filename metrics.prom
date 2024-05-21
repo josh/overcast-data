@@ -25,8 +25,8 @@ overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-c
 overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 70.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 107.0
-overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
+overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 277.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="true"} 43.0
 overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="false"} 70.0
@@ -40,8 +40,8 @@ overcast_episode_count{downloaded="false",feed_slug="automators-max",played="tru
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 76.0
-overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
+overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 437.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 496.0
 overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
@@ -99,8 +99,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and
 overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 119.9
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5635.083333333332
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5407.083333333336
-overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 48.0
-overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
+overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11583.35
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="true"} 1157.5666666666668
 overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="false"} 2345.6333333333337
@@ -114,8 +114,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="t
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8010.616666666667
-overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 108.0
-overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
+overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42756.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4499.033333333328
 overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
