@@ -57,7 +57,7 @@ overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-t
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 312.0
 overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
-overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 306.0
+overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 307.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 145.0
@@ -131,7 +131,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7888.866666666664
 overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
-overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4545.75
+overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4560.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9532.850000000004
