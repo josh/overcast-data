@@ -12,4 +12,4 @@ requests==2.32.*
 ruff==0.4.*
 types-beautifulsoup4==4.12.*
 types-python-dateutil==2.9.*
-types-requests==2.31.*
+types-requests==2.32.*
