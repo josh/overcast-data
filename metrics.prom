@@ -36,8 +36,8 @@ overcast_episode_count{downloaded="false",feed_slug="title-fights",played="false
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 22.0
-overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 152.0
-overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 1.0
+overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 153.0
+overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 76.0
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 1.0
@@ -60,9 +60,9 @@ overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 306.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
-overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 144.0
+overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 145.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
+overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 172.0
 overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 20.0
@@ -110,8 +110,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="fal
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1705.6333333333332
-overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11678.1
-overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 49.0
+overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11727.1
+overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8010.616666666667
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 108.0
@@ -134,9 +134,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="fals
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4545.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
-overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9467.850000000004
+overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9532.850000000004
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 280.3333333333333
+overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11253.11666666667
 overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1256.4
