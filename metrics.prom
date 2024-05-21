@@ -16,8 +16,8 @@ overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="tr
 overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 151.0
-overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 12.0
+overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 13.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 604.0
 overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
@@ -34,7 +34,7 @@ overcast_episode_count{downloaded="false",feed_slug="title-fights",played="true"
 overcast_episode_count{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
-overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 22.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 153.0
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
@@ -90,8 +90,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="
 overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 20997.750000000004
-overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 139.0
-overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1625.583333333333
+overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1764.583333333333
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 71212.4
 overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 103.0
@@ -108,7 +108,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="tru
 overcast_episode_minutes{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
-overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 97.58333333333333
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1705.6333333333332
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11727.1
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
