@@ -424,7 +424,7 @@ def _episodes_missing_optional_info(ctx: Context) -> Iterator[db.Episode]:
 def metrics(ctx: Context, metrics_filename: str | None) -> None:
     registry = CollectorRegistry()
 
-    episode_labelnames = ["feed_slug", "played", "downloaded", "added"]
+    episode_labelnames = ["feed_slug", "played", "downloaded"]
 
     overcast_episode_count = Gauge(
         "overcast_episode_count",
