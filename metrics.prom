@@ -13,7 +13,7 @@ overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 158.0
-overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 152.0
 overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
@@ -42,9 +42,9 @@ overcast_episode_count{downloaded="false",feed_slug="automators-max",played="fal
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 77.0
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
-overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 497.0
+overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 498.0
 overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 16.0
+overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="true"} 31.0
 overcast_episode_count{downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="false"} 39.0
@@ -87,7 +87,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="tru
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19623.233333333323
-overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 106.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 21136.750000000004
 overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
@@ -116,9 +116,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="f
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8118.616666666667
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
-overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4508.033333333328
+overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4517.033333333328
 overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 138.91666666666666
+overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="true"} 2024.5833333333337
 overcast_episode_minutes{downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="false"} 2467.0
