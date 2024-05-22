@@ -357,7 +357,7 @@ def _refresh_feed(ctx: Context, db_feed: db.Feed) -> None:
             db_episode.is_played = False
 
         db_episode.is_downloaded = html_episode.is_new
-        if html_episode.is_new:
+        if html_episode.is_new or html_episode.is_played:
             db_episode.did_download = True
 
         return db_episode
@@ -424,7 +424,7 @@ def _episodes_missing_optional_info(ctx: Context) -> Iterator[db.Episode]:
 def metrics(ctx: Context, metrics_filename: str | None) -> None:
     registry = CollectorRegistry()
 
-    episode_labelnames = ["feed_slug", "played", "downloaded"]
+    episode_labelnames = ["feed_slug", "played", "downloaded", "added"]
 
     overcast_episode_count = Gauge(
         "overcast_episode_count",
