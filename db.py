@@ -185,6 +185,7 @@ class Episode:
     date_published: datetime
     is_played: bool | None
     is_downloaded: bool
+    did_download: bool
 
     def _sort_key(self) -> tuple[int, datetime]:
         return (self.feed_id, self.date_published)
@@ -201,11 +202,15 @@ class Episode:
             "date_published",
             "is_played",
             "is_downloaded",
+            "did_download",
         ]
 
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
         data = data.copy()
+        # TMP:
+        if data.get("did_download") is None:
+            data["did_download"] = "0"
         _decrypt_csv_field(data, "overcast_url")
         _decrypt_csv_field(data, "enclosure_url")
         return fromcsvdict(Episode, data)
