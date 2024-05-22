@@ -187,6 +187,27 @@ class Episode:
     is_downloaded: bool
     did_download: bool
 
+    def play_state(self) -> str:
+        if self.is_played and self.is_downloaded:
+            logger.warning(
+                "Episode %s is played and downloaded",
+                self.overcast_url,
+            )
+        if self.is_downloaded and self.did_download:
+            logger.warning(
+                "Episode %s is downloaded and but didn't get marked as did",
+                self.overcast_url,
+            )
+
+        if self.is_played:
+            return "played"
+        elif self.is_downloaded:
+            return "downloaded"
+        elif self.did_download:
+            return "skipped"
+        else:
+            return "archive"
+
     def _sort_key(self) -> tuple[int, datetime]:
         return (self.feed_id, self.date_published)
 
