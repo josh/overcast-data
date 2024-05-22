@@ -208,9 +208,6 @@ class Episode:
     @staticmethod
     def from_dict(data: dict[str, str]) -> "Episode":
         data = data.copy()
-        # TMP:
-        if data.get("did_download") is None:
-            data["did_download"] = data["is_played"]
         _decrypt_csv_field(data, "overcast_url")
         _decrypt_csv_field(data, "enclosure_url")
         return fromcsvdict(Episode, data)
