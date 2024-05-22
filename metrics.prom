@@ -12,8 +12,8 @@ overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",pla
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"} 160.0
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
-overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 158.0
-overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
+overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 159.0
+overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 152.0
 overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
@@ -22,8 +22,8 @@ overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",pl
 overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
-overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 2.0
-overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 70.0
+overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
+overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 71.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 108.0
 overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
@@ -86,8 +86,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",p
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="true"} 16893.516666666663
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 117.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
-overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19623.233333333323
-overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 106.0
+overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19729.233333333323
+overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 21136.750000000004
 overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
@@ -96,8 +96,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",
 overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 103.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
-overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 179.36666666666667
-overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5635.083333333332
+overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 59.46666666666667
+overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5754.983333333332
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5455.083333333336
 overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
