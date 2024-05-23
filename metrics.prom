@@ -43,7 +43,7 @@ overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 77.
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 498.0
-overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="true"} 31.0
 overcast_episode_count{downloaded="true",feed_slug="downstream",played="false"} 0.0
@@ -54,8 +54,8 @@ overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",pl
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 55.0
 overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 313.0
-overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 1.0
+overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 314.0
+overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 307.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
@@ -117,7 +117,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4517.033333333328
-overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 8.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="true"} 2024.5833333333337
 overcast_episode_minutes{downloaded="true",feed_slug="downstream",played="false"} 0.0
@@ -128,8 +128,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 893.3833333333334
 overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7903.783333333331
-overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 15.0
+overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7918.783333333331
+overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4560.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
