@@ -54,8 +54,8 @@ overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",pl
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 55.0
 overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 315.0
-overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 314.0
+overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 308.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
@@ -128,8 +128,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 893.3833333333334
 overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7989.783333333331
-overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7918.783333333331
+overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 71.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4575.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
