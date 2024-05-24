@@ -58,8 +58,8 @@ overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"}
 overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 307.0
-overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 3.0
+overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 145.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
@@ -132,8 +132,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true
 overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4560.75
-overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 15.0
-overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 45.0
+overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"} 60.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9532.850000000004
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 46.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
