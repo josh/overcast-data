@@ -5,6 +5,7 @@ from collections.abc import Callable, Iterable, Iterator
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
+from functools import cache
 from pathlib import Path
 from types import TracebackType
 
@@ -15,13 +16,19 @@ from overcast import (
     OvercastFeedItemID,
     OvercastFeedURL,
 )
-from utils import HTTPURL, Ciphertext, decrypt, encrypt, environ_encryption_key
+from utils import (
+    HTTPURL,
+    Ciphertext,
+    EncryptionKey,
+    decrypt,
+    encrypt,
+    environ_encryption_key,
+)
 
 logger = logging.getLogger("db")
 
 
 _DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
-_ENCRYPTION_KEY = environ_encryption_key()
 
 register_cast(OvercastFeedURL, fromstr=OvercastFeedURL)
 register_cast(OvercastEpisodeURL, fromstr=OvercastEpisodeURL)
@@ -355,11 +362,17 @@ class Database(AbstractContextManager["Database"]):
             logger.error("not saving database due to exception")
 
 
+@cache
+def _encryption_key() -> EncryptionKey:
+    key = environ_encryption_key()
+    assert key, "ENCRYPTION_KEY is not set"
+    return key
+
+
 def _decrypt_csv_field(data: dict[str, str], name: str) -> None:
-    assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
     encrypted_name = f"encrypted_{name}"
     if data.get(encrypted_name):
-        data[name] = decrypt(_ENCRYPTION_KEY, Ciphertext(data[encrypted_name]))
+        data[name] = decrypt(_encryption_key(), Ciphertext(data[encrypted_name]))
     else:
         data[name] = ""
     if encrypted_name in data:
@@ -367,10 +380,9 @@ def _decrypt_csv_field(data: dict[str, str], name: str) -> None:
 
 
 def _encrypt_csv_field(data: dict[str, str], name: str) -> None:
-    assert _ENCRYPTION_KEY, "ENCRYPTION_KEY is not set"
     encrypted_name = f"encrypted_{name}"
     if data.get(name):
-        data[encrypted_name] = encrypt(_ENCRYPTION_KEY, str(data[name]))
+        data[encrypted_name] = encrypt(_encryption_key(), str(data[name]))
     else:
         data[encrypted_name] = ""
     if name in data:

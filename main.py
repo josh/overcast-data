@@ -54,6 +54,7 @@ class Context(AbstractContextManager["Context"]):
 
 
 @click.group(chain=True)
+@click.option("--encryption-key", envvar="ENCRYPTION_KEY", required=True)
 @click.option("--overcast-cookie", envvar="OVERCAST_COOKIE", required=True)
 @click.option("--offline", is_flag=True)
 @click.option(
@@ -72,6 +73,7 @@ class Context(AbstractContextManager["Context"]):
 def cli(
     ctx: click.Context,
     overcast_cookie: str,
+    encryption_key: str,
     db_path: Path,
     cache_dir: Path,
     offline: bool,
@@ -79,6 +81,8 @@ def cli(
 ) -> None:
     log_level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(level=log_level)
+
+    os.environ["ENCRYPTION_KEY"] = encryption_key
 
     session = overcast.session(
         cache_dir=cache_dir,
