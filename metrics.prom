@@ -19,7 +19,7 @@ overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="
 overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="false"} 12.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 604.0
-overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
@@ -43,7 +43,7 @@ overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 77.
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 498.0
-overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 2.0
+overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 3.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="true"} 31.0
 overcast_episode_count{downloaded="true",feed_slug="downstream",played="false"} 0.0
@@ -93,7 +93,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played
 overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="false"} 1625.583333333333
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 71212.4
-overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 165.0
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 103.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 59.46666666666667
@@ -117,7 +117,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4517.033333333328
-overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 17.0
+overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 26.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="true"} 2024.5833333333337
 overcast_episode_minutes{downloaded="true",feed_slug="downstream",played="false"} 0.0
