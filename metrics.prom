@@ -1,8 +1,8 @@
 # HELP overcast_episode_count Count of Overcast episodes
 # TYPE overcast_episode_count gauge
 overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 315.0
-overcast_episode_count{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
+overcast_episode_count{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 6.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="true"} 447.0
 overcast_episode_count{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="false"} 298.0
@@ -27,8 +27,8 @@ overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-c
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 108.0
 overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
-overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="true"} 43.0
-overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 1.0
+overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="true"} 44.0
+overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="false"} 70.0
 overcast_episode_count{downloaded="false",feed_slug="title-fights",played="true"} 22.0
 overcast_episode_count{downloaded="true",feed_slug="title-fights",played="false"} 0.0
@@ -75,8 +75,8 @@ overcast_episode_count{downloaded="false",feed_slug="under-the-radar",played="fa
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 42597.26666666667
-overcast_episode_minutes{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 147.0
-overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
+overcast_episode_minutes{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 637.8
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="true"} 43952.34999999998
 overcast_episode_minutes{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="false"} 26481.083333333332
@@ -101,8 +101,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5455.083333333336
 overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
-overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="true"} 1157.5666666666668
-overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 22.0
+overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="true"} 1179.5666666666668
+overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="false"} 2345.6333333333337
 overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="true"} 3640.55
 overcast_episode_minutes{downloaded="true",feed_slug="title-fights",played="false"} 0.0
