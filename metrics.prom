@@ -1,8 +1,8 @@
 # HELP overcast_episode_count Count of Overcast episodes
 # TYPE overcast_episode_count gauge
-overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 315.0
+overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 316.0
 overcast_episode_count{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 6.0
+overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="true"} 447.0
 overcast_episode_count{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="false"} 298.0
@@ -74,9 +74,9 @@ overcast_episode_count{downloaded="true",feed_slug="under-the-radar",played="fal
 overcast_episode_count{downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
-overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 42597.26666666667
+overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 42744.26666666667
 overcast_episode_minutes{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 637.8
+overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="true"} 43952.34999999998
 overcast_episode_minutes{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="false"} 26481.083333333332
