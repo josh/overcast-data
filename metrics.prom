@@ -4,7 +4,7 @@ overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gru
 overcast_episode_count{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="true"} 447.0
-overcast_episode_count{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="more-power-users",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="more-power-users",played="false"} 298.0
 overcast_episode_count{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -78,7 +78,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-g
 overcast_episode_minutes{downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="true"} 43952.34999999998
-overcast_episode_minutes{downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="more-power-users",played="false"} 88.0
 overcast_episode_minutes{downloaded="false",feed_slug="more-power-users",played="false"} 26481.083333333332
 overcast_episode_minutes{downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
