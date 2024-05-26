@@ -25,7 +25,7 @@ overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-c
 overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 73.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 108.0
-overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="true"} 44.0
 overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
@@ -34,8 +34,8 @@ overcast_episode_count{downloaded="false",feed_slug="title-fights",played="true"
 overcast_episode_count{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
-overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 3.0
-overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 22.0
+overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 2.0
+overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 23.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 153.0
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
@@ -99,7 +99,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and
 overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5915.633333333331
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5455.083333333336
-overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 50.0
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="true"} 1179.5666666666668
 overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
@@ -108,8 +108,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="tru
 overcast_episode_minutes{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
-overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 192.56666666666666
-overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1705.6333333333332
+overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 145.15
+overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1753.05
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11727.1
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
