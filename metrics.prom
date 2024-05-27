@@ -25,8 +25,8 @@ overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-c
 overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 73.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 108.0
-overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 1.0
-overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 276.0
+overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_count{downloaded="false",feed_slug="appstories",played="false"} 277.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="true"} 44.0
 overcast_episode_count{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="macstories-unwind",played="false"} 70.0
@@ -52,7 +52,7 @@ overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",pl
 overcast_episode_count{downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 693.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 55.0
-overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 315.0
 overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
@@ -63,8 +63,8 @@ overcast_episode_count{downloaded="false",feed_slug="dithering",played="false"} 
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 146.0
 overcast_episode_count{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
-overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 172.0
-overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 2.0
+overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="true"} 173.0
+overcast_episode_count{downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="decoding-tv",played="false"} 20.0
 overcast_episode_count{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_count{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
@@ -99,8 +99,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and
 overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5915.633333333331
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5455.083333333336
-overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 50.0
-overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11535.35
+overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="false"} 11585.35
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="true"} 1179.5666666666668
 overcast_episode_minutes{downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="macstories-unwind",played="false"} 2345.6333333333337
@@ -126,7 +126,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",
 overcast_episode_minutes{downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 98.0
 overcast_episode_minutes{downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26802.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 893.3833333333334
-overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7989.783333333331
 overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
@@ -137,8 +137,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="false"
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 9578.850000000004
 overcast_episode_minutes{downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
-overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11253.11666666667
-overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 126.0
+overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="true"} 11351.11666666667
+overcast_episode_minutes{downloaded="true",feed_slug="decoding-tv",played="false"} 28.0
 overcast_episode_minutes{downloaded="false",feed_slug="decoding-tv",played="false"} 1256.4
 overcast_episode_minutes{downloaded="false",feed_slug="money-stuff",played="true"} 0.0
 overcast_episode_minutes{downloaded="true",feed_slug="money-stuff",played="false"} 0.0
