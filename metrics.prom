@@ -40,7 +40,7 @@ overcast_episode_count{downloaded="false",feed_slug="automators-max",played="tru
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 77.0
-overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 501.0
 overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
@@ -114,7 +114,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="t
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8118.616666666667
-overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 100.0
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4543.033333333328
 overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
