@@ -22,7 +22,7 @@ overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",pl
 overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
-overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 73.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 109.0
 overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
@@ -42,8 +42,8 @@ overcast_episode_count{downloaded="false",feed_slug="automators-max",played="fal
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 77.0
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
-overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 498.0
-overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 3.0
+overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 501.0
+overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
 overcast_episode_count{downloaded="false",feed_slug="downstream",played="true"} 31.0
 overcast_episode_count{downloaded="true",feed_slug="downstream",played="false"} 0.0
@@ -96,7 +96,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",
 overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 103.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
-overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 112.55
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5915.633333333331
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5505.083333333336
 overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
@@ -116,8 +116,8 @@ overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="f
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8118.616666666667
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
-overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4517.033333333328
-overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 26.0
+overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4543.033333333328
+overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
 overcast_episode_minutes{downloaded="false",feed_slug="downstream",played="true"} 2024.5833333333337
 overcast_episode_minutes{downloaded="true",feed_slug="downstream",played="false"} 0.0
