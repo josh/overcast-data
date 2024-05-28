@@ -55,7 +55,7 @@ overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-t
 overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 315.0
-overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 308.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
@@ -129,7 +129,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday
 overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7989.783333333331
-overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 25.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4575.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
