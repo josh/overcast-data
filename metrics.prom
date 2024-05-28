@@ -34,7 +34,7 @@ overcast_episode_count{downloaded="false",feed_slug="title-fights",played="true"
 overcast_episode_count{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
-overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 2.0
+overcast_episode_count{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 3.0
 overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 23.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 153.0
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
@@ -108,7 +108,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="tru
 overcast_episode_minutes{downloaded="true",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
-overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 145.15
+overcast_episode_minutes{downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 262.9
 overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1753.05
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11727.1
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
