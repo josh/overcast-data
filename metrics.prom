@@ -13,7 +13,7 @@ overcast_episode_count{downloaded="false",feed_slug="security-now",played="true"
 overcast_episode_count{downloaded="true",feed_slug="security-now",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="security-now",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="true"} 159.0
-overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
+overcast_episode_count{downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="macbreak-weekly",played="false"} 4.0
 overcast_episode_count{downloaded="false",feed_slug="this-week-in-tech",played="true"} 152.0
 overcast_episode_count{downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
@@ -87,7 +87,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="tru
 overcast_episode_minutes{downloaded="true",feed_slug="security-now",played="false"} 117.0
 overcast_episode_minutes{downloaded="false",feed_slug="security-now",played="false"} 222.45
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="true"} 19729.233333333323
-overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
+overcast_episode_minutes{downloaded="true",feed_slug="macbreak-weekly",played="false"} 140.0
 overcast_episode_minutes{downloaded="false",feed_slug="macbreak-weekly",played="false"} 482.01666666666665
 overcast_episode_minutes{downloaded="false",feed_slug="this-week-in-tech",played="true"} 21136.750000000004
 overcast_episode_minutes{downloaded="true",feed_slug="this-week-in-tech",played="false"} 162.0
