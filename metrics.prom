@@ -22,7 +22,7 @@ overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",pl
 overcast_episode_count{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
-overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
+overcast_episode_count{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 73.0
 overcast_episode_count{downloaded="false",feed_slug="appstories",played="true"} 109.0
 overcast_episode_count{downloaded="true",feed_slug="appstories",played="false"} 0.0
@@ -39,9 +39,9 @@ overcast_episode_count{downloaded="false",feed_slug="the-filmcasts-patreon-feed"
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="true"} 153.0
 overcast_episode_count{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="automators-max",played="false"} 2.0
-overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 77.0
+overcast_episode_count{downloaded="false",feed_slug="upgrade",played="true"} 78.0
 overcast_episode_count{downloaded="true",feed_slug="upgrade",played="false"} 0.0
-overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 437.0
+overcast_episode_count{downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 501.0
 overcast_episode_count{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
@@ -55,7 +55,7 @@ overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-t
 overcast_episode_count{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="true"} 315.0
-overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 1.0
+overcast_episode_count{downloaded="true",feed_slug="stratechery",played="false"} 2.0
 overcast_episode_count{downloaded="false",feed_slug="stratechery",played="false"} 7.0
 overcast_episode_count{downloaded="false",feed_slug="dithering",played="true"} 308.0
 overcast_episode_count{downloaded="true",feed_slug="dithering",played="false"} 0.0
@@ -96,7 +96,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",
 overcast_episode_minutes{downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 103.0
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
-overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 112.55
+overcast_episode_minutes{downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 174.45
 overcast_episode_minutes{downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 5915.633333333331
 overcast_episode_minutes{downloaded="false",feed_slug="appstories",played="true"} 5505.083333333336
 overcast_episode_minutes{downloaded="true",feed_slug="appstories",played="false"} 0.0
@@ -113,9 +113,9 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-filmcasts-patreon-fee
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="true"} 11727.1
 overcast_episode_minutes{downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="automators-max",played="false"} 152.5
-overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8118.616666666667
+overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="true"} 8218.616666666667
 overcast_episode_minutes{downloaded="true",feed_slug="upgrade",played="false"} 0.0
-overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42748.0
+overcast_episode_minutes{downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4543.033333333328
 overcast_episode_minutes{downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 129.91666666666666
@@ -129,7 +129,7 @@ overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday
 overcast_episode_minutes{downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="true"} 7989.783333333331
-overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 25.0
+overcast_episode_minutes{downloaded="true",feed_slug="stratechery",played="false"} 44.0
 overcast_episode_minutes{downloaded="false",feed_slug="stratechery",played="false"} 174.36666666666667
 overcast_episode_minutes{downloaded="false",feed_slug="dithering",played="true"} 4575.75
 overcast_episode_minutes{downloaded="true",feed_slug="dithering",played="false"} 0.0
