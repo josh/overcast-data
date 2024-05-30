@@ -445,30 +445,28 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
 
     logger.info("[metrics]")
 
+    label_combinations = [
+        {"played": "true", "downloaded": "false"},
+        {"played": "false", "downloaded": "true"},
+        {"played": "false", "downloaded": "false"},
+    ]
+
     feed_slugs: dict[overcast.OvercastFeedItemID, str] = {}
     for db_feed in ctx.db.feeds:
         feed_slug = db_feed.slug
         feed_slugs[db_feed.id] = feed_slug
 
-        overcast_episode_count.labels(
-            feed_slug=feed_slug, played="true", downloaded="false"
-        ).set(0)
-        overcast_episode_count.labels(
-            feed_slug=feed_slug, played="false", downloaded="true"
-        ).set(0)
-        overcast_episode_count.labels(
-            feed_slug=feed_slug, played="false", downloaded="false"
-        ).set(0)
-
-        overcast_episode_minutes.labels(
-            feed_slug=feed_slug, played="true", downloaded="false"
-        ).set(0)
-        overcast_episode_minutes.labels(
-            feed_slug=feed_slug, played="false", downloaded="true"
-        ).set(0)
-        overcast_episode_minutes.labels(
-            feed_slug=feed_slug, played="false", downloaded="false"
-        ).set(0)
+        for label_combination in label_combinations:
+            overcast_episode_count.labels(
+                feed_slug=feed_slug,
+                played=label_combination["played"],
+                downloaded=label_combination["downloaded"],
+            ).set(0)
+            overcast_episode_minutes.labels(
+                feed_slug=feed_slug,
+                played=label_combination["played"],
+                downloaded=label_combination["downloaded"],
+            ).set(0)
 
     for db_episode in ctx.db.episodes:
         feed_slug = feed_slugs[db_episode.feed_id]
@@ -480,7 +478,6 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
                 "Episode %s is played and downloaded",
                 db_episode.overcast_url,
             )
-            continue
 
         overcast_episode_count.labels(
             feed_slug=feed_slug, played=played, downloaded=downloaded
