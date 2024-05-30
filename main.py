@@ -428,7 +428,19 @@ def _episodes_missing_optional_info(ctx: Context) -> Iterator[db.Episode]:
 def metrics(ctx: Context, metrics_filename: str | None) -> None:
     registry = CollectorRegistry()
 
-    episode_labelnames = ["feed_slug", "played", "downloaded"]
+    episode_labelnames = ["feed_slug", "played", "downloaded", "did_download"]
+    label_combinations = [
+        # New
+        {"played": "false", "downloaded": "true", "did_download": "true"},
+        # Skipped
+        {"played": "false", "downloaded": "false", "did_download": "true"},
+        # Played
+        {"played": "true", "downloaded": "false", "did_download": "true"},
+        # Unfollowed
+        {"played": "false", "downloaded": "false", "did_download": "false"},
+        # Marked as played, but never downloaded
+        {"played": "true", "downloaded": "false", "did_download": "false"},
+    ]
 
     overcast_episode_count = Gauge(
         "overcast_episode_count",
@@ -445,12 +457,6 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
 
     logger.info("[metrics]")
 
-    label_combinations = [
-        {"played": "true", "downloaded": "false"},
-        {"played": "false", "downloaded": "true"},
-        {"played": "false", "downloaded": "false"},
-    ]
-
     feed_slugs: dict[overcast.OvercastFeedItemID, str] = {}
     for db_feed in ctx.db.feeds:
         feed_slug = db_feed.slug
@@ -461,31 +467,45 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
                 feed_slug=feed_slug,
                 played=label_combination["played"],
                 downloaded=label_combination["downloaded"],
+                did_download=label_combination["did_download"],
             ).set(0)
             overcast_episode_minutes.labels(
                 feed_slug=feed_slug,
                 played=label_combination["played"],
                 downloaded=label_combination["downloaded"],
+                did_download=label_combination["did_download"],
             ).set(0)
 
     for db_episode in ctx.db.episodes:
         feed_slug = feed_slugs[db_episode.feed_id]
         played: str = "true" if db_episode.is_played is True else "false"
         downloaded: str = "true" if db_episode.is_downloaded is True else "false"
+        did_download: str = "true" if db_episode.did_download is True else "false"
 
         if played == "true" and downloaded == "true":
             logger.warning(
                 "Episode %s is played and downloaded",
                 db_episode.overcast_url,
             )
+        if downloaded == "true" and did_download == "false":
+            logger.warning(
+                "Episode %s is downloaded but marked as not downloaded",
+                db_episode.overcast_url,
+            )
 
         overcast_episode_count.labels(
-            feed_slug=feed_slug, played=played, downloaded=downloaded
+            feed_slug=feed_slug,
+            played=played,
+            downloaded=downloaded,
+            did_download=did_download,
         ).inc()
         if db_episode.duration:
             minutes = db_episode.duration.total_seconds() / 60
             overcast_episode_minutes.labels(
-                feed_slug=feed_slug, played=played, downloaded=downloaded
+                feed_slug=feed_slug,
+                played=played,
+                downloaded=downloaded,
+                did_download=did_download,
             ).inc(minutes)
 
     for line in generate_latest(registry=registry).splitlines():
