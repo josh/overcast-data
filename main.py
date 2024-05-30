@@ -438,8 +438,6 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
         {"played": "true", "downloaded": "false", "did_download": "true"},
         # Unfollowed
         {"played": "false", "downloaded": "false", "did_download": "false"},
-        # Marked as played, but never downloaded
-        {"played": "true", "downloaded": "false", "did_download": "false"},
     ]
 
     overcast_episode_count = Gauge(
