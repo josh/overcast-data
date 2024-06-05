@@ -40,7 +40,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macstori
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="false"} 16.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="true"} 45.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macstories-unwind",played="false"} 54.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fights",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fights",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 23.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
@@ -72,7 +72,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-econ
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 55.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 320.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
@@ -138,7 +138,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macsto
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="false"} 401.6333333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="true"} 1204.5666666666668
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macstories-unwind",played="false"} 1944.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-fights",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-fights",played="false"} 184.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 3820.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
@@ -170,7 +170,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ec
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 893.3833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 15.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 48.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 8129.783333333331
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
