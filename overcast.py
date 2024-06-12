@@ -970,7 +970,7 @@ def _request(
         else:
             raise e
 
-    if "Log In" in response.text:
+    if "href=\"/login\">Log In</a>" in response.text:
         logger.critical("Received logged out page")
         raise LoggedOutError()
 
