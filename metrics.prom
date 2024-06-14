@@ -97,11 +97,11 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="under-t
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="under-the-radar",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 0.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 124.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 2.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 1.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 125.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 563.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
@@ -203,10 +203,10 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="under
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="under-the-radar",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 57.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 0.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 5948.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 161.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 57.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 5999.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 161.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 61.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41260.0
