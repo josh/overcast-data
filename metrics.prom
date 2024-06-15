@@ -60,7 +60,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 513.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 6.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="true"} 32.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="downstream",played="false"} 39.0
@@ -166,7 +166,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-in
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 79.91666666666666
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4649.033333333328
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 50.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 62.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="true"} 2087.583333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="downstream",played="false"} 2467.0
