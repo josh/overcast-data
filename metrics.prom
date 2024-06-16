@@ -8,8 +8,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-pow
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 451.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 46.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 47.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 1.0
@@ -32,8 +32,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 81.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 6.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 7.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="true"} 113.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="appstories",played="false"} 270.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
@@ -48,8 +48,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-film
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 29.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 154.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
@@ -114,8 +114,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-p
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 559.0833333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 44308.34999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 105.71666666666667
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1764.9666666666665
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1870.6833333333332
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 125.0
@@ -138,8 +138,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-wi
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 6740.083333333332
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 39.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 350.35
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 389.35
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="true"} 5688.083333333336
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="appstories",played="false"} 11185.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
@@ -154,8 +154,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-fi
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 2210.633333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 67.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 152.5
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 219.5
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 11803.1
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
