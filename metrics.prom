@@ -49,8 +49,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-fil
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 154.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 155.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
@@ -155,8 +155,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-f
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 219.5
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 11803.1
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 152.5
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 11870.1
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
