@@ -12,8 +12,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-che
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 47.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 163.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
@@ -72,9 +72,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-econ
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 57.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 326.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 327.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
@@ -122,8 +122,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-c
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1870.6833333333332
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 125.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 222.45
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 347.45
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 17230.516666666663
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
@@ -182,9 +182,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ec
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 928.3833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 97.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 83.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 48.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 8262.783333333331
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 8276.783333333331
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
