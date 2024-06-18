@@ -72,7 +72,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-econ
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 57.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 326.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
@@ -182,7 +182,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ec
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 928.3833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 83.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 97.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 48.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 8262.783333333331
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
