@@ -3,7 +3,7 @@ certifi==2024.6.2
 cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
-cryptography==42.0.7
+cryptography==42.0.8
 idna==3.7
 iniconfig==2.0.0
 lru-cache @ https://github.com/josh/py-lru-cache/releases/download/v1.0.0/lru_cache-1.0.0-py3-none-any.whl
