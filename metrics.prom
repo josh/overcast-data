@@ -5,8 +5,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-tal
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 319.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 7.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 452.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 6.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 453.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 49.0
@@ -115,8 +115,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-t
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 43162.26666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 647.0833333333334
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 44390.34999999998
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 559.0833333333334
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 44478.34999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 2039.8166666666664
