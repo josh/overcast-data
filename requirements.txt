@@ -9,7 +9,7 @@ iniconfig==2.0.0
 lru-cache @ https://github.com/josh/py-lru-cache/releases/download/v1.0.0/lru_cache-1.0.0-py3-none-any.whl
 lxml==5.2.2
 mutagen==1.47.0
-mypy==1.10.0
+mypy==1.10.1
 mypy-extensions==1.0.0
 packaging==24.1
 pluggy==1.5.0
