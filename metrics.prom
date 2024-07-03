@@ -12,7 +12,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-che
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 49.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 166.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
@@ -44,8 +44,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 24.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 4.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 33.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 34.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
@@ -122,7 +122,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-c
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 2039.8166666666664
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 134.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 222.45
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 17579.516666666663
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
@@ -154,8 +154,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 4004.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 311.3
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 2500.0166666666664
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 269.56666666666666
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 2541.7499999999995
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
