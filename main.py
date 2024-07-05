@@ -413,12 +413,26 @@ def _episodes_missing_optional_info(ctx: Context) -> Iterator[db.Episode]:
     episodes = sorted(ctx.db.episodes, key=lambda e: e.date_published, reverse=True)
 
     db_episodes_missing_duration = [e for e in episodes if e.duration is None]
-    yield from db_episodes_missing_duration
-
     db_episodes_missing_enclosure_url = [e for e in episodes if e.enclosure_url is None]
-    yield from db_episodes_missing_enclosure_url
-
     db_episodes_missing_id = [e for e in episodes if e.id is None]
+
+    if db_episodes_missing_duration:
+        logger.info(
+            "[backfill-episode] %i episodes missing duration",
+            len(db_episodes_missing_duration),
+        )
+    if db_episodes_missing_enclosure_url:
+        logger.info(
+            "[backfill-episode] %i episodes missing enclosure URL",
+            len(db_episodes_missing_enclosure_url),
+        )
+    if db_episodes_missing_id:
+        logger.info(
+            "[backfill-episode] %i episodes missing ID", len(db_episodes_missing_id)
+        )
+
+    yield from db_episodes_missing_duration
+    yield from db_episodes_missing_enclosure_url
     yield from db_episodes_missing_id
 
 
