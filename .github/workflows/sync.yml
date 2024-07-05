@@ -48,7 +48,7 @@ jobs:
             refresh-opml-export \
             refresh-feeds-index \
             refresh-feeds --limit 5 \
-            backfill-episode --limit 20 \
+            backfill-episode --randomize-order --limit 20 \
             metrics --metrics-filename data/metrics.prom \
             purge-cache
         env:

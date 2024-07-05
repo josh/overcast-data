@@ -1,5 +1,6 @@
 import logging
 import os
+import random
 from collections.abc import Iterable, Iterator
 from contextlib import AbstractContextManager
 from datetime import datetime, timedelta
@@ -382,11 +383,16 @@ def _refresh_feed(ctx: Context, db_feed: db.Feed) -> None:
 
 @cli.command("backfill-episode")
 @click.option("--limit", type=int, default=1, show_default=True)
+@click.option("--randomize-order", is_flag=True, default=False)
 @click.pass_obj
-def backfill_episode(ctx: Context, limit: int) -> None:
+def backfill_episode(ctx: Context, limit: int, randomize_order: bool) -> None:
     logger.info("[backfill-episode] %s", limit)
 
-    for db_episode in islice(_episodes_missing_optional_info(ctx), limit):
+    episodes = list(_episodes_missing_optional_info(ctx))
+    if randomize_order:
+        random.shuffle(episodes)
+
+    for db_episode in islice(episodes, limit):
         try:
             html_episode = overcast.fetch_episode(
                 session=ctx.session,
