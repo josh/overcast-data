@@ -20,7 +20,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 165.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 158.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 4.0
@@ -104,7 +104,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-un
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 4.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 564.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 38.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
@@ -146,7 +146,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbre
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 139.01666666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 20563.233333333323
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 140.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 1085.5833333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 22012.850000000002
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 540.0
@@ -230,7 +230,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 313.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41341.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 86.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 320.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
