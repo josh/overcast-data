@@ -100,9 +100,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhost
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 126.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 4.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
@@ -226,9 +226,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfho
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 57.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 6078.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 66.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 313.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 379.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 86.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
