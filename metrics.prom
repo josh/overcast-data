@@ -108,8 +108,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-o
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 38.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 122.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
@@ -234,8 +234,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 320.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 8.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 6.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 14.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="true"} 8.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 738.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
