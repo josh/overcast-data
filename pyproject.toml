@@ -3,8 +3,29 @@ name = "overcast-data"
 readme = "README.md"
 authors = [{name = "Joshua Peek"}]
 requires-python = ">=3.10"
+dependencies = [
+    "beautifulsoup4>=4.11.0,<5.0",
+    "click>=8.0.0,<9.0",
+    "cryptography>=42.0.0,<43.0",
+    "lru-cache @ https://github.com/josh/py-lru-cache/releases/download/v1.0.0/lru_cache-1.0.0-py3-none-any.whl",
+    "lxml>=5.0.0,<6.0",
+    "mutagen>=1.47.0,<2.0",
+    "prometheus-client>=0.20.0",
+    "python-dateutil>=2.8.0,<3.0",
+    "requests>=2.0.0,<3.0",
+]
 classifiers = [
     "License :: OSI Approved :: MIT License",
+]
+
+[project.optional-dependencies]
+test = [
+    "mypy>=1.0.0,<2.0",
+    "pytest>=8.0.0,<9.0",
+    "ruff>=0.5.0",
+    "types-beautifulsoup4>=4.11.0,<5.0",
+    "types-python-dateutil>=2.8.0,<3.0",
+    "types-requests>=2.0.0,<3.0",
 ]
 
 [tool.pyright]
