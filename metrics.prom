@@ -117,8 +117,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakon
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 97.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 672.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-kevin-rose-show",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 1.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 63.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
@@ -243,8 +243,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freak
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 4754.416666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 26036.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-kevin-rose-show",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 87.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 48.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 135.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 4737.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
