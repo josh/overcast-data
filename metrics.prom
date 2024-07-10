@@ -72,9 +72,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-econ
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 60.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 333.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 334.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
@@ -116,15 +116,14 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 97.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 672.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-kevin-rose-show",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-kevin-rose-show",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 1.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 64.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 63.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 87.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 113.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
@@ -199,9 +198,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ec
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 988.3833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 10.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 48.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 8538.783333333331
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 8554.749999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
@@ -243,12 +242,11 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 4754.416666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 26036.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-kevin-rose-show",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-kevin-rose-show",played="false"} 87.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 48.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 4824.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 4737.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 8198.583333333332
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 8917.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="true"} 15.966666666666667
