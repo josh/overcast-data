@@ -44,7 +44,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 24.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 37.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -123,7 +123,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-ke
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 87.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 113.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 114.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
@@ -170,7 +170,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 4004.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 246.35000000000002
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 286.08333333333337
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 2727.749999999999
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -249,4 +249,4 @@ overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 8198.583333333332
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 8917.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 8990.0
