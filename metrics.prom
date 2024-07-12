@@ -81,8 +81,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="ditheri
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 318.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 154.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 155.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 3.0
@@ -108,7 +108,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-o
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 38.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 122.0
@@ -207,8 +207,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithe
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 4725.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 287.3333333333333
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 10120.850000000004
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 10192.850000000004
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 104.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 215.0
@@ -234,7 +234,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 2127.4500000000007
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 7.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 32.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="true"} 17.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 738.0
