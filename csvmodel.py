@@ -87,7 +87,7 @@ def _get_optional_origin_type(typ: object) -> type | None:
     if typing.get_origin(typ) != Union:
         return None
     args = typing.get_args(typ)
-    if len(args) != 2 or args[1] != type(None):
+    if len(args) != 2 or args[1] is type(None):
         return None
     return cast(type, args[0])
 
