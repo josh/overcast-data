@@ -105,8 +105,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-u
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 6.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 2.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 38.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 39.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 5.0
@@ -231,8 +231,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 458.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 109.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 2127.4500000000007
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 23.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 2213.4500000000007
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 39.0
