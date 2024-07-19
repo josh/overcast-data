@@ -17,10 +17,10 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
 
-      - name: Checkout gh-pages branch
+      - name: Checkout data branch
         uses: actions/checkout@v4
         with:
-          ref: "gh-pages"
+          ref: "data"
           path: "data"
 
       - name: Set up Python
@@ -66,5 +66,5 @@ jobs:
         working-directory: data/
 
       - name: Push changes
-        run: git push origin refs/heads/gh-pages
+        run: git push origin refs/heads/data
         working-directory: data/
