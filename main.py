@@ -526,12 +526,12 @@ def metrics(ctx: Context, metrics_filename: str | None) -> None:
                 did_download=did_download,
             ).inc(minutes)
 
-    for line in generate_latest(registry=registry).splitlines():
-        logger.info(line.decode())
-
     if metrics_filename:
         logger.debug("Writing metrics to %s", metrics_filename)
         write_to_textfile(metrics_filename, registry)
+    else:
+        for line in generate_latest(registry=registry).splitlines():
+            logger.info(line.decode())
 
 
 @cli.command("purge-cache")
