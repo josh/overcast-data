@@ -20,7 +20,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 167.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 160.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 4.0
@@ -96,7 +96,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="under-th
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="under-the-radar",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 40.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
@@ -116,7 +116,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-wi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 89.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 113.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 6.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
@@ -146,7 +146,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbre
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 139.01666666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 20815.233333333323
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 138.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 1085.5833333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 22282.850000000002
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 540.0
@@ -222,7 +222,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="under-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="under-the-radar",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 105.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 48.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 2306.4500000000007
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 0.0
@@ -242,7 +242,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 8356.583333333332
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 8917.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 91.46666666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 458.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
