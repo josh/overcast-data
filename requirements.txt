@@ -24,7 +24,7 @@ lxml==5.2.2
     # via overcast-data (pyproject.toml)
 mutagen==1.47.0
     # via overcast-data (pyproject.toml)
-mypy==1.10.1
+mypy==1.11.0
     # via overcast-data (pyproject.toml)
 mypy-extensions==1.0.0
     # via mypy
