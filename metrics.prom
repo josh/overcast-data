@@ -57,8 +57,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 85.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 10.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 542.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 543.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 0.0
@@ -77,8 +77,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratec
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 341.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 322.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 323.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
@@ -183,8 +183,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgra
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 9003.616666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 88.91666666666666
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4906.033333333328
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 79.91666666666666
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 4915.033333333328
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 50.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 0.0
@@ -203,8 +203,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="strat
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 8669.749999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 15.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 4785.75
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 4800.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
