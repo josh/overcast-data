@@ -120,10 +120,10 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-un
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 9.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 3.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 126.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 4.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 122.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
@@ -246,7 +246,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 693.4666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 143.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 180.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 6078.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 224.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 5891.0
