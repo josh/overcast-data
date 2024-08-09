@@ -24,8 +24,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-wee
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 163.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 4.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 618.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
@@ -80,7 +80,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="ditherin
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 326.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 158.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
@@ -150,8 +150,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-w
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 1085.5833333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 22719.850000000002
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 540.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 135.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 103.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 238.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 73086.4
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 64.73333333333333
@@ -206,7 +206,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dither
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 4845.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 91.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 10462.850000000004
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
