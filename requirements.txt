@@ -42,7 +42,7 @@ python-dateutil==2.9.0.post0
     # via overcast-data (pyproject.toml)
 requests==2.32.3
     # via overcast-data (pyproject.toml)
-ruff==0.6.4
+ruff==0.6.5
     # via overcast-data (pyproject.toml)
 six==1.16.0
     # via python-dateutil
