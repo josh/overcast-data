@@ -32,7 +32,7 @@ packaging==24.1
     # via pytest
 pluggy==1.5.0
     # via pytest
-prometheus-client==0.20.0
+prometheus-client==0.21.0
     # via overcast-data (pyproject.toml)
 pycparser==2.22
     # via cffi
