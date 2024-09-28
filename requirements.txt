@@ -12,8 +12,6 @@ click==8.1.7
     # via overcast-data (pyproject.toml)
 cryptography==43.0.1
     # via overcast-data (pyproject.toml)
-exceptiongroup==1.2.2
-    # via pytest
 idna==3.10
     # via requests
 iniconfig==2.0.0
@@ -48,10 +46,6 @@ six==1.16.0
     # via python-dateutil
 soupsieve==2.6
     # via beautifulsoup4
-tomli==2.0.1
-    # via
-    #   mypy
-    #   pytest
 types-beautifulsoup4==4.12.0.20240511
     # via overcast-data (pyproject.toml)
 types-html5lib==1.1.11.20240228
