@@ -4,8 +4,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-talk
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 325.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 7.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 464.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -68,9 +68,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 10.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 136.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 685.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 72.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 73.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1.0
@@ -134,8 +134,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ta
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 43859.86666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 85.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 652.0833333333334
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 737.0833333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 45438.34999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -198,9 +198,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 576.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 6664.6833333333325
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26339.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 23.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1217.3833333333334
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1240.3833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 48.0
