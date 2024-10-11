@@ -64,8 +64,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="downstre
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="true"} 40.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="downstream",played="false"} 39.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 10.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 11.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 139.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 685.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
@@ -84,8 +84,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-te
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 174.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 197.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 18.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="money-stuff",played="false"} 0.0
@@ -194,8 +194,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="downst
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 75.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="true"} 2602.583333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="downstream",played="false"} 2467.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 55.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 576.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 631.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 6832.6833333333325
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26339.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
@@ -214,8 +214,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 11521.416666666672
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 86.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 215.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 301.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 13125.11666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 1134.4
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="money-stuff",played="false"} 0.0
