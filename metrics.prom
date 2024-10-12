@@ -58,7 +58,7 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 596.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 597.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 1.0
@@ -128,7 +128,6 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoder-
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 780.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
@@ -189,7 +188,7 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgra
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 79.91666666666666
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 5389.8333333333285
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 5398.716666666662
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 50.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 75.0
@@ -259,4 +258,3 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decode
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 141.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="true"} 127.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 44730.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 8.883333333333333
