@@ -13,8 +13,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-ch
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 181.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 182.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 1.0
@@ -48,8 +48,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-film
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 68.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 163.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
@@ -143,8 +143,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 62.65
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 362.45
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 19446.516666666663
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 222.45
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 19586.516666666663
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 139.01666666666668
@@ -178,8 +178,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-fi
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 5182.266666666666
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 70.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 152.5
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 222.5
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 12355.1
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
