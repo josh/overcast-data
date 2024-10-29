@@ -77,8 +77,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratec
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 387.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 348.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 349.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 3.0
@@ -207,8 +207,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="strat
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 9767.499999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 15.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 5160.75
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 5175.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 133.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
