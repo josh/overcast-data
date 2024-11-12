@@ -117,8 +117,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-w
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 89.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 113.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 22.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 23.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
@@ -247,8 +247,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 8356.583333333332
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 8917.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 81.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 1670.4666666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 1751.4666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
