@@ -72,7 +72,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-econ
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 79.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 398.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
@@ -210,7 +210,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ec
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1356.3833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 11.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 48.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 10070.216666666665
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
@@ -264,7 +264,7 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decod
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 44730.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 766.7166666666665
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 778.0499999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 20161.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 8356.583333333332
