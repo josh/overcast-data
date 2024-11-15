@@ -56,7 +56,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade"
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 101.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 619.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 6.0
@@ -76,7 +76,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratech
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 399.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 353.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
@@ -116,7 +116,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-un
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 23.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 14.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 122.0
@@ -194,7 +194,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrad
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 10661.616666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 18.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 79.91666666666666
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 5591.9166666666615
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 50.0
@@ -214,7 +214,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="strate
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 48.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 10081.216666666665
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 15.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 5235.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
@@ -254,7 +254,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 1751.4666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 69.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 784.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 5891.0
