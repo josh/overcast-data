@@ -124,7 +124,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoder-
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 780.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 69.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 672.0
@@ -262,7 +262,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decode
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 141.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="true"} 127.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 44730.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 17.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 2526.2
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 20161.0
