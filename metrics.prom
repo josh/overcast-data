@@ -16,9 +16,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="security
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 186.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 185.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 186.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 8.0
@@ -154,9 +154,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="securi
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 222.45
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 20088.516666666663
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 130.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 139.01666666666668
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 23210.099999999988
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 23340.099999999988
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 172.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 1085.5833333333333
