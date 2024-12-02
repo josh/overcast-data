@@ -4,8 +4,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-talk
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 330.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 7.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 473.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -20,7 +20,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 186.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 179.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 4.0
@@ -142,8 +142,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ta
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 44492.13333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 128.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 652.0833333333334
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 780.0833333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 46257.34999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -158,7 +158,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbre
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 139.01666666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 23340.099999999988
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 153.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 1085.5833333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 25233.850000000002
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 540.0
