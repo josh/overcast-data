@@ -42,7 +42,7 @@ requests==2.32.3
     # via overcast-data (pyproject.toml)
 ruff==0.8.0
     # via overcast-data (pyproject.toml)
-six==1.16.0
+six==1.17.0
     # via python-dateutil
 soupsieve==2.6
     # via beautifulsoup4
