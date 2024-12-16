@@ -117,8 +117,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-u
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 27.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 16.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 17.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 122.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 2.0
@@ -259,8 +259,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 2058.4666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 65.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 911.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted",played="true"} 976.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted",played="false"} 5891.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 141.0
