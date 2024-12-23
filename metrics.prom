@@ -28,7 +28,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="accident
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 641.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 168.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
@@ -112,8 +112,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-kevi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 4.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 126.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 28.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
@@ -170,7 +170,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accide
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 333.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 76360.43333333332
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 124.48333333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 13718.916666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 85.95
@@ -254,8 +254,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ke
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 274.21666666666664
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 9516.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 55.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 55.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 2135.4666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted",played="false"} 0.0
