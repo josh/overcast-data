@@ -4,8 +4,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-talk
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 331.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 7.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 476.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -13,8 +13,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-ch
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 190.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 191.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 1.0
@@ -28,8 +28,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="accident
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 641.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 167.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 168.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
@@ -146,8 +146,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ta
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 44644.13333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 90.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 652.0833333333334
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 742.0833333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 46537.34999999998
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -155,8 +155,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 62.65
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 348.45
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 20603.516666666663
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 222.45
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 20729.516666666663
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 139.01666666666668
@@ -170,8 +170,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accide
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 333.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 76360.43333333332
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 48.96666666666667
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 13669.95
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 13718.916666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 85.95
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
