@@ -112,7 +112,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-kevi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 4.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 126.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 29.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 565.0
@@ -254,7 +254,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ke
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 274.21666666666664
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 9516.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="linux-unplugged",played="false"} 70.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="linux-unplugged",played="true"} 2190.4666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="linux-unplugged",played="false"} 41388.0
