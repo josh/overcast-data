@@ -39,6 +39,7 @@ _SAFARI_HEADERS = {
 
 # America/New_York
 _SERVER_TZINFO = timezone(-timedelta(hours=5))
+_SERVER_NOW = datetime.now(_SERVER_TZINFO)
 
 
 class OvercastURL(HTTPURL):
@@ -460,7 +461,7 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
     in_progress: bool | None
     is_played: bool | None
 
-    date_published = dateutil.parser.parse(parts[0]).date()
+    date_published = dateutil.parser.parse(parts[0], default=_SERVER_NOW).date()
 
     if len(parts) == 2 and parts[1] == "played":
         in_progress = False
@@ -590,7 +591,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
 
     date_published: date | None = None
     if div_el := soup.select_one(".centertext > div"):
-        date_published = dateutil.parser.parse(div_el.text).date()
+        date_published = dateutil.parser.parse(div_el.text, default=_SERVER_NOW).date()
     assert date_published
 
     download_state: Literal["new"] | Literal["existing"] | None = None
@@ -699,7 +700,9 @@ def _opml_feeds(soup: BeautifulSoup, fetched_at: datetime) -> list[ExportFeed]:
         title: str = outline.attrs["title"]
         html_url: str = outline.attrs["htmlUrl"]
         xml_url: str = outline.attrs["xmlUrl"]
-        added_at = dateutil.parser.parse(outline.attrs["overcastAddedDate"])
+        added_at = dateutil.parser.parse(
+            outline.attrs["overcastAddedDate"], default=_SERVER_NOW
+        )
 
         feed = ExportFeed(
             fetched_at=fetched_at,
@@ -844,7 +847,9 @@ def _opml_extended_feeds(
         title: str = outline.attrs["title"]
         html_url = HTTPURL(outline.attrs["htmlUrl"])
         xml_url = HTTPURL(outline.attrs["xmlUrl"])
-        added_at = dateutil.parser.parse(outline.attrs["overcastAddedDate"])
+        added_at = dateutil.parser.parse(
+            outline.attrs["overcastAddedDate"], default=_SERVER_NOW
+        )
         is_subscribed: bool = outline.attrs.get("subscribed", "0") == "1"
 
         feed = ExtendedExportFeed(
@@ -911,11 +916,15 @@ def _opml_extended_episode(
     for outline in rss_outline.select("outline[type='podcast-episode']"):
         overcast_url = OvercastEpisodeURL(outline.attrs["overcastUrl"])
         item_id = OvercastEpisodeItemID(int(outline.attrs["overcastId"]))
-        date_published = dateutil.parser.parse(outline.attrs["pubDate"])
+        date_published = dateutil.parser.parse(
+            outline.attrs["pubDate"], default=_SERVER_NOW
+        )
         title: str = outline.attrs["title"]
         url = HTTPURL(outline.attrs["url"])
         enclosure_url = HTTPURL(outline.attrs["enclosureUrl"])
-        user_updated_at = dateutil.parser.parse(outline.attrs["userUpdatedDate"])
+        user_updated_at = dateutil.parser.parse(
+            outline.attrs["userUpdatedDate"], default=_SERVER_NOW
+        )
         user_deleted: bool = outline.attrs.get("userDeleted", "0") == "1"
         progress: int = int(outline.attrs.get("progress", "0"))
         is_played: bool = outline.attrs.get("played", "0") == "1"
