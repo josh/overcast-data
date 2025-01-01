@@ -1,5 +1,5 @@
 import os
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -137,7 +137,8 @@ def test_export_account_extended_data(overcast_session: Session) -> None:
 
 
 def test_parse_episode_caption_text() -> None:
-    now = date.today()
+    server_tzinfo = timezone(-timedelta(hours=5))
+    now = datetime.now(server_tzinfo).date()
 
     result = parse_episode_caption_text("Apr 1 • played")
     assert result.date_published == date(now.year, 4, 1)
