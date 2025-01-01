@@ -27,11 +27,16 @@ id,overcast_url,encrypted_title,clean_title,slug,html_url,added_at,is_added,is_f
 4653984,https://overcast.fm/itunes1732181427/discover-daily-by-perplexity,ww6JCQEn5x+SRJTxZ6KZXOpJSMbEkusRz6oL9pbde4U=,Discover Daily by Perplexity,discover-daily-by-perplexity,http://perplexity.ai/,2024-07-04T03:40:25+00:00,0,0
 1468593,https://overcast.fm/itunes354668519/freakonomics-radio,dFgGVBLFHH/aplBwgiA+e2OTAib3apOpRsH2zRqwsIM=,Freakonomics Radio,freakonomics-radio,https://freakonomics.com/,2024-07-04T03:47:07+00:00,0,0
 4611223,https://overcast.fm/p4611223-oNqDul,iTRi/keq1jk81at+/mxmCl3frIvmzKCt2xRdRlYePus=,The Kevin Rose Show,the-kevin-rose-show,https://www.kevinrose.com/,2024-07-04T03:49:40+00:00,0,0
-4678585,https://overcast.fm/itunes687598126/linux-unplugged,iIqmVtNWVVm2dAg7cMljqw==,LINUX Unplugged,linux-unplugged,https://jblive.tv/,2024-07-14T06:39:23+00:00,1,1
-1300413,https://overcast.fm/itunes1477997392/self-hosted,4G5bNoDFejUJ4qRqINyaQw==,Self-Hosted,selfhosted,https://selfhosted.show/,2024-07-14T06:39:23+00:00,1,1
+4678585,https://overcast.fm/itunes687598126/linux-unplugged,iIqmVtNWVVm2dAg7cMljqw==,LINUX Unplugged,linux-unplugged,https://jblive.tv/,2024-07-14T06:39:23+00:00,0,1
+1300413,https://overcast.fm/itunes1477997392/self-hosted,4G5bNoDFejUJ4qRqINyaQw==,Self-Hosted,selfhosted,https://selfhosted.show/,2024-07-14T06:39:23+00:00,0,1
 1060315,https://overcast.fm/itunes1011668648/decoder-with-nilay-patel,cOxXQyWHuMMK80ajO7K2zmB+iuzW00X1NZCfvtAvOEA=,Decoder with Nilay Patel,decoder-with-nilay-patel,https://theverge.com/,2024-09-09T15:46:53+00:00,0,0
 4499607,https://overcast.fm/itunes98746009/real-time-with-bill-maher,qA9RbNjR4bPU606LChg3Se81hZvWVdK57RX22N4Af3A=,Real Time with Bill Maher,real-time-with-bill-maher,http://www.hbo.com/real-time-with-bill-maher,2024-11-12T22:09:03+00:00,1,0
 1611289,https://overcast.fm/itunes1502871393/all-in-with-chamath-jason-sacks-friedberg,S4fOzm9fpr2jxC+s/sAePlRQLi7Gc8vyT1RG99GGWMNDgtTXQ1kyiKYlUdIbqgNU,"All-In with Chamath, Jason, Sacks & Friedberg",allin-with-chamath-jason-sacks-friedberg,http://allinchamathjason.libsyn.com/website,2024-11-13T03:30:48+00:00,1,0
 4177809,https://overcast.fm/itunes1596728253/digital-foundry-direct-weekly,6sq4ePlQyk7eXbwHjh/VQifbHx+ndaXswitzeDobvSk=,Digital Foundry Direct Weekly,digital-foundry-direct-weekly,https://digitalfoundry.podbean.com/,2024-11-13T03:31:56+00:00,0,0
 4997905,https://overcast.fm/p4997905-8OabII,6sq4ePlQyk7eXbwHjh/VQspEZN7lY/ZCaF34AF/SSUv0xp4oM7up6xQvDJRJl568,Digital Foundry Supporter Podcast Access,digital-foundry-supporter-podcast-access,https://www.digitalfoundry.net/,2024-12-07T01:08:50+00:00,1,0
 4817528,https://overcast.fm/itunes1088864895/the-kevin-rose-show,iTRi/keq1jk81at+/mxmCl3frIvmzKCt2xRdRlYePus=,The Kevin Rose Show,the-kevin-rose-show,,,0,0
+5023914,https://overcast.fm/p5023914-XQ5oPO,f9kbvbOMbNRqy17kun218QYWyJLzbbflb1ekL2xaHC7GKZ8l+1OsU9pH92l9y7W3,Coder QA,coder-qa,,,1,
+5023912,https://overcast.fm/p5023912-NjaYLL,COAS0sY9Xdtc/VS13QMB5WRagPltbsmJNm92LkX+YdE=,Coder Radio Source,coder-radio-source,,,1,
+5023915,https://overcast.fm/p5023915-EPX9Zj,XemncuUnUodWdsGmK7+QgoS/nnHpbVk+a5Uypzush+yGTP08gSzIiYg60F7V7IQ7,Core Contributor,core-contributor,,,1,
+5023904,https://overcast.fm/p5023904-CNQHEk,1PtcwRgq5CjZJby79B+hPg==,LIVE Unplugged,live-unplugged,,,1,
+5023903,https://overcast.fm/p5023903-bFypPj,Kfr5UW5Ds990B3NXau64ur8QzGhrN07wJTVGx8+ZeI3O9PCBUEl7GV34UofkBxBk,Self-Hosted SRE,selfhosted-sre,,,1,
