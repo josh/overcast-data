@@ -144,8 +144,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-qa
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-qa",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-qa",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="coder-qa",played="false"} 235.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="coder-radio-source",played="false"} 7.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
@@ -306,8 +306,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-qa",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-qa",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="coder-qa",played="false"} 11011.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 84.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="false"} 84.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="coder-radio-source",played="false"} 498.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
