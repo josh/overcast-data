@@ -20,7 +20,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 191.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 185.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 4.0
@@ -144,8 +144,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhost
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted-sre",played="false"} 112.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 229.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
@@ -156,8 +156,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-qa
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-qa",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-qa",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="coder-qa",played="false"} 234.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
@@ -182,7 +182,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbre
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 139.01666666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 24093.099999999988
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 155.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 1085.5833333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 26134.9
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 540.0
@@ -306,8 +306,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfho
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 51.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted-sre",played="false"} 6119.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 151.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 151.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 295.6
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 31928.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
@@ -318,7 +318,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-qa",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-qa",played="true"} 97.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="coder-qa",played="false"} 10955.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 74.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 74.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 138.38333333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
