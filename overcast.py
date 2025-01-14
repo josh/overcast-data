@@ -896,12 +896,12 @@ class ExtendedExportEpisode:
             assert self.title, self.title
             assert self.date_published.tzinfo, "published date must be timezone-aware"
             assert self.user_updated_at.tzinfo, "updated date must be timezone-aware"
-            assert self.date_published <= datetime.now(
-                timezone.utc
-            ), self.date_published
-            assert self.user_updated_at < datetime.now(
-                timezone.utc
-            ), self.user_updated_at
+            assert self.date_published <= datetime.now(timezone.utc), (
+                self.date_published
+            )
+            assert self.user_updated_at < datetime.now(timezone.utc), (
+                self.user_updated_at
+            )
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:

@@ -144,9 +144,9 @@ class FeedCollection:
         feeds_lst = list(self._feeds)
 
         for field, count in self._nonnull_counts().items():
-            assert (
-                count >= self._initial_nonnull_counts[field]
-            ), f"{field} non-null count decreased"
+            assert count >= self._initial_nonnull_counts[field], (
+                f"{field} non-null count decreased"
+            )
 
         assert len(set(f.id for f in feeds_lst)) == len(feeds_lst), "Duplicate IDs"
 
@@ -284,13 +284,13 @@ class EpisodeCollection:
         episodes_lst = list(self._episodes)
 
         for field, count in self._nonnull_counts().items():
-            assert (
-                count >= self._initial_nonnull_counts[field]
-            ), f"{field} non-null count decreased"
+            assert count >= self._initial_nonnull_counts[field], (
+                f"{field} non-null count decreased"
+            )
 
-        assert len(set(e.overcast_url for e in episodes_lst)) == len(
-            episodes_lst
-        ), "Duplicate Overcast URLs"
+        assert len(set(e.overcast_url for e in episodes_lst)) == len(episodes_lst), (
+            "Duplicate Overcast URLs"
+        )
 
         with filename.open("w") as csvfile:
             writer = csv.DictWriter(
