@@ -32,8 +32,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 175.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 6.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 7.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="true"} 141.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="appstories",played="false"} 270.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
@@ -72,8 +72,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-econ
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 86.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 2.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 421.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
@@ -194,8 +194,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-wi
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 14482.333333333336
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 85.95
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 42.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 350.35
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 392.35
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="true"} 7055.033333333336
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="appstories",played="false"} 11185.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
@@ -234,8 +234,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ec
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 35.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1470.3833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 72.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 48.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 120.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 10678.516666666665
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 126.36666666666667
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
