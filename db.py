@@ -263,6 +263,9 @@ class EpisodeCollection:
     def __iter__(self) -> Iterator[Episode]:
         yield from self._episodes
 
+    def __delitem__(self, episode: Episode) -> None:
+        self._episodes.remove(episode)
+
     def insert_or_update(
         self,
         episode_url: OvercastEpisodeURL,
