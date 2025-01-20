@@ -414,7 +414,10 @@ def backfill_episode(ctx: Context, limit: int, randomize_order: bool) -> None:
             logger.error("Rate limited")
             continue
         except overcast.NotFound:
-            logger.warning("Episode not found, skipping: %s", db_episode.overcast_url)
+            feed_title = "Missing feed"
+            if feed := ctx.db.feeds.get(db_episode.feed_id):
+                feed_title = feed.title
+            logger.warning("Skipping '%s' '%s'", feed_title, db_episode.title)
             continue
 
 

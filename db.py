@@ -137,6 +137,12 @@ class FeedCollection:
     def __iter__(self) -> Iterator[Feed]:
         yield from self._feeds
 
+    def get(self, feed_id: OvercastFeedItemID) -> Feed | None:
+        for f in self._feeds:
+            if f.id == feed_id:
+                return f
+        return None
+
     def sort(self) -> None:
         self._feeds.sort(key=Feed._sort_key)
 
