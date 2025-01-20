@@ -162,6 +162,10 @@ class RatedLimitedError(Exception):
     pass
 
 
+class NotFound(Exception):
+    pass
+
+
 @dataclass
 class Session:
     requests_session: requests_cache.Session
@@ -976,6 +980,9 @@ def _request(
         if e.response.status_code == 429:
             logger.critical("Rate limited")
             raise RatedLimitedError()
+        elif e.response.status_code == 404:
+            logger.warning("Page not found: %s", url)
+            raise NotFound(f"Page not found: {url}")
         else:
             raise e
 

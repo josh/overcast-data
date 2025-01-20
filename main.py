@@ -413,6 +413,9 @@ def backfill_episode(ctx: Context, limit: int, randomize_order: bool) -> None:
         except overcast.RatedLimitedError:
             logger.error("Rate limited")
             continue
+        except overcast.NotFound:
+            logger.warning("Episode not found, skipping: %s", db_episode.overcast_url)
+            continue
 
 
 def _episodes_missing_optional_info(ctx: Context) -> Iterator[db.Episode]:
