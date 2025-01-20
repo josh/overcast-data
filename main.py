@@ -419,12 +419,6 @@ def backfill_episode(ctx: Context, limit: int, randomize_order: bool) -> None:
             continue
         except overcast.NotFound:
             logger.warning("Skipping '%s' '%s'", feed_title, db_episode.title)
-            logger.warning(
-                "DEBUG: id:%s; enclosure_url:%s; duration:%s",
-                db_episode.id,
-                db_episode.enclosure_url,
-                db_episode.duration,
-            )
             continue
 
 
