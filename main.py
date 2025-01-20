@@ -394,6 +394,10 @@ def backfill_episode(ctx: Context, limit: int, randomize_order: bool) -> None:
 
     for db_episode in islice(episodes, limit):
         try:
+            feed_title = "Missing feed"
+            if feed := ctx.db.feeds.get(db_episode.feed_id):
+                feed_title = feed.title
+
             html_episode = overcast.fetch_episode(
                 session=ctx.session,
                 episode_url=db_episode.overcast_url,
@@ -414,10 +418,9 @@ def backfill_episode(ctx: Context, limit: int, randomize_order: bool) -> None:
             logger.error("Rate limited")
             continue
         except overcast.NotFound:
-            feed_title = "Missing feed"
-            if feed := ctx.db.feeds.get(db_episode.feed_id):
-                feed_title = feed.title
-            logger.warning("Skipping '%s' '%s'", feed_title, db_episode.title)
+            # logger.warning("Skipping '%s' '%s'", feed_title, db_episode.title)
+            logger.error("Pruning '%s' '%s'", feed_title, db_episode.title)
+            del ctx.db.episodes[db_episode]
             continue
 
 
