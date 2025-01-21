@@ -64,7 +64,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="downstre
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="true"} 40.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="downstream",played="false"} 46.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 10.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 159.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 685.0
@@ -226,7 +226,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="downst
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 75.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="true"} 2602.583333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="downstream",played="false"} 2857.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 155.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio-plus",played="false"} 175.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 576.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 7812.916666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26339.0
