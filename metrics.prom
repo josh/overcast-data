@@ -160,6 +160,14 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-con
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 4.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-bitcoin",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="true"} 0.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 42.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-google",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-google",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-google",played="true"} 0.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-google",played="false"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
@@ -323,4 +331,12 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-c
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 58.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 292.3833333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-bitcoin",played="false"} 72.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="true"} 0.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 2200.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-google",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-google",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-google",played="true"} 0.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-google",played="false"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="true"} 30.266666666666666
