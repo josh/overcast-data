@@ -163,7 +163,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-c
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-google",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-google",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-google",played="true"} 1.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-google",played="false"} 0.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-google",played="false"} 198.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-bitcoin",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="true"} 0.0
@@ -333,7 +333,7 @@ overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-google",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-google",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-google",played="true"} 1.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-google",played="false"} 0.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-google",played="false"} 28475.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-bitcoin",played="false"} 72.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="true"} 0.0
