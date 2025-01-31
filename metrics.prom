@@ -69,8 +69,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakon
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 162.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 685.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 89.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 90.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 6.0
@@ -239,8 +239,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freak
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 7973.916666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26339.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 55.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1522.3833333333334
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 35.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1542.3833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 89.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 351.0
