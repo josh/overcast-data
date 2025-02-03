@@ -56,7 +56,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade"
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 111.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 672.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 6.0
@@ -156,8 +156,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-qa
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-qa",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-qa",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="coder-qa",played="false"} 234.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="intelligent-machines",played="false"} 0.0
@@ -226,7 +226,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrad
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 100.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 11776.616666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 79.91666666666666
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 6072.216666666662
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 50.0
@@ -326,8 +326,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-qa",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-qa",played="true"} 220.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="coder-qa",played="false"} 10955.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 65.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 65.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 350.3833333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intelligent-machines",played="false"} 0.0
