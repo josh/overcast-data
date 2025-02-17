@@ -157,8 +157,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-q
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-qa",played="true"} 6.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="coder-qa",played="false"} 234.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 7.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 8.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="intelligent-machines",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 1.0
@@ -327,8 +327,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-qa",played="true"} 223.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="coder-qa",played="false"} 10955.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 63.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 480.3833333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 543.3833333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intelligent-machines",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 140.0
