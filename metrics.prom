@@ -77,8 +77,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratec
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 440.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 374.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 375.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
@@ -144,7 +144,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhost
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 4.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted-sre",played="false"} 112.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 7.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 229.0
@@ -247,8 +247,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="strat
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 11227.216666666664
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 1061.3666666666668
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 15.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 5550.75
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 5565.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
@@ -314,7 +314,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfho
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 211.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted-sre",played="false"} 6119.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 166.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 1022.6
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 31928.0
