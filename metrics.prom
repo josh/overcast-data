@@ -71,7 +71,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="freako
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 92.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 94.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 440.0
@@ -160,7 +160,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-con
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 8.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="intelligent-machines",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="intelligent-machines",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 3.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 198.0
@@ -169,6 +169,7 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-we
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 42.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="true"} 1.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
@@ -242,7 +243,7 @@ overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="frea
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 22.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 35.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1577.3833333333334
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 0.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 1586.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 22.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 476.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 11227.216666666664
@@ -331,7 +332,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-c
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 543.3833333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intelligent-machines",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intelligent-machines",played="false"} 158.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 140.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 323.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 28475.0
