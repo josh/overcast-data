@@ -104,10 +104,10 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="discover
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 124.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 97.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 672.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 97.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 0.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 717.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 4.0
@@ -168,6 +168,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-wee
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 42.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
@@ -274,10 +275,10 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="discov
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 39.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="true"} 17.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 755.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 4754.416666666667
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 26036.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 13.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 4754.416666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 0.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 28380.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-kevin-rose-show",played="true"} 274.21666666666664
