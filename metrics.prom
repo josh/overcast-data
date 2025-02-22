@@ -161,9 +161,9 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelli
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 4.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 198.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 97.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 98.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 2.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 717.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1582.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-bitcoin",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="true"} 0.0
@@ -331,9 +331,9 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intel
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 481.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 28475.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 50.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 4754.416666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 4804.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 54.38333333333333
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 28380.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63613.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-bitcoin",played="false"} 72.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-bitcoin",played="true"} 0.0
