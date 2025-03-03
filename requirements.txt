@@ -10,7 +10,7 @@ charset-normalizer==3.4.1
     # via requests
 click==8.1.8
     # via overcast-data (pyproject.toml)
-cryptography==44.0.1
+cryptography==44.0.2
     # via overcast-data (pyproject.toml)
 idna==3.10
     # via requests
