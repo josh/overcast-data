@@ -68,7 +68,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 10.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 170.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 686.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 98.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 188.0
@@ -140,8 +140,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhost
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 6.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted-sre",played="false"} 112.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 10.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 229.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
@@ -238,7 +238,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 576.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 8269.916666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26407.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 16.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 35.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 35.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1683.1000000000001
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 3174.0
@@ -310,8 +310,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfho
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 318.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted-sre",played="false"} 6119.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 92.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 92.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 1471.6
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 31928.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
