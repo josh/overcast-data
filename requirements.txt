@@ -14,7 +14,7 @@ cryptography==44.0.2
     # via overcast-data (pyproject.toml)
 idna==3.10
     # via requests
-iniconfig==2.0.0
+iniconfig==2.1.0
     # via pytest
 lru-cache @ https://github.com/josh/py-lru-cache/releases/download/v1.0.1/lru_cache-1.0.1-py3-none-any.whl
     # via overcast-data (pyproject.toml)
