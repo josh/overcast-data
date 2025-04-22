@@ -1,7 +1,13 @@
+import os
+
+import pytest
+
 from db import Feed
 
 
 def test_feed_dict_roundtrip() -> None:
+    if "ENCRYPTION_KEY" not in os.environ:
+        pytest.skip("ENCRYPTION_KEY not set")
     feed_dict = {
         "overcast_url": "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber",
         "id": "126160",
