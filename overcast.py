@@ -847,6 +847,10 @@ def _opml_extended_feeds(
     feeds: list[ExtendedExportFeed] = []
 
     for outline in soup.select("outline[text='feeds'] > outline[type='rss']"):
+        if outline.attrs.get("htmlUrl", "") == "":
+            logger.error("Feed missing htmlUrl: %s", outline.attrs["title"])
+            continue
+
         item_id = OvercastFeedItemID(int(outline.attrs["overcastId"]))
         title: str = outline.attrs["title"]
         html_url = HTTPURL(outline.attrs["htmlUrl"])
