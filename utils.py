@@ -33,7 +33,7 @@ class HTTPURL(URL):
         try:
             components = urlparse(urlstring)
             if components.scheme not in ["http", "https"]:
-                raise ValueError(f"Invalid HTTP URL: {urlstring}")
+                raise ValueError(f"Invalid HTTP URL: '{urlstring}'")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
                 raise e
