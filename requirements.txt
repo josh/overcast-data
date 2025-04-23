@@ -44,7 +44,7 @@ ruff==0.11.2
     # via overcast-data (pyproject.toml)
 six==1.17.0
     # via python-dateutil
-soupsieve==2.6
+soupsieve==2.7
     # via beautifulsoup4
 types-beautifulsoup4==4.12.0.20240511
     # via overcast-data (pyproject.toml)
