@@ -28,7 +28,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="accident
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 660.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 214.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 7.0
@@ -68,13 +68,13 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 10.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 170.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 686.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 2.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 104.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 105.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 188.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 9.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 474.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 475.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
@@ -164,7 +164,6 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-con
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 17.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 128.4
@@ -195,7 +194,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accide
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 518.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 79136.46666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 245.73333333333335
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 305.4166666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 17733.216666666674
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 701.9
@@ -235,13 +234,13 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 576.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio-plus",played="true"} 8269.916666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio-plus",played="false"} 26407.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 57.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-economics-of-everyday-things",played="false"} 37.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 35.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1793.1000000000001
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 1813.1000000000001
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 3174.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 155.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 538.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 11991.816666666664
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 12002.866666666663
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 1061.3666666666668
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
@@ -331,4 +330,3 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-c
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 1078.1833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="true"} 11.05
