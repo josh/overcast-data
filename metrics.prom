@@ -80,8 +80,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="ditherin
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 396.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 219.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 4.0
@@ -156,8 +156,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="intellig
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 204.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 100.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 103.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 13.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1583.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
@@ -246,8 +246,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dither
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 5880.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 60.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 275.3333333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 14597.416666666672
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 286.0
@@ -322,8 +322,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intell
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 140.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 614.35
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 29427.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 130.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 4884.416666666667
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 5014.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 572.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63658.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
