@@ -57,5 +57,6 @@ jobs:
           git update-ref refs/heads/data "${{ steps.new-commit.outputs.sha }}"
 
       - name: Push changes
+        if: steps.new-commit.outputs.sha != ''
         run: |
           git push --force origin data
