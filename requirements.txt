@@ -28,7 +28,7 @@ mypy-extensions==1.1.0
     # via mypy
 packaging==25.0
     # via pytest
-pluggy==1.5.0
+pluggy==1.6.0
     # via pytest
 prometheus-client==0.21.1
     # via overcast-data (pyproject.toml)
