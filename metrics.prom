@@ -28,7 +28,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="accident
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 664.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 224.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 9.0
@@ -44,7 +44,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 29.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 129.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -194,7 +194,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accide
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 619.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 79680.46666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 94.88333333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 18631.183333333345
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 828.3666666666666
@@ -210,7 +210,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 4930.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 46.266666666666666
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 9802.21666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
