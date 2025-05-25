@@ -4,7 +4,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-talk
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 337.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 11.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 494.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
@@ -32,8 +32,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 225.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 9.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 7.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="true"} 159.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="appstories",played="false"} 270.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
@@ -170,7 +170,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ta
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 45467.53333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 105.08333333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 985.0833333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 48068.13333333331
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
@@ -198,8 +198,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-wi
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 18726.06666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 828.3666666666666
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 43.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 412.35
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 455.35
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="true"} 7881.033333333336
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="appstories",played="false"} 11185.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macstories-unwind",played="false"} 0.0
