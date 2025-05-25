@@ -84,7 +84,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-te
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 225.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 252.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 18.0
@@ -139,7 +139,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfho
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 17.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 233.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 234.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="true"} 1.0
@@ -250,7 +250,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 14980.416666666672
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 175.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 244.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 360.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 16985.11666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 1134.4
@@ -305,7 +305,7 @@ overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="self
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 2393.6
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 32461.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 32599.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="true"} 84.0
