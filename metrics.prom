@@ -132,7 +132,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 241.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 11.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfhosted-sre",played="false"} 112.0
@@ -152,7 +152,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="intellig
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 204.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 107.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 15.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1584.0
@@ -298,7 +298,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digita
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 287.73333333333335
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 23186.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 73.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 608.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="selfhosted-sre",played="false"} 6119.0
@@ -318,7 +318,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intell
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 140.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 614.35
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 29427.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 62.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 5233.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 692.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63711.0
