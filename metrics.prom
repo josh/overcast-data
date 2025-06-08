@@ -8,7 +8,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-pow
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 11.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 495.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 91.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 261.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
@@ -174,7 +174,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-p
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 985.0833333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 48173.216666666645
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 88.18333333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 4764.233333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 12790.833333333328
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 62.65
