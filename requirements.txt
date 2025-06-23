@@ -34,7 +34,7 @@ prometheus-client==0.22.1
     # via overcast-data (pyproject.toml)
 pycparser==2.22
     # via cffi
-pytest==8.4.0
+pytest==8.4.1
     # via overcast-data (pyproject.toml)
 python-dateutil==2.9.0.post0
     # via overcast-data (pyproject.toml)
