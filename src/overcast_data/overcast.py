@@ -14,8 +14,8 @@ import requests
 from bs4 import BeautifulSoup, Tag
 from lru_cache import PersistentLRUCache, bytesize
 
-import requests_cache
-from utils import HTTPURL, URL
+from . import requests_cache
+from .utils import HTTPURL, URL
 
 logger = logging.getLogger("overcast")
 

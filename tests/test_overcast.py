@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pytest
 
-import overcast
-from overcast import (
+from overcast_data import overcast
+from overcast_data.overcast import (
     OvercastEpisodeURL,
     OvercastFeedURL,
     Session,
@@ -17,7 +17,7 @@ from overcast import (
     fetch_podcasts,
     parse_episode_caption_text,
 )
-from utils import HTTPURL
+from overcast_data.utils import HTTPURL
 
 _OFFLINE = "PYTEST_OFFLINE" in os.environ
 

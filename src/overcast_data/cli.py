@@ -17,9 +17,8 @@ from prometheus_client import (
     write_to_textfile,
 )
 
-import db
-import overcast
-from db import Database
+from . import db, overcast
+from .db import Database
 
 logger = logging.getLogger("overcast-data")
 

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from typing import NewType
 
-from csvmodel import ascsvdict, ascsvrow, castcsvstr, csvstr, fromcsvdict
+from overcast_data.csvmodel import ascsvdict, ascsvrow, castcsvstr, csvstr, fromcsvdict
 
 NonEmptyStr = NewType("NonEmptyStr", str)
 PostiveInt = NewType("PostiveInt", int)

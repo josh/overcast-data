@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from db import Feed
+from overcast_data.db import Feed
 
 
 def test_feed_dict_roundtrip() -> None:

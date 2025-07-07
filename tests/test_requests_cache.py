@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 import requests
 
-from requests_cache import Session, bytes_to_response, response_to_bytes
+from overcast_data.requests_cache import Session, bytes_to_response, response_to_bytes
 
 _OFFLINE = "PYTEST_OFFLINE" in os.environ
 
