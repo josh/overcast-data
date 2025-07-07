@@ -9,16 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: "pyproject.toml"
-
       - uses: astral-sh/setup-uv@v6
 
       - name: Install dependencies
-        run: |
-          uv pip install --system --requirement requirements.txt
+        run: uv sync
 
       - name: Load cache
         uses: actions/cache@v4
@@ -30,7 +24,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          pytest --log-cli-level info --verbose
+          uv run pytest --log-cli-level info --verbose
         env:
           XDG_CACHE_HOME: .cache/
           OVERCAST_COOKIE: ${{ secrets.OVERCAST_COOKIE }}
