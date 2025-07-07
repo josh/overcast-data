@@ -25,7 +25,7 @@ classifiers = [
 ]
 
 [project.scripts]
-overcast-data = "overcast_data:cli.main"
+overcast-data = "overcast_data:cli.cli"
 
 [dependency-groups]
 dev = [
