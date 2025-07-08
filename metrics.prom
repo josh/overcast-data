@@ -4,9 +4,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-talk
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 340.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 11.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 498.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 499.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 94.0
@@ -44,7 +44,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 29.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 5.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 138.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -84,9 +84,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-te
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 231.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 4.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 6.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 259.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 260.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 18.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="money-stuff",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="money-stuff",played="false"} 1.0
@@ -170,9 +170,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-ta
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 45819.53333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 264.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 183.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 985.0833333333334
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 48478.216666666645
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 48559.216666666645
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 72.71666666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 4994.7
@@ -210,7 +210,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 4930.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 397.1333333333333
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 492.0833333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 10503.650000000003
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -250,9 +250,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 15355.416666666672
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 250.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 212.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 360.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 17514.11666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 17552.11666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 1134.4
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="money-stuff",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="money-stuff",played="false"} 31.0
