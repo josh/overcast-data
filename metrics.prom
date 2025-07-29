@@ -44,7 +44,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 29.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 149.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 368.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -152,7 +152,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="intellig
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 204.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 112.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 21.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1584.0
@@ -210,7 +210,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 346.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 4930.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 108.11666666666667
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 230.18333333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 11411.433333333336
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 29167.31666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -318,7 +318,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intell
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 140.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 614.35
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 29427.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 162.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 187.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 5440.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 1010.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63711.0
