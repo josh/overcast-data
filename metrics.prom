@@ -20,7 +20,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 220.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 14.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 207.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 5.0
@@ -156,8 +156,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 113.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 25.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1584.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 31.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
@@ -186,7 +186,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbre
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 139.01666666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 27808.099999999988
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 157.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 2036.5833333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 29450.166666666668
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 680.0
@@ -322,8 +322,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 5465.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 1219.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63711.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 63.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 63.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 1980.1833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
