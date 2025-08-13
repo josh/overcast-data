@@ -57,8 +57,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 139.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 11.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 808.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 10.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 809.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 6.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 1.0
@@ -169,8 +169,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-ti
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-time-nix",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="full-time-nix",played="false"} 49.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sub-club-by-revenuecat",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="true"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 133.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
@@ -231,8 +231,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgra
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 14925.616666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 96.91666666666666
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 7272.683333333329
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 87.91666666666666
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 7281.683333333329
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 50.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="downstream",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="downstream",played="false"} 75.0
@@ -343,6 +343,6 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="true"} 84.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="full-time-nix",played="false"} 2020.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sub-club-by-revenuecat",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 137.16666666666666
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="true"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="true"} 137.16666666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 6626.0
