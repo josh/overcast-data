@@ -85,8 +85,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-t
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 242.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 8.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 278.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 7.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 279.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 18.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="money-stuff",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="money-stuff",played="false"} 1.0
@@ -259,8 +259,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 16311.416666666672
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 484.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 18796.11666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 438.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 18842.11666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 1134.4
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="money-stuff",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="money-stuff",played="false"} 31.0
