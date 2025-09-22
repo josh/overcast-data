@@ -139,7 +139,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="selfho
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 17.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 251.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 252.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="true"} 1.0
@@ -156,7 +156,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 118.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 29.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1585.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 38.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
@@ -313,7 +313,7 @@ overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="self
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 2393.6
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 34888.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 35045.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="coder-radio-source",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="coder-radio-source",played="true"} 84.0
@@ -330,7 +330,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 5660.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 1467.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63738.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 82.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 2469.1833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
