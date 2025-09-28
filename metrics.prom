@@ -4,8 +4,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-talk
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 346.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 12.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 13.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 511.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -172,14 +172,15 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="sub-club
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 133.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="appstories",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 46643.53333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 84.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 1072.0833333333335
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 1156.0833333333335
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 49563.36666666665
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
@@ -346,3 +347,4 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sub-cl
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sub-club-by-revenuecat",played="true"} 137.16666666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sub-club-by-revenuecat",played="false"} 6626.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="appstories",played="true"} 47.61666666666667
