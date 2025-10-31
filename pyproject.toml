@@ -1,52 +1,60 @@
 [build-system]
-requires = ["hatchling"]
 build-backend = "hatchling.build"
+requires = [ "hatchling" ]
 
 [project]
 name = "overcast-data"
 version = "0.0.0"
 readme = "README.md"
-authors = [{name = "Joshua Peek"}]
+license = { text = "MIT License" }
+authors = [ { name = "Joshua Peek" } ]
 requires-python = ">=3.10"
-license = {text = "MIT License"}
-dependencies = [
-    "beautifulsoup4>=4.11.0,<5.0",
-    "click>=8.0.0,<9.0",
-    "cryptography>=42.0.0,<46.0",
-    "lru-cache @ https://github.com/josh/py-lru-cache/releases/download/v1.0.1/lru_cache-1.0.1-py3-none-any.whl",
-    "lxml>=5.0.0,<7.0",
-    "mutagen>=1.47.0,<2.0",
-    "prometheus-client>=0.20.0",
-    "python-dateutil>=2.8.0,<3.0",
-    "requests>=2.0.0,<3.0",
-]
 classifiers = [
     "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 
-[project.scripts]
-overcast-data = "overcast_data:cli.cli"
+dependencies = [
+    "beautifulsoup4>=4.11,<5",
+    "click>=8,<9",
+    "cryptography>=42,<46",
+    "lru-cache @ https://github.com/josh/py-lru-cache/releases/download/v1.0.1/lru_cache-1.0.1-py3-none-any.whl",
+    "lxml>=5,<7",
+    "mutagen>=1.47,<2",
+    "prometheus-client>=0.20",
+    "python-dateutil>=2.8,<3",
+    "requests>=2,<3",
+]
+scripts.overcast-data = "overcast_data:cli.cli"
 
 [dependency-groups]
 dev = [
-    "mypy>=1.0.0,<2.0",
-    "pytest>=8.0.0,<9.0",
-    "ruff>=0.5.0",
-    "types-beautifulsoup4>=4.11.0,<5.0",
-    "types-python-dateutil>=2.8.0,<3.0",
-    "types-requests>=2.0.0,<3.0",
+    "mypy>=1,<2",
+    "pytest>=8,<9",
+    "ruff>=0.5",
+    "types-beautifulsoup4>=4.11,<5",
+    "types-python-dateutil>=2.8,<3",
+    "types-requests>=2,<3",
 ]
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
-[tool.pyright]
+[tool.ruff]
+lint.extend-select = [ "I", "UP" ]
 
-[tool.vulture]
-exclude = ["*test_*.py"]
-
-[tool.ruff.lint]
-extend-select = ["I", "UP"]
+[tool.pyproject-fmt]
+indent = 4
 
 [tool.mypy]
 strict = true
+
+[tool.pyright]
+
+[tool.vulture]
+exclude = [ "*test_*.py" ]
