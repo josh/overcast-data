@@ -242,19 +242,11 @@ wheels = [
 
 [[package]]
 name = "lru-cache"
-version = "1.0.1"
-source = { url = "https://github.com/josh/py-lru-cache/releases/download/v1.0.1/lru_cache-1.0.1-py3-none-any.whl" }
+version = "1.0.2"
+source = { url = "https://github.com/josh/lru-cache-python/releases/download/v1.0.2/lru_cache-1.0.2-py3-none-any.whl" }
 wheels = [
-    { url = "https://github.com/josh/py-lru-cache/releases/download/v1.0.1/lru_cache-1.0.1-py3-none-any.whl", hash = "sha256:e93cbb58bca3c7980019e8aa8564e0d5e558c47c83c0b18fa52fb79c0cf832af" },
+    { url = "https://github.com/josh/lru-cache-python/releases/download/v1.0.2/lru_cache-1.0.2-py3-none-any.whl", hash = "sha256:62386284d3613fc3ad44d4bd01ef87ff8c079c413da529713a68adf49634ea3d" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.0.0,<2.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0,<9.0" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6.0,<0.7.0" },
-]
-provides-extras = ["dev"]
 
 [[package]]
 name = "lxml"
@@ -471,25 +463,25 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "beautifulsoup4", specifier = ">=4.11.0,<5.0" },
-    { name = "click", specifier = ">=8.0.0,<9.0" },
-    { name = "cryptography", specifier = ">=42.0.0,<46.0" },
-    { name = "lru-cache", url = "https://github.com/josh/py-lru-cache/releases/download/v1.0.1/lru_cache-1.0.1-py3-none-any.whl" },
-    { name = "lxml", specifier = ">=5.0.0,<7.0" },
-    { name = "mutagen", specifier = ">=1.47.0,<2.0" },
-    { name = "prometheus-client", specifier = ">=0.20.0" },
-    { name = "python-dateutil", specifier = ">=2.8.0,<3.0" },
-    { name = "requests", specifier = ">=2.0.0,<3.0" },
+    { name = "beautifulsoup4", specifier = ">=4.11,<5" },
+    { name = "click", specifier = ">=8,<9" },
+    { name = "cryptography", specifier = ">=42,<46" },
+    { name = "lru-cache", url = "https://github.com/josh/lru-cache-python/releases/download/v1.0.2/lru_cache-1.0.2-py3-none-any.whl" },
+    { name = "lxml", specifier = ">=5,<7" },
+    { name = "mutagen", specifier = ">=1.47,<2" },
+    { name = "prometheus-client", specifier = ">=0.20" },
+    { name = "python-dateutil", specifier = ">=2.8,<3" },
+    { name = "requests", specifier = ">=2,<3" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "mypy", specifier = ">=1.0.0,<2.0" },
-    { name = "pytest", specifier = ">=8.0.0,<9.0" },
-    { name = "ruff", specifier = ">=0.5.0" },
-    { name = "types-beautifulsoup4", specifier = ">=4.11.0,<5.0" },
-    { name = "types-python-dateutil", specifier = ">=2.8.0,<3.0" },
-    { name = "types-requests", specifier = ">=2.0.0,<3.0" },
+    { name = "mypy", specifier = ">=1,<2" },
+    { name = "pytest", specifier = ">=8,<9" },
+    { name = "ruff", specifier = ">=0.5" },
+    { name = "types-beautifulsoup4", specifier = ">=4.11,<5" },
+    { name = "types-python-dateutil", specifier = ">=2.8,<3" },
+    { name = "types-requests", specifier = ">=2,<3" },
 ]
 
 [[package]]

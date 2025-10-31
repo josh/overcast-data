@@ -23,7 +23,7 @@ dependencies = [
     "beautifulsoup4>=4.11,<5",
     "click>=8,<9",
     "cryptography>=42,<46",
-    "lru-cache @ https://github.com/josh/py-lru-cache/releases/download/v1.0.1/lru_cache-1.0.1-py3-none-any.whl",
+    "lru-cache @ https://github.com/josh/lru-cache-python/releases/download/v1.0.2/lru_cache-1.0.2-py3-none-any.whl",
     "lxml>=5,<7",
     "mutagen>=1.47,<2",
     "prometheus-client>=0.20",
