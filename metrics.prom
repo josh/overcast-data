@@ -31,7 +31,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="accide
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 280.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 19.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 20.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 11.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="appstories",played="true"} 171.0
@@ -205,7 +205,7 @@ overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="acci
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 175.18333333333334
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 23628.96666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1613.1999999999998
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1707.7666666666664
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="appstories",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="false"} 582.35
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="appstories",played="true"} 8468.650000000003
