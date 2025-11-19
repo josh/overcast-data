@@ -28,7 +28,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="accident
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 7.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 694.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 287.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 244.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 21.0
@@ -202,7 +202,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accide
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 708.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 83695.46666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 92.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 56.75
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 24169.96666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="true"} 20571.666666666675
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1817.133333333333
