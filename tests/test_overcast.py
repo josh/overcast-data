@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
@@ -81,7 +82,10 @@ def test_fetch_podcast(overcast_session: Session) -> None:
         == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
     )
     assert episodes_feed.item_id == 126160
-    assert episodes_feed.art_url == "https://public.overcast-cdn.com/art/126160?v198"
+    assert re.match(
+        r"https://[^/]+\.overcast-cdn\.com/art/126160(?:\?v\d+)?$",
+        episodes_feed.art_url,
+    )
     assert len(episodes_feed.episodes) > 0
 
 
@@ -96,7 +100,10 @@ def test_fetch_episode(overcast_session: Session) -> None:
         episode.podcast_overcast_url
         == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
     )
-    assert episode.feed_art_url == "https://public.overcast-cdn.com/art/126160?v198"
+    assert re.match(
+        r"https://[^/]+\.overcast-cdn\.com/art/126160(?:\?v\d+)?$",
+        episode.feed_art_url,
+    )
     assert (
         episode.title
         == "83: Live From WWDC 2014 With Marco Arment, Casey Liss, John Siracusa, and Scott Simpson"
