@@ -68,13 +68,18 @@ def _overcast_fm_url_from_path(path: str) -> OvercastURL:
 
 class OvercastCDNURL(HTTPURL):
     """
-    An https://public.overcast-cdn.com/ URL.
+    An https://*.overcast-cdn.com/ URL.
     """
 
     def __new__(cls, urlstring: str) -> "OvercastCDNURL":
         try:
-            if not urlstring.startswith("https://public.overcast-cdn.com/"):
-                raise ValueError(f"Invalid public.overcast-cdn.com URL: {urlstring}")
+            components = urlparse(urlstring)
+            if components.scheme != "https":
+                raise ValueError(f"Invalid overcast-cdn.com URL: {urlstring}")
+            elif not components.hostname or not components.hostname.endswith(
+                "overcast-cdn.com"
+            ):
+                raise ValueError(f"Invalid overcast-cdn.com URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
                 raise e
@@ -1000,7 +1005,7 @@ def _request(
 def _extract_feed_id_from_art_url(url: OvercastCDNURL) -> OvercastFeedItemID:
     """
     Extract numeric feed-id from an Overcast CDN artwork URL.
-    e.g. "https://public.overcast-cdn.com/art/126160?v198"
+    e.g. "https://r2.overcast-cdn.com/art/126160?v198"
     """
     m = re.match(r"https://[^/]+\.overcast-cdn\.com/art/(\d+)", url)
     assert m, f"Couldn't extract feed-id from art URL: {url}"
