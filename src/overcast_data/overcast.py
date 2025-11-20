@@ -1002,7 +1002,7 @@ def _extract_feed_id_from_art_url(url: OvercastCDNURL) -> OvercastFeedItemID:
     Extract numeric feed-id from an Overcast CDN artwork URL.
     e.g. "https://public.overcast-cdn.com/art/126160?v198"
     """
-    m = re.match(r"https://public.overcast-cdn.com/art/(\d+)", url)
+    m = re.match(r"https://[^/]+\.overcast-cdn\.com/art/(\d+)", url)
     assert m, f"Couldn't extract feed-id from art URL: {url}"
     id = int(m.group(1))
     return OvercastFeedItemID(id)

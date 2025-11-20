@@ -6,6 +6,7 @@ import pytest
 
 from overcast_data import overcast
 from overcast_data.overcast import (
+    OvercastCDNURL,
     OvercastEpisodeURL,
     OvercastFeedURL,
     Session,
@@ -193,6 +194,15 @@ def test_parse_episode_caption_text() -> None:
     assert result.duration is None
     assert result.is_played is None
     assert result.in_progress is None
+
+
+def test_extract_feed_id_from_art_url_variants() -> None:
+    assert (
+        overcast._extract_feed_id_from_art_url(
+            OvercastCDNURL("https://r2.overcast-cdn.com/art/3567037_thumb?v4")
+        )
+        == 3567037
+    )
 
 
 def test_session_purge_cache(overcast_session: Session) -> None:
