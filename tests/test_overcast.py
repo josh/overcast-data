@@ -1,5 +1,4 @@
 import os
-import re
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
@@ -7,7 +6,6 @@ import pytest
 
 from overcast_data import overcast
 from overcast_data.overcast import (
-    OvercastCDNURL,
     OvercastEpisodeURL,
     OvercastFeedURL,
     Session,
@@ -82,10 +80,7 @@ def test_fetch_podcast(overcast_session: Session) -> None:
         == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
     )
     assert episodes_feed.item_id == 126160
-    assert re.match(
-        r"https://[^/]+\.overcast-cdn\.com/art/126160(?:\?v\d+)?$",
-        episodes_feed.art_url,
-    )
+    assert episodes_feed.art_url == "https://r2.overcast-cdn.com/art/126160?v200"
     assert len(episodes_feed.episodes) > 0
 
 
@@ -100,10 +95,7 @@ def test_fetch_episode(overcast_session: Session) -> None:
         episode.podcast_overcast_url
         == "https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber"
     )
-    assert re.match(
-        r"https://[^/]+\.overcast-cdn\.com/art/126160(?:\?v\d+)?$",
-        episode.feed_art_url,
-    )
+    assert episode.feed_art_url == "https://r2.overcast-cdn.com/art/126160?v200"
     assert (
         episode.title
         == "83: Live From WWDC 2014 With Marco Arment, Casey Liss, John Siracusa, and Scott Simpson"
@@ -201,15 +193,6 @@ def test_parse_episode_caption_text() -> None:
     assert result.duration is None
     assert result.is_played is None
     assert result.in_progress is None
-
-
-def test_extract_feed_id_from_art_url_variants() -> None:
-    assert (
-        overcast._extract_feed_id_from_art_url(
-            OvercastCDNURL("https://r2.overcast-cdn.com/art/3567037_thumb?v4")
-        )
-        == 3567037
-    )
 
 
 def test_session_purge_cache(overcast_session: Session) -> None:
