@@ -21,8 +21,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbrea
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 237.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 19.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 220.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 18.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 221.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 7.0
@@ -195,8 +195,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbr
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 30060.099999999988
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 2839.583333333333
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 31527.166666666668
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 2690.583333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 31676.166666666668
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 680.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 708.0
