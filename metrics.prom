@@ -8,7 +8,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-pow
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 13.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 520.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 47.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 328.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
@@ -152,9 +152,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 127.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 37.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1589.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 49.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 50.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 5.0
@@ -182,7 +182,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-p
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 1168.0833333333335
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 50475.36666666665
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 25922.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 89.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1908.9999999999998
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 17172.383333333317
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 62.65
@@ -326,9 +326,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 6120.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 1968.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63944.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 74.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 3238.1833333333334
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 3312.1833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 340.0
