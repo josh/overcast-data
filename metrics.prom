@@ -24,8 +24,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-wee
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 19.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 222.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 5.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 7.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 698.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 1.0
@@ -76,9 +76,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratech
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 13.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 582.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 456.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 457.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
@@ -198,8 +198,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-w
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 2843.583333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 31837.166666666668
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 680.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 96.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 708.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 804.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 84207.54999999999
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 92.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 121.0
@@ -250,9 +250,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="strate
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 784.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 14619.899999999996
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 1061.3666666666668
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 15.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 6765.75
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 6780.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 99.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
