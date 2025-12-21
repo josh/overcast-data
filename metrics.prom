@@ -81,8 +81,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="ditheri
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 458.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 5.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 256.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 257.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 8.0
@@ -152,7 +152,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 130.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 37.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1589.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 51.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
@@ -255,8 +255,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithe
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 6795.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 314.3333333333333
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 17546.41666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 17645.41666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 97.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 488.0
@@ -326,7 +326,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 6267.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 1968.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63944.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 80.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 3372.1833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
