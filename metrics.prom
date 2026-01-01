@@ -7,7 +7,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-ta
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 13.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 523.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 292.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="more-power-users",played="false"} 293.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-chens-bonus-audio",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 47.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 331.0
