@@ -1,13 +1,13 @@
 id,overcast_url,encrypted_title,clean_title,slug,html_url,added_at,is_added,is_following
 126160,https://overcast.fm/itunes528458508/the-talk-show-with-john-gruber,z/tWEzgSTWzWY03CGwvlbIhqfssDwOzoQvGuI4K8uDA=,The Talk Show With John Gruber,the-talk-show-with-john-gruber,https://daringfireball.net/thetalkshow,2014-07-16T16:56:20+00:00,1,1
-1967433,https://overcast.fm/p1967433-6kW922,pah5ydwLfXbG+vqMzO9OR1zZZNO8ROHDnv6/waQZX3c=,More Power Users — Private,more-power-users-private,https://www.relay.fm/membership,2020-07-06T22:38:55+00:00,1,0
+1967433,https://overcast.fm/p1967433-6kW922,pah5ydwLfXbG+vqMzO9OR1zZZNO8ROHDnv6/waQZX3c=,More Power Users — Private,more-power-users-private,https://www.relay.fm/membership,2020-07-06T22:38:55+00:00,0,0
 2180565,https://overcast.fm/p2180565-Ue7mrh,GCRBpqBgCOv1l3+OexbHStvXu6FEBZ9R+cvDvwI1odE=,Dave Chen's Bonus Audio,dave-chens-bonus-audio,https://www.patreon.com/collection/860666,2020-08-16T04:33:02+00:00,1,1
 2994216,https://overcast.fm/p2994216-As8yhb,uSpmUeQqB5Ot2eHbBNIvedLhhboH5BzVtixM3qCi+4h7JBRLzpNT+/FdZz1bVx6q,Security Now— Private,security-now-private,https://twit.tv/shows/security-now,2021-05-01T16:36:24+00:00,1,1
 2994225,https://overcast.fm/p2994225-buL4Ci,RmcnpnRCcIiI68QwWBTF2Sz0yklOMgnZCvA/H5elvnYApFwCzx2XvVr7MMMTEUet,MacBreak Weekly— Private,macbreak-weekly-private,https://twit.tv/shows/macbreak-weekly,2021-05-01T16:37:37+00:00,1,1
 2997709,https://overcast.fm/p2997709-JA1nqc,UCThQYuiBJ0q5k0NxicPDFrd06F8hME/VMlhHcLG20IJsd6qZwS38sICkraFqGS3NdAS4vlE6OD5bl7TFpM6Sw==,This Week in Tech— Private,this-week-in-tech-private,https://twit.tv/shows/this-week-in-tech,2021-05-03T00:59:41+00:00,1,1
 3567037,https://overcast.fm/p3567037-sdxQhs,HVnjcQFet/uw4lhct9VfveuA4eR+QWnbu8j7ER9Rgio=,Accidental Tech Podcast,accidental-tech-podcast,https://atp.fm/,2022-01-01T14:23:48+00:00,1,1
 3649737,https://overcast.fm/p3649737-pq6ng6,QLzb8v6qgg1Kar3qMJfF40eC8euCWDqtTgZ1W5ceG4cSJzzxFzvDJTOI9PtICduZ7USa7LtTO9MjJ25Fy51Sp88HbQWIHrUvCciSQh+wLmo=,DLC with Jeff Cannata and Christian Spicer,dlc-with-jeff-cannata-and-christian-spicer,https://www.patreon.com/collection/864265,2022-02-21T06:43:06+00:00,1,1
-3567012,https://overcast.fm/p3567012-8kXwQd,Vuz2v7VVO33Mgf5x5YfRaA==,AppStories+,appstories,https://appstories.net/,2022-08-06T00:52:24+00:00,1,0
+3567012,https://overcast.fm/p3567012-8kXwQd,Vuz2v7VVO33Mgf5x5YfRaA==,AppStories+,appstories,https://appstories.net/,2022-08-06T00:52:24+00:00,0,0
 1645421,https://overcast.fm/p1645421-87mWB9,3Uc8wcwglnAZXuBLQG4DlmFiy1GT0QwhTEFj+6Qo+tM=,MacStories Unwind+,macstories-unwind,https://club.macstories.net/,2022-09-13T15:11:23+00:00,0,0
 3980384,https://overcast.fm/itunes1648516274/title-fights,DDpIeRTRg1mUH+d5HtQBYA==,Title Fights,title-fights,https://www.buzzsprout.com/2062027,2022-10-05T21:07:02+00:00,0,0
 4057801,https://overcast.fm/p4057801-C3l17B,H2vXqj3e91qKzMyZuvSI9O/KIfZSchrqjM0J/Mhj9SI=,The Filmcast's Patreon Feed,the-filmcasts-patreon-feed,https://www.patreon.com/collection/869036,2022-12-02T00:40:18+00:00,1,1
@@ -39,7 +39,7 @@ id,overcast_url,encrypted_title,clean_title,slug,html_url,added_at,is_added,is_f
 1468593,https://overcast.fm/itunes354668519/freakonomics-radio,dFgGVBLFHH/aplBwgiA+e2OTAib3apOpRsH2zRqwsIM=,Freakonomics Radio,freakonomics-radio,https://freakonomics.com/,2025-02-20T00:05:52+00:00,0,0
 4119816,https://overcast.fm/itunes1666678354/the-economics-of-everyday-things,UmQ4itw0AcFbS988TtBHqZJUkgaxbEpaW8F30iYmmXu6u9qKkIHqVlad+vg1KsF4,The Economics of Everyday Things,the-economics-of-everyday-things,https://freakonomics.com/,2025-02-20T00:06:03+00:00,0,0
 5092994,https://overcast.fm/p5092994-veavW1,dFgGVBLFHH/aplBwgiA+e3xbv+Jd240rA4WnfLq0YZBZRu5FsTTtfoax8AXacMvd,Freakonomics Radio,freakonomics-radio,https://freakonomics.com/,2025-02-22T18:35:33+00:00,1,1
-5092997,https://overcast.fm/p5092997-3PtDv0,UmQ4itw0AcFbS988TtBHqZJUkgaxbEpaW8F30iYmmXvpv+dbmZ4E7Fn4wz4rRBilXFMWPb8GOoyDDiTMEd44DA==,The Economics of Everyday Things,the-economics-of-everyday-things,https://freakonomics.com/,2025-02-22T18:37:08+00:00,1,0
+5092997,https://overcast.fm/p5092997-3PtDv0,UmQ4itw0AcFbS988TtBHqZJUkgaxbEpaW8F30iYmmXvpv+dbmZ4E7Fn4wz4rRBilXFMWPb8GOoyDDiTMEd44DA==,The Economics of Everyday Things,the-economics-of-everyday-things,https://freakonomics.com/,2025-02-22T18:37:08+00:00,0,0
 5023915,https://overcast.fm/p5023915-EPX9Zj,XemncuUnUodWdsGmK7+QgjMzSn9EQavYSWxiyZfzRPI=,Core Contributor — Private,core-contributor-private,https://adfree.fireside.fm/,2025-04-22T00:17:30+00:00,1,1
 1060315,https://overcast.fm/itunes1011668648/decoder-with-nilay-patel,cOxXQyWHuMMK80ajO7K2zmB+iuzW00X1NZCfvtAvOEA=,Decoder with Nilay Patel,decoder-with-nilay-patel,https://theverge.com/,2025-05-12T14:24:44+00:00,0,0
 4634717,https://overcast.fm/itunes1729409279/full-time-nix,FYIvjELJYVvb81mo5/tG7A==,Full Time Nix,full-time-nix,https://fulltimenix.com/,2025-08-08T15:16:56+00:00,0,0
