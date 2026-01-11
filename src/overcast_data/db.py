@@ -59,7 +59,7 @@ class Feed:
     def clean_title(self) -> str:
         if not self.is_private:
             return self.title
-        title = re.sub(r" — Private to .+", "", self.title)
+        title = re.sub(r"\s*—\s*Private(?: to .+)?$", "", self.title)
         title = re.sub(r"\s*\([^)]*\)\s*", "", title)
         title = re.sub(r"\s*\[[^]]*\]\s*", "", title)
         title = re.sub(r"\s*:[^:]*$", "", title)
