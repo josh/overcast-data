@@ -84,7 +84,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-te
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 258.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 8.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 302.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 18.0
@@ -258,7 +258,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 17730.41666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 51.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 102.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 488.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 20608.11666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 1134.4
