@@ -40,10 +40,6 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macstori
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="false"} 62.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macstories-unwind",played="false"} 54.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 29.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 2.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 7.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 559.0
@@ -172,6 +168,10 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="live-unp
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 18.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 253.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fights",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 29.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 2.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
@@ -214,10 +214,6 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macsto
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="false"} 1630.1999999999998
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macstories-unwind",played="false"} 1944.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 5036.549999999999
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 240.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 401.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 640.75
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 43799.183333333276
@@ -346,3 +342,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="live-u
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="live-unplugged",played="true"} 2576.6
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="live-unplugged",played="false"} 35185.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-fights",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 5036.549999999999
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 240.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
