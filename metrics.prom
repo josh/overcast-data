@@ -16,8 +16,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="security
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 247.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 245.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
@@ -52,7 +52,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade"
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 165.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 14.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 927.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 6.0
@@ -190,8 +190,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="securi
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 308.45
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 29309.516666666663
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 138.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 207.01666666666668
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 345.01666666666665
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 31169.099999999988
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
@@ -226,7 +226,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrad
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 17894.61666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 125.91666666666666
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="true"} 8335.183333333329
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 50.0
