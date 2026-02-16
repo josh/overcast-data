@@ -116,10 +116,10 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 213.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 4.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 534.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 533.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 12.0
@@ -140,8 +140,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 136.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 45.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1589.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 59.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
@@ -290,10 +290,10 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digita
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 143.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 232.98333333333335
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 20325.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 96.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 550.25
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 51826.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 51730.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="true"} 681.15
@@ -314,8 +314,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 6524.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 2343.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 63944.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 82.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 82.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 3911.1833333333334
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
