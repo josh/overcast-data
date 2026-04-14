@@ -133,7 +133,11 @@ def test_fetch_audio_duration(overcast_session: Session) -> None:
 
 
 def test_export_account_data(overcast_session: Session) -> None:
-    export_data = export_account_data(session=overcast_session)
+    try:
+        export_data = export_account_data(session=overcast_session)
+    except overcast.RatedLimitedError:
+        pytest.skip("Overcast export endpoint rate limited")
+
     assert len(export_data.feeds) > 0
 
 
