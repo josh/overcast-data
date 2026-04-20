@@ -21,7 +21,7 @@ classifiers = [
 
 dependencies = [
     "beautifulsoup4>=4.11,<5",
-    "click>=8.1.1,<9",
+    "click>=8.3.2,<9",
     "cryptography>=42,<47",
     "lru-cache @ https://github.com/josh/lru-cache-python/releases/download/v1.0.2/lru_cache-1.0.2-py3-none-any.whl",
     "lxml>=6,<7",
