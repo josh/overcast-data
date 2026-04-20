@@ -34,7 +34,7 @@ scripts.overcast-data = "overcast_data:cli.cli"
 
 [dependency-groups]
 dev = [
-    "mypy>=1,<2",
+    "mypy>=1.20.0,<2",
     "pytest>=9.0.3,<10",
     "ruff>=0.9,<2",
     "types-beautifulsoup4>=4.11,<5",
