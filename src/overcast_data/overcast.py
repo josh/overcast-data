@@ -41,6 +41,8 @@ _SAFARI_HEADERS = {
 _SERVER_TZINFO = timezone(-timedelta(hours=5))
 _SERVER_NOW = datetime.now(_SERVER_TZINFO)
 
+_OVERCAST_APP_STORE_ID = "888422857"
+
 
 class OvercastURL(HTTPURL):
     """
@@ -359,8 +361,12 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
     overcast_uri: str = ""
     for meta_el in soup.select("meta[name=apple-itunes-app]"):
         content = meta_el["content"]
-        if isinstance(content, str) and content.startswith("app-id=888422857"):
-            overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
+        if (
+            isinstance(content, str)
+            and f"app-id={_OVERCAST_APP_STORE_ID}" in content
+            and "app-argument=" in content
+        ):
+            overcast_uri = content.split("app-argument=", 1)[1]
 
     feed_title: str = ""
     if title_el := soup.select_one("h2.centertext"):
@@ -566,8 +572,8 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
     overcast_uri: str = ""
     if meta_el := soup.select_one("meta[name=apple-itunes-app]"):
         content: str = meta_el.attrs["content"]
-        if content.startswith("app-id=888422857"):
-            overcast_uri = content.removeprefix("app-id=888422857, app-argument=")
+        if f"app-id={_OVERCAST_APP_STORE_ID}" in content and "app-argument=" in content:
+            overcast_uri = content.split("app-argument=", 1)[1]
 
     if img_el := soup.select_one("img.fullart[src]"):
         art_url = OvercastCDNURL(img_el.attrs["src"])
