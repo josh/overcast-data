@@ -80,7 +80,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-te
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 273.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 16.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 326.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 18.0
@@ -136,7 +136,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="intellig
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 204.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 146.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 57.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1591.0
@@ -254,7 +254,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="true"} 19140.41666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoding-tv",played="false"} 95.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="false"} 761.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoding-tv",played="true"} 22602.11666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="decoding-tv",played="false"} 1134.4
@@ -310,7 +310,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intell
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 140.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 614.35
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 29427.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 53.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 7053.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 2983.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 64020.0
