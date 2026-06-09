@@ -24,7 +24,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-wee
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 25.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 241.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 5.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 9.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 727.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
@@ -50,7 +50,7 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="automat
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 182.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 183.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 14.0
@@ -140,9 +140,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakono
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 149.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 57.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1591.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 75.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 76.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 229.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 5.0
@@ -198,7 +198,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-w
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 3654.583333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 34769.16666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 680.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 189.73333333333332
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 909.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 88358.54999999999
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 92.0
@@ -224,7 +224,7 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="autom
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 34.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 19827.61666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 19913.95
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 125.91666666666666
@@ -314,9 +314,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freako
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 7179.416666666667
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 2983.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 64020.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 62.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 4971.85
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="core-contributor",played="true"} 5033.85
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="core-contributor",played="false"} 14570.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="decoder-with-nilay-patel",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="decoder-with-nilay-patel",played="false"} 340.0
