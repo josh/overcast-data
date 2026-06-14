@@ -118,7 +118,7 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 213.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 37.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 38.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 536.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
@@ -290,9 +290,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digita
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 143.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 232.98333333333335
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 20325.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 115.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 122.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 2715.25
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 2781.25
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 51960.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
