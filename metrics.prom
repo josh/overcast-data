@@ -70,7 +70,7 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-eco
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 193.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 28.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 653.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 654.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
@@ -172,7 +172,6 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="full-tim
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-time-nix",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="full-time-nix",played="false"} 133.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 119.0
@@ -245,7 +244,7 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-e
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 3261.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 70.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1302.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 16320.899999999996
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 16338.116666666663
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 1061.3666666666668
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
@@ -347,4 +346,3 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="full-t
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 84.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="true"} 48.21666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="full-time-nix",played="false"} 7115.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="true"} 17.216666666666665
