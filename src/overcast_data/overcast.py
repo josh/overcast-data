@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from io import BytesIO
 from pathlib import Path
-from typing import Literal, NewType, cast
+from typing import Any, Literal, NewType, cast
 from urllib.parse import urlparse
 
 import dateutil.parser
@@ -635,7 +635,7 @@ def _fetch_audio_duration(url: HTTPURL) -> timedelta | None:
         return None
     io = BytesIO(response.content)
     try:
-        f = mutagen.File(io)  # type: ignore
+        f = cast(Any, getattr(mutagen, "File"))(io)
     except Exception:
         logger.error("Failed to parse audio: %s", url)
         return None
