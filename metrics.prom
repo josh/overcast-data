@@ -161,8 +161,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-f
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 31.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 103.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 28.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 102.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 29.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 266.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 72.0
@@ -339,8 +339,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 5276.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 9136.033333333333
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 2168.0333333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 9034.033333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 2270.0333333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19762.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 2622.2
