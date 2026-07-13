@@ -174,8 +174,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-ti
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="full-time-nix",played="false"} 136.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="acquired",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="acquired",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="acquired",played="true"} 1.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="acquired",played="false"} 212.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="acquired",played="true"} 2.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="acquired",played="false"} 211.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 111.0
@@ -350,7 +350,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="full-t
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 84.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="true"} 48.21666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="full-time-nix",played="false"} 7232.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="acquired",played="false"} 373.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="acquired",played="false"} 360.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="acquired",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="acquired",played="true"} 228.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="acquired",played="false"} 25178.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="acquired",played="true"} 419.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="acquired",played="false"} 25000.0
