@@ -117,8 +117,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 213.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 47.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 48.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 536.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
@@ -172,8 +172,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="full-tim
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-time-nix",played="true"} 1.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="full-time-nix",played="false"} 136.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="acquired",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="acquired",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="acquired",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="acquired",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="acquired",played="true"} 3.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="acquired",played="false"} 211.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
@@ -295,8 +295,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digit
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 232.98333333333335
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 20325.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 85.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 3340.25
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 3425.25
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 51960.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
@@ -350,7 +350,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="full-t
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 84.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="true"} 48.21666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="full-time-nix",played="false"} 7232.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="acquired",played="false"} 178.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="acquired",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="acquired",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="acquired",played="false"} 178.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="acquired",played="true"} 601.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="acquired",played="false"} 25000.0
