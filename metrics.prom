@@ -40,9 +40,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macstori
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="false"} 62.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macstories-unwind",played="false"} 54.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 4.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 14.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 604.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 605.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 2.0
@@ -218,9 +218,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macsto
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="false"} 1630.1999999999998
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macstories-unwind",played="false"} 1944.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 323.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 261.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1299.75
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 47215.183333333276
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 47277.183333333276
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 152.5
