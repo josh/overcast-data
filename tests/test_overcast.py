@@ -63,9 +63,8 @@ def test_fetch_podcasts_bad_cookie(
         cookie="XXX",
         offline=_OFFLINE,
     )
-    with pytest.raises(overcast.LoggedOutError):
-        with caplog.at_level(100):
-            fetch_podcasts(session=session)
+    with pytest.raises(overcast.LoggedOutError), caplog.at_level(100):
+        fetch_podcasts(session=session)
 
 
 def test_fetch_podcast(overcast_session: Session) -> None:

@@ -55,19 +55,18 @@ def csvstr(obj: Any) -> str:
     if typ not in _VALUE_TO_STR_REGISTERY:
         raise ValueError(f"Unsupported type: {typ}")
     s = _VALUE_TO_STR_REGISTERY[typ](obj)
-    assert isinstance(s, str), f"Expected str, got {repr(s)}"
+    assert isinstance(s, str), f"Expected str, got {s!r}"
     return s
 
 
 def castcsvstr(typ: type | object, s: str) -> Any:
-    assert isinstance(s, str), f"Expected str, got {repr(s)}"
+    assert isinstance(s, str), f"Expected str, got {s!r}"
     if typ in _STR_TO_VALUE_REGISTERY:
         return _STR_TO_VALUE_REGISTERY[typ](s)
 
-    if otyp := _get_newtype_origin_type(typ):
-        if otyp in _STR_TO_VALUE_REGISTERY:
-            _register_cast_alias(otyp, cast(type, typ))
-            return _STR_TO_VALUE_REGISTERY[typ](s)
+    if (otyp := _get_newtype_origin_type(typ)) and otyp in _STR_TO_VALUE_REGISTERY:
+        _register_cast_alias(otyp, cast(type, typ))
+        return _STR_TO_VALUE_REGISTERY[typ](s)
 
     if otyp := _get_optional_origin_type(typ):
         if s == "":
@@ -78,16 +77,17 @@ def castcsvstr(typ: type | object, s: str) -> Any:
 
 
 def _get_newtype_origin_type(typ: object) -> type | None:
-    if not hasattr(typ, "__supertype__"):
+    supertype = getattr(typ, "__supertype__", None)
+    if supertype is None:
         return None
-    return cast(type, getattr(typ, "__supertype__"))
+    return cast(type, supertype)
 
 
 def _get_optional_origin_type(typ: object) -> type | None:
     if typing.get_origin(typ) != Union:
         return None
     args = typing.get_args(typ)
-    if len(args) != 2 or args[1] != type(None):  # noqa: E721
+    if len(args) != 2 or args[1] is not type(None):
         return None
     return cast(type, args[0])
 
@@ -97,12 +97,12 @@ class DataclassInstance(Protocol):
 
 
 def ascsvdict(obj: DataclassInstance) -> dict[str, str]:
-    assert is_dataclass(obj), f"{repr(obj)} is not a dataclass"
+    assert is_dataclass(obj), f"{obj!r} is not a dataclass"
     return {name: csvstr(getattr(obj, name)) for name in obj.__dataclass_fields__}
 
 
 def ascsvrow(obj: DataclassInstance) -> tuple[str, ...]:
-    assert is_dataclass(obj), f"{repr(obj)} is not a dataclass"
+    assert is_dataclass(obj), f"{obj!r} is not a dataclass"
     return tuple(csvstr(getattr(obj, name)) for name in obj.__dataclass_fields__)
 
 

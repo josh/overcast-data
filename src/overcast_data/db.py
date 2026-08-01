@@ -8,6 +8,7 @@ from datetime import datetime, timedelta, timezone
 from functools import cache
 from pathlib import Path
 from types import TracebackType
+from typing import TypeVar
 
 from .csvmodel import ascsvdict, fromcsvdict, register_cast
 from .overcast import (
@@ -154,7 +155,7 @@ class FeedCollection:
                 f"{field} non-null count decreased"
             )
 
-        assert len(set(f.id for f in feeds_lst)) == len(feeds_lst), "Duplicate IDs"
+        assert len({f.id for f in feeds_lst}) == len(feeds_lst), "Duplicate IDs"
 
         with filename.open("w") as csvfile:
             writer = csv.DictWriter(
@@ -297,7 +298,7 @@ class EpisodeCollection:
                 f"{field} non-null count decreased"
             )
 
-        assert len(set(e.overcast_url for e in episodes_lst)) == len(episodes_lst), (
+        assert len({e.overcast_url for e in episodes_lst}) == len(episodes_lst), (
             "Duplicate Overcast URLs"
         )
 
@@ -320,6 +321,11 @@ class EpisodeCollection:
         return counts
 
 
+# NOTE: `typing.Self` would be clearer, but it requires Python 3.11 and this
+# package still supports 3.10.
+_DatabaseSelf = TypeVar("_DatabaseSelf", bound="Database")
+
+
 class Database(AbstractContextManager["Database"]):
     path: Path
     feeds: FeedCollection
@@ -330,7 +336,7 @@ class Database(AbstractContextManager["Database"]):
         self.feeds = FeedCollection()
         self.episodes = EpisodeCollection()
 
-    def __enter__(self) -> "Database":
+    def __enter__(self: _DatabaseSelf) -> _DatabaseSelf:  # noqa: PYI019
         logger.debug("loading database: %s", self.path)
         self.feeds = FeedCollection.load(self.path / "feeds.csv")
         self.episodes = EpisodeCollection.load(self.path / "episodes.csv")
@@ -363,8 +369,7 @@ def _decrypt_csv_field(data: dict[str, str], name: str) -> None:
         data[name] = decrypt(_encryption_key(), Ciphertext(data[encrypted_name]))
     else:
         data[name] = ""
-    if encrypted_name in data:
-        del data[encrypted_name]
+    data.pop(encrypted_name, None)
 
 
 def _encrypt_csv_field(data: dict[str, str], name: str) -> None:
@@ -373,5 +378,4 @@ def _encrypt_csv_field(data: dict[str, str], name: str) -> None:
         data[encrypted_name] = encrypt(_encryption_key(), str(data[name]))
     else:
         data[encrypted_name] = ""
-    if name in data:
-        del data[name]
+    data.pop(name, None)

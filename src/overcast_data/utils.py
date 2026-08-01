@@ -2,7 +2,7 @@ import base64
 import logging
 import os
 import sys
-from typing import NewType
+from typing import NewType, TypeVar
 from urllib.parse import urlparse
 
 from cryptography.hazmat.primitives import padding
@@ -12,16 +12,20 @@ _RAISE_VALIDATION_ERRORS = "pytest" in sys.modules
 
 logger = logging.getLogger("utils")
 
+# NOTE: `typing.Self` would be clearer, but it requires Python 3.11 and this
+# package still supports 3.10.
+URLSelf = TypeVar("URLSelf", bound="URL")
+
 
 class URL(str):
-    def __new__(cls, urlstring: str) -> "URL":
+    def __new__(cls: type[URLSelf], urlstring: str) -> URLSelf:  # noqa: PYI019
         try:
             components = urlparse(urlstring)
             if not components.scheme:
                 raise ValueError(f"Invalid URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
             else:
                 logger.error(e)
 
@@ -29,14 +33,14 @@ class URL(str):
 
 
 class HTTPURL(URL):
-    def __new__(cls, urlstring: str) -> "HTTPURL":
+    def __new__(cls: type[URLSelf], urlstring: str) -> URLSelf:  # noqa: PYI019
         try:
             components = urlparse(urlstring)
             if components.scheme not in ["http", "https"]:
                 raise ValueError(f"Invalid HTTP URL: '{urlstring}'")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
             else:
                 logger.error(e)
 
