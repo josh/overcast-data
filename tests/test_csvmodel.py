@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from typing import NewType
 
 from overcast_data.csvmodel import ascsvdict, ascsvrow, castcsvstr, csvstr, fromcsvdict
@@ -27,7 +27,10 @@ def test_csvstr() -> None:
     assert csvstr(PostiveInt(42)) == "42"
     assert csvstr(3.14) == "3.14"
     assert csvstr(date(2020, 1, 1)) == "2020-01-01"
-    assert csvstr(datetime(2020, 1, 1, 12, 0, 0)) == "2020-01-01T12:00:00"
+    assert (
+        csvstr(datetime(2020, 1, 1, 12, 0, 0, tzinfo=timezone.utc))
+        == "2020-01-01T12:00:00+00:00"
+    )
     assert csvstr(timedelta(hours=1, minutes=15)) == "4500"
 
 
@@ -59,7 +62,9 @@ def test_fromcsvstr() -> None:
     assert castcsvstr(str | None, "Hello") == "Hello"
 
     assert castcsvstr(date, "2020-01-01") == date(2020, 1, 1)
-    assert castcsvstr(datetime, "2020-01-01T12:00:00") == datetime(2020, 1, 1, 12, 0, 0)
+    assert castcsvstr(datetime, "2020-01-01T12:00:00+00:00") == datetime(
+        2020, 1, 1, 12, 0, 0, tzinfo=timezone.utc
+    )
     assert castcsvstr(timedelta, "4500") == timedelta(hours=1, minutes=15)
 
     assert castcsvstr(PostiveInt | None, "42") == PostiveInt(42)

@@ -4,6 +4,7 @@ import sys
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from io import BytesIO
+from itertools import pairwise
 from pathlib import Path
 from typing import Any, Literal, NewType, cast
 from urllib.parse import urlparse
@@ -15,7 +16,7 @@ from bs4 import BeautifulSoup, Tag
 from lru_cache import PersistentLRUCache, bytesize
 
 from . import requests_cache
-from .utils import HTTPURL, URL
+from .utils import HTTPURL, URL, URLSelf
 
 logger = logging.getLogger("overcast")
 
@@ -49,13 +50,13 @@ class OvercastURL(HTTPURL):
     An https://overcast.fm/ URL.
     """
 
-    def __new__(cls, urlstring: str) -> "OvercastURL":
+    def __new__(cls: type[URLSelf], urlstring: str) -> URLSelf:
         try:
             if not urlstring.startswith("https://overcast.fm/"):
                 raise ValueError(f"Invalid overcast.fm URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
             else:
                 logger.error(e)
 
@@ -73,13 +74,13 @@ class OvercastCDNURL(HTTPURL):
     An https://*.overcast-cdn.com/ URL.
     """
 
-    def __new__(cls, urlstring: str) -> "OvercastCDNURL":
+    def __new__(cls: type[URLSelf], urlstring: str) -> URLSelf:
         try:
             if not re.match(r"https://[^/]+\.overcast-cdn\.com/", urlstring):
                 raise ValueError(f"Invalid overcast-cdn.com URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
             else:
                 logger.error(e)
 
@@ -91,13 +92,13 @@ class OvercastAppURI(URL):
     An overcast:// URL.
     """
 
-    def __new__(cls, urlstring: str) -> "OvercastAppURI":
+    def __new__(cls: type[URLSelf], urlstring: str) -> URLSelf:
         try:
             if not urlstring.startswith("overcast://"):
                 raise ValueError(f"Invalid overcast: URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
             else:
                 logger.error(e)
 
@@ -109,12 +110,10 @@ class OvercastFeedURL(OvercastURL):
     An https://overcast.fm/ feed URL.
     """
 
-    def __new__(cls, urlstring: str) -> "OvercastFeedURL":
+    def __new__(cls: type[URLSelf], urlstring: str) -> URLSelf:
         try:
             components = urlparse(urlstring)
-            if components.scheme != "https":
-                raise ValueError(f"Invalid overcast.fm feed URL: {urlstring}")
-            elif not components.hostname == "overcast.fm":
+            if components.scheme != "https" or components.hostname != "overcast.fm":
                 raise ValueError(f"Invalid overcast.fm feed URL: {urlstring}")
             elif not re.match(
                 r"^/(p\d+-[A-Za-z0-9]+|itunes\d+/[A-Za-z0-9-]+)$", components.path
@@ -122,7 +121,7 @@ class OvercastFeedURL(OvercastURL):
                 raise ValueError(f"Got overcast.fm episode URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
             else:
                 logger.error(e)
 
@@ -134,18 +133,18 @@ class OvercastEpisodeURL(OvercastURL):
     An https://overcast.fm/+ episode URL.
     """
 
-    def __new__(cls, urlstring: str) -> "OvercastEpisodeURL":
+    def __new__(cls: type[URLSelf], urlstring: str) -> URLSelf:
         try:
             components = urlparse(urlstring)
-            if components.scheme != "https":
-                raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
-            elif not components.hostname == "overcast.fm":
-                raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
-            elif not re.match(r"^/(\+[A-Za-z0-9_-]+)$", components.path):
+            if (
+                components.scheme != "https"
+                or components.hostname != "overcast.fm"
+                or not re.match(r"^/(\+[A-Za-z0-9_-]+)$", components.path)
+            ):
                 raise ValueError(f"Invalid overcast.fm episode URL: {urlstring}")
         except ValueError as e:
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
             else:
                 logger.error(e)
 
@@ -225,7 +224,7 @@ class HTMLPodcastsFeed:
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
 
 
 def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
@@ -259,9 +258,7 @@ def fetch_podcasts(session: Session) -> list[HTMLPodcastsFeed]:
         if title_el := feedcell_el.select_one(".titlestack > .title"):
             title = title_el.text.strip()
 
-        has_unplayed_episodes = (
-            True if feedcell_el.select_one(".unplayed_indicator") else False
-        )
+        has_unplayed_episodes = bool(feedcell_el.select_one(".unplayed_indicator"))
 
         feed = HTMLPodcastsFeed(
             fetched_at=fetched_at,
@@ -304,7 +301,7 @@ class HTMLPodcastFeed:
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
 
 
 @dataclass
@@ -317,7 +314,7 @@ class HTMLPodcastEpisode:
     duration: timedelta | None
     is_played: bool | None
     in_progress: bool | None
-    download_state: Literal["new"] | Literal["deleted"]
+    download_state: Literal["new", "deleted"]
 
     @property
     def is_new(self) -> bool:
@@ -338,12 +335,14 @@ class HTMLPodcastEpisode:
     def _validate(self) -> None:
         try:
             assert self.title, self.title
-            assert self.date_published <= date.today(), self.date_published
+            assert self.date_published <= datetime.now(_SERVER_TZINFO).date(), (
+                self.date_published
+            )
             assert self.download_state is not None, "unknown download state"
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
 
 
 def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFeed:
@@ -382,7 +381,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         if title_el := episodecell_el.select_one(".title"):
             title = title_el.text.strip()
 
-        download_state: Literal["new"] | Literal["deleted"] | None = None
+        download_state: Literal["new", "deleted"] | None = None
         class_name = episodecell_el.attrs["class"]
         if "userdeletedepisode" in class_name:
             download_state = "deleted"
@@ -448,7 +447,7 @@ def expire_podcast(session: Session, feed_url: OvercastFeedURL) -> None:
 
 def _mean_date_published_interval(episodes: list[HTMLPodcastEpisode]) -> timedelta:
     dates: list[date] = [episode.date_published for episode in episodes]
-    tds: list[timedelta] = [a - b for a, b in zip(dates, dates[1:])]
+    tds: list[timedelta] = [a - b for a, b in pairwise(dates)]
     mean_interval = sum(tds, timedelta()) / len(tds)
     assert mean_interval >= timedelta(seconds=0)
     return mean_interval
@@ -477,11 +476,7 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
         in_progress = False
         is_played = True
 
-    elif len(parts) == 2 and parts[1].endswith("left"):
-        in_progress = True
-        is_played = False
-
-    elif len(parts) == 2 and parts[1].startswith("at "):
+    elif len(parts) == 2 and (parts[1].endswith("left") or parts[1].startswith("at ")):
         in_progress = True
         is_played = False
 
@@ -516,7 +511,7 @@ class HTMLEpisode:
     description: str
     date_published: date
     enclosure_url: HTTPURL
-    download_state: Literal["new"] | Literal["existing"]
+    download_state: Literal["new", "existing"]
 
     @property
     def is_new(self) -> bool:
@@ -549,12 +544,14 @@ class HTMLEpisode:
             assert self.item_id, self.item_id
             assert self.feed_item_id, self.feed_art_url
             assert self.title, self.title
-            assert self.date_published <= date.today(), self.date_published
+            assert self.date_published <= datetime.now(_SERVER_TZINFO).date(), (
+                self.date_published
+            )
             assert "#" not in self.enclosure_url, self.enclosure_url
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
 
 
 def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpisode:
@@ -604,7 +601,7 @@ def fetch_episode(session: Session, episode_url: OvercastEpisodeURL) -> HTMLEpis
         date_published = dateutil.parser.parse(div_el.text, default=_SERVER_NOW).date()
     assert date_published
 
-    download_state: Literal["new"] | Literal["existing"] | None = None
+    download_state: Literal["new", "existing"] | None = None
     if soup.select_one(".new_episode_for_user"):
         download_state = "new"
     elif soup.select_one(".existing_episode_for_user"):
@@ -635,8 +632,10 @@ def _fetch_audio_duration(url: HTTPURL) -> timedelta | None:
         return None
     io = BytesIO(response.content)
     try:
-        f = cast(Any, getattr(mutagen, "File"))(io)
-    except Exception:
+        # NOTE: older mutagen releases don't explicitly re-export `File`, so
+        # plain attribute access fails mypy's strict no-implicit-reexport check.
+        f = cast(Any, getattr(mutagen, "File"))(io)  # noqa: B009
+    except Exception:  # noqa: BLE001
         logger.error("Failed to parse audio: %s", url)
         return None
     if f is None:
@@ -699,7 +698,7 @@ class ExportFeed:
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
 
 
 def _opml_feeds(soup: BeautifulSoup, fetched_at: datetime) -> list[ExportFeed]:
@@ -784,7 +783,7 @@ class ExtendedExportPlaylist:
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
 
 
 def _opml_extended_playlists(
@@ -844,7 +843,7 @@ class ExtendedExportFeed:
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
 
 
 def _opml_extended_feeds(
@@ -903,7 +902,7 @@ class ExtendedExportEpisode:
 
     @property
     def is_deleted(self) -> bool:
-        return True if self.user_deleted else False
+        return self.user_deleted
 
     def _validate(self) -> None:
         try:
@@ -919,7 +918,7 @@ class ExtendedExportEpisode:
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
-                raise e
+                raise
 
 
 def _opml_extended_episode(
@@ -969,7 +968,7 @@ def last_request_date(session: Session, url: OvercastURL) -> datetime:
     request = session.requests_session.get_request(url, request_accept="text/html")
     if cached_response := session.requests_session.cached_response(request):
         return requests_cache.response_date(cached_response)
-    return datetime.min
+    return datetime.min.replace(tzinfo=timezone.utc)
 
 
 def _request(
@@ -981,7 +980,7 @@ def _request(
 ) -> requests.Response:
     path = url.removeprefix("https://overcast.fm")
     try:
-        response, is_cached = session.requests_session.get(
+        response, _is_cached = session.requests_session.get(
             path=path,
             request_accept=accept,
             response_expires_in=response_expires_in,
@@ -994,7 +993,7 @@ def _request(
             logger.warning("Page not found: %s", url)
             raise NotFound(f"Page not found: {url}")
         else:
-            raise e
+            raise
 
     if 'href="/login">Log In</a>' in response.text:
         logger.critical("Received logged out page")

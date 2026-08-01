@@ -1,7 +1,7 @@
 import logging
 import time
 from collections.abc import Iterator
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -21,6 +21,8 @@ _DEFAULT_MIME_TYPE_EXTNAMES = {
     "text/html": "html",
 }
 
+_DATETIME_MIN_TZ_AWARE = datetime.min.replace(tzinfo=timezone.utc)
+
 
 class Session:
     _cache_dir: Path
@@ -28,7 +30,7 @@ class Session:
     _base_netloc: str
     _session: requests.Session
     _min_time_between_requests: timedelta
-    _last_request_at: datetime = datetime.min
+    _last_request_at: datetime = _DATETIME_MIN_TZ_AWARE
     _offline: bool
 
     mime_type_extnames: dict[str, str]
@@ -37,22 +39,22 @@ class Session:
         self,
         cache_dir: Path,
         base_url: str,
-        headers: dict[str, str] = {},
+        headers: dict[str, str] | None = None,
         min_time_between_requests: timedelta = timedelta(seconds=0),
         offline: bool = False,
-        mime_type_extnames: dict[str, str] = {},
+        mime_type_extnames: dict[str, str] | None = None,
     ):
         assert not base_url.endswith("/")
         self._base_url = base_url
         self._base_netloc = str(urlparse(base_url).netloc)
         self._cache_dir = cache_dir / self._base_netloc
         self._session = requests.Session()
-        self._session.headers.update(headers)
+        self._session.headers.update(headers or {})
         self._min_time_between_requests = min_time_between_requests
         self._offline = offline
 
         self.mime_type_extnames = _DEFAULT_MIME_TYPE_EXTNAMES.copy()
-        self.mime_type_extnames.update(mime_type_extnames)
+        self.mime_type_extnames.update(mime_type_extnames or {})
 
     def get_request(
         self, url: str, request_accept: str | None = None
@@ -90,7 +92,7 @@ class Session:
                 cache_expires,
             )
 
-            if cache_expires > datetime.now():
+            if cache_expires > datetime.now(timezone.utc):
                 logger.debug("Cache valid")
                 return cached_response, True
             else:
@@ -110,12 +112,12 @@ class Session:
 
         try:
             r.raise_for_status()
-        except requests.HTTPError as e:
+        except requests.HTTPError:
             if stale_cache_on_error and cached_response:
                 logger.warning("Request failed, returning stale cache")
                 return cached_response, True
 
-            raise e
+            raise
 
         response_expires_at = response_date(r) + response_expires_in
         logger.debug("Response will expire at %s", response_expires_at)
@@ -129,12 +131,14 @@ class Session:
 
     def _throttle(self) -> None:
         seconds_to_wait = (
-            self._last_request_at + self._min_time_between_requests - datetime.now()
+            self._last_request_at
+            + self._min_time_between_requests
+            - datetime.now(timezone.utc)
         ).total_seconds()
         if seconds_to_wait > 0:
             logger.warning("Waiting %s seconds...", seconds_to_wait)
             time.sleep(seconds_to_wait)
-        self._last_request_at = datetime.now()
+        self._last_request_at = datetime.now(timezone.utc)
 
     def cache_path(self, request: requests.Request) -> Path:
         assert request.url.startswith(self._base_url), request.url
@@ -146,7 +150,7 @@ class Session:
 
         if url_components.query:
             file_path = file_path.with_name(
-                f"{file_path.name}?{str(url_components.query)}"
+                f"{file_path.name}?{url_components.query!s}"
             )
 
         if accept := prepped.headers.get("Accept"):
@@ -166,7 +170,7 @@ class Session:
     def is_cache_fresh(self, request: requests.Request) -> bool:
         if response := self.cached_response(request):
             expires = response_expires(response)
-            return datetime.now() < expires
+            return datetime.now(timezone.utc) < expires
         return False
 
     def cache_entries(self) -> Iterator[tuple[Path, requests.Response]]:
@@ -175,13 +179,13 @@ class Session:
                 continue
             try:
                 response = bytes_to_response(path.read_bytes())
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 logger.error("Failed to read cache entry %s: %s", path, e)
                 continue
             yield path, response
 
     def purge_cache(self, older_than: timedelta = timedelta.max) -> None:
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
         oldest_date = now + older_than
 
         for path, response in self.cache_entries():
@@ -235,10 +239,16 @@ def bytes_to_response(data: bytes) -> requests.Response:
 
 
 def response_date(response: requests.Response) -> datetime:
-    return datetime.strptime(response.headers["Date"], "%a, %d %b %Y %H:%M:%S GMT")
+    return _parse_http_date(response.headers["Date"])
 
 
 def response_expires(response: requests.Response) -> datetime:
     if "Expires" not in response.headers:
-        return datetime.min
-    return datetime.strptime(response.headers["Expires"], "%a, %d %b %Y %H:%M:%S GMT")
+        return _DATETIME_MIN_TZ_AWARE
+    return _parse_http_date(response.headers["Expires"])
+
+
+def _parse_http_date(value: str) -> datetime:
+    return datetime.strptime(value, "%a, %d %b %Y %H:%M:%S GMT").replace(
+        tzinfo=timezone.utc
+    )

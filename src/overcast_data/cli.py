@@ -8,6 +8,7 @@ from functools import partial
 from itertools import islice
 from pathlib import Path
 from types import TracebackType
+from typing import TypeVar
 
 import click
 from prometheus_client import (
@@ -30,6 +31,11 @@ def _xdg_cache_home() -> Path:
         return Path.home() / ".cache"
 
 
+# NOTE: `typing.Self` would be clearer, but it requires Python 3.11 and this
+# package still supports 3.10.
+_ContextSelf = TypeVar("_ContextSelf", bound="Context")
+
+
 class Context(AbstractContextManager["Context"]):
     session: overcast.Session
     db: Database
@@ -38,7 +44,7 @@ class Context(AbstractContextManager["Context"]):
         self.session = session
         self.db = Database(path=db_path)
 
-    def __enter__(self) -> "Context":
+    def __enter__(self: _ContextSelf) -> _ContextSelf:  # noqa: PYI019
         logger.debug("Entering cli context")
         self.db.__enter__()
         return self
