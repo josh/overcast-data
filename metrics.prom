@@ -92,9 +92,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="under-th
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="under-the-radar",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 8.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 49.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 50.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 58.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 5.0
@@ -117,8 +117,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 213.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 53.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 54.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 536.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
@@ -270,9 +270,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="under-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="under-the-radar",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="under-the-radar",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 98.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="a-cast-of-kings",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 507.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 3007.4500000000007
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="a-cast-of-kings",played="true"} 3105.4500000000007
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="a-cast-of-kings",played="false"} 3247.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="discover-daily-by-perplexity",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="discover-daily-by-perplexity",played="false"} 39.0
@@ -295,8 +295,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digit
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 232.98333333333335
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 20325.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 84.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 3753.25
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 3837.25
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 51960.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
