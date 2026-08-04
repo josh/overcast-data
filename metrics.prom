@@ -49,8 +49,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="automat
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 166.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 194.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 195.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 15.0
@@ -69,8 +69,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-eco
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 136.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 193.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 31.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 670.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 30.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 671.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
@@ -227,8 +227,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="autom
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 12567.1
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 108.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 20830.95
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 20938.95
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-indicator-from-planet-money-plus",played="false"} 128.91666666666666
@@ -247,8 +247,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-e
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 2414.3500000000004
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 3261.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1440.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 16599.11666666666
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1424.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 16615.11666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 1061.3666666666668
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
