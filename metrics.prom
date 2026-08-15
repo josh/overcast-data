@@ -24,8 +24,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-wee
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 27.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 248.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 5.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 9.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 10.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 738.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
@@ -72,8 +72,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratech
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 30.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 675.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 518.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 1.0
@@ -160,9 +160,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 31.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 104.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 37.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 36.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 266.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 72.0
@@ -202,8 +202,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-w
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 3969.583333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 35920.16666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 680.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 139.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 909.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1048.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 90042.28333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 92.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dlc-with-jeff-cannata-and-christian-spicer",played="false"} 0.0
@@ -250,8 +250,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="strate
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1424.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 16668.11666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 1061.3666666666668
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 15.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 15.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 7680.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 96.0
@@ -338,9 +338,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 5276.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 99.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 170.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 9133.033333333333
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 2852.0333333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 2781.0333333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19762.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 2622.2
