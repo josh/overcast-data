@@ -18,7 +18,6 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
-
 dependencies = [
     "beautifulsoup4>=4.11,<5",
     "click>=8.1.1,<9",
@@ -42,11 +41,14 @@ dev = [
     "types-requests>=2.32,<3",
 ]
 
-[tool.hatch.metadata]
-allow-direct-references = true
+[tool.hatch]
+metadata.allow-direct-references = true
 
 [tool.ruff]
 lint.extend-select = [ "I", "UP" ]
+
+[tool.vulture]
+exclude = [ "*test_*.py" ]
 
 [tool.pyproject-fmt]
 indent = 4
@@ -55,6 +57,3 @@ indent = 4
 strict = true
 
 [tool.pyright]
-
-[tool.vulture]
-exclude = [ "*test_*.py" ]
