@@ -1,4 +1,5 @@
 import logging
+import re
 import time
 from collections.abc import Iterator
 from datetime import datetime, timedelta, timezone
@@ -223,14 +224,15 @@ def bytes_to_response(data: bytes) -> requests.Response:
     """
     Parse raw HTTP/1.1 response into a requests.Response object.
     """
-    lines = data.splitlines()
+    separator = re.search(rb"\r?\n\r?\n", data)
+    assert separator, "Missing header/body separator"
+    header_data, body = data[: separator.start()], data[separator.end() :]
+    lines = [line.rstrip(b"\r") for line in header_data.split(b"\n")]
     _, status_code, reason = lines[0].decode("ascii").split(" ", 2)
     headers: CaseInsensitiveDict[str] = CaseInsensitiveDict()
-    body_index = lines.index(b"")
-    for line in lines[1:body_index]:
+    for line in lines[1:]:
         k, v = line.decode("ascii").split(": ", 1)
         headers[k] = v
-    body = b"\n".join(lines[body_index + 1 :])
 
     response = requests.Response()
     response.status_code = int(status_code)

@@ -75,6 +75,29 @@ def test_response_bytes_roundtrip() -> None:
     assert response_to_bytes(response) == response_bytes
 
 
+def test_bytes_to_response_accepts_crlf_headers() -> None:
+    body = b"Hello\r\nWorld\n\n!"
+    data = b"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n" + body
+
+    response = bytes_to_response(data)
+    assert response.status_code == 200
+    assert response.headers["Content-Type"] == "text/plain"
+    assert response.content == body
+
+
+def test_response_bytes_roundtrip_preserves_body_bytes() -> None:
+    body = b"line1\r\nline2\rtail\n\nend\n"
+    response_bytes = (
+        b"HTTP/1.1 200 OK\nContent-Type: application/octet-stream\n\n" + body
+    )
+
+    response = bytes_to_response(response_bytes)
+    assert response.status_code == 200
+    assert response.content == body
+
+    assert response_to_bytes(response) == response_bytes
+
+
 def test_cache_entries(session: Session) -> None:
     session.get(
         "/get",
