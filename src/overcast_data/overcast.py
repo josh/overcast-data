@@ -467,8 +467,8 @@ def parse_episode_caption_text(text: str) -> CaptionResult:
     assert len(parts) >= 1, text
 
     duration: timedelta | None = None
-    in_progress: bool | None
-    is_played: bool | None
+    in_progress: bool | None = None
+    is_played: bool | None = None
 
     date_published = dateutil.parser.parse(parts[0], default=_SERVER_NOW).date()
 
