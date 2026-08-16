@@ -1,5 +1,5 @@
 import os
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -86,6 +86,68 @@ def test_cache_entries(session: Session) -> None:
 
 def test_purge_cache(session: Session) -> None:
     session.purge_cache(older_than=timedelta(days=30))
+
+
+def _write_cache_entry(path: Path, date: datetime, expires: datetime) -> Path:
+    fmt = "%a, %d %b %Y %H:%M:%S GMT"
+    path.write_bytes(
+        f"HTTP/1.1 200 OK\n"
+        f"Date: {date.strftime(fmt)}\n"
+        f"Expires: {expires.strftime(fmt)}\n"
+        f"\n"
+        f"body".encode()
+    )
+    return path
+
+
+def test_purge_cache_removes_entries_older_than(tmp_path: Path) -> None:
+    session = Session(cache_dir=tmp_path, base_url="https://example.com")
+    cache_dir = tmp_path / "example.com"
+    cache_dir.mkdir(parents=True)
+
+    now = datetime.now(timezone.utc)
+    fresh = _write_cache_entry(
+        cache_dir / "fresh", date=now, expires=now + timedelta(days=1)
+    )
+    old = _write_cache_entry(
+        cache_dir / "old",
+        date=now - timedelta(days=60),
+        expires=now + timedelta(days=365),
+    )
+    expired = _write_cache_entry(
+        cache_dir / "expired",
+        date=now - timedelta(days=2),
+        expires=now - timedelta(days=1),
+    )
+
+    session.purge_cache(older_than=timedelta(days=30))
+
+    assert fresh.exists()
+    assert not old.exists()
+    assert not expired.exists()
+
+
+def test_purge_cache_default_only_removes_expired(tmp_path: Path) -> None:
+    session = Session(cache_dir=tmp_path, base_url="https://example.com")
+    cache_dir = tmp_path / "example.com"
+    cache_dir.mkdir(parents=True)
+
+    now = datetime.now(timezone.utc)
+    old = _write_cache_entry(
+        cache_dir / "old",
+        date=now - timedelta(days=3650),
+        expires=now + timedelta(days=365),
+    )
+    expired = _write_cache_entry(
+        cache_dir / "expired",
+        date=now - timedelta(days=2),
+        expires=now - timedelta(days=1),
+    )
+
+    session.purge_cache()
+
+    assert old.exists()
+    assert not expired.exists()
 
 
 def test_cache_path(module_cache_dir: Path, session: Session) -> None:

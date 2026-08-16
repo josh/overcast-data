@@ -186,7 +186,10 @@ class Session:
 
     def purge_cache(self, older_than: timedelta = timedelta.max) -> None:
         now = datetime.now(timezone.utc)
-        oldest_date = now + older_than
+        try:
+            oldest_date = now - older_than
+        except OverflowError:
+            oldest_date = _DATETIME_MIN_TZ_AWARE
 
         for path, response in self.cache_entries():
             date = response_date(response)
@@ -194,7 +197,7 @@ class Session:
             if expires < now:
                 logger.debug("Purging expired cache entry %s", path)
                 path.unlink()
-            elif date > oldest_date:
+            elif date < oldest_date:
                 logger.debug("Purging old cache entry %s", path)
                 path.unlink()
 
