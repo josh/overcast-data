@@ -219,5 +219,40 @@ def test_parse_episode_caption_text_unknown_format(
     assert result.in_progress is None
 
 
+def test_fetch_podcast_missing_caption_not_reused_from_previous_episode(
+    function_cache_dir: Path,
+) -> None:
+    session = overcast.session(cache_dir=function_cache_dir, cookie="X", offline=True)
+
+    html = """<html><body>
+    <meta name="apple-itunes-app"
+          content="app-id=888422857, app-argument=overcast:///123">
+    <h2 class="centertext">Test Podcast</h2>
+    <img class="fullart" src="https://r2.overcast-cdn.com/art/123">
+    <a class="extendedepisodecell usernewepisode" href="/+aaa">
+      <div class="title">Episode One</div>
+      <div class="caption2">Apr 1, 2020 • 30 min</div>
+    </a>
+    <a class="extendedepisodecell usernewepisode" href="/+bbb">
+      <div class="title">Episode Two</div>
+    </a>
+    </body></html>"""
+
+    fmt = "%a, %d %b %Y %H:%M:%S GMT"
+    date_header = datetime.now(timezone.utc).strftime(fmt)
+    cache_file = function_cache_dir / "overcast.fm" / "itunes123" / "test.html"
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+    cache_file.write_bytes(
+        f"HTTP/1.1 200 OK\nDate: {date_header}\nContent-Type: text/html\n\n".encode()
+        + html.encode("utf-8")
+    )
+
+    with pytest.raises(AssertionError):
+        fetch_podcast(
+            session=session,
+            feed_url=OvercastFeedURL("https://overcast.fm/itunes123/test"),
+        )
+
+
 def test_session_purge_cache(overcast_session: Session) -> None:
     overcast_session.requests_session.purge_cache(older_than=timedelta(days=30))
