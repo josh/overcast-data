@@ -390,6 +390,7 @@ def fetch_podcast(session: Session, feed_url: OvercastFeedURL) -> HTMLPodcastFee
         else:
             assert False, f"Unknown download state: {class_name}"
 
+        caption_result: CaptionResult | None = None
         if caption2_el := episodecell_el.select_one(".caption2"):
             caption_result = parse_episode_caption_text(caption2_el.text)
         assert caption_result
