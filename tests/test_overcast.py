@@ -205,5 +205,19 @@ def test_parse_episode_caption_text() -> None:
     assert result.in_progress is None
 
 
+def test_parse_episode_caption_text_unknown_format(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    server_tzinfo = timezone(-timedelta(hours=5))
+    now = datetime.now(server_tzinfo).date()
+
+    with caplog.at_level(100):
+        result = parse_episode_caption_text("Apr 1 • 30 min • something")
+    assert result.date_published == date(now.year, 4, 1)
+    assert result.duration is None
+    assert result.is_played is None
+    assert result.in_progress is None
+
+
 def test_session_purge_cache(overcast_session: Session) -> None:
     overcast_session.requests_session.purge_cache(older_than=timedelta(days=30))
