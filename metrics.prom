@@ -166,7 +166,7 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-w
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 266.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 72.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 47.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 48.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 744.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="full-time-nix",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 1.0
@@ -184,7 +184,6 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="dica",pl
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dica",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dica",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dica",played="false"} 0.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 1.0
 # HELP overcast_episode_minutes Minutes of Overcast episodes
 # TYPE overcast_episode_minutes gauge
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
@@ -353,7 +352,7 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19762.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 2622.2
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 1801.9833333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 1825.0666666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 22825.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="full-time-nix",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 84.0
@@ -371,4 +370,3 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dica",
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dica",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dica",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dica",played="false"} 0.0
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 23.083333333333332
