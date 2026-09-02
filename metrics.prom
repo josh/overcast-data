@@ -177,8 +177,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="acquire
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="acquired",played="true"} 4.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="acquired",played="false"} 211.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="designed-in-california",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="designed-in-california",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="designed-in-california",played="true"} 4.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="designed-in-california",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="designed-in-california",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="designed-in-california",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dica",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dica",played="false"} 0.0
@@ -363,8 +363,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="acqui
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="acquired",played="true"} 779.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="acquired",played="false"} 25000.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="designed-in-california",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="designed-in-california",played="false"} 27.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="designed-in-california",played="true"} 189.95
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="designed-in-california",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="designed-in-california",played="true"} 216.95
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="designed-in-california",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dica",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dica",played="false"} 0.0
