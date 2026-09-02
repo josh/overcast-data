@@ -13,9 +13,9 @@ import dateutil.parser
 import mutagen
 import requests
 from bs4 import BeautifulSoup, Tag
-from lru_cache import PersistentLRUCache, bytesize
 
 from . import requests_cache
+from .lru_cache import LRUCache
 from .utils import HTTPURL, URL, URLSelf
 
 logger = logging.getLogger("overcast")
@@ -170,16 +170,16 @@ class NotFound(Exception):
 @dataclass
 class Session:
     requests_session: requests_cache.Session
-    lru_cache: PersistentLRUCache
+    lru_cache: LRUCache
 
 
 def session(cache_dir: Path, cookie: str, offline: bool = False) -> Session:
     headers = _SAFARI_HEADERS.copy()
     headers["Cookie"] = f"o={cookie}; qr=-"
 
-    lru_cache = PersistentLRUCache(
+    lru_cache = LRUCache(
         filename=cache_dir / "overcast.pickle",
-        max_bytesize=bytesize(mb=1),
+        max_bytesize=1024 * 1024,  # 1 MB
     )
 
     requests_session = requests_cache.Session(

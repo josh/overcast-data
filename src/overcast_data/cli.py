@@ -57,6 +57,7 @@ class Context(AbstractContextManager["Context"]):
     ) -> None:
         logger.debug("Exiting cli context")
         self.db.__exit__(exc_type, exc_value, traceback)
+        self.session.lru_cache.close()
 
 
 @click.group(chain=True)

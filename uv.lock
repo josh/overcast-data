@@ -365,14 +365,6 @@ wheels = [
 ]
 
 [[package]]
-name = "lru-cache"
-version = "1.0.2"
-source = { url = "https://github.com/josh/lru-cache-python/releases/download/v1.0.2/lru_cache-1.0.2-py3-none-any.whl" }
-wheels = [
-    { url = "https://github.com/josh/lru-cache-python/releases/download/v1.0.2/lru_cache-1.0.2-py3-none-any.whl", hash = "sha256:62386284d3613fc3ad44d4bd01ef87ff8c079c413da529713a68adf49634ea3d" },
-]
-
-[[package]]
 name = "lxml"
 version = "6.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -574,7 +566,6 @@ dependencies = [
     { name = "beautifulsoup4" },
     { name = "click" },
     { name = "cryptography" },
-    { name = "lru-cache" },
     { name = "lxml" },
     { name = "mutagen" },
     { name = "prometheus-client" },
@@ -597,7 +588,6 @@ requires-dist = [
     { name = "beautifulsoup4", specifier = ">=4.11,<5" },
     { name = "click", specifier = ">=8.1.1,<9" },
     { name = "cryptography", specifier = ">=46" },
-    { name = "lru-cache", url = "https://github.com/josh/lru-cache-python/releases/download/v1.0.2/lru_cache-1.0.2-py3-none-any.whl" },
     { name = "lxml", specifier = ">=6,<7" },
     { name = "mutagen", specifier = ">=1.47,<2" },
     { name = "prometheus-client", specifier = ">=0.20" },
