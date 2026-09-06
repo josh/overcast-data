@@ -109,13 +109,13 @@ def test_fetch_episode(overcast_session: Session) -> None:
     assert episode.date_published == date(2014, 6, 6)
     assert (
         episode.enclosure_url
-        == "http://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
+        == "https://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
     )
 
 
 def test_fetch_audio_duration(overcast_session: Session) -> None:
     url = HTTPURL(
-        "http://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
+        "https://feeds.soundcloud.com/stream/153165973-thetalkshow-83-live-at-wwdc-2014.mp3"
     )
     duration = fetch_audio_duration(session=overcast_session, url=url)
     assert duration == timedelta(seconds=6538)
