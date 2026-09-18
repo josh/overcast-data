@@ -24,7 +24,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-wee
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 29.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 251.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 5.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 10.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 743.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1.0
@@ -163,7 +163,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 107.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 43.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 266.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 267.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 72.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 50.0
@@ -210,7 +210,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-w
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 4295.583333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 36411.16666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 680.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 152.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 299.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1027.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="true"} 90867.54999999999
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 92.0
@@ -349,7 +349,7 @@ overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="titl
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 188.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 9333.033333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 3369.0333333333333
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19762.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19794.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 2622.2
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 1902.4833333333333
