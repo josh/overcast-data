@@ -12,7 +12,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="dave-che
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 47.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 363.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 280.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
@@ -164,9 +164,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-wi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 111.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 45.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 268.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 72.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 51.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 52.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 744.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="full-time-nix",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 1.0
@@ -198,7 +198,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dave-c
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 1908.9999999999998
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dave-chens-bonus-audio",played="true"} 19611.599999999984
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dave-chens-bonus-audio",played="false"} 62.65
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 142.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="security-now",played="false"} 291.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 308.45
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 34112.51666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
@@ -350,9 +350,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 9475.033333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 3451.0333333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19816.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 13.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 2622.2
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 1962.4833333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 1975.4833333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 22825.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="full-time-nix",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 84.0
