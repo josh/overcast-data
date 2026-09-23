@@ -16,7 +16,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="security
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 280.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 277.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
@@ -48,8 +48,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="automato
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 166.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 201.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 436.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 1.0
@@ -160,7 +160,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 31.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 4.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 111.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 45.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 268.0
@@ -202,7 +202,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="securi
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="false"} 308.45
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="security-now",played="true"} 34112.51666666666
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="security-now",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 117.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macbreak-weekly",played="false"} 286.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="false"} 207.01666666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 35422.09999999999
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
@@ -234,8 +234,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="automa
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="false"} 152.5
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="automators-max",played="true"} 12567.1
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="automators-max",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 114.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="upgrade",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="false"} 114.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="upgrade",played="true"} 21552.95
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="upgrade",played="false"} 42648.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-indicator-from-planet-money-plus",played="false"} 9.0
@@ -346,7 +346,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 5276.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 80.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 135.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 9475.033333333333
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 3451.0333333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19816.0
