@@ -616,7 +616,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "mypy", specifier = ">=1,<2" },
+    { name = "mypy", specifier = ">=1.12,<2" },
     { name = "pytest", specifier = ">=8,<10" },
     { name = "ruff", specifier = ">=0.9,<2" },
     { name = "types-beautifulsoup4", specifier = ">=4.11,<5" },
