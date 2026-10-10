@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -128,7 +128,7 @@ def test_purge_cache_removes_entries_older_than(tmp_path: Path) -> None:
     cache_dir = tmp_path / "example.com"
     cache_dir.mkdir(parents=True)
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     fresh = _write_cache_entry(
         cache_dir / "fresh", date=now, expires=now + timedelta(days=1)
     )
@@ -155,7 +155,7 @@ def test_purge_cache_default_only_removes_expired(tmp_path: Path) -> None:
     cache_dir = tmp_path / "example.com"
     cache_dir.mkdir(parents=True)
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     old = _write_cache_entry(
         cache_dir / "old",
         date=now - timedelta(days=3650),

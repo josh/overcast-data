@@ -1,6 +1,6 @@
 import os
 import re
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -239,7 +239,7 @@ def test_fetch_podcast_missing_caption_not_reused_from_previous_episode(
     </body></html>"""
 
     fmt = "%a, %d %b %Y %H:%M:%S GMT"
-    date_header = datetime.now(timezone.utc).strftime(fmt)
+    date_header = datetime.now(UTC).strftime(fmt)
     cache_file = function_cache_dir / "overcast.fm" / "itunes123" / "test.html"
     cache_file.parent.mkdir(parents=True, exist_ok=True)
     cache_file.write_bytes(

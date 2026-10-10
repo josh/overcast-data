@@ -2,7 +2,7 @@ import logging
 import re
 import sys
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta, timezone
 from io import BytesIO
 from itertools import pairwise
 from pathlib import Path
@@ -695,7 +695,7 @@ class ExportFeed:
         try:
             assert self.title, self.title
             assert self.added_at.tzinfo, "added date must be timezone-aware"
-            assert self.added_at < datetime.now(timezone.utc), self.added_at
+            assert self.added_at < datetime.now(UTC), self.added_at
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
@@ -840,7 +840,7 @@ class ExtendedExportFeed:
         try:
             assert self.title, self.title
             assert self.added_at.tzinfo, "added date must be timezone-aware"
-            assert self.added_at < datetime.now(timezone.utc), self.added_at
+            assert self.added_at < datetime.now(UTC), self.added_at
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
@@ -910,12 +910,8 @@ class ExtendedExportEpisode:
             assert self.title, self.title
             assert self.date_published.tzinfo, "published date must be timezone-aware"
             assert self.user_updated_at.tzinfo, "updated date must be timezone-aware"
-            assert self.date_published <= datetime.now(timezone.utc), (
-                self.date_published
-            )
-            assert self.user_updated_at < datetime.now(timezone.utc), (
-                self.user_updated_at
-            )
+            assert self.date_published <= datetime.now(UTC), self.date_published
+            assert self.user_updated_at < datetime.now(UTC), self.user_updated_at
         except AssertionError as e:
             logger.error(e)
             if _RAISE_VALIDATION_ERRORS:
@@ -969,7 +965,7 @@ def last_request_date(session: Session, url: OvercastURL) -> datetime:
     request = session.requests_session.get_request(url, request_accept="text/html")
     if cached_response := session.requests_session.cached_response(request):
         return requests_cache.response_date(cached_response)
-    return datetime.min.replace(tzinfo=timezone.utc)
+    return datetime.min.replace(tzinfo=UTC)
 
 
 def _request(

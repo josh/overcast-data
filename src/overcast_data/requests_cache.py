@@ -2,7 +2,7 @@ import logging
 import re
 import time
 from collections.abc import Iterator
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -22,7 +22,7 @@ _DEFAULT_MIME_TYPE_EXTNAMES = {
     "text/html": "html",
 }
 
-_DATETIME_MIN_TZ_AWARE = datetime.min.replace(tzinfo=timezone.utc)
+_DATETIME_MIN_TZ_AWARE = datetime.min.replace(tzinfo=UTC)
 
 
 class Session:
@@ -93,7 +93,7 @@ class Session:
                 cache_expires,
             )
 
-            if cache_expires > datetime.now(timezone.utc):
+            if cache_expires > datetime.now(UTC):
                 logger.debug("Cache valid")
                 return cached_response, True
             else:
@@ -132,14 +132,12 @@ class Session:
 
     def _throttle(self) -> None:
         seconds_to_wait = (
-            self._last_request_at
-            + self._min_time_between_requests
-            - datetime.now(timezone.utc)
+            self._last_request_at + self._min_time_between_requests - datetime.now(UTC)
         ).total_seconds()
         if seconds_to_wait > 0:
             logger.warning("Waiting %s seconds...", seconds_to_wait)
             time.sleep(seconds_to_wait)
-        self._last_request_at = datetime.now(timezone.utc)
+        self._last_request_at = datetime.now(UTC)
 
     def cache_path(self, request: requests.Request) -> Path:
         assert request.url.startswith(self._base_url), request.url
@@ -171,7 +169,7 @@ class Session:
     def is_cache_fresh(self, request: requests.Request) -> bool:
         if response := self.cached_response(request):
             expires = response_expires(response)
-            return datetime.now(timezone.utc) < expires
+            return datetime.now(UTC) < expires
         return False
 
     def cache_entries(self) -> Iterator[tuple[Path, requests.Response]]:
@@ -186,7 +184,7 @@ class Session:
             yield path, response
 
     def purge_cache(self, older_than: timedelta = timedelta.max) -> None:
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         try:
             oldest_date = now - older_than
         except OverflowError:
@@ -254,6 +252,4 @@ def response_expires(response: requests.Response) -> datetime:
 
 
 def _parse_http_date(value: str) -> datetime:
-    return datetime.strptime(value, "%a, %d %b %Y %H:%M:%S GMT").replace(
-        tzinfo=timezone.utc
-    )
+    return datetime.strptime(value, "%a, %d %b %Y %H:%M:%S GMT").replace(tzinfo=UTC)

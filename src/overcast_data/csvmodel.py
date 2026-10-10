@@ -7,7 +7,6 @@ from typing import (
     Any,
     ClassVar,
     Protocol,
-    TypeVar,
     Union,
     cast,
 )
@@ -106,10 +105,9 @@ def ascsvrow(obj: DataclassInstance) -> tuple[str, ...]:
     return tuple(csvstr(getattr(obj, name)) for name in obj.__dataclass_fields__)
 
 
-DataclassType = TypeVar("DataclassType", bound=DataclassInstance)
-
-
-def fromcsvdict(cls: type[DataclassType], d: dict[str, str]) -> DataclassType:
+def fromcsvdict[DataclassType: DataclassInstance](
+    cls: type[DataclassType], d: dict[str, str]
+) -> DataclassType:
     kwargs: dict[str, Any] = {
         name: castcsvstr(field.type, d[name])
         for name, field in cls.__dataclass_fields__.items()

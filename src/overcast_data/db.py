@@ -4,7 +4,7 @@ import re
 from collections.abc import Callable, Iterable, Iterator
 from contextlib import AbstractContextManager
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from functools import cache
 from pathlib import Path
 from types import TracebackType
@@ -29,7 +29,7 @@ from .utils import (
 logger = logging.getLogger("db")
 
 
-_DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=timezone.utc)
+_DATETIME_MAX_TZ_AWARE = datetime.max.replace(tzinfo=UTC)
 
 register_cast(OvercastFeedURL, fromstr=OvercastFeedURL)
 register_cast(OvercastEpisodeURL, fromstr=OvercastEpisodeURL)
