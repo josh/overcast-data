@@ -69,8 +69,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-eco
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-economics-of-everyday-things",played="true"} 136.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-economics-of-everyday-things",played="false"} 193.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratechery",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 32.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 703.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 31.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 704.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
