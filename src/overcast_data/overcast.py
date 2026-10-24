@@ -6,7 +6,7 @@ from datetime import UTC, date, datetime, timedelta, timezone
 from io import BytesIO
 from itertools import pairwise
 from pathlib import Path
-from typing import Any, Literal, NewType, cast
+from typing import Literal, NewType, cast
 from urllib.parse import urlparse
 
 import dateutil.parser
@@ -633,9 +633,7 @@ def _fetch_audio_duration(url: HTTPURL) -> timedelta | None:
         return None
     io = BytesIO(response.content)
     try:
-        # NOTE: older mutagen releases don't explicitly re-export `File`, so
-        # plain attribute access fails mypy's strict no-implicit-reexport check.
-        f = cast(Any, getattr(mutagen, "File"))(io)  # noqa: B009
+        f = mutagen.File(io)
     except Exception:  # noqa: BLE001
         logger.error("Failed to parse audio: %s", url)
         return None
