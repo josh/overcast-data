@@ -116,9 +116,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 213.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 76.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 77.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 536.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
@@ -160,9 +160,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="title-fi
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 31.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 3.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 2.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 114.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 53.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 54.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 270.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 72.0
@@ -302,9 +302,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digita
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 143.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 232.98333333333335
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 20325.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 199.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 135.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 5223.383333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 5287.383333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 51960.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="selfhosted-sre",played="false"} 0.0
@@ -346,9 +346,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="title-
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="title-fights",played="true"} 5276.55
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="title-fights",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 183.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 143.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 9592.033333333333
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 3949.0333333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 3989.0333333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19893.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 2622.2
