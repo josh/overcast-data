@@ -40,7 +40,7 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="macstori
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="false"} 62.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="true"} 0.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macstories-unwind",played="false"} 54.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 2.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 17.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 633.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -72,9 +72,9 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratech
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 32.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 715.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 1.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 541.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 542.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 4.0
@@ -226,7 +226,7 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="macsto
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="false"} 1630.1999999999998
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macstories-unwind",played="true"} 0.0
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macstories-unwind",played="false"} 1944.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 167.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-filmcasts-patreon-feed",played="false"} 262.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 1528.75
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="true"} 49299.183333333276
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-filmcasts-patreon-feed",played="false"} 0.0
@@ -258,9 +258,9 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="strate
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1550.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 17448.599999999995
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 1061.3666666666668
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 15.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 8025.75
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 8040.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="sharp-tech-with-ben-thompson",played="false"} 215.33333333333331
