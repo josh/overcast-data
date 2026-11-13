@@ -21,8 +21,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbrea
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 285.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 31.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 257.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 30.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 258.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 10.0
@@ -116,8 +116,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 2.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 213.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 83.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 536.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
@@ -207,8 +207,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbr
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="macbreak-weekly",played="true"} 36467.09999999999
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="macbreak-weekly",played="false"} 343.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="this-week-in-tech",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 4644.583333333333
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 37371.16666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="false"} 4492.583333333333
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="this-week-in-tech",played="true"} 37523.16666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="this-week-in-tech",played="false"} 680.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="accidental-tech-podcast",played="false"} 162.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="accidental-tech-podcast",played="false"} 1027.0
@@ -302,8 +302,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digita
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 143.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="true"} 232.98333333333335
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-direct-weekly",played="false"} 20325.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 47.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 47.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="true"} 5680.383333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="digital-foundry-supporter-podcast-access",played="false"} 51960.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="selfhosted-sre",played="false"} 0.0
