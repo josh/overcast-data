@@ -3,7 +3,7 @@
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 5.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 372.0
-overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
+overcast_episode_count{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 14.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 523.0
@@ -189,7 +189,7 @@ overcast_episode_count{did_download="false",downloaded="false",feed_slug="dica",
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 490.8
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="true"} 49881.53333333334
-overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 0.0
+overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="the-talk-show-with-john-gruber",played="false"} 97.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="more-power-users",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="false"} 1274.0833333333335
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="more-power-users",played="true"} 50821.01666666665
