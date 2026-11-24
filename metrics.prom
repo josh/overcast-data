@@ -72,8 +72,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="stratech
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 35.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 725.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 21.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 547.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 3.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
@@ -136,8 +136,8 @@ overcast_episode_count{did_download="true",downloaded="true",feed_slug="intellig
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 1.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 5.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 204.0
-overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 1.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 172.0
+overcast_episode_count{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 173.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 71.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 1596.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 1.0
@@ -165,8 +165,8 @@ overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-w
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 60.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 271.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 73.0
-overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 67.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 72.0
+overcast_episode_count{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 68.0
 overcast_episode_count{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 744.0
 overcast_episode_count{did_download="true",downloaded="true",feed_slug="full-time-nix",played="false"} 0.0
 overcast_episode_count{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 1.0
@@ -258,8 +258,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="strate
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="false"} 1725.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="stratechery",played="true"} 17600.599999999995
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="stratechery",played="false"} 1061.3666666666668
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 15.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="dithering",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="false"} 15.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="dithering",played="true"} 8115.75
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="dithering",played="false"} 45.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="sharp-tech-with-ben-thompson",played="false"} 0.0
@@ -322,8 +322,8 @@ overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="intell
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="false"} 140.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="intelligent-machines",played="true"} 614.35
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="intelligent-machines",played="false"} 29427.0
-overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 55.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 8160.416666666667
+overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="freakonomics-radio",played="false"} 0.0
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="false"} 8215.416666666668
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="freakonomics-radio",played="true"} 3728.15
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="freakonomics-radio",played="false"} 64247.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="core-contributor",played="false"} 74.0
@@ -351,8 +351,8 @@ overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="true"} 4470.033333333333
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="allin-with-chamath-jason-sacks-friedberg",played="false"} 19955.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="real-time-with-bill-maher",played="false"} 0.0
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 2635.2
-overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 2553.666666666667
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 2622.2
+overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="real-time-with-bill-maher",played="true"} 2566.666666666667
 overcast_episode_minutes{did_download="false",downloaded="false",feed_slug="real-time-with-bill-maher",played="false"} 22825.0
 overcast_episode_minutes{did_download="true",downloaded="true",feed_slug="full-time-nix",played="false"} 0.0
 overcast_episode_minutes{did_download="true",downloaded="false",feed_slug="full-time-nix",played="false"} 84.0
